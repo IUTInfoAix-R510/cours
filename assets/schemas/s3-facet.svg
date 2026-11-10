@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 298" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$facet : les 4 films de la collection brouillon entrent tous dans deux sous-pipelines parallèles, par_annee ($group par annee puis $sort) et plus_long ($sort par durée décroissante, $limit 1, $project qui garde seulement titre, sans _id) ; la sortie est un seul document dont chaque champ est un tableau : par_annee contient 1995 avec 1 film, 2000 avec 1 film et 2001 avec 2 films, plus_long contient Le Voyage de Chihiro</title>
+  <title id="t">$facet : les 4 films de la collection films entrent tous dans deux sous-pipelines parallèles, par_annee ($group par annee puis $sort) et plus_long ($sort par durée décroissante, $limit 1, $project qui garde seulement titre, sans _id) ; la sortie est un seul document dont chaque champ est un tableau : par_annee contient 1995 avec 1 film, 2000 avec 1 film et 2001 avec 2 films, plus_long contient Le Voyage de Chihiro</title>
 
   <!-- en-têtes -->
   <g font-size="17" fill="#555" text-anchor="middle">
-    <text x="130" y="20">collection <tspan font-family="monospace">brouillon</tspan></text>
+    <text x="130" y="20">collection <tspan font-family="monospace">films</tspan></text>
     <text x="542" y="20">les 4 documents entrent dans chaque facette</text>
     <text x="987" y="20">en sortie : <tspan font-weight="bold" fill="#333">un seul</tspan> document</text>
   </g>

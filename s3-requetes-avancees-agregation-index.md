@@ -30,11 +30,11 @@ Séance 3 · TP2 · semaine du 30 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 22 (données, parties 1 à 4) en 25 minutes, puis les deux diapos « À vous » (32 et 33, 2 minutes).
+Premier temps, en début de séance : diapos 2 à 25 (données, parties 1 à 4) en 25 minutes, puis les deux diapos « À vous » (35 et 36, 2 minutes).
 
-Second temps, quand la majorité du groupe attaque la partie 5 : diapos 23 à 31 (géospatial, $merge et $jsonSchema, pilote Java et Javalin), 10 minutes. Ces diapos servent aussi de référence pour la fin du TP en autonomie (parties 6 et 7).
+Second temps, quand la majorité du groupe attaque la partie 5 : diapos 26 à 34 (géospatial, $merge et $jsonSchema, pilote Java et Javalin), 10 minutes. Ces diapos servent aussi de référence pour la fin du TP en autonomie (parties 6 et 7).
 
-Les exemples portent sur des films (collection inventée « brouillon »), pas sur les exercices du TP ; seules les diapos sur les données et sur explain() montrent les vraies collections. Tout a été exécuté sur MongoDB 9.0.4 et les résultats affichés sont ceux obtenus. Le script des films est dans les notes de la diapo « Des films pour les exemples ».
+Les exemples portent sur des films (collections inventées « films » et « realisateurs »), pas sur les exercices du TP ; seules les diapos sur les données et sur explain() montrent les vraies collections. Tout a été exécuté sur MongoDB 9.0.4 et les résultats affichés sont ceux obtenus. Le script des films est dans les notes de la diapo « Des films pour les exemples ».
 -->
 
 ---
@@ -67,7 +67,7 @@ boroughs a été construite pour le TP, avec des chiffres du US Census Bureau ; 
 table { display: table; width: 100%; font-size: 0.8em; }
 </style>
 
-Les exemples des diapos portent sur une collection **inventée**, `brouillon`, comme dans les quiz de l'assistant IA du codespace :
+Les exemples des diapos portent sur une collection **inventée**, `films`, la même que dans l'énoncé et les quiz de l'assistant IA du codespace :
 
 | titre | annee | duree | realisateur | genres | notes |
 |---|---|---|---|---|---|
@@ -76,7 +76,7 @@ Les exemples des diapos portent sur une collection **inventée**, `brouillon`, c
 | La Haine | 1995 | 98 | Kassovitz | drame | presse 5, public 2 |
 | Amélie Poulain | 2001 | 122 | Jeunet | comédie, romance | *aucune* |
 
-<p class="petit"><code>notes</code> est un tableau de documents <code>{ source, note }</code>. Une seconde collection, <code>brouillon_realisateurs</code>, donne le pays de Miyazaki (Japon), Varda et Jeunet (France), mais pas de Kassovitz.</p>
+<p class="petit"><code>notes</code> est un tableau de documents <code>{ source, note }</code>. Une seconde collection, <code>realisateurs</code>, donne le pays de Miyazaki (Japon), Varda et Jeunet (France), mais pas de Kassovitz.</p>
 
 <!--
 (30 s)
@@ -84,8 +84,8 @@ Les exemples des diapos portent sur une collection **inventée**, `brouillon`, c
 Script à coller dans essais.mongodb.js pour rejouer les exemples :
 
 use('tp2');
-db.brouillon.deleteMany({ titre: { $exists: true } });
-db.brouillon.insertMany([
+db.films.deleteMany({});
+db.films.insertMany([
   { titre: "Le Voyage de Chihiro", annee: 2001, duree: 125, realisateur: "Miyazaki", genres: ["animation", "fantastique"],
     notes: [{ source: "presse", note: 5 }, { source: "public", note: 4 }] },
   { titre: "Les Glaneurs et la Glaneuse", annee: 2000, duree: 82, realisateur: "Varda", genres: ["documentaire"],
@@ -94,8 +94,8 @@ db.brouillon.insertMany([
     notes: [{ source: "presse", note: 5 }, { source: "public", note: 2 }] },
   { titre: "Amélie Poulain", annee: 2001, duree: 122, realisateur: "Jeunet", genres: ["comédie", "romance"], notes: [] }
 ]);
-db.brouillon_realisateurs.deleteMany({});
-db.brouillon_realisateurs.insertMany([
+db.realisateurs.deleteMany({});
+db.realisateurs.insertMany([
   { nom: "Miyazaki", pays: "Japon" }, { nom: "Varda", pays: "France" }, { nom: "Jeunet", pays: "France" }
 ])
 
@@ -121,88 +121,139 @@ Même titre que la partie 1 de l'énoncé du TP2.
 
 ---
 
-## Comparer deux valeurs d'un même document
-
-<img src="assets/schemas/s3-expr.svg" alt="À gauche, un filtre classique compare un champ à une constante : duree supérieure à 100, faux pour un film de 98 minutes. À droite, $expr compare deux valeurs du même document : la première note de La Haine (5, $arrayElemAt indice 0) et la dernière (2, indice -1) ; 5 est supérieur à 2, le film est retenu." style="display:block; width:100%; margin:0.2rem auto 0;">
-
-<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
-
-**C'est quoi ?** `$expr` permet d'écrire, **dans un filtre**, les expressions du pipeline : `$arrayElemAt`, `$subtract`, `$size`...
-
-</div>
-<div class="box">
-
-**Pourquoi faire ?** Un filtre classique compare un champ à une **constante**. Comparer deux champs, ou un champ à une valeur calculée, demande `$expr`.
-
-</div>
-</div>
-
-<!--
-(1 min 30)
-
-En SQL, WHERE a > b compare deux colonnes sans difficulté. En MongoDB, { a: { $gt: "$b" } } compare a à la CHAÎNE "$b" : le $ n'est interprété comme « valeur du champ » que dans une expression d'agrégation. D'où $expr.
-
-Le coût : une condition dans $expr ne profite généralement pas d'un index. On la combine avec des conditions classiques qui, elles, réduisent les documents à examiner (par exemple un borough).
--->
-
----
-
-## `$elemMatch` et `$expr` sur les films
+## Rappel du TP1 : deux conditions, un même élément
 
 <style scoped>
-pre { font-size: 0.75em; }
-.cols > div { display: flex; flex-direction: column; }
-.cols > div > pre { flex: 1; }
+pre { font-size: 0.7em; }
+table { display: table; width: 100%; font-size: 0.74em; }
 </style>
 
 <div class="cols" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
 <div>
 
-<p class="etiquette">Rappel du TP1 : deux conditions, un même élément</p>
+<p class="etiquette">Sans <code>&#36;elemMatch</code></p>
 
 ```js
-// deux conditions, éléments quelconques
-db.brouillon.countDocuments({
-  "notes.source": "public",
-  "notes.note": 5 })               // 2
-// les deux sur le même élément
-db.brouillon.countDocuments({
-  notes: { $elemMatch: {
-    source: "public", note: 5 } } }) // 0
+db.films.find(
+  { "notes.source": "public",
+    "notes.note": 5 },
+  { _id: 0, titre: 1 })
+// [ { titre: "Le Voyage de Chihiro" },
+//   { titre: "La Haine" } ]
 ```
-
-<p class="petit">Sans <code>&#36;elemMatch</code>, « public » et « 5 » peuvent venir de deux notes différentes.</p>
 
 </div>
 <div>
 
-<p class="etiquette">La première note meilleure que la dernière</p>
+<p class="etiquette">Avec <code>&#36;elemMatch</code></p>
 
 ```js
-db.brouillon.find(
+db.films.find(
+  { notes: { $elemMatch: {
+      source: "public", note: 5 } } },
+  { _id: 0, titre: 1 })
+// []
+```
+
+</div>
+</div>
+
+| Film | notes | Sans `$elemMatch` | Avec `$elemMatch` |
+|---|---|---|---|
+| Le Voyage de Chihiro | presse **5**, **public** 4 | retenu : « 5 » et « public » viennent de deux notes | écarté |
+| Les Glaneurs et la Glaneuse | presse 4 | écarté | écarté |
+| La Haine | presse **5**, **public** 2 | retenu, pour la même raison | écarté |
+| Amélie Poulain | *aucune* | écarté | écarté |
+
+<p class="petit">Sans <code>&#36;elemMatch</code>, chaque condition cherche sa note dans le tableau ; avec, une <b>même</b> note doit remplir toutes les conditions.</p>
+
+<!--
+(45 s)
+
+Rappel du TP1, à passer vite. Résultats obtenus sur MongoDB 9.0.4 avec les films de la diapo précédente.
+
+Sur les vrais restaurants, l'écart est spectaculaire : c'est l'exercice 1 ; ne pas donner les chiffres.
+-->
+
+---
+
+## Comparer deux valeurs d'un même document
+
+<img src="assets/schemas/s3-expr.svg" alt="Sur le même film, La Haine. À gauche, un filtre classique, { duree: { $gt: 100 } }, compare une valeur du document (duree, 98) à une constante écrite dans la requête (100) : faux, le film est écarté. À droite, { $expr: { $gt: [A, B] } } compare deux valeurs du même document : A, la première note (5, $arrayElemAt indice 0), et B, la dernière (2, indice -1) ; 5 > 2, vrai." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
+<div class="box">
+
+**C'est quoi ?** `$expr` écrit une condition avec les **expressions du pipeline**, comme dans `$project` : `{ $gt: [A, B] }`. Dans une expression, `"$champ"` désigne la **valeur** du champ.
+
+</div>
+<div class="box">
+
+**Pourquoi faire ?** Comparer **deux valeurs du même document** : deux champs, deux éléments d'un tableau, un calcul. Un filtre classique ne compare qu'à une **constante**.
+
+</div>
+</div>
+
+<!--
+(1 min)
+
+Lire le schéma par ses couleurs : en bleu, ce qui vient du document ; en ambre, ce qui est écrit dans la requête. À gauche, une seule valeur vient du document ; à droite, les deux.
+
+En SQL, WHERE a > b compare deux colonnes sans difficulté. En MongoDB, { a: { $gt: "$b" } } compare a à la CHAÎNE "$b" : le $ n'est interprété comme « valeur du champ » que dans une expression d'agrégation. D'où $expr. Vérifié sur MongoDB 9.0.4 : { duree: { $gt: "$annee" } } ne renvoie aucun film.
+-->
+
+---
+
+## `$expr` pas à pas : la première note contre la dernière
+
+<style scoped>
+pre { font-size: 0.7em; }
+table { display: table; width: 100%; font-size: 0.74em; }
+</style>
+
+<div class="cols" style="grid-template-columns: 1fr 1fr; align-items: start;">
+<div>
+
+```js
+db.films.find(
   { $expr: { $gt: [
-    { $arrayElemAt: ["$notes.note", 0] },
-    { $arrayElemAt: ["$notes.note", -1] }
+    { $arrayElemAt: ["$notes.note", 0] },  // A
+    { $arrayElemAt: ["$notes.note", -1] }  // B
   ] } },
   { _id: 0, titre: 1 })
 // [ { titre: "Le Voyage de Chihiro" },
 //   { titre: "La Haine" } ]
 ```
 
-<p class="petit">Indice <code>-1</code> : le dernier élément. Tableau vide : pas de valeur, comparaison fausse.</p>
+<p class="petit"><code>"&#36;notes.note"</code> : le tableau des notes du film, <code>[5, 4]</code> pour Chihiro. Indice <code>0</code> : la première note ; <code>-1</code> : la dernière.</p>
 
 </div>
+<div>
+
+| Film | A | B | A > B ? |
+|---|---|---|---|
+| Le Voyage de Chihiro | 5 | 4 | vrai : retenu |
+| Les Glaneurs et la Glaneuse | 4 | 4 | faux : une seule note, A = B |
+| La Haine | 5 | 2 | vrai : retenu |
+| Amélie Poulain | *rien* | *rien* | faux : tableau vide |
+
+</div>
+</div>
+
+<div class="warn" style="margin-top: 0.8rem;">
+
+`$expr` se calcule **document par document** et profite rarement d'un index : on l'accompagne de conditions classiques, qui réduisent les documents à examiner.
+
 </div>
 
 <!--
-(1 min 30)
+(1 min 15)
 
-Les deux comptages ont été obtenus sur MongoDB 9.0.4 avec les films de la diapo précédente : Chihiro et La Haine ont une note du public et une note 5, mais jamais dans la même note.
+Résultat obtenu sur MongoDB 9.0.4 ; les colonnes A et B aussi, par un $project avec les mêmes expressions (pour Amélie Poulain, $arrayElemAt sur un tableau vide ne renvoie rien).
 
-Sur les vrais restaurants, l'écart est spectaculaire : c'est l'exercice 1 ; ne pas donner les chiffres.
+Dans les restaurants, grades est rangé de la plus récente à la plus ancienne inspection : l'indice 0 est la plus récente (exercice 2).
 
-Pour $expr : Chihiro (5 puis 4) et La Haine (5 puis 2) sont retenus ; Amélie Poulain, sans note, ne l'est pas : $arrayElemAt sur un tableau vide ne renvoie rien. Dans les restaurants, grades est rangé de la plus récente à la plus ancienne inspection : l'indice 0 est la plus récente (exercice 2).
+Le coût : une condition dans $expr ne profite généralement pas d'un index. On la combine avec des conditions classiques qui, elles, réduisent les documents à examiner (par exemple un borough).
 -->
 
 ---
@@ -248,36 +299,47 @@ C'est l'exercice 3 : une consigne qui dit « enregistré à null (le champ exist
 
 ---
 
-## Garder, résumer ou situer chaque document
+## Deux questions à poser à une étape
 
-<img src="assets/schemas/s3-addfields-fenetres.svg" alt="Les mêmes quatre films (titre, annee, duree, notes) traversent quatre étapes. $project garde seulement les champs cités : 4 documents en sortie. $addFields garde tous les champs et ajoute nb_notes : 4 documents. $group par année résume chaque groupe en un document : 3 documents. $setWindowFields garde chaque film et lui ajoute son rang dans son année : 4 documents." style="display:block; width:100%; margin:0.2rem auto 0;">
+<img src="assets/schemas/s3-champs-documents.svg" alt="À gauche, quels champs restent : le film Chihiro (titre, annee, duree, realisateur, genres, notes) passe dans $project, qui ne garde que titre et nb_notes, ou dans $addFields, qui garde ses six champs et ajoute nb_notes. À droite, combien de documents restent : les 4 films passent dans $group par année, qui rend 3 documents (1995 : 1 film, 2000 : 1, 2001 : 2), ou dans $setWindowFields partitionné par année, qui rend les 4 films, chacun avec nb_annee, le nombre de films de son année." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.3rem; align-items: stretch;">
 <div class="box">
 
-**`$addFields`** ajoute des champs calculés **sans retirer** les autres, contrairement à `$project`.
+**`$addFields`** ajoute des champs calculés **sans retirer** les autres. En SQL : `SELECT *, …` plutôt que `SELECT titre, …`.
 
 </div>
 <div class="box">
 
-**Une fenêtre** (`$setWindowFields`) garde **chaque** document et lui ajoute une valeur calculée sur son groupe : un rang, un cumul, une moyenne glissante.
+**Une fenêtre** (`$setWindowFields`) calcule sur un **groupe**, comme `$group`, mais **garde chaque document**. En SQL : `OVER (PARTITION BY annee)` plutôt que `GROUP BY annee`.
 
 </div>
 </div>
 
 <!--
-(1 min 30)
+(1 min 15)
 
-Le schéma compare quatre étapes sur les mêmes documents : seul $group change le nombre de documents. $setWindowFields est l'équivalent de RANK() OVER (PARTITION BY ... ORDER BY ...) en SQL, que les étudiants ont pu voir en R4.03 ; sinon, le présenter comme un $group qui ne fusionne pas les documents.
+Deux questions à poser à chaque étape d'un pipeline : quels champs en sortent, et combien de documents.
+
+À droite, c'est le même calcul des deux côtés (compter les films de l'année) : $group rend 3 documents, la fenêtre { partitionBy: "$annee", output: { nb_annee: { $count: {} } } } rend les 4 films. Résultats obtenus sur MongoDB 9.0.4.
+
+$setWindowFields correspond aux fonctions de fenêtre de SQL (RANK() OVER ...), que les étudiants ont pu voir en R4.03 ; sinon, la présenter comme un $group qui ne fusionne pas les documents.
 -->
 
 ---
 
-## `$addFields` : un champ calculé
+## `$addFields` : un calcul par document
+
+<style scoped>
+pre { font-size: 0.6em; margin-top: 0.4rem; }
+.box { font-size: 0.85em; padding-top: 0.4rem; padding-bottom: 0.4rem; }
+</style>
+
+<img src="assets/schemas/s3-addfields.svg" alt="Le film Chihiro avant et après $addFields: { nb_notes: { $size: &quot;$notes&quot; } }. L'expression &quot;$notes&quot; donne la valeur du champ notes, un tableau de 2 documents ; $size donne sa taille, 2. Après l'étape, les six champs du film sont toujours là, et nb_notes: 2 est ajouté à la fin." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 ```js
-db.brouillon.aggregate([
-  { $addFields: { nb_notes: { $size: "$notes" } } },   // ajoute, ne retire rien
+db.films.aggregate([
+  { $addFields: { nb_notes: { $size: "$notes" } } },   // calculé pour chaque film
   { $project: { _id: 0, titre: 1, annee: 1, nb_notes: 1 } },
   { $sort: { titre: 1 } }
 ])
@@ -287,36 +349,64 @@ db.brouillon.aggregate([
 // { titre: "Les Glaneurs et la Glaneuse", annee: 2000, nb_notes: 1 }
 ```
 
-- Un champ ajouté par `$addFields` sert aux **étapes suivantes** : un `$match` sur `nb_notes`, un `$sort`...
-- Le même champ dans un `$project` ferait **disparaître** tous les champs non cités.
+<div class="box">
 
-<div class="box" style="margin-top: 0.8rem;">
-
-Le `$project` final ne sert qu'à l'affichage : il choisit les champs à montrer, une fois le calcul fait.
+Le `$project` vient **après** le calcul : placé avant, il retirerait `notes`, et `$size` échouerait.
 
 </div>
 
 <!--
 (1 min)
 
-Résultat obtenu sur MongoDB 9.0.4.
+Une expression se calcule document par document : "$notes" est la valeur du champ notes du document en cours, comme dans $expr (diapo 6). Le champ ajouté sert aux étapes suivantes : un $match, un $sort...
+
+Résultats obtenus sur MongoDB 9.0.4. Avec le $project avant le $addFields, l'agrégation échoue : « The argument to $size must be an array, but was of type: missing ».
 
 L'exercice 4 utilise $addFields (nombre d'inspections, score moyen), puis un $match sur un champ calculé, avant de trier et de projeter.
 -->
 
 ---
 
-## `$setWindowFields` : un rang par groupe
+## Une fenêtre en trois temps : partitionner, trier, calculer
+
+<img src="assets/schemas/s3-fenetre-rang.svg" alt="$setWindowFields en trois temps sur les 4 films. 1, partitionBy: &quot;$annee&quot; : trois groupes, 1995 (La Haine), 2000 (Glaneurs), 2001 (Amélie et Chihiro, dans un ordre quelconque). 2, sortBy: { duree: -1 } : en 2001, Chihiro (125 min) passe avant Amélie (122 min). 3, output: { rang: { $rank: {} } } : chaque film reçoit son rang dans son groupe, La Haine 1, Glaneurs 1, Chihiro 1, Amélie 2. En SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC)." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
+<div class="box">
+
+**`partitionBy`** découpe les documents en groupes (sans lui : un seul groupe). **`sortBy`** ordonne chaque groupe.
+
+</div>
+<div class="box">
+
+**`output`** nomme les champs ajoutés et dit comment les calculer. Chaque film **garde tous ses champs** et reçoit `rang`.
+
+</div>
+</div>
+
+<!--
+(1 min 15)
+
+Dérouler les trois temps de gauche à droite. Avant le tri, l'ordre dans un groupe n'est pas défini : Amélie et Chihiro arrivent dans un ordre quelconque.
+
+L'exercice 5 classe les cuisines dans chaque borough avec $rank, après un $group par couple (borough, cuisine).
+-->
+
+---
+
+## `$rank` : le code, et les égalités
+
+<style scoped>
+pre { font-size: 0.66em; }
+table { display: table; width: 100%; font-size: 0.72em; }
+</style>
 
 ```js
-db.brouillon.aggregate([
+db.films.aggregate([
   { $setWindowFields: {
-      partitionBy: "$annee",          // un groupe par année
-      sortBy: { duree: -1 },          // ordre dans le groupe
-      output: { rang: { $rank: {} } } // champ ajouté à chaque document
-  } },
+      partitionBy: "$annee", sortBy: { duree: -1 }, output: { rang: { $rank: {} } } } },
   { $project: { _id: 0, titre: 1, annee: 1, duree: 1, rang: 1 } },
-  { $sort: { annee: 1, rang: 1 } }
+  { $sort: { annee: 1, rang: 1 } }            // une fenêtre ne trie pas la sortie
 ])
 // { titre: "La Haine", annee: 1995, duree: 98, rang: 1 }
 // { titre: "Les Glaneurs et la Glaneuse", annee: 2000, duree: 82, rang: 1 }
@@ -324,20 +414,66 @@ db.brouillon.aggregate([
 // { titre: "Amélie Poulain", annee: 2001, duree: 122, rang: 2 }
 ```
 
-- `$rank` : deux documents à égalité ont le **même rang** (`$denseRank`, `$documentNumber` : autres choix).
-- Une fenêtre ne trie pas la sortie : le `$sort` final fixe l'ordre d'affichage.
+<div class="cols" style="grid-template-columns: 1fr 1fr; align-items: center;">
+<div>
+
+| film | duree | `$rank` | `$denseRank` | `$documentNumber` |
+|---|---|---|---|---|
+| A | 125 | 1 | 1 | 1 |
+| B | 122 | **2** | **2** | 2 |
+| C | 122 | **2** | **2** | 3 |
+| D | 98 | **4** | **3** | 4 |
+
+</div>
+<div>
+
+<p class="petit">Avec deux durées égales, triées par <code>{ duree: -1 }</code> : <code>&#36;rank</code> donne le même rang aux ex æquo, puis saute un rang ; <code>&#36;denseRank</code> ne saute pas ; <code>&#36;documentNumber</code> numérote sans égalité (l'ordre entre B et C n'est alors pas garanti).</p>
+
+</div>
+</div>
 
 <!--
-(1 min 30)
+(1 min)
 
-Résultat obtenu sur MongoDB 9.0.4. Équivalent SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC).
+Résultats obtenus sur MongoDB 9.0.4 ; le tableau, sur une collection d'essai de quatre films (A 125, B 122, C 122, D 98).
 
-L'exercice 5 classe les cuisines dans chaque borough avec $rank, après un $group par couple (borough, cuisine).
+L'exercice 5 demande $rank : deux cuisines à égalité ont le même rang.
 -->
 
 ---
 
-## Une fenêtre glissante
+## Une fenêtre de documents : le cumul
+
+<style scoped>
+pre { font-size: 0.68em; }
+</style>
+
+`$rank` ne dépend que de la **place** du document dans son groupe. `$sum` ou `$avg` calculent sur une **fenêtre** : des documents voisins, repérés à partir du document **courant**.
+
+<img src="assets/schemas/s3-fenetre-cumul.svg" alt="Les 4 films triés par année puis titre ont pour durée 98 (La Haine), 82 (Glaneurs), 122 (Amélie) et 125 (Chihiro). Pour Amélie, document courant, la fenêtre documents: [&quot;unbounded&quot;, &quot;current&quot;] va du premier film jusqu'à elle : 98 + 82 + 122 = 302. Les durées cumulées valent 98, 180, 302 et 427." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+```js
+{ $setWindowFields: { sortBy: { annee: 1, titre: 1 },
+    output: { duree_cumulee: { $sum: "$duree", window: { documents: ["unbounded", "current"] } } } } }
+```
+
+<!--
+(1 min)
+
+Résultat obtenu sur MongoDB 9.0.4 (c'est l'exemple de l'énoncé). Sans partitionBy, tous les films forment un seul groupe.
+
+Sans window, $sum porte sur tout le groupe : 427 pour chaque film (vérifié sur MongoDB 9.0.4). C'est la fenêtre qui fait le cumul.
+-->
+
+---
+
+## Une fenêtre glissante : lisser une série
+
+<style scoped>
+pre { font-size: 0.68em; }
+</style>
+
+Une série **inventée** : la note moyenne de chaque mois. Elle varie d'un mois à l'autre ; la moyenne des trois derniers mois **lisse** la courbe.
 
 <img src="assets/schemas/s3-fenetre-glissante.svg" alt="Six documents triés par mois, de 1 à 6, de moyenne 10, 12, 11, 14, 13 et 15. Pour le mois 4, la fenêtre documents de -2 à 0 couvre les mois 2, 3 et 4 : la moyenne glissante vaut 12,33. Valeurs glissantes : 10, 11, 11, 12,33, 12,67, 14. En début de suite, la fenêtre contient moins de trois documents." style="display:block; width:100%; margin:0.2rem auto 0;">
 
@@ -346,12 +482,12 @@ L'exercice 5 classe les cuisines dans chaque borough avec $rank, après un $grou
     output: { glissante: { $avg: "$moyenne", window: { documents: [-2, 0] } } } } }
 ```
 
-<p class="petit"><code>documents: [-2, 0]</code> : les deux documents précédents et le document courant, dans l'ordre de <code>sortBy</code> ; <code>["unbounded", "current"]</code> : du premier au courant (un cumul).</p>
+<p class="petit"><code>documents: [-2, 0]</code> : les deux documents précédents et le courant, dans l'ordre de <code>sortBy</code>. Arrondir <b>à la fin</b>, jamais avant le calcul glissant.</p>
 
 <!--
 (1 min)
 
-Les valeurs sont inventées pour le schéma. Une moyenne glissante lisse une courbe : c'est ce que demande l'exercice 6 sur les scores mensuels de 2014. Insister : on arrondit À LA FIN, pas avant de calculer la moyenne glissante.
+Les valeurs sont inventées pour le schéma (vérifiées sur MongoDB 9.0.4 : 10, 11, 11, 12.33, 12.67, 14). Une moyenne glissante lisse une courbe : c'est ce que demande l'exercice 6 sur les scores mensuels de 2014. Insister : on arrondit À LA FIN, pas avant de calculer la moyenne glissante.
 
 window accepte aussi range avec une unité de temps (range: [-2, 0], unit: "month") quand sortBy porte sur une date.
 -->
@@ -371,7 +507,7 @@ window accepte aussi range avec une unité de temps (range: [-2, 0], unit: "mont
 
 ## Joindre deux collections : `$lookup`
 
-<img src="assets/schemas/s3-lookup.svg" alt="$lookup joint chaque film à la collection brouillon_realisateurs, du champ realisateur au champ nom. Chaque film reçoit un tableau r : Jeunet pour Amélie Poulain, Miyazaki pour Le Voyage de Chihiro, Varda pour Les Glaneurs et la Glaneuse, et un tableau vide pour La Haine, car Kassovitz est absent." style="display:block; width:100%; margin:0.2rem auto 0;">
+<img src="assets/schemas/s3-lookup.svg" alt="$lookup joint chaque film à la collection realisateurs, du champ realisateur au champ nom. Chaque film reçoit un tableau r : Jeunet pour Amélie Poulain, Miyazaki pour Le Voyage de Chihiro, Varda pour Les Glaneurs et la Glaneuse, et un tableau vide pour La Haine, car Kassovitz est absent." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.3rem; align-items: stretch;">
 <div class="box" style="margin-top: 0;">
@@ -390,8 +526,8 @@ Le résultat est **toujours un tableau**. Un `$unwind` derrière **retire** les 
 (1 min 30)
 
 Le code de l'exemple :
-db.brouillon.aggregate([
-  { $lookup: { from: "brouillon_realisateurs", localField: "realisateur", foreignField: "nom", as: "r" } },
+db.films.aggregate([
+  { $lookup: { from: "realisateurs", localField: "realisateur", foreignField: "nom", as: "r" } },
   { $project: { _id: 0, titre: 1, r: 1 } }, { $sort: { titre: 1 } }
 ])
 Résultat réel : La Haine a r: [] ; les trois autres un tableau d'un document (avec son _id, que le schéma omet).
@@ -445,7 +581,7 @@ Chaque facette reçoit **les mêmes documents** ; la sortie est **un seul docume
 <!--
 (1 min)
 
-Le code : db.brouillon.aggregate([{ $facet: { par_annee: [{ $group: { _id: "$annee", nb: { $sum: 1 } } }, { $sort: { _id: 1 } }], plus_long: [{ $sort: { duree: -1 } }, { $limit: 1 }, { $project: { _id: 0, titre: 1 } }] } }]). Résultat réel affiché sur le schéma.
+Le code : db.films.aggregate([{ $facet: { par_annee: [{ $group: { _id: "$annee", nb: { $sum: 1 } } }, { $sort: { _id: 1 } }], plus_long: [{ $sort: { duree: -1 } }, { $limit: 1 }, { $project: { _id: 0, titre: 1 } }] } }]). Résultat réel affiché sur le schéma.
 
 L'exercice 9 en fait un tableau de bord de Brooklyn. C'est ce que fera un écran d'accueil dans le projet.
 -->
@@ -525,7 +661,7 @@ Lire le schéma de haut en bas : l'index est trié par le premier champ, puis pa
 - Tri ensuite : dans ce bloc, les clés sont déjà rangées par titre ; pas de tri en mémoire.
 - Intervalle à la fin : duree > 100 se vérifie dans la clé, sans lire le document.
 
-Le schéma prend six films de plus pour que le bloc 2001 ait plusieurs titres (Gladiator 2000, 155 min ; Shrek 2001, 90 ; Donnie Darko 2001, 113 ; Ocean's Eleven 2001, 116 ; Amélie 2001, 122 ; Chicago 2002, 113). Plans obtenus sur MongoDB 9.0.4 avec ces films, les mêmes qu'avec la collection brouillon : { annee: 1, duree: 1 } donne SORT ← FETCH ← IXSCAN (3 clés, 3 documents) ; { annee: 1, titre: 1, duree: 1 } donne FETCH ← IXSCAN (5 clés lues, dont Shrek, écarté dans la clé : 3 documents) ; avec la projection { _id: 0, titre: 1, duree: 1 }, PROJECTION_COVERED ← IXSCAN. Résultat : Amélie, Donnie Darko, Ocean's Eleven.
+Le schéma prend six films de plus pour que le bloc 2001 ait plusieurs titres (Gladiator 2000, 155 min ; Shrek 2001, 90 ; Donnie Darko 2001, 113 ; Ocean's Eleven 2001, 116 ; Amélie 2001, 122 ; Chicago 2002, 113). Plans obtenus sur MongoDB 9.0.4 avec ces films, les mêmes qu'avec la collection films : { annee: 1, duree: 1 } donne SORT ← FETCH ← IXSCAN (3 clés, 3 documents) ; { annee: 1, titre: 1, duree: 1 } donne FETCH ← IXSCAN (5 clés lues, dont Shrek, écarté dans la clé : 3 documents) ; avec la projection { _id: 0, titre: 1, duree: 1 }, PROJECTION_COVERED ← IXSCAN. Résultat : Amélie, Donnie Darko, Ocean's Eleven.
 
 Pourquoi l'intervalle avant le tri casse tout : un intervalle sur le deuxième champ couvre plusieurs « sous-blocs », chacun trié séparément ; l'ordre global par titre est perdu, d'où le SORT.
 -->
@@ -545,7 +681,7 @@ Pourquoi l'intervalle avant le tri casse tout : un intervalle sur le deuxième c
 
 ```js
 // index { annee: 1, titre: 1, duree: 1 }
-db.brouillon.find(
+db.films.find(
   { annee: 2001, duree: { $gt: 100 } },
   { _id: 0, titre: 1, duree: 1 }
 ).sort({ titre: 1 })
@@ -558,7 +694,7 @@ db.brouillon.find(
 **Le piège** : `_id` est projeté **par défaut**. S'il n'est pas dans l'index, il faut lire le document : la requête n'est plus couverte. Exclure `_id: 0`.
 
 ```js
-db.brouillon.find(
+db.films.find(
   { annee: 2001, duree: { $gt: 100 } },
   { titre: 1, duree: 1 }      // _id inclus
 ).sort({ titre: 1 })
@@ -612,7 +748,7 @@ td:nth-child(1) code, td:nth-child(2) code { white-space: nowrap; }
 
 Chaque ligne correspond à une erreur vue sur les TP de 2025 ou à un piège des données. Le dernier point est propre au TP2 : les index, la collection avis et bilan_boroughs restent dans la base de l'étudiant.
 
-Fin du premier temps : enchaîner sur les deux diapos « À vous » (diapos 32 et 33), puis lancer le travail. Le second temps commence à la partie 5.
+Fin du premier temps : enchaîner sur les deux diapos « À vous » (diapos 35 et 36), puis lancer le travail. Le second temps commence à la partie 5.
 -->
 
 ---
@@ -629,7 +765,7 @@ Fin du premier temps : enchaîner sur les deux diapos « À vous » (diapos 32 e
 <!--
 (10 s)
 
-Début du second temps : à projeter quand la majorité du groupe attaque la partie 5. Diapos 23 à 31, 10 minutes.
+Début du second temps : à projeter quand la majorité du groupe attaque la partie 5. Diapos 26 à 34, 10 minutes.
 -->
 
 ---
@@ -690,7 +826,7 @@ Résultats réels sur MongoDB 9.0.4, avec des lieux inventés d'Aix-en-Provence 
 <!--
 (1 min)
 
-Exemple réel sur les films : db.brouillon.aggregate([{ $group: { _id: "$annee", nb: { $sum: 1 } } }, { $merge: { into: "films_par_annee", whenMatched: "replace" } }]) donne { _id: 1995, nb: 1 }, { _id: 2000, nb: 1 }, { _id: 2001, nb: 2 }.
+Exemple réel sur les films : db.films.aggregate([{ $group: { _id: "$annee", nb: { $sum: 1 } } }, { $merge: { into: "films_par_annee", whenMatched: "replace" } }]) donne { _id: 1995, nb: 1 }, { _id: 2000, nb: 1 }, { _id: 2001, nb: 2 }.
 
 L'exercice 15 est aussi noté sur une base où bilan_boroughs contient déjà un document avec un champ en trop : seul whenMatched: "replace" le fait disparaître.
 -->
@@ -923,7 +1059,7 @@ Parties 6 et 7 (environ 1 h 30) : <code>&#36;merge</code>, <code>&#36;jsonSchema
 
 Trois rendus au plus : fin de séance 3, un rendu intermédiaire facultatif, puis le rendu final au plus tard le dimanche 13 décembre 2026 à 23 h 59.
 
-Le minutage suppose le premier temps du point cours (25 min) déjà fait : 15 + 50 + 35 + 30 + 30 + 10 = 2 h 50, plus le point cours, soit 3 h 15 ; il reste trois quarts d'heure de marge. Les parties 6 et 7 se terminent en autonomie ; les diapos 25 à 31 servent de référence.
+Le minutage suppose le premier temps du point cours (25 min) déjà fait : 15 + 50 + 35 + 30 + 30 + 10 = 2 h 50, plus le point cours, soit 3 h 15 ; il reste trois quarts d'heure de marge. Les parties 6 et 7 se terminent en autonomie ; les diapos 28 à 34 servent de référence.
 -->
 
 ---
@@ -939,7 +1075,7 @@ td { padding-top: 0.3em; padding-bottom: 0.3em; }
 
 <div class="box" style="margin-top: 0.3rem;">
 
-Les essais vont dans `essais.mongodb.js`, sur la collection `brouillon` (les films de ce cours). **Jamais sous un <code style="white-space: nowrap;">// Votre réponse :</code>.**
+Les essais vont dans `essais.mongodb.js`, sur les collections `films` et `realisateurs` (les films de ce cours). **Jamais sous un <code style="white-space: nowrap;">// Votre réponse :</code>.**
 
 </div>
 

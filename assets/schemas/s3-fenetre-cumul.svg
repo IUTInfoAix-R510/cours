@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 278" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Cumul avec $setWindowFields : les 4 films triés par année puis titre ont pour durée 98 (La Haine), 82 (Glaneurs), 122 (Amélie) et 125 (Chihiro). Pour Amélie, document courant, la fenêtre documents: ["unbounded", "current"] va du premier film jusqu'à elle et donne 98 + 82 + 122 = 302. Les durées cumulées valent 98, 180, 302 et 427 : la fenêtre s'agrandit d'un document à chaque ligne.</title>
+  <text x="2" y="86" font-size="17" font-weight="bold" fill="#333">documents</text>
+  <text x="2" y="108" font-size="15" fill="#555">triés par annee,</text>
+  <text x="2" y="126" font-size="15" fill="#555">puis titre</text>
+  <text x="2" y="200" font-family="monospace" font-size="16" font-weight="bold" fill="#333">duree_cumulee</text>
+  <text x="2" y="238" font-size="16" fill="#777">calcul</text>
+
+  <text x="180" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">window: { documents: ["unbounded", "current"] }</text>
+  <rect x="180" y="30" width="700" height="108" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">
+    <text x="290" y="50"><tspan font-family="monospace">"unbounded"</tspan> : le premier</text>
+    <text x="770" y="50"><tspan font-family="monospace">"current"</tspan> : le courant</text>
+  </g>
+
+  <path d="M290,127 C290,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M530,127 C530,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M770,127 C770,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M763,164 L770,176 L777,164 z" fill="#13aa52"/>
+
+  <rect x="190" y="58" width="200" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="202" y="84" font-size="17" font-weight="bold" fill="#333">La Haine</text>
+  <text x="202" y="113" font-family="monospace" font-size="17" fill="#333">duree: 98</text>
+  <rect x="430" y="58" width="200" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="442" y="84" font-size="17" font-weight="bold" fill="#333">Glaneurs</text>
+  <text x="442" y="113" font-family="monospace" font-size="17" fill="#333">duree: 82</text>
+  <rect x="670" y="58" width="200" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="682" y="84" font-size="17" font-weight="bold" fill="#333">Amélie</text>
+  <text x="682" y="113" font-family="monospace" font-size="17" font-weight="bold" fill="#333">duree: 122</text>
+  <rect x="910" y="58" width="200" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="922" y="84" font-size="17" font-weight="bold" fill="#333">Chihiro</text>
+  <text x="922" y="113" font-family="monospace" font-size="17" fill="#333">duree: 125</text>
+
+  <rect x="190" y="178" width="200" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="290" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">98</text>
+  <text x="290" y="238" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">98</text>
+  <rect x="430" y="178" width="200" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="530" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">180</text>
+  <text x="530" y="238" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">98 + 82</text>
+  <rect x="670" y="178" width="200" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="770" y="201" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">302</text>
+  <text x="770" y="238" font-family="monospace" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">98 + 82 + 122</text>
+  <rect x="910" y="178" width="200" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1010" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">427</text>
+  <text x="1010" y="238" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">98 + 82 + 122 + 125</text>
+
+  <text x="2" y="270" font-size="16" fill="#555">La fenêtre part toujours du premier document et s'arrête au document courant : elle s'agrandit d'une ligne à l'autre.</text>
+</svg>
