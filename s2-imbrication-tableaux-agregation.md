@@ -56,9 +56,9 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 33 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 34 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 32, 15 minutes.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 33, 16 minutes.
 
 Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
 
@@ -1136,55 +1136,98 @@ Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers docume
 
 ## Écrire un pipeline sans se tromper
 
-<div class="cols" style="grid-template-columns: 1fr 1.1fr;">
-<div class="petit">
+<style scoped>
+table { width: 100%; }
+td:nth-child(1) code, td:nth-child(2) code { white-space: nowrap; }
+</style>
 
-- **Une étape à la fois** : on l'ajoute, on exécute (sélection + `Ctrl+Alt+S`), on regarde ce qui sort.
-- `aggregate([ ... ])` : toujours un **tableau**, même pour une seule étape.
-- `$project` existe, `$projection` non (Unrecognized pipeline stage name).
-- Le `$` se met dans la **valeur** (`"$mesures.v"`), jamais dans la clé : `$piece: 1` est refusé.
+<div class="box" style="font-size: 0.9em; margin-top: 0;">
+
+**La méthode : une étape à la fois.** On ajoute une étape, on exécute (sélection + `Ctrl+Alt+S`), on regarde ce qui sort, puis on passe à la suivante.
 
 </div>
-<div>
 
-**`$size` : une expression de `$project`**
+<p class="etiquette" style="margin-top: 1rem;">Les erreurs fréquentes</p>
+
+| Au lieu de | Écrire | Pourquoi |
+|---|---|---|
+| `aggregate({ $match: … })` | `aggregate([ { $match: … } ])` | le pipeline est un **tableau**, même d'une seule étape |
+| `{ $projection: … }` | `{ $project: … }` | `$projection` n'existe pas |
+| `{ $project: { $piece: 1 } }` | `{ $project: { piece: 1 } }` | le `$` va dans la **valeur** (`"$piece"`), jamais dans la clé |
+
+<div class="warn" style="margin-top: 1rem;">
+
+**Pour le correcteur automatique** : la réponse se **termine** par <code style="white-space: nowrap">db.&lt;collection&gt;.aggregate([...])</code> (ou `.toArray()`). Un `find` ou un calcul placé après vaut 0.
+
+</div>
+
+<!--
+(1 min 30)
+
+Les messages d'erreur ont été obtenus sur MongoDB 9.0.4 :
+- $projection : « Unrecognized pipeline stage name: '$projection' » ;
+- $piece en clé : « Invalid $project :: caused by :: ... FieldPath field names may not start with '$', given '$piece'. »
+
+mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le driver Node du TP2 et du projet, passent toujours un tableau.
+
+Le playground suffit pour construire un pipeline : le squelette commenté de chaque exercice de la partie 7 est fait pour être complété étape par étape. Ne pas laisser un aggregate([]) vide sous la réponse.
+
+Les messages du correcteur automatique dans ce cas : « Cet exercice demande un pipeline d'agrégation (aggregate) » ou « Terminez la réponse par le pipeline lui-même ».
+-->
+
+---
+
+## `$size` : compter les éléments d'un tableau
+
+<div class="cols" style="grid-template-columns: 1.2fr 1fr; align-items: center;">
+<div>
 
 ```js
 db.capteurs.aggregate([
   { $project: { piece: 1,
       nb_mesures: { $size: "$mesures" } } }
 ])
-```
 
-<div class="res">
-
-```js
-[ { _id: "C1", piece: "Salon", nb_mesures: 3 },
-  { _id: "C2", piece: "Salon", nb_mesures: 2 }, ... ]
+// { _id: "C1", piece: "Salon", nb_mesures: 3 }
+// { _id: "C2", piece: "Salon", nb_mesures: 2 } …
 ```
 
 </div>
+<div>
 
-<div class="warn">
-
-`$size` exige un tableau. Sur un champ absent : `The argument to $size must be an array, but was of type: missing`.
+- `$size` est une **expression** : elle calcule une valeur dans une étape, ici `$project`.
+- Elle compte les éléments du tableau **de chaque document**.
 
 </div>
 </div>
+
+<div class="warn" style="margin-top: 1rem;">
+
+`$size` exige un tableau. Sur un document sans champ `mesures`, le pipeline s'arrête :<br><code>The argument to $size must be an array, but was of type: missing</code>
+
 </div>
 
-<div class="warn">
+<p class="etiquette" style="margin-top: 1rem;">À ne pas confondre</p>
 
-Le **correcteur automatique** note la dernière instruction : **terminez** par <code style="white-space: nowrap">db.&lt;collection&gt;.aggregate([...])</code> (ou `.toArray()`). Un `find` ou un calcul placé après vaut 0.
+<div class="cols" style="align-items: stretch;">
+<div class="box" style="margin-top: 0;">
 
+**Dans `find`, `$size` filtre** :<br>`{ genres: { $size: 3 } }` garde les documents dont le tableau a exactement 3 éléments.
+
+</div>
+<div class="box" style="margin-top: 0;">
+
+**Dans un pipeline, `$size` calcule** :<br>`{ $size: "$mesures" }` donne le nombre d'éléments et l'ajoute au document.
+
+</div>
 </div>
 
 <!--
-Les messages d'erreur ont été obtenus sur MongoDB 9.0.4. Pour $piece en clé, le message complet est : « Invalid $project :: caused by :: ... FieldPath field names may not start with '$', given '$piece'. » Pour $size, l'erreur a été obtenue en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
+(1 min)
 
-Le playground suffit pour construire un pipeline : le squelette commenté de chaque exercice de la partie 7 est fait pour être complété étape par étape. Ne pas laisser un aggregate([]) vide sous la réponse.
+L'opérateur de requête $size a été vu sur la diapositive « Tableaux de valeurs », avec les films. Il ne se combine pas avec $gt ; l'expression, si : { $gt: [ { $size: "$mesures" }, 2 ] } dans un $match avec $expr, hors programme ici.
 
-Les messages du correcteur automatique dans ce cas : « Cet exercice demande un pipeline d'agrégation (aggregate) » ou « Terminez la réponse par le pipeline lui-même ».
+L'erreur a été obtenue sur MongoDB 9.0.4 en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
 -->
 
 ---
