@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 220" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$limit après $sort garde les 2 pièces les plus chaudes ; placé avant $sort, il coupe un ordre quelconque et le classement est faux</title>
+  <text x="2" y="25" font-size="18" font-weight="bold" fill="#00684a">$limit après $sort</text>
+  <text x="2" y="48" font-size="16" fill="#555">documents déjà triés</text>
+  <rect x="196" y="8" width="148" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="270.0" y="35" font-size="17" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="352" y="8" width="148" height="42" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="426.0" y="35" font-size="17" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="508" y="8" width="148" height="42" rx="7" fill="#fff" stroke="#bbb" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="582.0" y="35" font-size="17" fill="#aaa" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <path d="M661,21.0 L674,29.0 L661,37.0 z" fill="#555"/>
+  <rect x="678" y="2" width="150" height="54" rx="9" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="753.0" y="35" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$limit: 2</text>
+  <path d="M833,21.0 L846,29.0 L833,37.0 z" fill="#555"/>
+  <rect x="850" y="8" width="148" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="924.0" y="35" font-size="17" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="1006" y="8" width="148" height="42" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="1080.0" y="35" font-size="17" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <text x="1154" y="80" font-size="18" fill="#00684a" text-anchor="end"><tspan font-weight="bold">✓</tspan> les 2 pièces les plus chaudes</text>
+  <text x="2" y="155" font-size="18" font-weight="bold" fill="#c0392b">$limit avant $sort</text>
+  <text x="2" y="178" font-size="16" fill="#555">ordre quelconque</text>
+  <rect x="196" y="138" width="148" height="42" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="270.0" y="165" font-size="17" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <rect x="352" y="138" width="148" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="426.0" y="165" font-size="17" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="508" y="138" width="148" height="42" rx="7" fill="#fff" stroke="#bbb" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="582.0" y="165" font-size="17" fill="#aaa" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <path d="M661,151.0 L674,159.0 L661,167.0 z" fill="#555"/>
+  <rect x="678" y="132" width="150" height="54" rx="9" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="753.0" y="154" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">$limit: 2,</text>
+  <text x="753.0" y="175" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">puis $sort</text>
+  <path d="M833,151.0 L846,159.0 L833,167.0 z" fill="#555"/>
+  <rect x="850" y="138" width="148" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="924.0" y="165" font-size="17" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="1006" y="138" width="148" height="42" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="1080.0" y="165" font-size="17" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <text x="1154" y="210" font-size="18" fill="#c0392b" text-anchor="end"><tspan font-weight="bold">✗</tspan> Cuisine (20.5) manque au classement</text>
+</svg>

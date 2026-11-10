@@ -893,11 +893,7 @@ li { margin: 0.55em 0; }
 db.capteurs.aggregate([
   { $match: { type: "temperature" } }
 ])
-```
 
-<div class="res">
-
-```js
 // 4 documents : C1, C3, C4, C5
 ```
 
@@ -1085,7 +1081,7 @@ Lien avec le TP : un exercice qui impose un tri et qui reçoit les bons document
 
 ## Étape 6 : `$limit`
 
-<div class="cols" style="grid-template-columns: 1.15fr 1fr;">
+<div class="cols" style="grid-template-columns: 1fr 1.1fr; align-items: center;">
 <div>
 
 ```js
@@ -1096,28 +1092,25 @@ db.capteurs.aggregate([
 ])
 ```
 
-<div class="res">
-
-```js
-[ { piece: "Salon", moyenne: 20.8, nb: 4 },
-  { piece: "Cuisine", moyenne: 20.5, nb: 2 } ]
-```
-
-</div>
 </div>
 <div class="petit">
 
 - `$limit: n` garde les **n premiers** documents et laisse tomber les autres : c'est le `LIMIT` du SQL.
-- Après un `$sort`, il donne un **classement** : ici, les 2 pièces les plus chaudes.
-- Placé **avant** le `$sort`, il garderait 2 groupes quelconques, triés ensuite : le classement serait faux.
+- Il ne trie pas : il coupe le flux **dans l'ordre où il le reçoit**.
 
 </div>
 </div>
+
+<img src="assets/schemas/s2-limit.svg" alt="Deux cas. $limit après $sort : les documents arrivent triés, Salon 20.8, Cuisine 20.5, Chambre 17.5 ; $limit: 2 garde Salon et Cuisine, les 2 pièces les plus chaudes. $limit avant $sort : les groupes arrivent dans un ordre quelconque, Chambre, Salon, Cuisine ; $limit: 2 puis $sort donnent Salon et Chambre : Cuisine, 20.5, manque au classement." style="display: block; width: 100%; margin: 1.8em auto 0;">
 
 <!--
 (1 min)
 
 $limit ne trie pas et ne choisit pas : il coupe le flux après n documents. Tout dépend donc de l'ordre qu'il reçoit, d'où sa place après $sort.
+
+Le second cas du schéma suppose que les groupes arrivent dans l'ordre de la 2e exécution de la diapositive précédente (Chambre, Salon, Cuisine). Sur quatre exécutions de $limit avant $sort, MongoDB 9.0.4 a rendu par hasard le bon classement : le piège ne se voit pas à tous les coups, d'où son danger.
+
+Résultat du pipeline : [ { piece: "Salon", moyenne: 20.8, nb: 4 }, { piece: "Cuisine", moyenne: 20.5, nb: 2 } ].
 
 Le pipeline complet, dont le résultat a été obtenu sur MongoDB 9.0.4 :
 
