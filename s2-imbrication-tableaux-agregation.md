@@ -884,9 +884,11 @@ Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt
 .cols { margin-top: 1.1rem; }
 ul { margin-top: 1.6rem; }
 li { margin: 0.55em 0; }
+.cols > div:first-child { display: flex; }
+.cols > div:first-child pre { flex: 1; margin: 0; display: grid; align-content: center; }
 </style>
 
-<div class="cols" style="grid-template-columns: 0.9fr 1.4fr; align-items: center; gap: 2.2rem;">
+<div class="cols" style="grid-template-columns: 0.9fr 1.4fr; align-items: stretch; gap: 2.2rem;">
 <div>
 
 ```js
