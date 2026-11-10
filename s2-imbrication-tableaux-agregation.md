@@ -127,8 +127,6 @@ L'énoncé du TP1 détaille ce choix dans « Modéliser la médiathèque », et 
 
 <p class="petit"><b>Pour trancher</b> : les données se lisent-elles ensemble ? Le nombre d'éléments est-il petit et borné ? La donnée change-t-elle souvent sans son parent ? Est-elle partagée par beaucoup de documents ?</p>
 
-<p class="legende">D'après MongoDB for Academia, <em>MongoDB 101: Non-Relational for Beginners</em>, diapos 36 et 38 à 47, CC BY-NC-SA 3.0 (adapté)</p>
-
 <div class="warn">
 
 **Questions de modélisation** : 5 min, à deux, avant la partie 5 (non notées).

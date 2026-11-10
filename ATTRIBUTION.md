@@ -57,7 +57,7 @@ Une ligne par fichier de `assets/mongodb-academia/`. La colonne « Modification 
 
 ### Contenus reformulés
 
-Une ligne par passage de texte repris en français sans fichier image. La diapositive qui l'affiche porte une légende « D'après MongoDB for Academia, *<titre>*, diapos N, CC BY-NC-SA 3.0 (adapté) ».
+Une ligne par passage de texte repris en français sans fichier image. Ces reformulations sont citées dans la diapositive « Crédits » du support.
 
 | Support | Diapositive | Présentation source | Diapositives d'origine | Reprise |
 |---|---|---|---|---|
