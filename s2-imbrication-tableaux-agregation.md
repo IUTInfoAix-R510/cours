@@ -286,9 +286,12 @@ db.films.find({ genres: { $size: 3 } })                  // Les Dents de la mer
 db.films.find({ "seances.0.places": 0 })                 // Alien
 ```
 
-- Une valeur seule : le tableau **contient** cette valeur. Un tableau : égalité **exacte**, ordre compris.
-- `$all` : **toutes** ces valeurs, dans n'importe quel ordre. `$in` : **au moins une**.
-- `$size` : **exactement** ce nombre d'éléments. `"seances.0"` : l'élément d'indice 0.
+- Une valeur seule : le tableau **contient** cette valeur.
+- Un tableau : égalité **exacte**, ordre compris.
+- `$all` : **toutes** ces valeurs, dans n'importe quel ordre.
+- `$in` : **au moins une** de ces valeurs.
+- `$size` : **exactement** ce nombre d'éléments.
+- `"seances.0"` : l'élément d'indice 0, le premier.
 
 <!--
 Projection { _id: 0, titre: 1 } omise ici aussi ; les commentaires donnent les titres obtenus.
