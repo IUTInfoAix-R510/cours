@@ -56,9 +56,9 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 27 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 28 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 26, 8 minutes.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 27, 9 minutes.
 
 Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
 
@@ -738,46 +738,52 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 
 ## Le pipeline d'agrégation
 
-<div class="cols-62" style="grid-template-columns: 2.1fr 1fr;">
-<div>
-
 ```js
 db.capteurs.aggregate([                // un TABLEAU d'étapes
-  { $match: { type: "temperature" } }, // filtrer        WHERE
-  { $unwind: "$mesures" },             // 1 doc./mesure  table mesures
-  { $group: { _id: "$piece", ... } },  // regrouper      GROUP BY
-  { $project: { ... } },               // calculer       SELECT
-  { $sort: { moyenne: -1 } },          // trier          ORDER BY
-  { $limit: 5 }                        // limiter        LIMIT
+  { $match: { type: "temperature" } }, // filtrer             WHERE
+  { $unwind: "$mesures" },             // 1 doc. par mesure   JOIN mesures
+  { $group: { _id: "$piece", ... } },  // regrouper           GROUP BY
+  { $project: { ... } },               // choisir, calculer   SELECT
+  { $sort: { moyenne: -1 } },          // trier               ORDER BY
+  { $limit: 5 }                        // limiter             LIMIT
 ])
 ```
 
-- Chaque étape reçoit les documents de la précédente et en produit de nouveaux : ici 5, puis 4, 9, 3.
+- Chaque étape reçoit les documents de la précédente et en produit de nouveaux.
 - Une étape peut revenir : un `$match` après `$group` filtre les groupes (`HAVING`).
 - Dans `$group` ou `$project`, `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
 
-</div>
-<div>
-
-<img src="assets/schemas/s2-pipeline.svg" alt="Le pipeline appliqué aux capteurs, de haut en bas ; chaque pastille est un document, colorée selon sa pièce : Salon en bleu, Cuisine en orange, Chambre en violet. Au départ, 5 documents, C1 à C5 ; C2, écrit en rouge, est le capteur d'humidité du Salon. $match garde les températures : 4 documents, C2 est écarté. $unwind crée un document par mesure : 9 documents, C1 trois fois, C3 deux fois, C4 une fois, C5 trois fois. $group crée un document par pièce : 3 documents, Cuisine moyenne 20.5, Salon 20.75, Chambre 17.5. $sort les trie par moyenne décroissante : Salon, Cuisine, Chambre, toujours 3 documents." style="display: block; width: 100%; margin: 0.1em auto 0;">
-
-</div>
-</div>
-
 <!--
-Le schéma suit les capteurs des trois diapos suivantes. Chaque pastille est un document, sa couleur donne la pièce ; C2, écrit en rouge, est le capteur d'humidité du Salon, celui que $match écarte. Lire la colonne des nombres : $match en écarte un (5 → 4), $unwind en crée un par mesure (4 → 9), $group en fait un par pièce (9 → 3), $sort les réordonne sans en changer le nombre.
+(1 min)
 
-Le schéma s'arrête à $sort : $project change la forme des documents, pas leur nombre, et $limit: 5 ne retire rien ici puisqu'il ne reste que 3 documents. L'ordre Cuisine, Salon, Chambre en sortie de $group est celui d'une exécution réelle, mais il n'est pas garanti (diapo « L'ordre des groupes n'est pas garanti »).
+Lire le code ligne à ligne avec la colonne SQL : c'est le repère des étudiants qui viennent du relationnel. La diapositive suivante montre ce pipeline sur les capteurs.
 
-Les moyennes du schéma ne sont pas arrondies : le $project de la diapo « L'ordre des groupes n'est pas garanti » affiche 20.8 pour le Salon.
-
-Pour l'équivalent SQL de $unwind : une ligne par élément du tableau, comme dans la table mesures (capteur_id, h, v) d'un schéma relationnel.
+Pour l'équivalent SQL de $unwind : dans un schéma relationnel, les mesures seraient dans une table mesures (capteur_id, h, v) ; la jointure capteurs JOIN mesures donne une ligne par mesure, comme $unwind donne un document par mesure.
 
 mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le driver Node du TP2 et du projet, passent toujours un tableau : prendre dès maintenant l'habitude de aggregate([ ... ]).
 
 Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piece à la chaîne "$piece" et ne renvoie aucun document, alors que chaque capteur a bien une pièce. Comparer deux champs d'un même document demande $expr, hors programme ici.
 -->
 
+---
+
+## Le pipeline sur les capteurs
+
+<img src="assets/schemas/s2-pipeline.svg" alt="Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre." style="display:block; width:100%; margin:0.6em auto 0;">
+
+<p class="centre" style="margin-top: 1.2rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les trois diapositives suivantes détaillent chaque étape.</span></p>
+
+<!--
+(1 min)
+
+Lire le schéma de gauche à droite, en commençant par les nombres en haut des colonnes : $match en retire (5 puis 4), $unwind en crée (9, un par mesure), $group les rassemble (3, un par pièce), $sort ne fait que les réordonner (toujours 3).
+
+C2, encadré en rouge, est le capteur d'humidité du Salon : c'est lui que $match écarte.
+
+Le $group sort ses groupes dans un ordre quelconque (ici Cuisine, Salon, Chambre, celui d'une exécution réelle) : on y revient sur la diapo « L'ordre des groupes n'est pas garanti ». Le $sort final fixe l'ordre : Salon (20.75), Cuisine (20.5), Chambre (17.5). Les moyennes ne sont pas arrondies : le $project de cette diapo affiche 20.8 pour le Salon.
+
+$project et $limit ne figurent pas dans le schéma : $project change la forme des documents, pas leur nombre, et { $limit: 5 } en fin de pipeline ne retirerait rien, il n'y a que 3 documents.
+-->
 ---
 
 ## Étape par étape : `$match`, puis `$unwind`
