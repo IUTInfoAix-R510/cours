@@ -277,13 +277,13 @@ Le même piège existe sur les tableaux : diapositive suivante.
 ## Tableaux de valeurs
 
 ```js
-db.films.find({ genres: "Horreur" })                     // Alien, Les Dents de la mer
-db.films.find({ genres: ["SF", "Horreur"] })             // Alien
-db.films.find({ genres: ["Horreur", "SF"] })             // []
-db.films.find({ genres: { $all: ["Horreur", "SF"] } })   // Alien
-db.films.find({ genres: { $in: ["Policier", "Thriller"] } })  // Blade Runner, Les Dents de la mer
-db.films.find({ genres: { $size: 3 } })                  // Les Dents de la mer
-db.films.find({ "seances.0.places": 0 })                 // Alien
+db.films.find({ genres: "Horreur" })                         // Alien, Les Dents de la mer
+db.films.find({ genres: ["SF", "Horreur"] })                 // Alien
+db.films.find({ genres: ["Horreur", "SF"] })                 // []
+db.films.find({ genres: { $all: ["Horreur", "SF"] } })       // Alien
+db.films.find({ genres: { $in: ["Policier", "Thriller"] } }) // Blade Runner, Les Dents de la mer
+db.films.find({ genres: { $size: 3 } })                      // Les Dents de la mer
+db.films.find({ "seances.0.places": 0 })                     // Alien
 ```
 
 - Une valeur seule : le tableau **contient** cette valeur.
@@ -572,6 +572,92 @@ L'encadré « Deux documents, deux écritures » de la partie 6 traite ce point 
 Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifiedCount: 1 (avec un document { _id: "lea13", nb_publiees: 0 } inséré au préalable dans auteurs).
 -->
 
+
+---
+
+## Les opérateurs sur les tableaux : interroger et projeter
+
+<style scoped>
+.recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
+.recap .bloc { background: #f0f4f8; border-left: 5px solid #4a90d9; border-radius: 6px; padding: 0.45rem 0.9rem; }
+.recap .bloc b.t { display: block; color: #00684a; margin-bottom: 0.2rem; }
+.recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
+.recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
+.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent; vertical-align: top; }
+.recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
+.recap code { font-size: 0.92em; }
+</style>
+
+<div class="recap">
+<div class="bloc" style="border-left-color: #4a90d9;"><b class="t">Interroger : filtre de find</b>
+<table>
+<tr><td><code>{ tab: v }</code></td><td>contient la valeur v</td></tr>
+<tr><td><code>{ tab: [v1, v2] }</code></td><td>égal à ce tableau, ordre compris</td></tr>
+<tr><td><code>$all</code> · <code>$in</code> · <code>$nin</code></td><td>toutes ces valeurs · au moins une · aucune</td></tr>
+<tr><td><code>$size: n</code></td><td>exactement n éléments</td></tr>
+<tr><td><code>$elemMatch</code></td><td>un même élément vérifie toutes les conditions</td></tr>
+<tr><td><code>"tab.champ"</code> · <code>"tab.0"</code></td><td>un élément quelconque · l'élément d'indice 0</td></tr>
+</table></div>
+<div class="bloc" style="border-left-color: #13aa52;"><b class="t">Projeter : second argument de find</b>
+<table>
+<tr><td><code>{ "tab.champ": 1 }</code></td><td>ce champ dans chaque élément</td></tr>
+<tr><td><code>$slice: n</code></td><td>les n premiers éléments (n négatif : les n derniers)</td></tr>
+<tr><td><code>"tab.$": 1</code> · <code>$elemMatch</code></td><td>le premier élément qui correspond</td></tr>
+</table></div>
+</div>
+
+<p class="legende">Vérifiés sur MongoDB 9.0.4. Manuel : <a href="https://www.mongodb.com/docs/manual/reference/operator/query-array/">opérateurs de requête</a> et <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/">de projection</a> sur les tableaux.</p>
+
+<!--
+(30 s : diapositive de référence, à parcourir sans tout détailler ; les étudiants la retrouvent en ligne pendant le TP.)
+
+Rappeler les deux pièges : un tableau écrit dans le filtre demande une égalité exacte, ordre compris ; deux conditions sur un tableau de documents peuvent être satisfaites par deux éléments différents, d'où $elemMatch.
+
+$size ne se combine pas avec $gt : pour « au moins 3 éléments », on teste "tab.2": { $exists: true }.
+-->
+
+---
+
+## Les opérateurs sur les tableaux : modifier et agréger
+
+<style scoped>
+.recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
+.recap .bloc { background: #f0f4f8; border-left: 5px solid #4a90d9; border-radius: 6px; padding: 0.45rem 0.9rem; }
+.recap .bloc b.t { display: block; color: #00684a; margin-bottom: 0.2rem; }
+.recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
+.recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
+.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent; vertical-align: top; }
+.recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
+.recap code { font-size: 0.92em; }
+</style>
+
+<div class="recap">
+<div class="bloc" style="border-left-color: #e8a838;"><b class="t">Modifier : updateOne, updateMany</b>
+<table>
+<tr><td><code>$push</code> (avec <code>$each</code>)</td><td>ajoute à la fin (plusieurs valeurs)</td></tr>
+<tr><td><code>$addToSet</code></td><td>ajoute si la valeur n'y est pas déjà</td></tr>
+<tr><td><code>$pull</code> · <code>$pullAll</code></td><td>retire selon une condition · retire ces valeurs</td></tr>
+<tr><td><code>$pop: 1</code> · <code>$pop: -1</code></td><td>retire le dernier · le premier élément</td></tr>
+<tr><td><code>"tab.$"</code></td><td>l'élément trouvé par le filtre</td></tr>
+<tr><td><code>"tab.$[]"</code> · <code>"tab.$[x]"</code></td><td>tous les éléments · ceux retenus par <code>arrayFilters</code></td></tr>
+</table></div>
+<div class="bloc" style="border-left-color: #8e44ad;"><b class="t">Agréger : dans un pipeline (partie 7)</b>
+<table>
+<tr><td><code>$unwind</code></td><td>un document par élément</td></tr>
+<tr><td><code>$size</code> · <code>$arrayElemAt</code></td><td>la longueur · l'élément d'indice n</td></tr>
+<tr><td><code>$filter</code></td><td>les éléments qui vérifient une condition</td></tr>
+</table></div>
+</div>
+
+<p class="legende">Vérifiés sur MongoDB 9.0.4. Manuel : <a href="https://www.mongodb.com/docs/manual/reference/operator/update-array/">opérateurs de mise à jour</a> sur les tableaux.</p>
+
+<!--
+(30 s : diapositive de référence.)
+
+$push ajoute même si la valeur est déjà là ; $addToSet non. $pull retire selon une condition écrite comme un filtre ; $pullAll retire une liste de valeurs exactes. "tab.$" modifie l'élément trouvé par le filtre ; "tab.$[]" tous les éléments ; "tab.$[x]" ceux qui vérifient la condition de arrayFilters.
+
+Les opérateurs de pipeline reviennent en partie 7.
+-->
 ---
 
 <!-- header: Partie 7 · agréger -->
