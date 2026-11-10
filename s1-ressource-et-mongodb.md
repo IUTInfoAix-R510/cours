@@ -376,23 +376,18 @@ Dans le playground et mongosh, on écrit { _id: "E01", nom: "Martin" }, sans gui
 
 ## Du relationnel au document
 
-<p style="font-size: 0.8em; margin-bottom: 0.4rem;">En SQL, une table de plus et une clé étrangère. En MongoDB, un tableau de documents imbriqués : la voiture et ses roues se lisent ensemble, sans jointure.</p>
+<p style="font-size: 0.8em; margin-bottom: 0.3rem;">Le film de la diapositive précédente. En SQL, il est réparti en trois tables, recollées par deux jointures. En MongoDB, il tient dans un seul document.</p>
 
-![w:920](assets/mongodb-academia/relationnel-vs-document-tableau.png)
-
-<p class="legende">Schéma : MongoDB for Academia, <i>Querying in Relational and Non-Relational Databases</i>, diapo 9, CC BY-NC-SA 3.0, adapté (recadré).</p>
+<img src="assets/schemas/s1-relationnel-vers-document.svg" alt="À gauche, en SQL, trois tables : films (F01, Le Voyage de Chihiro, 2001, realisateur_id R1), realisateurs (R1, Miyazaki, Japon) et films_genres (F01 animation, F01 fantastique), reliées par des clés étrangères. À droite, le document MongoDB F01 : la table realisateurs devient le document imbriqué realisation, la table films_genres devient le tableau genres. Le document se lit en une fois, sans jointure." style="display: block; margin: 0 auto; width: 100%;">
 
 <!--
 (1 min)
 
-Lecture : à gauche, la relation un-à-plusieurs voiture-roues demande deux tables. À droite, les roues sont dans le document de la voiture.
+Lecture : à gauche, la modélisation relationnelle du film : une table pour les films, une pour les réalisateurs (relation plusieurs-à-un, clé étrangère realisateur_id), une table d'association pour les genres (relation un-à-plusieurs). Pour afficher le film complet, il faut deux jointures.
 
-Trois détails de la diapo d'origine :
-- "_id": 007 sans guillemets devient le nombre 7 (testé dans mongosh). Pour garder 007, il faut une chaîne, "007", comme les "E01" du TP.
-- certains noms de champs ont des guillemets ("owner") et d'autres non (wheels) : les deux écritures sont acceptées.
-- la table Cars écrit Q08 là où Wheels écrit 008 : c'est une coquille de la diapo d'origine, la roue 950555 appartient à la Fiat.
+À droite, le même film en document : le réalisateur est un document imbriqué, les genres un tableau. Le film se lit en une fois.
 
-Embarquer ou référencer, c'est le sujet de la séance 2 (« Modéliser la médiathèque ») et du TP3.
+Le prix à payer, à garder pour la séance 2 : si Miyazaki change de pays, il faut modifier chacun de ses films, puisque l'information est recopiée dans chaque document. Embarquer ou référencer, c'est le sujet de la séance 2 (« Modéliser la médiathèque ») et du TP3.
 -->
 
 ---
@@ -1049,8 +1044,7 @@ Pour essayer drop(), le faire sur la collection brouillon, jamais sur employes.
 
 <div style="font-size: 0.72em;">
 
-- **Supports d'origine** : présentations du programme MongoDB for Academia, en anglais, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) : *MongoDB 101: Non-Relational for Beginners*, *Querying in Relational and Non-Relational Databases*, *The MongoDB Query Language (MQL)*, *Inserting and Updating Data in MongoDB*, *Deleting Data in MongoDB*. Liens dans le README du dépôt `cours`.
-- **Élément repris** : le schéma « Array: A One-to-Many » (*Querying in Relational and Non-Relational Databases*, diapo 9), recadré. Détail dans `ATTRIBUTION.md`.
+- **Supports d'origine**, dont ce support s'inspire : présentations du programme MongoDB for Academia, en anglais, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) : *MongoDB 101: Non-Relational for Beginners*, *Querying in Relational and Non-Relational Databases*, *The MongoDB Query Language (MQL)*, *Inserting and Updating Data in MongoDB*, *Deleting Data in MongoDB*. Liens dans le README du dépôt `cours`.
 - **Documentation** : [MongoDB Manual](https://www.mongodb.com/docs/manual/), [correspondance SQL et MongoDB](https://www.mongodb.com/docs/manual/reference/sql-comparison/).
 - **Exemples** : exécutés sur MongoDB 9.0.4 avec mongosh ; les résultats affichés sont ceux obtenus.
 - **Énoncé et syllabus** : TP1 et syllabus de R5.Real.10, IUT d'Aix-Marseille.
@@ -1058,7 +1052,7 @@ Pour essayer drop(), le faire sur la collection brouillon, jamais sur employes.
 </div>
 
 <div class="carte vert" style="margin-top: 0.8rem; font-size: 0.72em;">
-Ce support, R5.Real.10 (IUT d'Aix-Marseille, github.com/IUTInfoAix-R510/cours), est diffusé sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>. L'élément repris reste sous CC BY-NC-SA 3.0. Le logo d'Aix-Marseille Université n'est couvert par aucune de ces licences.
+Ce support, R5.Real.10 (IUT d'Aix-Marseille, github.com/IUTInfoAix-R510/cours), est diffusé sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>. Le logo d'Aix-Marseille Université n'est couvert par aucune de ces licences.
 </div>
 
 <!--

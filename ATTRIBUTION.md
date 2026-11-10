@@ -55,7 +55,6 @@ Une ligne par fichier de `assets/mongodb-academia/`. La colonne « Modification 
 |---|---|---|---|
 | `embarquer-ou-referencer-blog.png` | MongoDB 101: Non-Relational for Beginners | 35 | aucune (diapositive entière, exportée à 110 ppp) ; utilisée dans `s2-imbrication-tableaux-agregation.md` |
 | `pipeline-unwind-group-schema.png` | Querying Data with the MongoDB Aggregation Framework | 54 (page 54 de l'export PDF) | recadrée : schéma seul, des deux `$unwind` au `$group` (sans le code, ni la flèche de la collection `sales` en haut), exporté à 220 ppp ; utilisée dans `s2-imbrication-tableaux-agregation.md` |
-| `relationnel-vs-document-tableau.png` | Querying in Relational and Non-Relational Databases | 9 (« Array: A One-to-Many », page 9 de l'export PDF) | recadrée : titre et logo retirés, tableaux Cars/Wheels et document avec le tableau `wheels` gardés ; utilisée dans `s1-ressource-et-mongodb.md` |
 
 ### Contenus reformulés
 
