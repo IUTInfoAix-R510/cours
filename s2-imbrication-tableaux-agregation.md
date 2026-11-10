@@ -1328,6 +1328,40 @@ Les trois invites sont celles de l'énoncé, à la fin de chaque partie.
 
 ---
 
+<!-- _class: lead -->
+
+# Des questions ?
+
+**Sébastien Nedjar** (GA1) · **Leïla Sakli Miled** (GA2)
+IUT d'Aix-Marseille, département Informatique
+
+<div style="margin-top: 1.2rem; font-size: 0.85em;">
+
+[iutinfoaix-r510.github.io/tp1](https://iutinfoaix-r510.github.io/tp1/)
+sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
+
+</div>
+
+<div style="margin-top: 1.6rem; background: #00684a; color: white; padding: 0.8rem 1.6rem; border-radius: 12px; font-size: 0.95em;">
+
+**Dès maintenant** : la partie 7, une étape à la fois, puis le deuxième rendu avec <code style="white-space: nowrap;">r510-rendre</code>.
+
+</div>
+
+<div style="margin-top: 1rem; background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.7rem 1rem; border-radius: 6px; font-size: 0.8em;">
+
+**Un pipeline se construit une étape à la fois** : on ajoute l'étape, on exécute, on regarde ce qui sort.
+
+</div>
+
+<!--
+(10 s)
+
+Les adresses sont celles du syllabus. Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe.
+-->
+
+---
+
 ## Crédits
 
 <div class="petit">
