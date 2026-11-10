@@ -210,7 +210,7 @@ Conseil : en S1, demander de l'aide sur la syntaxe et le playground ne pose aucu
 
 # MongoDB et le NoSQL
 
-Pourquoi d'autres modèles, lesquels, et le CRUD de MongoDB
+Pourquoi d'autres modèles, et lesquels
 
 <!--
 (10 s)
@@ -434,6 +434,20 @@ Faire évoluer un schéma reste du travail, même sans ALTER TABLE : le TP3 le m
 _id est unique dans sa collection : deux documents d'une même collection ne peuvent pas avoir le même.
 
 Attention, dans un filtre, { champ: null } trouve aussi les documents où le champ manque (vérifié sur 9.0.4) ; pour l'absence seule, c'est $exists: false.
+-->
+
+---
+
+<!-- _class: lead -->
+
+# Parties 1 et 2 - Créer et lire des documents
+
+`insertOne`, `insertMany`, `find`, opérateurs de requête, tri
+
+<!--
+(10 s)
+
+Le CRUD de MongoDB, dans l'ordre des parties 1 et 2 du TP1. Modifier et supprimer viendront en reprise, au début des parties 3 et 4.
 -->
 
 ---
@@ -807,9 +821,9 @@ Modifier et supprimer viennent dans deux courtes reprises, quand le groupe arriv
 
 <!-- _class: lead -->
 
-# Reprise avant la partie 3
+# Partie 3 - Modifier des documents
 
-Modifier des documents, upsert
+`updateOne`, `updateMany`, opérateurs de mise à jour, upsert
 
 <!--
 (10 s)
@@ -968,9 +982,9 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 
 <!-- _class: lead -->
 
-# Reprise avant la partie 4
+# Partie 4 - Supprimer des documents
 
-Supprimer des documents
+`deleteOne`, `deleteMany`
 
 <!--
 (10 s)
