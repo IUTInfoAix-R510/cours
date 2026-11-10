@@ -1,37 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 236" font-family="sans-serif" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 268" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">$match : sur les 5 capteurs, seuls les 4 de type temperature passent ; C2, capteur d'humidité, est écarté</title>
   <rect x="2" y="2" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="14" y="28" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
   <text x="240" y="28" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="2" y="50" width="250" height="40" rx="7" fill="#e3eefa" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="14" y="76" font-size="17" fill="#333"><tspan font-weight="bold">C2</tspan> Salon</text>
-  <text x="240" y="76" font-size="16" font-family="monospace" fill="#c0392b" text-anchor="end">humidite</text>
-  <rect x="2" y="98" width="250" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="14" y="124" font-size="17" fill="#333"><tspan font-weight="bold">C3</tspan> Cuisine</text>
-  <text x="240" y="124" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="2" y="146" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="14" y="172" font-size="17" fill="#333"><tspan font-weight="bold">C4</tspan> Salon</text>
-  <text x="240" y="172" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="2" y="194" width="250" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="14" y="220" font-size="17" fill="#333"><tspan font-weight="bold">C5</tspan> Chambre</text>
-  <text x="240" y="220" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="286" y="2" width="128" height="232" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="350" y="34" font-family="monospace" font-size="19" font-weight="bold" fill="#00684a" text-anchor="middle">$match</text>
-  <text x="350" y="112" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">type:</text>
-  <text x="350" y="132" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">"temperature"</text>
-  <text x="350" y="176" font-size="16" fill="#c0392b" text-anchor="middle"><tspan font-weight="bold">C2</tspan> écarté</text>
-  <path d="M264,110 L275,118 L264,126 z" fill="#555"/>
-  <path d="M426,110 L437,118 L426,126 z" fill="#555"/>
-  <rect x="448" y="26" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="460" y="52" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
-  <text x="686" y="52" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="448" y="74" width="250" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="460" y="100" font-size="17" fill="#333"><tspan font-weight="bold">C3</tspan> Cuisine</text>
-  <text x="686" y="100" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="448" y="122" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="460" y="148" font-size="17" fill="#333"><tspan font-weight="bold">C4</tspan> Salon</text>
-  <text x="686" y="148" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
-  <rect x="448" y="170" width="250" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="460" y="196" font-size="17" fill="#333"><tspan font-weight="bold">C5</tspan> Chambre</text>
-  <text x="686" y="196" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="2" y="58" width="250" height="40" rx="7" fill="#e3eefa" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="14" y="84" font-size="17" fill="#333"><tspan font-weight="bold">C2</tspan> Salon</text>
+  <text x="240" y="84" font-size="16" font-family="monospace" fill="#c0392b" text-anchor="end">humidite</text>
+  <rect x="2" y="114" width="250" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="14" y="140" font-size="17" fill="#333"><tspan font-weight="bold">C3</tspan> Cuisine</text>
+  <text x="240" y="140" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="2" y="170" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="196" font-size="17" fill="#333"><tspan font-weight="bold">C4</tspan> Salon</text>
+  <text x="240" y="196" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="2" y="226" width="250" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="14" y="252" font-size="17" fill="#333"><tspan font-weight="bold">C5</tspan> Chambre</text>
+  <text x="240" y="252" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="286" y="2" width="128" height="264" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="350" y="36" font-family="monospace" font-size="19" font-weight="bold" fill="#00684a" text-anchor="middle">$match</text>
+  <text x="350" y="128" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">type:</text>
+  <text x="350" y="148" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">"temperature"</text>
+  <text x="350" y="196" font-size="16" fill="#c0392b" text-anchor="middle"><tspan font-weight="bold">C2</tspan> écarté</text>
+  <path d="M264,126 L275,134 L264,142 z" fill="#555"/>
+  <path d="M426,126 L437,134 L426,142 z" fill="#555"/>
+  <rect x="448" y="30.0" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="460" y="56.0" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
+  <text x="686" y="56.0" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="448" y="86.0" width="250" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="460" y="112.0" font-size="17" fill="#333"><tspan font-weight="bold">C3</tspan> Cuisine</text>
+  <text x="686" y="112.0" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="448" y="142.0" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="460" y="168.0" font-size="17" fill="#333"><tspan font-weight="bold">C4</tspan> Salon</text>
+  <text x="686" y="168.0" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
+  <rect x="448" y="198.0" width="250" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="460" y="224.0" font-size="17" fill="#333"><tspan font-weight="bold">C5</tspan> Chambre</text>
+  <text x="686" y="224.0" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
 </svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Sans $sort, deux exécutions du même pipeline donnent deux ordres différents. Avec $sort sur moyenne, -1 donne l'ordre décroissant et 1 l'ordre croissant, à chaque exécution</title>
+  <rect x="94.0" y="2" width="972" height="132" rx="12" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <text x="110.0" y="28" font-size="19" font-weight="bold" fill="#c0392b">sans $sort : l'ordre peut changer</text>
+  <text x="110.0" y="64" font-size="17" fill="#333">1re exécution</text>
+  <rect x="346.0" y="38" width="226" height="38" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="459.0" y="64" font-size="18" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="586.0" y="38" width="226" height="38" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="699.0" y="64" font-size="18" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="826.0" y="38" width="226" height="38" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="939.0" y="64" font-size="18" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <text x="110.0" y="110" font-size="17" fill="#333">2e exécution</text>
+  <rect x="346.0" y="84" width="226" height="38" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="459.0" y="110" font-size="18" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <rect x="586.0" y="84" width="226" height="38" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="699.0" y="110" font-size="18" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="826.0" y="84" width="226" height="38" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="939.0" y="110" font-size="18" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="94.0" y="146" width="972" height="132" rx="12" fill="none" stroke="#00684a" stroke-width="2"/>
+  <text x="110.0" y="172" font-size="19" font-weight="bold" fill="#00684a">avec $sort : l'ordre est fixé</text>
+  <text x="110.0" y="208" font-size="17" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">moyenne: -1</tspan> décroissant</text>
+  <rect x="346.0" y="182" width="226" height="38" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="459.0" y="208" font-size="18" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="586.0" y="182" width="226" height="38" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="699.0" y="208" font-size="18" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="826.0" y="182" width="226" height="38" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="939.0" y="208" font-size="18" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <text x="110.0" y="254" font-size="17" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">moyenne: 1</tspan> croissant</text>
+  <rect x="346.0" y="228" width="226" height="38" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="459.0" y="254" font-size="18" fill="#333" text-anchor="middle">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <rect x="586.0" y="228" width="226" height="38" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="699.0" y="254" font-size="18" fill="#333" text-anchor="middle">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="826.0" y="228" width="226" height="38" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="939.0" y="254" font-size="18" fill="#333" text-anchor="middle">Salon · <tspan font-family="monospace">20.8</tspan></text>
+</svg>

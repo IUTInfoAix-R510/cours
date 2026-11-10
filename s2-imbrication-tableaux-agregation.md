@@ -880,7 +880,13 @@ Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt
 
 ## Étape 1 : `$match`
 
-<div class="cols" style="grid-template-columns: 0.9fr 1.4fr; align-items: center;">
+<style scoped>
+.cols { margin-top: 1.1rem; }
+ul { margin-top: 1.6rem; }
+li { margin: 0.55em 0; }
+</style>
+
+<div class="cols" style="grid-template-columns: 0.9fr 1.4fr; align-items: center; gap: 2.2rem;">
 <div>
 
 ```js
@@ -1010,7 +1016,9 @@ Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie
   } }
 ```
 
-<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
+<img src="assets/schemas/s2-project.svg" alt="$project sur le document du Salon. En entrée : _id Salon, moyenne 20.75, max 22.5, nb 4. En sortie : piece Salon, renommé depuis _id ; moyenne 20.8, calculée par $round ; max, non cité, disparaît ; nb 4, recopié." style="display: block; width: 100%; margin: 0.5em auto 0.4em;">
+
+<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: center;">
 <div class="res">
 
 ```js
@@ -1023,7 +1031,6 @@ Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie
 <div class="petit">
 
 - `$project` **choisit, renomme et calcule** : c'est le `SELECT` du SQL.
-- Un champ non cité disparaît : `max` n'est plus là.
 - Toujours 3 documents, dans un ordre quelconque.
 
 </div>
@@ -1043,42 +1050,24 @@ Résultat obtenu sur MongoDB 9.0.4. L'ordre Cuisine, Salon, Chambre est celui de
 
 ## Étape 5 : `$sort`
 
-<div class="cols">
-<div>
+<p style="margin-bottom: 0.2rem;">Sans <code>$sort</code>, l'ordre des documents n'est pas garanti.</p>
 
-Sans tri, le même pipeline exécuté deux fois&nbsp;:
+<img src="assets/schemas/s2-sort.svg" alt="À gauche, sans $sort, l'ordre peut changer : 1re exécution Cuisine 20.5, Salon 20.8, Chambre 17.5 ; 2e exécution Chambre, Salon, Cuisine. À droite, avec $sort, l'ordre est fixé : moyenne -1, décroissant, Salon 20.8, Cuisine 20.5, Chambre 17.5 ; moyenne 1, croissant, Chambre, Cuisine, Salon." style="display: block; width: 100%; margin: 0.4em auto 0.5em;">
 
-<img src="assets/schemas/s2-ordre-groupes.svg" alt="1re exécution : Cuisine, Salon, Chambre. 2e exécution : Chambre, Salon, Cuisine. Avec $project, puis $sort sur moyenne décroissante en fin de pipeline : Salon 20.8, Cuisine 20.5, Chambre 17.5, le même ordre à chaque exécution." style="display: block; margin: 0.3em auto 0; width: 100%;">
-
-<div class="warn">
-
-Un résultat trié demande un **`$sort` explicite**, en fin de pipeline.
-
-</div>
-</div>
+<div class="cols" style="grid-template-columns: 1fr 1fr; align-items: center;">
 <div>
 
 ```js
-  { $sort: { moyenne: -1 } }
+  { $sort: { moyenne: -1 } }   // décroissant
 ```
 
-<div class="petit">
-
-- `1` : ordre **croissant**, du plus petit au plus grand.
-- `-1` : ordre **décroissant**, de la plus chaude à la plus froide.
-- Plusieurs clés départagent les ex aequo :<br><code style="white-space: nowrap;">{ moyenne: -1, piece: 1 }</code>
+<p class="petit">Plusieurs clés départagent les ex aequo : <code style="white-space: nowrap;">{ moyenne: -1, piece: 1 }</code></p>
 
 </div>
+<div class="warn" style="margin-top: 0.3em;">
 
-<div class="res">
+Un résultat trié demande un **`$sort` explicite**, placé en fin de pipeline.
 
-```js
-[ { piece: "Salon", moyenne: 20.8, nb: 4 },
-  { piece: "Cuisine", moyenne: 20.5, nb: 2 },
-  { piece: "Chambre", moyenne: 17.5, nb: 3 } ]
-```
-
-</div>
 </div>
 </div>
 

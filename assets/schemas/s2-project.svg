@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 180" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$project sur le document du Salon : _id est renommé en piece, moyenne est arrondie de 20.75 à 20.8, max n'est pas cité et disparaît, nb est recopié</title>
+  <text x="150.0" y="20" font-size="17" fill="#555" text-anchor="middle">en entrée : un document de <tspan font-family="monospace">$group</tspan></text>
+  <text x="1010.0" y="20" font-size="17" fill="#555" text-anchor="middle">en sortie</text>
+  <rect x="2" y="29" width="296" height="144" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <rect x="860" y="29" width="298" height="144" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="20" y="57" font-family="monospace" font-size="19" fill="#333">_id: "Salon"</text>
+  <text x="878" y="57" font-family="monospace" font-size="19" fill="#333">piece: "Salon"</text>
+  <line x1="312" y1="55" x2="844" y2="55" stroke="#555" stroke-width="2.2"/>
+  <path d="M842,48 L856,55 L842,62 z" fill="#555"/>
+  <text x="580" y="48" font-size="16" fill="#333" text-anchor="middle">renommé : <tspan font-family="monospace" fill="#00684a" font-weight="bold">piece: "$_id"</tspan></text>
+  <text x="20" y="91" font-family="monospace" font-size="19" fill="#333">moyenne: 20.75</text>
+  <text x="878" y="91" font-family="monospace" font-size="19" fill="#333">moyenne: 20.8</text>
+  <line x1="312" y1="89" x2="844" y2="89" stroke="#555" stroke-width="2.2"/>
+  <path d="M842,82 L856,89 L842,96 z" fill="#555"/>
+  <text x="580" y="82" font-size="16" fill="#333" text-anchor="middle">calculé : <tspan font-family="monospace" fill="#00684a" font-weight="bold">$round</tspan></text>
+  <text x="20" y="125" font-family="monospace" font-size="19" fill="#999">max: 22.5</text>
+  <line x1="312" y1="119" x2="522" y2="119" stroke="#c0392b" stroke-width="2.2" stroke-dasharray="6 5"/>
+  <path d="M527,112 L541,126 M541,112 L527,126" stroke="#c0392b" stroke-width="3"/>
+  <text x="552" y="125" font-size="16" fill="#c0392b">non cité : disparaît</text>
+  <text x="20" y="159" font-family="monospace" font-size="19" fill="#333">nb: 4</text>
+  <text x="878" y="159" font-family="monospace" font-size="19" fill="#333">nb: 4</text>
+  <line x1="312" y1="157" x2="844" y2="157" stroke="#555" stroke-width="2.2"/>
+  <path d="M842,150 L856,157 L842,164 z" fill="#555"/>
+  <text x="580" y="150" font-size="16" fill="#333" text-anchor="middle">recopié : <tspan font-family="monospace" fill="#00684a" font-weight="bold">nb: "$nb"</tspan></text>
+</svg>
