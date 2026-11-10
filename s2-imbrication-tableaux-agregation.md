@@ -1241,11 +1241,19 @@ Les messages du correcteur automatique dans ce cas : « Cet exercice demande un 
 <div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
 <div>
 
-1. Questions de modélisation : 5 min, à deux
-2. Partie 5 : interroger
-3. Partie 6 : modifier
-4. Partie 7 : agréger
-5. **Deuxième rendu** : `r510-rendre`
+1. Questions de modélisation : **5 min**, à deux
+2. Partie 5, interroger : **55 min**
+3. Partie 6, modifier : **1 h**
+4. Point cours, puis partie 7, agréger : **1 h 15**
+5. **Deuxième rendu** : `r510-rendre`, **10 min**
+
+<p class="petit">Minutage indicatif, sur une séance de 4 h.</p>
+
+<div class="warn" style="font-size: 0.9em;">
+
+**Rendu final du TP1 :**<br>dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
+
+</div>
 
 </div>
 <div>
@@ -1273,7 +1281,9 @@ Les messages du correcteur automatique dans ce cas : « Cet exercice demande un 
 <!--
 (1 min)
 
-Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
+Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
+
+Le minutage suppose le point cours de début de séance (25 min, questions de modélisation comprises) déjà fait. Reste : partie 5 (7 exercices), 55 min ; partie 6 (6 exercices, plus difficiles), 1 h ; le second temps du point cours (environ 15 min) puis la partie 7 (5 exercices), 1 h 15 ; le rendu, 10 min. Le total fait 3 h 45 : il reste un quart d'heure de marge. En cas de retard, faire le deuxième rendu quand même, les exercices manquants iront au rendu final. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
 -->
 
 ---
