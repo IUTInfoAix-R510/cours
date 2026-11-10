@@ -738,7 +738,7 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 
 ## Les pipelines d'agrégation
 
-<img src="assets/schemas/s2-pipeline-principe.svg" alt="Dans le cluster MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux. Seul le résultat voyage jusqu'à l'application, une API ou un tableau de bord." style="display:block; width:100%; margin:0.3em auto 0;">
+<img src="assets/schemas/s2-pipeline-principe.svg" alt="Dans le cluster MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux." style="display:block; width:100%; margin:0.3em auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
 <div class="box">
