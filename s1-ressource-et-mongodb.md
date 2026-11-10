@@ -1076,7 +1076,7 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 <div style="margin-top: 1rem; background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.7rem 1rem; border-radius: 6px; font-size: 0.8em;">
 
-**Un document représente un objet**, écrit avec la notation des objets JavaScript : on l'insère, on le lit, on le modifie, on le supprime.
+**Avant la séance 2** : terminez les parties 1 à 4, puis lisez « Modéliser la médiathèque » dans l'énoncé. La séance commencera par ces questions.
 
 </div>
 

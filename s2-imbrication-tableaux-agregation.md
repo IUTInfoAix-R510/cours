@@ -1350,7 +1350,7 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 <div style="margin-top: 1rem; background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.7rem 1rem; border-radius: 6px; font-size: 0.8em;">
 
-**Un pipeline se construit une étape à la fois** : on ajoute l'étape, on exécute, on regarde ce qui sort.
+**D'ici le dimanche 6 décembre, 23&nbsp;h&nbsp;59** : terminez les exercices manquants, faites le quiz de chaque partie, puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
 
 </div>
 
