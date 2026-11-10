@@ -781,31 +781,54 @@ Pour l'enseignant, les erreurs relevées dans ces présentations, si un étudian
 
 ---
 
-## À vous
+## À vous : la séance 1
 
-<div class="bandeau" style="font-size: 1.1em;">
+<style scoped>
+.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
+.g2 > div > .orange { margin-top: auto; }
+</style>
+
+<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
 <a href="https://iutinfoaix-r510.github.io/tp1/">iutinfoaix-r510.github.io/tp1</a>
 </div>
 
-<div class="g2" style="margin-top: 1rem; font-size: 0.82em;">
+<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr;">
 <div>
 
-**Aujourd'hui**
+1. Mise en place (TP1, codespace, vérifications) : **20 min**
+2. Partie 1, premiers documents : **25 min**
+3. Partie 2, lire : **1 h 10**
+4. Reprise, puis partie 3, modifier : **55 min**
+5. Reprise, puis partie 4, supprimer : **20 min**
+6. **Premier rendu** : `r510-rendre`, **10 min**
 
-1. Mise en place : accepter le TP1, ouvrir le codespace, les quatre vérifications.
-2. Parties 1 à 4 : 25 exercices, 100 points.
-3. En fin de séance : premier rendu, avec `r510-rendre`.
+<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
+
+<div class="carte orange">
+<b class="t">Rendu final du TP1</b>
+dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
+</div>
 
 </div>
+<div>
+
 <div class="carte vert">
-<b class="t">En fin de chaque partie</b>
-
-Demandez un quiz à l'assistant du codespace :
-« Fais-moi un quiz sur deleteOne, deleteMany et les filtres de suppression. »
-</div>
+<b class="t">Les points</b>
+Parties 1 à 4 : 25 exercices, 100 des 208 points du TP1.
 </div>
 
-<p style="margin-top: 1rem; font-size: 0.82em;">En avance ? Lisez « Modéliser la médiathèque » : la séance 2 commence à la partie 5.</p>
+<div class="carte vert">
+<b class="t">Le rendu</b>
+<code>r510-rendre</code> lance <code>npm run check</code>, puis rend. Trois rendus au plus pour tout le TP1.
+</div>
+
+<div class="carte orange">
+<b class="t">En avance ?</b>
+Lisez « Modéliser la médiathèque ».
+</div>
+
+</div>
+</div>
 
 <!--
 (30 s)
@@ -815,6 +838,40 @@ Les quatre vérifications de l'énoncé : r510-mongo status, npm run seed, mongo
 Partie 1 très guidée (exemples A à C), partie 2 : la boucle écrire, exécuter, lire, corriger.
 
 Modifier et supprimer viennent dans deux courtes reprises, quand le groupe arrive aux parties 3 et 4.
+
+Le minutage suppose l'ouverture du point cours (23 min) déjà faite. Reste : mise en place, 20 min ; partie 1 (2 exercices et 3 exemples guidés), 25 min ; partie 2 (12 exercices), 1 h 10 ; reprise de 5 min puis partie 3 (8 exercices), 55 min ; reprise de 2 min puis partie 4 (3 exercices), 20 min ; rendu, 10 min. Le total fait 3 h 43 : il reste environ un quart d'heure de marge. Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
+-->
+
+---
+
+## À vous : essayer et réviser
+
+<style scoped>
+table { font-size: 0.8em; width: 100%; }
+th { text-align: left; }
+</style>
+
+<p style="font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin: 0.2rem 0;">Essayer sans risque</p>
+
+<div class="carte vert" style="font-size: 0.85em;">
+Les essais vont dans <code>essais.mongodb.js</code>, à la racine du dépôt, sur la collection <code>brouillon</code> : le correcteur automatique ne lit ni l'un ni l'autre. <b>Jamais sous un <code>// Votre réponse :</code>.</b>
+</div>
+
+<p style="font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin: 1.2rem 0 0.2rem;">Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+
+| Partie | À demander à l'assistant |
+|---|---|
+| 1 | « Fais-moi un quiz sur les documents, l'identifiant _id, insertOne et insertMany. » |
+| 2 | « Fais-moi un quiz sur les filtres, les opérateurs de comparaison, les expressions régulières, la projection et le tri. » |
+| 3 | « Fais-moi un quiz sur les opérateurs de mise à jour et l'upsert. » |
+| 4 | « Fais-moi un quiz sur deleteOne, deleteMany et les filtres de suppression. » |
+
+<!--
+(30 s)
+
+Les assistants du codespace sont configurés en tuteurs : ils posent une question à la fois, sur d'autres données que celles du TP, et corrigent chaque réponse en expliquant. Ils n'écrivent pas la réponse d'un exercice.
+
+Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
 -->
 
 ---
