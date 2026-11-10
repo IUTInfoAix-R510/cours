@@ -53,7 +53,6 @@ Une ligne par fichier de `assets/mongodb-academia/`. La colonne « Modification 
 
 | Fichier | Présentation source | Diapositive | Modification |
 |---|---|---|---|
-| `embarquer-ou-referencer-blog.png` | MongoDB 101: Non-Relational for Beginners | 35 | aucune (diapositive entière, exportée à 110 ppp) ; utilisée dans `s2-imbrication-tableaux-agregation.md` |
 | `pipeline-unwind-group-schema.png` | Querying Data with the MongoDB Aggregation Framework | 54 (page 54 de l'export PDF) | recadrée : schéma seul, des deux `$unwind` au `$group` (sans le code, ni la flèche de la collection `sales` en haut), exporté à 220 ppp ; utilisée dans `s2-imbrication-tableaux-agregation.md` |
 
 ### Contenus reformulés
@@ -62,8 +61,8 @@ Une ligne par passage de texte repris en français sans fichier image. La diapos
 
 | Support | Diapositive | Présentation source | Diapositives d'origine | Reprise |
 |---|---|---|---|---|
-| `s2-imbrication-tableaux-agregation.md` | 4 (« Trois sortes de relations ») | MongoDB 101: Non-Relational for Beginners | 38 à 47 | tableau des relations 1-1, 1-N et N-N et choix courant, reformulé, exemples changés |
-| `s2-imbrication-tableaux-agregation.md` | 4 (ligne « Pour trancher ») | MongoDB 101: Non-Relational for Beginners | 36 (« Link or Embed? Cont. ») | quatre questions pour choisir entre embarquer et référencer, reformulées |
+| `s2-imbrication-tableaux-agregation.md` | 5 (« Trois sortes de relations ») | MongoDB 101: Non-Relational for Beginners | 38 à 47 | tableau des relations 1-1, 1-N et N-N et choix courant, reformulé, exemples changés |
+| `s2-imbrication-tableaux-agregation.md` | 5 (ligne « Pour trancher ») | MongoDB 101: Non-Relational for Beginners | 36 (« Link or Embed? Cont. ») | quatre questions pour choisir entre embarquer et référencer, reformulées |
 
 ## Outils
 

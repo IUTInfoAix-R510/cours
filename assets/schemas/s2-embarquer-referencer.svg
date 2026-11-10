@@ -1,0 +1,62 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 470" font-family="sans-serif">
+  <title>Embarquer ou référencer : un film et ses critiques, de deux façons</title>
+  <defs>
+    <marker id="ref" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/>
+    </marker>
+  </defs>
+
+  <!-- Colonne Embarquer -->
+  <text x="285" y="30" text-anchor="middle" font-size="26" font-weight="bold" fill="#4a90d9">Embarquer</text>
+  <text x="285" y="56" text-anchor="middle" font-size="17" fill="#555">les critiques sont dans le film</text>
+  <rect x="20" y="70" width="530" height="226" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <text x="36" y="96" font-size="16" font-weight="bold" fill="#00684a">films</text>
+  <g font-family="monospace" font-size="17">
+    <text x="36" y="124">{ _id: "F01",</text>
+    <text x="52" y="150">titre: "Le Voyage de Chihiro",</text>
+    <rect x="44" y="162" width="494" height="110" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+    <text x="52" y="186">critiques: [</text>
+    <text x="72" y="212">{ auteur: "Léa", note: 5 },</text>
+    <text x="72" y="238">{ auteur: "Sam", note: 4 }</text>
+    <text x="52" y="262">] }</text>
+  </g>
+  <text x="285" y="322" text-anchor="middle" font-family="monospace" font-size="17" fill="#00684a" font-weight="bold">db.films.findOne({ _id: "F01" })</text>
+  <text x="285" y="344" text-anchor="middle" font-size="16" fill="#555">une lecture : le film et ses critiques</text>
+
+  <!-- Colonne Référencer -->
+  <line x1="580" y1="15" x2="580" y2="455" stroke="#ccc" stroke-width="2"/>
+  <text x="870" y="30" text-anchor="middle" font-size="26" font-weight="bold" fill="#8e44ad">Référencer</text>
+  <text x="870" y="56" text-anchor="middle" font-size="17" fill="#555">chaque critique porte l'_id du film</text>
+  <rect x="610" y="70" width="530" height="66" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <text x="626" y="96" font-size="16" font-weight="bold" fill="#00684a">films</text>
+  <g font-family="monospace" font-size="17">
+    <text x="626" y="122">{ _id: "F01", titre: "Le Voyage de Chihiro" }</text>
+  </g>
+  <rect x="610" y="160" width="530" height="136" rx="12" fill="#f3ecf7" stroke="#8e44ad" stroke-width="3"/>
+  <text x="626" y="186" font-size="16" font-weight="bold" fill="#8e44ad">critiques</text>
+  <g font-family="monospace" font-size="17">
+    <text x="626" y="216">{ _id: "C1", film_id: "F01",</text>
+    <text x="662" y="240">auteur: "Léa", note: 5 }</text>
+    <text x="626" y="270">{ _id: "C2", film_id: "F01", … }</text>
+  </g>
+  <path d="M 885 196 C 885 160, 770 162, 742 132" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="6 4" marker-end="url(#ref)"/>
+  <text x="870" y="322" text-anchor="middle" font-family="monospace" font-size="17" fill="#8e44ad" font-weight="bold">db.critiques.find({ film_id: "F01" })</text>
+  <text x="870" y="344" text-anchor="middle" font-size="16" fill="#555">deux lectures, ou une jointure avec $lookup (TP2)</text>
+
+  <!-- Avantages et inconvénients -->
+  <g font-size="18">
+    <text x="30" y="386" fill="#13aa52" font-weight="bold">+</text>
+    <text x="50" y="386">tout se lit d'un coup, sans jointure</text>
+    <text x="30" y="414" fill="#13aa52" font-weight="bold">+</text>
+    <text x="50" y="414">une modification du film et de ses critiques est atomique</text>
+    <text x="30" y="442" fill="#c0392b" font-weight="bold">−</text>
+    <text x="50" y="442">le document grossit à chaque critique (16 Mo au plus)</text>
+
+    <text x="620" y="386" fill="#13aa52" font-weight="bold">+</text>
+    <text x="640" y="386">documents petits, critiques sans limite de nombre</text>
+    <text x="620" y="414" fill="#13aa52" font-weight="bold">+</text>
+    <text x="640" y="414">une critique se lit ou se modifie seule</text>
+    <text x="620" y="442" fill="#c0392b" font-weight="bold">−</text>
+    <text x="640" y="442">il faut deux lectures pour tout afficher</text>
+  </g>
+</svg>

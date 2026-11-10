@@ -105,20 +105,16 @@ Pour le lien avec le TP4 : les mêmes livres et les mêmes membres deviendront d
 
 ## Embarquer ou référencer
 
-<div class="centre">
-
-![w:740](assets/mongodb-academia/embarquer-ou-referencer-blog.png)
-
-</div>
-
-<p class="legende centre">Schéma : MongoDB for Academia, <em>MongoDB 101: Non-Relational for Beginners</em>, diapo 35, CC BY-NC-SA 3.0</p>
-
-<p class="petit">À gauche, les commentaires sont <b>embarqués</b> dans l'article : un seul <code>find</code> lit tout. À droite, ils sont <b>référencés</b> : chaque commentaire porte l'<code>_id</code> de l'article (<code>blog_id</code>), comme une clé étrangère.</p>
+<img src="assets/schemas/s2-embarquer-referencer.svg" alt="Un film et ses critiques, de deux façons. Embarquer : les critiques sont un tableau dans le document du film ; db.films.findOne lit tout en une fois ; avantages : une seule lecture, modification atomique ; inconvénient : le document grossit, 16 Mo au plus. Référencer : une collection critiques où chaque critique porte film_id ; db.critiques.find({ film_id: 'F01' }) ; avantages : documents petits, critiques sans limite, une critique se lit ou se modifie seule ; inconvénient : deux lectures, ou $lookup." style="display:block; width:100%; margin:0.3rem auto 0 auto;">
 
 <!--
-Vocabulaire de la diapositive d'origine : Embedded = embarqué, Linked = référencé.
+(1 min 30)
 
-En SQL, on aurait deux tables et une jointure. En MongoDB, on a le choix, et ce choix dépend de la façon dont l'application lit et écrit les données, pas seulement de leur structure : le schéma part des besoins de l'application.
+Même relation un-à-plusieurs, deux modèles. À gauche, les critiques sont embarquées dans le film : un seul findOne lit le film et ses critiques, et une mise à jour du document entier est atomique. Le prix : le document grossit à chaque critique, et un document BSON ne dépasse pas 16 Mo.
+
+À droite, les critiques sont dans leur propre collection, chacune avec l'_id du film (film_id), comme une clé étrangère. Les documents restent petits, on peut avoir autant de critiques qu'on veut, et en lire ou en modifier une seule. Le prix : deux lectures pour afficher le film et ses critiques, ou une jointure avec $lookup, vue au TP2.
+
+En SQL, on n'aurait pas le choix : deux tables et une jointure. En MongoDB, le choix dépend de la façon dont l'application lit et écrit les données, pas seulement de leur structure.
 
 L'énoncé du TP1 détaille ce choix dans « Modéliser la médiathèque », et le TP3 y revient avec les patterns de conception.
 -->
@@ -896,7 +892,7 @@ Autres quiz proposés par l'énoncé : « Fais-moi un quiz sur la mise à jour d
 
 **Schémas et contenus repris** de MongoDB for Academia, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) :
 
-- schémas : *MongoDB 101: Non-Relational for Beginners*, diapo 35 (embarquer ou référencer) ; *Querying Data with the MongoDB Aggregation Framework*, diapo 54 (pipeline, recadré)
+- schéma : *Querying Data with the MongoDB Aggregation Framework*, diapo 54 (pipeline, recadré)
 - contenus reformulés : *MongoDB 101: Non-Relational for Beginners*, diapos 36 et 38 à 47 (relations et critères de choix)
 
 Détail des reprises : `ATTRIBUTION.md` du dépôt [IUTInfoAix-R510/cours](https://github.com/IUTInfoAix-R510/cours).
