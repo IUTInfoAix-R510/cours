@@ -56,9 +56,9 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 29 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 33 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 28, 10 minutes et demie.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 32, 15 minutes.
 
 Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
 
@@ -777,7 +777,7 @@ db.capteurs.aggregate([                // un TABLEAU d'étapes
   { $unwind: "$mesures" },             // 1 doc. par mesure   JOIN mesures
   { $group: { _id: "$piece", ... } },  // regrouper           GROUP BY
   { $project: { ... } },               // choisir, calculer   SELECT
-  { $sort: { moyenne: -1 } },          // trier               ORDER BY
+  { $sort: { moyenne: -1 } },          // trier (décroissant) ORDER BY
   { $limit: 5 }                        // limiter             LIMIT
 ])
 ```
@@ -804,7 +804,7 @@ Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piec
 
 <img src="assets/schemas/s2-pipeline.svg" alt="Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre." style="display:block; width:100%; margin:0.6em auto 0;">
 
-<p class="centre" style="margin-top: 0.6rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les trois diapositives suivantes détaillent chaque étape.</span></p>
+<p class="centre" style="margin-top: 0.6rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les diapositives suivantes reprennent les étapes une par une.</span></p>
 
 <!--
 (1 min)
@@ -819,61 +819,40 @@ $project et $limit ne figurent pas dans le schéma : $project change la forme de
 -->
 ---
 
-## Étape par étape : `$match`, puis `$unwind`
-
-<div class="cols-38">
-<div>
-
-<p class="etiquette">Données : 5 capteurs, mesures d'une journée</p>
+## Les données : 5 capteurs, une journée
 
 ```js
-{ _id: "C1", piece: "Salon",
-  type: "temperature",
-  mesures: [ { h: 8,  v: 19.5 },
-             { h: 12, v: 21 },
-             { h: 18, v: 22.5 } ] }
+{ _id: "C1", piece: "Salon",   type: "temperature",
+  mesures: [ { h: 8, v: 19.5 }, { h: 12, v: 21 }, { h: 18, v: 22.5 } ] }
+{ _id: "C2", piece: "Salon",   type: "humidite",
+  mesures: [ { h: 8, v: 55 }, { h: 18, v: 48 } ] }
+{ _id: "C3", piece: "Cuisine", type: "temperature",
+  mesures: [ { h: 8, v: 18 }, { h: 12, v: 23 } ] }
+{ _id: "C4", piece: "Salon",   type: "temperature",
+  mesures: [ { h: 8, v: 20 } ] }
+{ _id: "C5", piece: "Chambre", type: "temperature",
+  mesures: [ { h: 8, v: 17 }, { h: 12, v: 17.5 }, { h: 18, v: 18 } ] }
 ```
 
-| | piece | type | mesures |
-|---|---|---|---|
-| C2 | Salon | humidite | 2 |
-| C3 | Cuisine | temperature | 2 |
-| C4 | Salon | temperature | 1 |
-| C5 | Chambre | temperature | 3 |
+<div class="cols" style="align-items: stretch;">
+<div class="petit">
+
+- Un document par capteur et par jour.
+- `mesures` : un tableau de documents, l'heure `h` et la valeur `v`.
+- C2 mesure l'humidité, pas la température.
 
 </div>
-<div>
+<div class="box">
 
-<p class="etiquette">Étape 1</p>
+**La question** : quelle est la température moyenne de chaque pièce, de la plus chaude à la plus froide&nbsp;?
 
-```js
-db.capteurs.aggregate([
-  { $match: { type: "temperature" } }
-])
-```
-
-<div class="res">
-
-```js
-// 4 documents : C1, C3, C4, C5
-```
-
-</div>
-
-<p class="etiquette">Étape 2 : on ajoute</p>
-
-```js
-  { $unwind: "$mesures" }   // 9 documents
-```
-
-<img src="assets/schemas/s2-unwind.svg" alt="$unwind : le document C1, dont le tableau mesures contient 3 éléments, devient 3 documents de même _id C1, chacun avec une seule mesure dans le champ mesures : h 8 v 19.5, h 12 v 21, h 18 v 22.5. Un document par élément." style="display: block; margin: 0.4em auto 0; width: 100%;">
 </div>
 </div>
 
 <!--
-Un document par élément : 9 en tout pour les 4 capteurs (le champ type est omis dans le schéma).
+(1 min)
 
-Après $unwind, mesures n'est plus un tableau : chaque document porte une seule mesure, dans un champ qui garde le même nom. Le même _id apparaît plusieurs fois, ce qui est normal à l'intérieur d'un pipeline.
+Lire la question avant le code : c'est elle qui dicte les étapes. Il faut écarter l'humidité ($match), aller chercher les valeurs dans le tableau ($unwind), calculer par pièce ($group), mettre en forme ($project), trier ($sort) et, si besoin, ne garder que le début ($limit).
 
 Un document par capteur et par jour : on retrouvera cette idée au TP3 sous le nom de pattern Bucket. Ici, le nombre de mesures par document est borné, d'où l'embarquement.
 
@@ -894,7 +873,92 @@ db.capteurs.insertMany([
     mesures: [ { h: 8, v: 17 }, { h: 12, v: 17.5 }, { h: 18, v: 18 } ] }
 ]);
 
-Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt+S, on regarde ; on ajoute l'étape 2, on réexécute, on regarde.
+Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt+S, on regarde ; on ajoute l'étape suivante, on réexécute, on regarde. Tous les résultats des diapositives suivantes ont été obtenus ainsi sur MongoDB 9.0.4.
+-->
+
+---
+
+## Étape 1 : `$match`
+
+<div class="cols" style="grid-template-columns: 0.9fr 1.4fr; align-items: center;">
+<div>
+
+```js
+db.capteurs.aggregate([
+  { $match: { type: "temperature" } }
+])
+```
+
+<div class="res">
+
+```js
+// 4 documents : C1, C3, C4, C5
+```
+
+</div>
+</div>
+<div>
+
+<img src="assets/schemas/s2-match.svg" alt="$match : sur les 5 capteurs, C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre, seuls les 4 de type temperature passent. C2, de type humidite, est écarté." style="display: block; width: 100%; margin: 0 auto;">
+
+</div>
+</div>
+
+- Le filtre s'écrit **comme dans `find`**, avec les mêmes opérateurs (`$gt`, `$in`…).
+- C2 ne passe pas : ses mesures d'humidité ne faussent pas les moyennes.
+- `$match` se place **le plus tôt possible** : les étapes suivantes traitent moins de documents, et un `$match` en tête peut utiliser un index.
+
+<!--
+(1 min)
+
+$match ne change pas les documents : il les laisse passer ou non. C'est le WHERE du SQL.
+
+Plus tard dans un pipeline, après $group, un $match filtre les groupes : c'est le HAVING du SQL (diapositive « Le pipeline d'agrégation »).
+-->
+
+---
+
+## Étape 2 : `$unwind`
+
+<div class="cols" style="grid-template-columns: 1fr 1.25fr; align-items: center;">
+<div>
+
+```js
+db.capteurs.aggregate([
+  { $match: { type: "temperature" } },
+  { $unwind: "$mesures" }
+])
+```
+
+<div class="res">
+
+```js
+// 9 documents : 3 + 2 + 1 + 3
+```
+
+</div>
+</div>
+<div>
+
+<img src="assets/schemas/s2-unwind.svg" alt="$unwind : le document C1, dont le tableau mesures contient 3 éléments, devient 3 documents de même _id C1, chacun avec une seule mesure dans le champ mesures : h 8 v 19.5, h 12 v 21, h 18 v 22.5. Un document par élément." style="display: block; width: 100%; margin: 0 auto;">
+
+</div>
+</div>
+
+- **Un document par élément** du tableau ; les autres champs sont recopiés, avec le même `_id`.
+- `mesures` n'est plus un tableau mais un document : sa valeur s'atteint par `"$mesures.v"`.
+- Un document dont le tableau est vide ou absent **disparaît** (sauf avec `preserveNullAndEmptyArrays: true`).
+
+<!--
+(1 min 30)
+
+Un document par élément : 9 en tout pour les 4 capteurs (le champ type est omis dans le schéma). Le même _id apparaît plusieurs fois, ce qui est normal à l'intérieur d'un pipeline.
+
+Pourquoi cette étape : $group ne sait pas lire « dans » un tableau pour faire une moyenne sur toutes les mesures de tous les capteurs d'une pièce. Après $unwind, chaque mesure est un document, que $group peut ranger dans le groupe de sa pièce.
+
+Le cas du tableau vide a été vérifié sur MongoDB 9.0.4 : un capteur ajouté avec mesures: [] ne sort pas de $unwind ; avec { $unwind: { path: "$mesures", preserveNullAndEmptyArrays: true } }, il sort, sans champ mesures. Pièce sans mesure = pièce absente du résultat, piège classique dans un tableau de bord.
+
+Équivalent SQL : la jointure capteurs JOIN mesures, une ligne par mesure.
 -->
 
 ---
@@ -935,12 +999,54 @@ Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie
 
 ---
 
-## L'ordre des groupes n'est pas garanti
+## Étape 4 : `$project`
+
+```js
+  { $project: {
+      _id: 0,                                 // retire _id
+      piece: "$_id",                          // renomme : la valeur de _id
+      moyenne: { $round: ["$moyenne", 1] },   // calcule : arrondi à 1 décimale
+      nb: "$nb"                               // recopie nb
+  } }
+```
+
+<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
+<div class="res">
+
+```js
+[ { piece: "Cuisine", moyenne: 20.5, nb: 2 },
+  { piece: "Salon", moyenne: 20.8, nb: 4 },
+  { piece: "Chambre", moyenne: 17.5, nb: 3 } ]
+```
+
+</div>
+<div class="petit">
+
+- `$project` **choisit, renomme et calcule** : c'est le `SELECT` du SQL.
+- Un champ non cité disparaît : `max` n'est plus là.
+- Toujours 3 documents, dans un ordre quelconque.
+
+</div>
+</div>
+
+<!--
+(1 min)
+
+"$_id" désigne la valeur du champ _id produit par $group, ici le nom de la pièce : piece: "$_id" la recopie sous un nom parlant. _id: 0 retire le champ d'origine, sinon la pièce apparaîtrait deux fois.
+
+$round arrondit 20.75 à 20.8. Les moyennes de $group restent exactes ; l'arrondi ne sert qu'à l'affichage, d'où sa place en fin de pipeline.
+
+Résultat obtenu sur MongoDB 9.0.4. L'ordre Cuisine, Salon, Chambre est celui de cette exécution : il n'est pas garanti, c'est l'objet de la diapositive suivante.
+-->
+
+---
+
+## Étape 5 : `$sort`
 
 <div class="cols">
 <div>
 
-Le même pipeline (étapes 1 à 3), exécuté deux fois :
+Sans tri, le même pipeline exécuté deux fois&nbsp;:
 
 <img src="assets/schemas/s2-ordre-groupes.svg" alt="1re exécution : Cuisine, Salon, Chambre. 2e exécution : Chambre, Salon, Cuisine. Avec $project, puis $sort sur moyenne décroissante en fin de pipeline : Salon 20.8, Cuisine 20.5, Chambre 17.5, le même ordre à chaque exécution." style="display: block; margin: 0.3em auto 0; width: 100%;">
 
@@ -952,14 +1058,17 @@ Un résultat trié demande un **`$sort` explicite**, en fin de pipeline.
 </div>
 <div>
 
-<p class="etiquette">Étapes 4 et 5</p>
-
 ```js
-  { $project: { _id: 0, piece: "$_id",
-      moyenne: { $round: ["$moyenne", 1] },
-      nb: "$nb" } },
   { $sort: { moyenne: -1 } }
 ```
+
+<div class="petit">
+
+- `1` : ordre **croissant**, du plus petit au plus grand.
+- `-1` : ordre **décroissant**, de la plus chaude à la plus froide.
+- Plusieurs clés départagent les ex aequo :<br><code style="white-space: nowrap;">{ moyenne: -1, piece: 1 }</code>
+
+</div>
 
 <div class="res">
 
@@ -970,18 +1079,71 @@ Un résultat trié demande un **`$sort` explicite**, en fin de pipeline.
 ```
 
 </div>
+</div>
+</div>
 
-<p class="petit"><code>$project</code> renomme (<code>piece: "$_id"</code>) et calcule (<code>$round</code>).</p>
+<!--
+(1 min 30)
+
+Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Sur un autre poste, il peut encore être différent.
+
+Avec { $sort: { moyenne: 1 } }, l'ordre devient Chambre, Cuisine, Salon (vérifié sur 9.0.4). Le 1 et le -1 sont ceux de sort() dans find : même convention, ORDER BY … ASC et ORDER BY … DESC en SQL.
+
+Lien avec le TP : un exercice qui impose un tri et qui reçoit les bons documents dans le mauvais ordre ne rapporte que la moitié des points.
+-->
+
+---
+
+## Étape 6 : `$limit`
+
+<div class="cols" style="grid-template-columns: 1.15fr 1fr;">
+<div>
+
+```js
+db.capteurs.aggregate([
+  // étapes 1 à 4, inchangées
+  { $sort: { moyenne: -1 } },
+  { $limit: 2 }         // les 2 premiers
+])
+```
+
+<div class="res">
+
+```js
+[ { piece: "Salon", moyenne: 20.8, nb: 4 },
+  { piece: "Cuisine", moyenne: 20.5, nb: 2 } ]
+```
+
+</div>
+</div>
+<div class="petit">
+
+- `$limit: n` garde les **n premiers** documents et laisse tomber les autres : c'est le `LIMIT` du SQL.
+- Après un `$sort`, il donne un **classement** : ici, les 2 pièces les plus chaudes.
+- Placé **avant** le `$sort`, il garderait 2 groupes quelconques, triés ensuite : le classement serait faux.
 
 </div>
 </div>
 
 <!--
-Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Sur un autre poste, il peut encore être différent.
+(1 min)
 
-Lien avec le TP : un exercice qui impose un tri et qui reçoit les bons documents dans le mauvais ordre ne rapporte que la moitié des points.
+$limit ne trie pas et ne choisit pas : il coupe le flux après n documents. Tout dépend donc de l'ordre qu'il reçoit, d'où sa place après $sort.
 
-Le pipeline complet de la démo : $match, $unwind, $group, $project, $sort, dans cet ordre. Un { $limit: 2 } ajouté à la fin garde Salon et Cuisine.
+Le pipeline complet, dont le résultat a été obtenu sur MongoDB 9.0.4 :
+
+db.capteurs.aggregate([
+  { $match: { type: "temperature" } },
+  { $unwind: "$mesures" },
+  { $group: { _id: "$piece", moyenne: { $avg: "$mesures.v" },
+              max: { $max: "$mesures.v" }, nb: { $sum: 1 } } },
+  { $project: { _id: 0, piece: "$_id",
+      moyenne: { $round: ["$moyenne", 1] }, nb: "$nb" } },
+  { $sort: { moyenne: -1 } },
+  { $limit: 2 }
+]) Sur nos 3 pièces, $limit: 5 (diapositive « Le pipeline d'agrégation ») ne retire rien.
+
+Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers documents : $sort, puis $skip, puis $limit.
 -->
 
 ---
