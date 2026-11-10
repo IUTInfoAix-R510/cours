@@ -784,7 +784,7 @@ Lire le code ligne à ligne avec la colonne SQL : c'est le repère des étudiant
 
 Pour l'équivalent SQL de $unwind : dans un schéma relationnel, les mesures seraient dans une table mesures (capteur_id, h, v) ; la jointure capteurs JOIN mesures donne une ligne par mesure, comme $unwind donne un document par mesure.
 
-mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le driver Node du TP2 et du projet, passent toujours un tableau : prendre dès maintenant l'habitude de aggregate([ ... ]).
+mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le pilote Java du TP2 (partie 7) et du projet, passent toujours un tableau (en Java, une List d'étapes : aggregate(List.of(Aggregates.match(...), ...))) : prendre dès maintenant l'habitude de aggregate([ ... ]).
 
 Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piece à la chaîne "$piece" et ne renvoie aucun document, alors que chaque capteur a bien une pièce. Comparer deux champs d'un même document demande $expr, hors programme ici.
 -->
@@ -1218,7 +1218,7 @@ Les messages d'erreur ont été obtenus sur MongoDB 9.0.4 :
 - $projection : « Unrecognized pipeline stage name: '$projection' » ;
 - $piece en clé : « Invalid $project :: caused by :: ... FieldPath field names may not start with '$', given '$piece'. »
 
-mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le driver Node du TP2 et du projet, passent toujours un tableau.
+mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le pilote Java du TP2 (partie 7) et du projet, passent toujours un tableau.
 
 Le playground suffit pour construire un pipeline : le squelette commenté de chaque exercice de la partie 7 est fait pour être complété étape par étape. Ne pas laisser un aggregate([]) vide sous la réponse.
 
