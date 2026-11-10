@@ -771,7 +771,7 @@ Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piec
 
 <img src="assets/schemas/s2-pipeline.svg" alt="Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre." style="display:block; width:100%; margin:0.6em auto 0;">
 
-<p class="centre" style="margin-top: 1.2rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les trois diapositives suivantes détaillent chaque étape.</span></p>
+<p class="centre" style="margin-top: 0.6rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les trois diapositives suivantes détaillent chaque étape.</span></p>
 
 <!--
 (1 min)
