@@ -736,19 +736,19 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 ---
 
 
-## Un pipeline d'agrégation : quoi et pourquoi
+## Les pipelines d'agrégation
 
-<img src="assets/schemas/s2-pipeline-principe.svg" alt="Sur le serveur MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux. Seul le résultat voyage jusqu'à l'application, une API ou un tableau de bord." style="display:block; width:100%; margin:0.3em auto 0;">
+<img src="assets/schemas/s2-pipeline-principe.svg" alt="Dans le cluster MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux. Seul le résultat voyage jusqu'à l'application, une API ou un tableau de bord." style="display:block; width:100%; margin:0.3em auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem;">
 <div class="box">
 
-**Quoi.** Une suite d'étapes. Chacune reçoit les documents de la précédente, les transforme et passe le résultat à la suivante, comme <code style="white-space: nowrap;">grep | sort | head</code> dans un terminal.
+**C'est quoi ?** Une suite d'étapes. Chacune reçoit les documents de la précédente, les transforme et passe le résultat à la suivante, comme <code style="white-space: nowrap;">grep | sort | head</code> dans un terminal.
 
 </div>
 <div class="box">
 
-**Pourquoi.** `find` sélectionne des documents un par un, sans les combiner : pas de moyenne ni de total par groupe. Le pipeline calcule sur le serveur, et seul le résultat voyage.
+**Pourquoi faire ?** `find` sélectionne des documents un par un, sans les combiner : pas de moyenne ni de total par groupe. Le pipeline calcule dans le cluster, sur les nœuds qui possèdent les données, et seul le résultat voyage.
 
 </div>
 </div>
@@ -757,6 +757,8 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 (1 min 30)
 
 Partir de la question que find ne résout pas : « quelle est la température moyenne de chaque pièce ? ». Avec find, il faudrait rapatrier toutes les mesures dans l'application et faire le calcul en JavaScript : beaucoup de données transférées pour trois nombres. Le pipeline fait ce calcul là où sont les données.
+
+Cluster et pas serveur : si la collection est répartie sur plusieurs nœuds (sharding), chaque nœud exécute ce qu'il peut du pipeline sur sa part des données, par exemple, pour un $avg dans un $group, une somme et un nombre de valeurs partiels, puis les résultats partiels sont fusionnés. Seul ce qui est nécessaire circule entre les nœuds, et seul le résultat final part vers l'application.
 
 Le parallèle avec le shell : cat mesures.txt | grep temperature | sort | head -5. Chaque commande lit la sortie de la précédente ; une étape d'agrégation lit les documents produits par l'étape d'avant. Le nombre de documents peut baisser (filtrer), monter (découper un tableau) ou se resserrer (regrouper).
 

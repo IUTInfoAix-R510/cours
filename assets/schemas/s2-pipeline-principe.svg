@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 304" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Un pipeline d'agrégation : sur le serveur, les documents de la collection traversent des étapes successives, chacune produisant un nouveau flux ; seul le résultat est envoyé à l'application</title>
+  <title id="t">Un pipeline d'agrégation : dans le cluster, les documents de la collection traversent des étapes successives, chacune produisant un nouveau flux ; seul le résultat est envoyé à l'application</title>
   <rect x="2" y="2" width="760" height="300" rx="14" fill="none" stroke="#00684a" stroke-width="2" stroke-dasharray="8 6"/>
-  <text x="22" y="32" font-size="18" font-weight="bold" fill="#00684a">serveur MongoDB</text>
+  <text x="22" y="32" font-size="18" font-weight="bold" fill="#00684a">cluster MongoDB</text>
   <rect x="30" y="72.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
   <line x1="38" y1="80.5" x2="62" y2="80.5" stroke="#9fb3c6" stroke-width="2"/>
   <line x1="38" y1="86.5" x2="56" y2="86.5" stroke="#9fb3c6" stroke-width="2"/>
