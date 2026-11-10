@@ -923,7 +923,15 @@ Plus tard dans un pipeline, après $group, un $match filtre les groupes : c'est 
 
 ## Étape 2 : `$unwind`
 
-<div class="cols" style="grid-template-columns: 1fr 1.25fr; align-items: center;">
+<style scoped>
+.cols { margin-top: 0.6rem; }
+ul { margin-top: 1.1rem; }
+li { margin: 0.4em 0; }
+.cols > div:first-child { display: flex; }
+.cols > div:first-child pre { flex: 1; margin: 0; display: grid; align-content: center; }
+</style>
+
+<div class="cols" style="grid-template-columns: 1fr 1.25fr; align-items: stretch;">
 <div>
 
 ```js
@@ -931,15 +939,10 @@ db.capteurs.aggregate([
   { $match: { type: "temperature" } },
   { $unwind: "$mesures" }
 ])
-```
 
-<div class="res">
-
-```js
 // 9 documents : 3 + 2 + 1 + 3
 ```
 
-</div>
 </div>
 <div>
 
