@@ -1236,9 +1236,14 @@ Les messages du correcteur automatique dans ce cas : « Cet exercice demande un 
 
 ## À vous : la séance 2
 
+<style scoped>
+.cols > div { display: flex; flex-direction: column; }
+.cols > div > .warn { margin-top: auto; height: 116px; box-sizing: border-box; }
+</style>
+
 **Énoncé :** [iutinfoaix-r510.github.io/tp1](https://iutinfoaix-r510.github.io/tp1/), section « Séance 2 »
 
-<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
+<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: stretch;">
 <div>
 
 1. Questions de modélisation : **5 min**, à deux
