@@ -740,7 +740,7 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 
 <img src="assets/schemas/s2-pipeline-principe.svg" alt="Dans le cluster MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux. Seul le résultat voyage jusqu'à l'application, une API ou un tableau de bord." style="display:block; width:100%; margin:0.3em auto 0;">
 
-<div class="cols" style="margin-top: 0.4rem;">
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
 <div class="box">
 
 **C'est quoi ?** Une suite d'étapes. Chacune reçoit les documents de la précédente, les transforme et passe le résultat à la suivante, comme <code style="white-space: nowrap;">grep | sort | head</code> dans un terminal.
