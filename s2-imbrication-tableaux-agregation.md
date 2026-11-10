@@ -438,22 +438,21 @@ Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré
 
 ## `$set` et la notation pointée
 
-```js
-// recette de départ
-{ _id: "R1", nom: "Crêpes", auteur: { pseudo: "lea13", ville: "Aix" },
-  ingredients: [ { nom: "farine", qte: 250, unite: "g" },
-                 { nom: "lait", qte: 500, unite: "ml" },
-                 { nom: "oeufs", qte: 3, unite: "pièce" } ] }
-```
+<p class="petit" style="margin-bottom: 0.3rem;"><b>Objectif</b> : l'auteur de la recette R1 a déménagé. On veut passer sa ville de « Aix » à « Marseille », <b>sans toucher au reste</b> du document imbriqué <code>auteur</code>.</p>
 
 ```js
-db.recettes.updateOne({ _id: "R1" }, <mise à jour>)   // deux essais, chacun sur la recette de départ
+{ _id: "R1", nom: "Crêpes", auteur: { pseudo: "lea13", ville: "Aix" }, ingredients: [ … ] }
+
+db.recettes.updateOne({ _id: "R1" },        // 1er argument, le filtre : quel document
+                      { $set: { … } })      // 2e argument, la mise à jour : quoi changer
 ```
+
+<p class="petit" style="margin: 0.2rem 0 0 0;">Deux façons d'écrire ce <code>$set</code>, essayées chacune sur la recette de départ :</p>
 
 <img src="assets/schemas/s2-set-pointee.svg" alt="Avant : auteur vaut { pseudo: lea13, ville: Aix }. Avec $set sur auteur.ville, seul ville passe à Marseille et pseudo reste. Avec $set sur auteur, le document imbriqué entier est remplacé : il ne reste que ville: Marseille, pseudo a disparu." style="display: block; margin: 0.6em auto 0; width: 100%;">
 
 <!--
-Les deux mises à jour ont été exécutées l'une après l'autre sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
+Lire l'objectif d'abord : on modifie un champ d'un document imbriqué. Les deux mises à jour du schéma ont été exécutées chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
 
 Pour rejouer (essais.mongodb.js) ; le script remet aussi la recette dans son état de départ entre deux démos :
 
