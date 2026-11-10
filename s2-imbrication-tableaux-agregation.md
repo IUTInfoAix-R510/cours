@@ -1134,7 +1134,7 @@ Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers docume
 
 ---
 
-## Écrire un pipeline sans se piéger
+## Écrire un pipeline sans se tromper
 
 <div class="cols" style="grid-template-columns: 1fr 1.1fr;">
 <div class="petit">
