@@ -1,0 +1,82 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$group : les 9 mesures sont rangées par pièce, puis chaque groupe donne un document</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <g font-size="18" fill="#555" text-anchor="middle">
+    <text x="120" y="20">en entrée : 9 documents</text>
+    <text x="485" y="20">rangés par <tspan font-family="monospace" fill="#00684a" font-weight="bold">_id: "$piece"</tspan></text>
+    <text x="955" y="20">en sortie : 1 document par groupe</text>
+  </g>
+  <path d="M240,49 C290,49 290,77.0 336,77.0" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,80 C290,80 290,77.0 336,77.0" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,111 C290,111 290,77.0 336,77.0" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,142 C290,142 290,171.0 336,171.0" fill="none" stroke="#e8a838" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,173 C290,173 290,171.0 336,171.0" fill="none" stroke="#e8a838" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,204 C290,204 290,77.0 336,77.0" fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,235 C290,235 290,265.0 336,265.0" fill="none" stroke="#8e44ad" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,266 C290,266 290,265.0 336,265.0" fill="none" stroke="#8e44ad" stroke-width="2.2" stroke-opacity="0.85"/>
+  <path d="M240,297 C290,297 290,265.0 336,265.0" fill="none" stroke="#8e44ad" stroke-width="2.2" stroke-opacity="0.85"/>
+  <rect x="2" y="36" width="238" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="56" font-size="17" fill="#333">Salon</text><text x="112" y="56" font-family="monospace" font-size="17" fill="#333">v: 19.5</text>
+  <rect x="2" y="67" width="238" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="87" font-size="17" fill="#333">Salon</text><text x="112" y="87" font-family="monospace" font-size="17" fill="#333">v: 21</text>
+  <rect x="2" y="98" width="238" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="118" font-size="17" fill="#333">Salon</text><text x="112" y="118" font-family="monospace" font-size="17" fill="#333">v: 22.5</text>
+  <rect x="2" y="129" width="238" height="26" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="14" y="149" font-size="17" fill="#333">Cuisine</text><text x="112" y="149" font-family="monospace" font-size="17" fill="#333">v: 18</text>
+  <rect x="2" y="160" width="238" height="26" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="14" y="180" font-size="17" fill="#333">Cuisine</text><text x="112" y="180" font-family="monospace" font-size="17" fill="#333">v: 23</text>
+  <rect x="2" y="191" width="238" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="211" font-size="17" fill="#333">Salon</text><text x="112" y="211" font-family="monospace" font-size="17" fill="#333">v: 20</text>
+  <rect x="2" y="222" width="238" height="26" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="14" y="242" font-size="17" fill="#333">Chambre</text><text x="112" y="242" font-family="monospace" font-size="17" fill="#333">v: 17</text>
+  <rect x="2" y="253" width="238" height="26" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="14" y="273" font-size="17" fill="#333">Chambre</text><text x="112" y="273" font-family="monospace" font-size="17" fill="#333">v: 17.5</text>
+  <rect x="2" y="284" width="238" height="26" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="14" y="304" font-size="17" fill="#333">Chambre</text><text x="112" y="304" font-family="monospace" font-size="17" fill="#333">v: 18</text>
+  <rect x="338" y="36" width="296" height="82" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="352" y="62" font-family="monospace" font-size="17" fill="#333">_id: "Salon"</text>
+  <rect x="352" y="76" width="60" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="382" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">19.5</text>
+  <rect x="420" y="76" width="60" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="450" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">21</text>
+  <rect x="488" y="76" width="60" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="518" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">22.5</text>
+  <rect x="556" y="76" width="60" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="586" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">20</text>
+  <line x1="640" y1="77.0" x2="742" y2="77.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <rect x="750" y="36" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="764" y="67">{ _id: "Salon",</text>
+    <text x="784" y="98">moyenne: 20.75, max: 22.5, nb: 4 }</text>
+  </g>
+  <rect x="338" y="130" width="296" height="82" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="352" y="156" font-family="monospace" font-size="17" fill="#333">_id: "Cuisine"</text>
+  <rect x="352" y="170" width="60" height="30" rx="6" fill="#fff" stroke="#e8a838" stroke-width="1.8"/>
+  <text x="382" y="191" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">18</text>
+  <rect x="420" y="170" width="60" height="30" rx="6" fill="#fff" stroke="#e8a838" stroke-width="1.8"/>
+  <text x="450" y="191" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">23</text>
+  <line x1="640" y1="171.0" x2="742" y2="171.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <rect x="750" y="130" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="764" y="161">{ _id: "Cuisine",</text>
+    <text x="784" y="192">moyenne: 20.5, max: 23, nb: 2 }</text>
+  </g>
+  <rect x="338" y="224" width="296" height="82" rx="10" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="352" y="250" font-family="monospace" font-size="17" fill="#333">_id: "Chambre"</text>
+  <rect x="352" y="264" width="60" height="30" rx="6" fill="#fff" stroke="#8e44ad" stroke-width="1.8"/>
+  <text x="382" y="285" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">17</text>
+  <rect x="420" y="264" width="60" height="30" rx="6" fill="#fff" stroke="#8e44ad" stroke-width="1.8"/>
+  <text x="450" y="285" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">17.5</text>
+  <rect x="488" y="264" width="60" height="30" rx="6" fill="#fff" stroke="#8e44ad" stroke-width="1.8"/>
+  <text x="518" y="285" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">18</text>
+  <line x1="640" y1="265.0" x2="742" y2="265.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <rect x="750" y="224" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="764" y="255">{ _id: "Chambre",</text>
+    <text x="784" y="286">moyenne: 17.5, max: 18, nb: 3 }</text>
+  </g>
+</svg>

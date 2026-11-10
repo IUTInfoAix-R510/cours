@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Les deux séances d'Alien : avec deux conditions séparées, chacune est vraie pour une séance différente et Alien est renvoyé ; avec $elemMatch, aucune séance ne vérifie les deux et Alien est écarté</title>
+  <style>
+    .c { font-size: 18px; fill: #333; }
+    .t { font-size: 20px; font-weight: bold; }
+    .ok { fill: #00684a; font-weight: bold; }
+    .ko { fill: #c0392b; font-weight: bold; }
+    .r { font-size: 18px; font-weight: bold; }
+  </style>
+
+  <text class="t" x="2" y="22" fill="#333">Les séances d'Alien</text>
+
+  <!-- séances -->
+  <rect x="2" y="34" width="266" height="92" rx="8" fill="#f0f4f8" stroke="#00684a" stroke-width="2"/>
+  <text class="c" x="18" y="60">salle: "A"</text>
+  <text class="c" x="18" y="86">vo: true</text>
+  <text class="c" x="18" y="112">places: 0</text>
+  <rect x="292" y="34" width="266" height="92" rx="8" fill="#f0f4f8" stroke="#00684a" stroke-width="2"/>
+  <text class="c" x="308" y="60">salle: "B"</text>
+  <text class="c" x="308" y="86">vo: false</text>
+  <text class="c" x="308" y="112">places: 35</text>
+
+  <!-- conditions séparées -->
+  <rect x="2" y="144" width="556" height="126" rx="10" fill="#fff8ec" stroke="#e8a838" stroke-width="2"/>
+  <text class="t" x="18" y="172" fill="#b06f00">Deux conditions séparées</text>
+  <text class="c" x="135" y="210" text-anchor="middle">vo: true <tspan class="ok">✓</tspan></text>
+  <text class="c" x="425" y="210" text-anchor="middle">places &gt; 0 <tspan class="ok">✓</tspan></text>
+  <text class="r" x="18" y="252" fill="#b06f00">→ une séance pour chaque condition : Alien renvoyé</text>
+
+  <!-- $elemMatch -->
+  <rect x="2" y="286" width="556" height="132" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text class="t" x="18" y="314" fill="#00684a">$elemMatch : la même séance</text>
+  <text class="c" x="135" y="352" text-anchor="middle">vo <tspan class="ok">✓</tspan>   places <tspan class="ko">✗</tspan></text>
+  <text class="c" x="425" y="352" text-anchor="middle">vo <tspan class="ko">✗</tspan>   places <tspan class="ok">✓</tspan></text>
+  <text class="r" x="18" y="396" fill="#00684a">→ aucune séance ne vérifie les deux : Alien écarté</text>
+</svg>

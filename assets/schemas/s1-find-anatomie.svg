@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 200" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Anatomie de db.films.find : la collection, le filtre et la projection, avec leur équivalent SQL</title>
+
+  <!-- cadres du filtre et de la projection -->
+  <rect x="332" y="18" width="286" height="56" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="3"/>
+  <rect x="638" y="18" width="376" height="56" rx="8" fill="#f0f4f8" stroke="#e8a838" stroke-width="3"/>
+  <!-- soulignement de la collection -->
+  <line x1="124" y1="66" x2="214" y2="66" stroke="#13aa52" stroke-width="4"/>
+
+  <!-- la requête -->
+  <g font-family="monospace" font-size="30" fill="#333">
+    <text x="70" y="56" textLength="252" lengthAdjust="spacingAndGlyphs">db.films.find(</text>
+    <text x="340" y="56" textLength="270" lengthAdjust="spacingAndGlyphs">{ annee: 2001 }</text>
+    <text x="616" y="56">,</text>
+    <text x="646" y="56" textLength="360" lengthAdjust="spacingAndGlyphs">{ _id: 0, titre: 1 }</text>
+    <text x="1022" y="56">)</text>
+  </g>
+
+  <!-- traits de rappel -->
+  <g stroke-width="2.5">
+    <line x1="169" y1="70" x2="169" y2="94" stroke="#13aa52"/>
+    <line x1="475" y1="74" x2="475" y2="94" stroke="#4a90d9"/>
+    <line x1="826" y1="74" x2="826" y2="94" stroke="#e8a838"/>
+  </g>
+
+  <!-- étiquettes -->
+  <g text-anchor="middle">
+    <text x="169" y="122" font-size="22" font-weight="bold" fill="#333">collection</text>
+    <text x="169" y="152" font-size="19" font-family="monospace" fill="#555">FROM films</text>
+
+    <text x="475" y="122" font-size="22" font-weight="bold" fill="#333">filtre : quels documents</text>
+    <text x="475" y="152" font-size="19" font-family="monospace" fill="#555">WHERE annee = 2001</text>
+    <text x="475" y="182" font-size="19" fill="#555"><tspan font-family="monospace">{}</tspan> : tous les documents</text>
+
+    <text x="826" y="122" font-size="22" font-weight="bold" fill="#333">projection : quels champs</text>
+    <text x="826" y="152" font-size="19" font-family="monospace" fill="#555">SELECT titre</text>
+    <text x="826" y="182" font-size="19" fill="#555"><tspan font-family="monospace">1</tspan> garde, <tspan font-family="monospace">0</tspan> exclut</text>
+  </g>
+</svg>

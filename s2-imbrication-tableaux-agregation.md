@@ -1,0 +1,927 @@
+---
+marp: true
+theme: default
+paginate: true
+lang: fr
+title: "Séance 2 : documents imbriqués, tableaux, agrégation"
+description: "R5.Real.10, point cours de la séance 2 (TP1, parties 5 à 7)"
+---
+
+<style>
+section {
+  font-size: 27px;
+  padding: 44px 60px 50px 60px;
+  place-content: start !important;
+}
+section.lead { place-content: safe center center !important; }
+h1 { color: #00684a; }
+h2 { color: #00684a; margin: 0 0 0.45em 0; font-size: 1.45em; }
+header { font-size: 15px; color: #5c6c75; top: 14px; }
+pre { font-size: 0.66em; line-height: 1.35; margin: 0.3em 0; }
+table { font-size: 0.78em; }
+ul { margin: 0.2em 0; }
+li { margin: 0.12em 0; }
+.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; align-items: start; }
+.cols-62 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.2rem; align-items: start; }
+.cols-38 { display: grid; grid-template-columns: 1fr 1.6fr; gap: 1.2rem; align-items: start; }
+.box { background: #e3f4ee; border-left: 5px solid #00a35c; padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.8em; margin-top: 0.5rem; }
+.warn { background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.8em; margin-top: 0.5rem; }
+.res pre { background: #eef6f2; border-left: 4px solid #00a35c; }
+.err pre { background: #fdeeee; border-left: 4px solid #c0392b; }
+.etiquette { font-size: 0.62em; color: #5c6c75; text-transform: uppercase; letter-spacing: 0.06em; margin: 0.4em 0 0 0; }
+.legende { font-size: 14px; color: #5c6c75; margin-top: 0.2rem; }
+.petit { font-size: 0.8em; }
+.centre { text-align: center; }
+</style>
+
+<!-- _class: lead -->
+<!-- _paginate: false -->
+
+<style scoped>
+section {
+  background-image: url('assets/logo.png');
+  background-repeat: no-repeat;
+  background-position: bottom 40px center;
+  background-size: 380px;
+}
+h1 { font-size: 1.9em; }
+</style>
+
+# Documents imbriqués, tableaux et premiers pipelines
+
+**R5.Real.10 - Nouveaux paradigmes de base de données**
+
+Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
+
+<!--
+Le point cours se fait en deux temps.
+
+Premier temps, en début de séance : diapos 2 à 14 en 15 minutes. Les questions de modélisation prennent place après la diapo 4 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 20 lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 15 à 19, 8 minutes.
+
+Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
+
+Les exemples portent sur des films, une recette et des capteurs, pas sur les données du TP. Ils ont tous été exécutés sur MongoDB 9.0.4, et les résultats affichés sont ceux obtenus. Le script d'insertion de chaque jeu d'exemples est dans les notes de la diapositive qui le présente. Pour les rejouer en direct, le coller dans essais.mongodb.js : les démos tournent dans une base à part, demo (use('demo')), que le correcteur automatique ne lit pas, et chaque script commence par vider sa collection, si bien qu'on peut le relancer.
+-->
+
+---
+
+<!-- header: Séance 2 · la médiathèque -->
+
+## La médiathèque
+
+<div class="cols-62">
+<div>
+
+<img src="assets/schemas/s2-mediatheque.svg" alt="Un livre de la collection livres (L06, Dune) : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un exemplaire (troisième niveau). Un membre de la collection membres (M12) : emprunts est un tableau de documents." style="display:block; width:100%; max-height:560px; margin:0 auto;">
+
+</div>
+<div>
+
+<div class="petit">
+
+**Au programme**
+
+- Partie 5 : interroger (ex. 26 à 32)
+- Partie 6 : modifier (ex. 33 à 38)
+- Partie 7 : agréger (ex. 39 à 43)
+
+Même dépôt, même playground, même base `tp1`.
+
+</div>
+
+<div class="box">
+
+Au **TP4**, la même médiathèque passe dans **Neo4j**, avec les mêmes identifiants (`L06`, `M13`...). Plusieurs questions de ce TP y seront reposées en Cypher.
+
+</div>
+</div>
+</div>
+
+<!--
+La séance 2 se fait dans le même dépôt que la séance 1, sur deux nouvelles collections. Les exercices de la séance 2 ne dépendent pas des réponses de la séance 1 : le correcteur automatique part toujours de l'état attendu. Ceux qui n'ont pas fini la séance 1 commencent quand même la partie 5 et reviendront aux exercices manquants plus tard.
+
+Faire lire le modèle à voix haute : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un élément de ce tableau. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
+
+Pour le lien avec le TP4 : les mêmes livres et les mêmes membres deviendront des nœuds, et les emprunts et parrainages des relations. Ne pas répondre ici aux questions de modélisation 4 et 5 (chaîne de parrainage, « lecteurs de Dune ») : la comparaison se fera au TP4.
+-->
+
+---
+
+## Embarquer ou référencer
+
+<div class="centre">
+
+![w:740](assets/mongodb-academia/embarquer-ou-referencer-blog.png)
+
+</div>
+
+<p class="legende centre">Schéma : MongoDB for Academia, <em>MongoDB 101: Non-Relational for Beginners</em>, diapo 35, CC BY-NC-SA 3.0</p>
+
+<p class="petit">À gauche, les commentaires sont <b>embarqués</b> dans l'article : un seul <code>find</code> lit tout. À droite, ils sont <b>référencés</b> : chaque commentaire porte l'<code>_id</code> de l'article (<code>blog_id</code>), comme une clé étrangère.</p>
+
+<!--
+Vocabulaire de la diapositive d'origine : Embedded = embarqué, Linked = référencé.
+
+En SQL, on aurait deux tables et une jointure. En MongoDB, on a le choix, et ce choix dépend de la façon dont l'application lit et écrit les données, pas seulement de leur structure : le schéma part des besoins de l'application.
+
+L'énoncé du TP1 détaille ce choix dans « Modéliser la médiathèque », et le TP3 y revient avec les patterns de conception.
+-->
+
+---
+
+## Trois sortes de relations
+
+<img src="assets/schemas/s2-relations.svg" alt="Trois sortes de relations, dont la 1-N en deux cas, et le choix le plus courant : 1-1, une personne et son adresse postale, embarquer le document ; 1-N avec peu d'éléments, un client et ses adresses de livraison, embarquer un tableau ; 1-N sans limite, un capteur et ses mesures, référencer avec l'_id du capteur dans chaque mesure ; N-N, des étudiants et des cours, un tableau d'_id d'un côté ou des deux." style="display:block; width:100%; max-height:330px; margin:0 auto 0.3em auto;">
+
+<p class="petit"><b>Pour trancher</b> : les données se lisent-elles ensemble ? Le nombre d'éléments est-il petit et borné ? La donnée change-t-elle souvent sans son parent ? Est-elle partagée par beaucoup de documents ?</p>
+
+<p class="legende">D'après MongoDB for Academia, <em>MongoDB 101: Non-Relational for Beginners</em>, diapos 36 et 38 à 47, CC BY-NC-SA 3.0 (adapté)</p>
+
+<div class="warn">
+
+**Questions de modélisation** : 5 min, à deux, avant la partie 5 (non notées).
+
+</div>
+
+<!--
+Lire le tableau, puis les quatre questions : une réponse « oui » aux deux premières pousse à embarquer, une réponse « oui » aux deux dernières à référencer, ou à recopier la donnée en acceptant de modifier toutes les copies.
+
+Laisser vraiment les 5 minutes aux questions de modélisation de l'énoncé. Elles ne sont pas notées ; les réponses vont dans le bloc prévu du playground. Pour le N-N, ne pas donner d'exemple sur les livres et les auteurs : c'est la question de modélisation 2.
+
+Mise en commun (3 minutes), sur les questions 1 à 3 seulement ; les questions 4 et 5 restent ouvertes jusqu'au TP4. Points à faire sortir pendant la mise en commun, pas avant :
+- Embarquer, c'est parfois recopier : la même donnée vit dans plusieurs documents. Une lecture devient simple, une modification doit toucher toutes les copies.
+- La duplication existe en SQL (dénormalisation), mais ici elle est le choix par défaut. Elle est voulue dans la médiathèque, et la partie 6 en montre le prix.
+- Un document BSON ne dépasse pas 16 Mo : un tableau qui grandit sans fin finit par bloquer. https://www.mongodb.com/docs/manual/reference/limits/
+-->
+
+---
+
+<!-- header: Partie 5 · interroger -->
+
+## Des films pour les exemples
+
+```js
+{ _id: "F1", titre: "Alien", annee: 1979,
+  realisation: { nom: "Scott", pays: "Royaume-Uni" },
+  genres: ["SF", "Horreur"],
+  seances: [ { salle: "A", vo: true,  places: 0 },
+             { salle: "B", vo: false, places: 35 } ] }
+```
+
+| `_id` | titre | realisation | genres | seances |
+|---|---|---|---|---|
+| F2 | Blade Runner | Scott, Royaume-Uni | SF, Policier | A : VO, 12 places |
+| F3 | Le Voyage de Chihiro | Miyazaki, Japon | Animation, Fantastique | C : VO, 4 places · C : VF, 0 place |
+| F4 | Les Dents de la mer | Spielberg, États-Unis | Horreur, Aventure, Thriller | aucune : `[]` |
+
+<p class="petit">Les requêtes qui suivent renvoient le titre : <code>db.films.find(&lt;filtre&gt;, { _id: 0, titre: 1 })</code>.</p>
+
+<!--
+Un document représente un film. On l'écrit avec la notation des objets JavaScript : pas de guillemets autour des clés simples. MongoDB le stocke en BSON.
+
+realisation est un document imbriqué, genres un tableau de valeurs, seances un tableau de documents : les trois formes de la médiathèque, sur d'autres données.
+
+Pour rejouer les exemples, dans essais.mongodb.js (jamais dans le playground noté, jamais sur livres ou membres) :
+
+use('demo');
+db.films.deleteMany({});
+db.films.insertMany([
+  { _id: "F1", titre: "Alien", annee: 1979,
+    realisation: { nom: "Scott", pays: "Royaume-Uni" },
+    genres: ["SF", "Horreur"],
+    seances: [ { salle: "A", vo: true, places: 0 }, { salle: "B", vo: false, places: 35 } ] },
+  { _id: "F2", titre: "Blade Runner", annee: 1982,
+    realisation: { nom: "Scott", pays: "Royaume-Uni" },
+    genres: ["SF", "Policier"],
+    seances: [ { salle: "A", vo: true, places: 12 } ] },
+  { _id: "F3", titre: "Le Voyage de Chihiro", annee: 2001,
+    realisation: { nom: "Miyazaki", pays: "Japon" },
+    genres: ["Animation", "Fantastique"],
+    seances: [ { salle: "C", vo: true, places: 4 }, { salle: "C", vo: false, places: 0 } ] },
+  { _id: "F4", titre: "Les Dents de la mer", annee: 1975,
+    realisation: { nom: "Spielberg", pays: "États-Unis" },
+    genres: ["Horreur", "Aventure", "Thriller"],
+    seances: [] }
+]);
+
+Sans sort, l'ordre des résultats n'est pas garanti : ceux des diapositives suivantes sont dans l'ordre obtenu sur MongoDB 9.0.4.
+-->
+
+---
+
+## La notation pointée
+
+<div class="cols">
+<div>
+
+```js
+db.films.find(
+  { "realisation.pays": "Japon" },
+  { _id: 0, titre: 1 }
+)
+```
+
+<div class="res">
+
+```js
+[ { titre: "Le Voyage de Chihiro" } ]
+```
+
+</div>
+
+<img src="assets/schemas/s2-notation-pointee.svg" alt="Arbre du film F3 : le chemin realisation.pays descend dans le document imbriqué realisation jusqu'à pays, qui vaut Japon ; le chemin seances.places traverse le tableau seances et vise le champ places de chaque séance (4 et 0)." style="display:block; width:100%; max-height:250px; margin:0.5em auto 0 auto;">
+
+</div>
+<div>
+
+**Les guillemets sont obligatoires**
+
+```js
+db.films.find({ realisation.nom: "Scott" })
+```
+
+<div class="err">
+
+```text
+SyntaxError: Unexpected token, expected "," (1:27)
+```
+
+</div>
+
+<p class="petit">Une clé simple s'écrit sans guillemets (<code>titre</code>), une clé qui contient un point toujours avec (<code>"realisation.nom"</code>).</p>
+
+<p class="petit">La notation pointée sert aussi dans <code>sort</code> et dans la projection.</p>
+
+</div>
+</div>
+
+<!--
+Lire le schéma : on enchaîne les noms de champ sur autant de niveaux qu'il faut ("a.b.c") ; à travers un tableau, le chemin vise le champ de chaque élément, et un seul élément qui vérifie la condition suffit.
+
+L'erreur vient de JavaScript, avant même d'atteindre le serveur : sans guillemets, realisation.nom est lu comme un accès à une propriété, pas comme une clé. Elle se produit à l'identique dans mongosh et dans le playground.
+-->
+
+---
+
+## Document imbriqué : égalité exacte ou champ
+
+```js
+db.films.find({ realisation: { nom: "Scott" } })                       // []
+db.films.find({ realisation: { nom: "Scott", pays: "Royaume-Uni" } })  // Alien, Blade Runner
+db.films.find({ realisation: { pays: "Royaume-Uni", nom: "Scott" } })  // []
+db.films.find({ "realisation.nom": "Scott" })                          // Alien, Blade Runner
+```
+
+<img src="assets/schemas/s2-egalite-ou-champ.svg" alt="Lignes 1 à 3 : le filtre { realisation: { ... } } compare le document imbriqué entier d'Alien, nom: Scott puis pays: Royaume-Uni. Ligne 1, pays absent : pas de résultat. Ligne 2, identique : résultat. Ligne 3, ordre inversé : pas de résultat. Ligne 4 : realisation.nom ne teste que nom et ignore pays : un seul champ testé, presque toujours le bon choix." style="display:block; width:100%; max-height:330px; margin:0.5em auto 0 auto;">
+
+<!--
+Les quatre requêtes ont été exécutées avec la projection { _id: 0, titre: 1 }, omise ici pour la lisibilité. Les commentaires donnent les titres obtenus.
+
+Encadré de la partie 5 de l'énoncé : il signale ce piège. La troisième ligne surprend toujours, avec les deux mêmes champs dans un autre ordre et plus aucun résultat.
+
+Le même piège existe sur les tableaux : diapositive suivante.
+-->
+
+---
+
+## Tableaux de valeurs
+
+```js
+db.films.find({ genres: "Horreur" })                     // Alien, Les Dents de la mer
+db.films.find({ genres: ["SF", "Horreur"] })             // Alien
+db.films.find({ genres: ["Horreur", "SF"] })             // []
+db.films.find({ genres: { $all: ["Horreur", "SF"] } })   // Alien
+db.films.find({ "seances.0.places": 0 })                 // Alien
+```
+
+- Une valeur seule : le tableau **contient** cette valeur.
+- Un tableau : égalité **exacte**, ordre compris.
+- `$all` : contient toutes ces valeurs, dans n'importe quel ordre.
+- `"seances.0"` : l'élément d'indice 0, le premier.
+
+<!--
+Projection { _id: 0, titre: 1 } omise ici aussi ; les commentaires donnent les titres obtenus.
+
+Faire le parallèle avec la diapositive précédente : un tableau écrit dans le filtre demande une égalité exacte, comme un document imbriqué.
+
+La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tableau a au moins deux éléments. L'opérateur $size compte les éléments d'un tableau dans un pipeline (partie 7, diapo 19).
+-->
+
+---
+
+## Tableau de documents : le piège des deux conditions
+
+<div class="cols">
+<div>
+
+**Deux conditions séparées**
+
+```js
+db.films.find({ "seances.vo": true,
+                "seances.places": { $gt: 0 } })
+```
+
+<div class="res">
+
+```js
+[ { titre: "Alien" }, { titre: "Blade Runner" },
+  { titre: "Le Voyage de Chihiro" } ]
+```
+
+</div>
+
+**`$elemMatch` : un même élément**
+
+```js
+db.films.find({ seances: { $elemMatch:
+    { vo: true, places: { $gt: 0 } } } })
+```
+
+<div class="res">
+
+```js
+[ { titre: "Blade Runner" },
+  { titre: "Le Voyage de Chihiro" } ]
+```
+
+</div>
+</div>
+<div>
+
+<img src="assets/schemas/s2-elemmatch.svg" alt="Les deux séances d'Alien : salle A, vo true, 0 place ; salle B, vo false, 35 places. Avec deux conditions séparées, vo: true est vraie pour la séance A et places > 0 pour la séance B : Alien est renvoyé. Avec $elemMatch, aucune séance ne vérifie les deux : Alien est écarté." style="display:block; width:100%; max-height:460px; margin:0 auto;">
+
+</div>
+</div>
+
+<!--
+Note de la partie 5 de l'énoncé. Retenir le sens « requête » de $elemMatch : deux conditions qui doivent porter sur le même élément, c'est $elemMatch.
+
+$elemMatch sert aussi dans le filtre d'une mise à jour, dès la partie 6.
+-->
+
+---
+
+## Projeter un document imbriqué ou un tableau
+
+<div class="cols">
+<div>
+
+**Projection pointée : l'imbrication reste**
+
+```js
+db.films.find({ _id: "F3" },
+  { _id: 0, titre: 1, "realisation.pays": 1 })
+```
+
+<div class="res">
+
+```js
+[ { titre: "Le Voyage de Chihiro",
+    realisation: { pays: "Japon" } } ]
+```
+
+</div>
+
+**Expression : le champ remonte**
+
+```js
+db.films.find({ _id: "F3" },
+  { _id: 0, titre: 1, pays: "$realisation.pays" })
+```
+
+<div class="res">
+
+```js
+[ { titre: "Le Voyage de Chihiro", pays: "Japon" } ]
+```
+
+</div>
+</div>
+<div>
+
+**Projection positionnelle `"tableau.$"`**
+
+```js
+db.films.find(
+  { seances: { $elemMatch:
+      { vo: true, places: { $gt: 0 } } } },
+  { _id: 0, titre: 1, "seances.$": 1 })
+```
+
+<div class="res">
+
+```js
+[ { titre: "Blade Runner",
+    seances: [ { salle: "A", vo: true, places: 12 } ] },
+  { titre: "Le Voyage de Chihiro",
+    seances: [ { salle: "C", vo: true, places: 4 } ] } ]
+```
+
+</div>
+
+<p class="petit">Seul le <b>premier</b> élément qui a satisfait le filtre reste. Le filtre doit porter sur ce tableau.</p>
+
+</div>
+</div>
+
+<div class="box">
+
+**Dates** : `ISODate("2026-11-15")`, comparées avec `$lt`, `$gte`... Jamais la date du jour : le résultat changerait d'un jour à l'autre.
+
+</div>
+
+<!--
+Les trois requêtes ont été exécutées sur MongoDB 9.0.4.
+
+Contre-exemple à montrer si le temps le permet : avec les deux conditions séparées de la diapositive précédente, la même projection "seances.$" renvoie pour Alien la séance B (vo: false, places: 35). Cette séance ne vérifie qu'une des deux conditions : le piège revient une seconde fois. Avec plusieurs conditions séparées sur le même tableau, la documentation ne garantit d'ailleurs pas quel élément "tableau.$" garde.
+
+Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré « Les dates » de la partie 5). Les dates de la médiathèque sont à minuit UTC.
+-->
+
+---
+
+<!-- header: Partie 6 · modifier -->
+
+## `$set` et la notation pointée
+
+```js
+// recette de départ
+{ _id: "R1", nom: "Crêpes", auteur: { pseudo: "lea13", ville: "Aix" },
+  ingredients: [ { nom: "farine", qte: 250, unite: "g" },
+                 { nom: "lait", qte: 500, unite: "ml" },
+                 { nom: "oeufs", qte: 3, unite: "pièce" } ] }
+```
+
+```js
+db.recettes.updateOne({ _id: "R1" }, <mise à jour>)   // deux essais, chacun sur la recette de départ
+```
+
+<img src="assets/schemas/s2-set-pointee.svg" alt="Avant : auteur vaut { pseudo: lea13, ville: Aix }. Avec $set sur auteur.ville, seul ville passe à Marseille et pseudo reste. Avec $set sur auteur, le document imbriqué entier est remplacé : il ne reste que ville: Marseille, pseudo a disparu." style="display: block; margin: 0.6em auto 0; width: 100%;">
+
+<!--
+Les deux mises à jour ont été exécutées l'une après l'autre sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
+
+Pour rejouer (essais.mongodb.js) ; le script remet aussi la recette dans son état de départ entre deux démos :
+
+use('demo');
+db.recettes.deleteMany({});
+db.recettes.insertOne({ _id: "R1", nom: "Crêpes",
+  auteur: { pseudo: "lea13", ville: "Aix" },
+  ingredients: [
+    { nom: "farine", qte: 250, unite: "g" },
+    { nom: "lait", qte: 500, unite: "ml" },
+    { nom: "oeufs", qte: 3, unite: "pièce" } ] });
+
+Ne jamais faire ces essais sur livres ou membres ; si c'est arrivé, npm run seed -- --avant N remet la base dans l'état attendu.
+-->
+
+---
+
+## Ajouter et retirer : `$push`, `$pull`
+
+```js
+db.recettes.updateOne({ _id: "R1" },
+  { $push: { ingredients: { nom: "sucre", qte: 30, unite: "g" } } })
+db.recettes.updateOne({ _id: "R1" },
+  { $pull: { ingredients: { qte: { $lt: 100 } } } })
+```
+
+<img src="assets/schemas/s2-push-pull.svg" alt="Le tableau ingredients de la recette : au départ farine 250, lait 500, oeufs 3. Après $push : sucre 30 est ajouté à la fin. Après $pull avec qte inférieure à 100 : oeufs et sucre sont retirés tous les deux, il reste farine et lait." style="display: block; margin: 0.5em auto 0.4em; width: 100%;">
+
+- `$push` ajoute n'importe quelle valeur, y compris un document entier.
+- La condition de `$pull` s'écrit comme un filtre de `find`.
+
+<!--
+Exécutées l'une après l'autre sur la recette de départ. Pour la lisibilité, la diapositive résume le tableau par le nom et la quantité de chaque ingrédient ; le résultat complet contient aussi unite.
+
+Le $pull avec une condition surprend : il ne retire pas « le » premier élément trouvé, mais tous ceux qui la vérifient. Ici les œufs (3) et le sucre (30), deux quantités inférieures à 100.
+
+Rappel de la séance 1 : $push et $inc ne sont pas idempotents. Exécuter deux fois le même $push ajoute deux fois l'élément. Encore une raison d'éviter Ctrl+Alt+R sur tout le playground.
+-->
+
+---
+
+## Modifier un élément précis : l'opérateur `$`
+
+```js
+db.recettes.updateOne(
+  { _id: "R1", "ingredients.nom": "lait" },   // 1.
+  { $set: { "ingredients.$.qte": 600 } }      // 2.
+)
+```
+
+<img src="assets/schemas/s2-positionnel.svg" alt="Le tableau ingredients : farine en position 0, lait en position 1, oeufs en position 2. Le filtre ingredients.nom égal à lait trouve l'élément en position 1 ; dans ingredients.$.qte, $ vaut cette position, et la quantité du lait passe de 500 à 600." style="display: block; margin: 0.3em auto 0.1em; width: 92%;">
+
+- `$` ne vise que le **premier** élément trouvé.
+- Sans condition sur le tableau dans le filtre, MongoDB refuse :
+
+<div class="err">
+
+```text
+MongoServerError: ... The positional operator did not find the match needed from the query.
+```
+
+</div>
+
+<!--
+Exécutée sur la recette de départ. L'erreur a été obtenue avec le filtre { _id: "R1" } seul et la même mise à jour : le message complet commence par « Plan executor error during update :: caused by :: ».
+
+Deux critères sur le même élément : $elemMatch dans le filtre (diapo 9), puis $ dans la mise à jour.
+
+Le $ positionnel s'utilise aussi avec $unset et $inc, et plusieurs champs du même élément peuvent être écrits dans la même mise à jour. Documentation : https://www.mongodb.com/docs/manual/reference/operator/update/positional/
+
+Pour viser tous les éléments qui vérifient une condition, il existe $[<identifiant>] avec arrayFilters (bonus 4) : https://www.mongodb.com/docs/manual/reference/operator/update/positional-filtered/
+-->
+
+---
+
+## Atomicité : un document à la fois
+
+<div class="cols">
+<div>
+
+**Un document : tout ou rien**
+
+```js
+db.recettes.updateOne({ _id: "R1" },
+  { $set: { "auteur.ville": "Marseille" },
+    $push: { ingredients:
+      { nom: "sel", qte: 1, unite: "pincée" } } })
+```
+
+</div>
+<div>
+
+**Deux documents : deux écritures**
+
+```js
+db.recettes.updateOne({ _id: "R1" },
+  { $set: { publiee: true } })
+db.auteurs.updateOne({ _id: "lea13" },
+  { $inc: { nb_publiees: 1 } })
+```
+
+</div>
+</div>
+
+<img src="assets/schemas/s2-atomicite.svg" alt="À gauche, une seule écriture sur la recette R1 applique les deux modifications, auteur.ville et l'ajout du sel, ou aucune. À droite, l'écriture 1 passe publiee à true sur R1, puis une panne survient : l'écriture 2 sur l'auteur lea13 n'a pas lieu, nb_publiees reste à 0. Recette publiée, compteur faux." style="display: block; margin: 0.5em auto 0; width: 100%;">
+
+<div class="warn">
+
+Une donnée recopiée dans deux documents s'écrit en deux fois, sans garantie entre les deux. Les **transactions multi-documents** lèvent ce risque : TP3.
+
+</div>
+
+<!--
+L'encadré « Deux documents, deux écritures » de la partie 6 traite ce point : un emprunt est écrit dans le livre et dans le membre, donc en deux instructions. Ne pas en dire plus sur les exercices 37 et 38.
+
+Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifiedCount: 1 (avec un document { _id: "lea13", nb_publiees: 0 } inséré au préalable dans auteurs).
+-->
+
+---
+
+<!-- header: Partie 7 · agréger -->
+
+## Le pipeline d'agrégation
+
+<div class="cols-62" style="grid-template-columns: 2.1fr 1fr;">
+<div>
+
+```js
+db.capteurs.aggregate([      // un TABLEAU d'étapes
+  { $match: { ... } },       // filtrer               WHERE
+  { $unwind: "$..." },       // un doc. par élément   table « mesures »
+  { $group: { ... } },       // regrouper             GROUP BY
+  { $project: { ... } },     // choisir, calculer     SELECT
+  { $sort: { ... } },        // trier                 ORDER BY
+  { $limit: 5 }              // limiter               LIMIT
+])
+```
+
+- Chaque étape reçoit les documents de la précédente.
+- Une étape peut revenir : un `$match` après `$group` filtre les groupes (`HAVING`).
+- Dans une expression (`$group`, `$project`...), `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
+
+</div>
+<div class="centre">
+
+![h:380](assets/mongodb-academia/pipeline-unwind-group-schema.png)
+
+<p class="legende">Ici : des ventes (<code>sales</code>) traversent deux <code>$unwind</code> puis un <code>$group</code> ; chaque ligne est un document.</p>
+
+<p class="legende">Schéma : MongoDB for Academia, <em>Querying Data with the MongoDB Aggregation Framework</em>, diapo 54, CC BY-NC-SA 3.0 (adapté : recadré)</p>
+
+</div>
+</div>
+
+<!--
+Le schéma d'origine montre une collection sales qui traverse deux $unwind puis un $group : les documents coulent d'une étape à l'autre, comme sur une chaîne de production. Chaque $unwind multiplie les documents, et le $group les rassemble.
+
+Pour l'équivalent SQL de $unwind : une ligne par élément du tableau, comme dans la table mesures (capteur_id, h, v) d'un schéma relationnel.
+
+mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le driver Node du TP2 et du projet, passent toujours un tableau : prendre dès maintenant l'habitude de aggregate([ ... ]).
+
+Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piece à la chaîne "$piece" et ne renvoie aucun document, alors que chaque capteur a bien une pièce. Comparer deux champs d'un même document demande $expr, hors programme ici.
+-->
+
+---
+
+## Étape par étape : `$match`, puis `$unwind`
+
+<div class="cols-38">
+<div>
+
+<p class="etiquette">Données : 5 capteurs, mesures d'une journée</p>
+
+```js
+{ _id: "C1", piece: "Salon",
+  type: "temperature",
+  mesures: [ { h: 8,  v: 19.5 },
+             { h: 12, v: 21 },
+             { h: 18, v: 22.5 } ] }
+```
+
+| | piece | type | mesures |
+|---|---|---|---|
+| C2 | Salon | humidite | 2 |
+| C3 | Cuisine | temperature | 2 |
+| C4 | Salon | temperature | 1 |
+| C5 | Chambre | temperature | 3 |
+
+</div>
+<div>
+
+<p class="etiquette">Étape 1</p>
+
+```js
+db.capteurs.aggregate([
+  { $match: { type: "temperature" } }
+])
+```
+
+<div class="res">
+
+```js
+// 4 documents : C1, C3, C4, C5
+```
+
+</div>
+
+<p class="etiquette">Étape 2 : on ajoute</p>
+
+```js
+  { $unwind: "$mesures" }   // 9 documents
+```
+
+<img src="assets/schemas/s2-unwind.svg" alt="$unwind : le document C1, dont le tableau mesures contient 3 éléments, devient 3 documents de même _id C1, chacun avec une seule mesure dans le champ mesures : h 8 v 19.5, h 12 v 21, h 18 v 22.5. Un document par élément." style="display: block; margin: 0.4em auto 0; width: 100%;">
+</div>
+</div>
+
+<!--
+Un document par élément : 9 en tout pour les 4 capteurs (le champ type est omis dans le schéma).
+
+Après $unwind, mesures n'est plus un tableau : chaque document porte une seule mesure, dans un champ qui garde le même nom. Le même _id apparaît plusieurs fois, ce qui est normal à l'intérieur d'un pipeline.
+
+Un document par capteur et par jour : on retrouvera cette idée au TP3 sous le nom de pattern Bucket. Ici, le nombre de mesures par document est borné, d'où l'embarquement.
+
+Pour rejouer (essais.mongodb.js) :
+
+use('demo');
+db.capteurs.deleteMany({});
+db.capteurs.insertMany([
+  { _id: "C1", piece: "Salon", type: "temperature",
+    mesures: [ { h: 8, v: 19.5 }, { h: 12, v: 21 }, { h: 18, v: 22.5 } ] },
+  { _id: "C2", piece: "Salon", type: "humidite",
+    mesures: [ { h: 8, v: 55 }, { h: 18, v: 48 } ] },
+  { _id: "C3", piece: "Cuisine", type: "temperature",
+    mesures: [ { h: 8, v: 18 }, { h: 12, v: 23 } ] },
+  { _id: "C4", piece: "Salon", type: "temperature",
+    mesures: [ { h: 8, v: 20 } ] },
+  { _id: "C5", piece: "Chambre", type: "temperature",
+    mesures: [ { h: 8, v: 17 }, { h: 12, v: 17.5 }, { h: 18, v: 18 } ] }
+]);
+
+Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt+S, on regarde ; on ajoute l'étape 2, on réexécute, on regarde.
+-->
+
+---
+
+## Étape 3 : `$group` et ses accumulateurs
+
+<div class="cols" style="grid-template-columns: 1.15fr 1fr; align-items: center;">
+<div>
+
+```js
+  { $group: {
+      _id: "$piece",     // clé de regroupement
+      moyenne: { $avg: "$mesures.v" },
+      max: { $max: "$mesures.v" },
+      nb: { $sum: 1 }
+  } }
+```
+
+</div>
+<div class="petit">
+
+- `$sum: 1` compte les documents
+- `$avg`, `$min`, `$max`
+- `$first` : valeur du 1er document
+- `$push` : tableau des valeurs
+- `_id: null` : un seul groupe pour tout
+
+</div>
+</div>
+
+<img src="assets/schemas/s2-group.svg" alt="$group : les 9 documents issus de $unwind sont rangés par pièce. Salon reçoit 19.5, 21, 22.5 et 20 ; Cuisine 18 et 23 ; Chambre 17, 17.5 et 18. Chaque groupe donne un document : Salon moyenne 20.75, max 22.5, nb 4 ; Cuisine moyenne 20.5, max 23, nb 2 ; Chambre moyenne 17.5, max 18, nb 3." style="display: block; margin: 0.5em auto 0; width: 100%;">
+
+<!--
+Un groupe = un document en sortie, avec la clé dans _id. Le Salon a 4 mesures : 3 du capteur C1 et 1 du capteur C4, soit (19.5 + 21 + 22.5 + 20) / 4 = 20.75. Le capteur d'humidité C2 a été écarté par le $match. Les documents d'entrée sont abrégés (champs h et type omis).
+
+Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie 7.
+-->
+
+---
+
+## L'ordre des groupes n'est pas garanti
+
+<div class="cols">
+<div>
+
+Le même pipeline (étapes 1 à 3), exécuté deux fois :
+
+<img src="assets/schemas/s2-ordre-groupes.svg" alt="1re exécution : Cuisine, Salon, Chambre. 2e exécution : Chambre, Salon, Cuisine. Avec $project, puis $sort sur moyenne décroissante en fin de pipeline : Salon 20.8, Cuisine 20.5, Chambre 17.5, le même ordre à chaque exécution." style="display: block; margin: 0.3em auto 0; width: 100%;">
+
+<div class="warn">
+
+Un résultat trié demande un **`$sort` explicite**, en fin de pipeline.
+
+</div>
+</div>
+<div>
+
+<p class="etiquette">Étapes 4 et 5</p>
+
+```js
+  { $project: { _id: 0, piece: "$_id",
+      moyenne: { $round: ["$moyenne", 1] },
+      nb: "$nb" } },
+  { $sort: { moyenne: -1 } }
+```
+
+<div class="res">
+
+```js
+[ { piece: "Salon", moyenne: 20.8, nb: 4 },
+  { piece: "Cuisine", moyenne: 20.5, nb: 2 },
+  { piece: "Chambre", moyenne: 17.5, nb: 3 } ]
+```
+
+</div>
+
+<p class="petit"><code>$project</code> renomme (<code>piece: "$_id"</code>) et calcule (<code>$round</code>).</p>
+
+</div>
+</div>
+
+<!--
+Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Sur un autre poste, il peut encore être différent.
+
+Lien avec le TP : un exercice qui impose un tri et qui reçoit les bons documents dans le mauvais ordre ne rapporte que la moitié des points.
+
+Le pipeline complet de la démo : $match, $unwind, $group, $project, $sort, dans cet ordre. Un { $limit: 2 } ajouté à la fin garde Salon et Cuisine.
+-->
+
+---
+
+## Écrire un pipeline sans se piéger
+
+<div class="cols" style="grid-template-columns: 1fr 1.1fr;">
+<div class="petit">
+
+- **Une étape à la fois** : on l'ajoute, on exécute (sélection + `Ctrl+Alt+S`), on regarde ce qui sort.
+- `aggregate([ ... ])` : toujours un **tableau**, même pour une seule étape.
+- `$project` existe, `$projection` non (Unrecognized pipeline stage name).
+- Le `$` se met dans la **valeur** (`"$mesures.v"`), jamais dans la clé : `$piece: 1` est refusé.
+
+</div>
+<div>
+
+**`$size` : une expression de `$project`**
+
+```js
+db.capteurs.aggregate([
+  { $project: { piece: 1,
+      nb_mesures: { $size: "$mesures" } } }
+])
+```
+
+<div class="res">
+
+```js
+[ { _id: "C1", piece: "Salon", nb_mesures: 3 },
+  { _id: "C2", piece: "Salon", nb_mesures: 2 }, ... ]
+```
+
+</div>
+
+<div class="warn">
+
+`$size` exige un tableau. Sur un champ absent : `The argument to $size must be an array, but was of type: missing`.
+
+</div>
+</div>
+</div>
+
+<div class="warn">
+
+Le **correcteur automatique** note la dernière instruction : **terminez** par <code style="white-space: nowrap">db.&lt;collection&gt;.aggregate([...])</code> (ou `.toArray()`). Un `find` ou un calcul placé après vaut 0.
+
+</div>
+
+<!--
+Les messages d'erreur ont été obtenus sur MongoDB 9.0.4. Pour $piece en clé, le message complet est : « Invalid $project :: caused by :: ... FieldPath field names may not start with '$', given '$piece'. » Pour $size, l'erreur a été obtenue en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
+
+Le playground suffit pour construire un pipeline : le squelette commenté de chaque exercice de la partie 7 est fait pour être complété étape par étape. Ne pas laisser un aggregate([]) vide sous la réponse.
+
+Les messages du correcteur automatique dans ce cas : « Cet exercice demande un pipeline d'agrégation (aggregate) » ou « Terminez la réponse par le pipeline lui-même ».
+-->
+
+---
+
+<!-- header: "" -->
+
+## À vous
+
+<div class="cols">
+<div>
+
+**Énoncé :** [iutinfoaix-r510.github.io/tp1](https://iutinfoaix-r510.github.io/tp1/), section « Séance 2 »
+
+1. Questions de modélisation : 5 min, à deux
+2. Partie 5 : interroger
+3. Partie 6 : modifier
+4. Partie 7 : agréger
+5. **Deuxième rendu** : `r510-rendre` (il lance `npm run check` avant)
+
+<p class="petit">Séance 2 : 18 exercices à 6 points, soit 108 des 208 points. Trois rendus au plus pour tout le TP1.</p>
+
+<p class="petit">Base abîmée : <code>npm run seed -- --avant N</code></p>
+
+</div>
+<div>
+
+**Fin de chaque partie : un quiz**
+
+Dans Copilot Chat, Claude Code ou Codex :
+
+```text
+Fais-moi un quiz sur la notation pointée
+et les requêtes sur les tableaux.
+```
+
+<p class="petit">Les essais vont dans <code>essais.mongodb.js</code>, dans la collection <code>brouillon</code> de <code>tp1</code> ou dans une base à part (<code>use('demo')</code>, sélectionnée avec l'essai). Jamais sous un <code>// Votre réponse :</code>.</p>
+
+</div>
+</div>
+
+<!--
+Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
+
+Les assistants du codespace sont configurés en tuteurs : ils expliquent, proposent un quiz sur d'autres données que celles du TP et le corrigent question par question, mais n'écrivent pas la réponse d'un exercice. Conseil de l'énoncé : pour la partie 7, aller le plus loin possible seul avant de les solliciter.
+
+Autres quiz proposés par l'énoncé : « Fais-moi un quiz sur la mise à jour des documents imbriqués et des tableaux : $push, $pull, l'opérateur positionnel. » et « Fais-moi un quiz sur les pipelines d'agrégation : $match, $unwind, $group, $project, $sort. »
+-->
+
+---
+
+## Crédits
+
+<div class="petit">
+
+**Schémas et contenus repris** de MongoDB for Academia, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) :
+
+- schémas : *MongoDB 101: Non-Relational for Beginners*, diapo 35 (embarquer ou référencer) ; *Querying Data with the MongoDB Aggregation Framework*, diapo 54 (pipeline, recadré)
+- contenus reformulés : *MongoDB 101: Non-Relational for Beginners*, diapos 36 et 38 à 47 (relations et critères de choix)
+
+Détail des reprises : `ATTRIBUTION.md` du dépôt [IUTInfoAix-R510/cours](https://github.com/IUTInfoAix-R510/cours).
+
+**Ce support** : R5.Real.10, IUT d'Aix-Marseille, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr). Exemples (films, recette, capteurs) écrits pour ce cours et exécutés sur MongoDB 9.0.4.
+
+**Pour aller plus loin** : [requêtes sur les documents imbriqués](https://www.mongodb.com/docs/manual/tutorial/query-embedded-documents/) · [sur les tableaux](https://www.mongodb.com/docs/manual/tutorial/query-arrays/) · [opérateur positionnel](https://www.mongodb.com/docs/manual/reference/operator/update/positional/) · [`$[<identifiant>]` et `arrayFilters`](https://www.mongodb.com/docs/manual/reference/operator/update/positional-filtered/) · [pipeline d'agrégation](https://www.mongodb.com/docs/manual/core/aggregation-pipeline/) · [embarquer ou référencer](https://www.mongodb.com/docs/manual/data-modeling/concepts/embedding-vs-references/)
+
+</div>
+
+<!--
+Les présentations d'origine sont en anglais et pensées pour Atlas et l'ancien shell. Les liens sont dans le README du dépôt cours.
+
+Si des étudiants consultent les présentations officielles, voici les passages qui touchent cette séance, avec leurs écarts par rapport au TP (numéros de page de l'export PDF) :
+- MongoDB 101, diapos 31 à 34 : le schéma part des besoins de l'application. Diapo 46 : l'exemple N-N des livres et des auteurs répond à la question de modélisation 2, à ne pas montrer avant la mise en commun.
+- Querying Complex Data with MQL, diapo 38 : { dim_cm.1: { $gt: 25 } } sans guillemets, qui provoque la SyntaxError de la diapo 6. La diapo 36 est cassée. Les tableaux sont traités aux diapos 30-31, 33, 35, 38 et 40, $elemMatch aux diapos 49 à 54, sur une collection inventory.
+- The MongoDB Query Language, diapo 53 : « toutes les écritures sont atomiques » ne vaut que pour un document (Inserting and Updating Data in MongoDB, diapo 43, le dit correctement). Diapo 67 : elle mélange le sens requête et le sens projection de $elemMatch.
+- Aucune présentation ne traite l'opérateur positionnel $ dans une mise à jour.
+- Querying Data with the MongoDB Aggregation Framework, diapos 5 à 9 : aggregate({ $match: ... }) avec une étape seule, sans tableau. Diapos 25 à 28 : { $project: { $field: <expr> } }, refusé par le serveur.
+- The MongoDB Aggregation Framework, diapos 12 à 14 : correspondance avec find, à lire avec $project et non $projection, countDocuments() et non count(). Diapos 34 à 38 : $group sur une collection cow remplie au hasard, résultats non reproductibles ; les diapos 33 et 38 affichent des résultats sans $sort. Diapos 83 à 86 : constructeur de pipeline Compass ou Atlas, absent du codespace.
+- Ne pas rejouer leurs démos (drop() sur inventory ou cow) dans la base tp1.
+-->

@@ -1,0 +1,47 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 500" font-family="sans-serif">
+  <title>Triangle CAP : CP, AP et CA</title>
+  <defs>
+    <marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#b9771a"/>
+    </marker>
+  </defs>
+
+  <!-- côtés -->
+  <line x1="340" y1="60" x2="150" y2="400" stroke="#999" stroke-width="6" stroke-dasharray="12 8"/>
+  <line x1="340" y1="60" x2="530" y2="400" stroke="#13aa52" stroke-width="9"/>
+  <line x1="150" y1="400" x2="530" y2="400" stroke="#e8a838" stroke-width="9"/>
+
+  <!-- lire sur un secondaire : de CP vers AP -->
+  <path d="M 440 240 Q 360 300 392 390" fill="none" stroke="#b9771a" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#fo)"/>
+  <text x="318" y="266" text-anchor="middle" font-size="21" fill="#555">lire sur un</text>
+  <text x="318" y="292" text-anchor="middle" font-size="21" fill="#555">secondaire</text>
+
+  <!-- sommets -->
+  <circle cx="340" cy="60" r="42" fill="#e6f4ee" stroke="#00684a" stroke-width="3"/>
+  <text x="340" y="75" text-anchor="middle" font-size="40" font-weight="bold" fill="#00684a">C</text>
+  <text x="394" y="40" font-size="23" fill="#00684a" font-weight="bold">Cohérence</text>
+
+  <circle cx="150" cy="400" r="42" fill="#e6f4ee" stroke="#00684a" stroke-width="3"/>
+  <text x="150" y="415" text-anchor="middle" font-size="40" font-weight="bold" fill="#00684a">A</text>
+  <text x="150" y="480" text-anchor="middle" font-size="23" fill="#00684a" font-weight="bold">Disponibilité</text>
+
+  <circle cx="530" cy="400" r="42" fill="#e6f4ee" stroke="#00684a" stroke-width="3"/>
+  <text x="530" y="415" text-anchor="middle" font-size="40" font-weight="bold" fill="#00684a">P</text>
+  <text x="530" y="466" text-anchor="middle" font-size="22" fill="#00684a" font-weight="bold">Tolérance</text>
+  <text x="530" y="490" text-anchor="middle" font-size="22" fill="#00684a" font-weight="bold">aux partitions</text>
+
+  <!-- CP -->
+  <text x="462" y="200" font-size="30" font-weight="bold" fill="#13aa52">CP</text>
+  <text x="462" y="230" font-size="22">MongoDB</text>
+  <text x="462" y="256" font-size="21" fill="#555">(par défaut)</text>
+
+  <!-- CA -->
+  <text x="196" y="200" text-anchor="end" font-size="30" font-weight="bold" fill="#777">CA</text>
+  <text x="196" y="230" text-anchor="end" font-size="22">sans partition :</text>
+  <text x="196" y="256" text-anchor="end" font-size="21" fill="#555">un seul serveur</text>
+  <text x="196" y="282" text-anchor="end" font-size="21" fill="#555">(le TP)</text>
+
+  <!-- AP -->
+  <text x="340" y="448" text-anchor="middle" font-size="30" font-weight="bold" fill="#b9771a">AP</text>
+  <text x="340" y="480" text-anchor="middle" font-size="22">Cassandra</text>
+</svg>

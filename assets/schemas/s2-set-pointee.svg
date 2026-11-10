@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 300" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$set avec et sans notation pointée sur le document imbriqué auteur</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- avant -->
+  <text x="120" y="70" text-anchor="middle" font-size="19" fill="#555">avant</text>
+  <rect x="2" y="85" width="236" height="130" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="18" y="116" font-size="20" font-weight="bold" fill="#00684a">auteur</text>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="18" y="155">pseudo: "lea13"</text>
+    <text x="18" y="192">ville: "Aix"</text>
+  </g>
+
+  <!-- flèches -->
+  <path d="M240,150 C280,150 280,75 320,75 L842,75" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <path d="M240,150 C280,150 280,225 320,225 L842,225" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+
+  <g font-family="monospace" font-size="18" fill="#333" text-anchor="middle">
+    <text x="580" y="62">{ $set: { <tspan fill="#13aa52" font-weight="bold">"auteur.ville"</tspan>: "Marseille" } }</text>
+    <text x="580" y="212">{ $set: { <tspan fill="#c0392b" font-weight="bold">auteur</tspan>: { ville: "Marseille" } } }</text>
+  </g>
+  <g font-size="19" text-anchor="middle">
+    <text x="580" y="104" fill="#00684a">notation pointée : seul <tspan font-weight="bold">ville</tspan> change</text>
+    <text x="580" y="254" fill="#c0392b">sans notation pointée : <tspan font-weight="bold">auteur</tspan> est remplacé</text>
+  </g>
+
+  <!-- après A -->
+  <rect x="850" y="10" width="308" height="130" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="866" y="41" font-size="20" font-weight="bold" fill="#00684a">auteur</text>
+  <rect x="860" y="96" width="222" height="30" rx="5" fill="#13aa52" fill-opacity="0.22"/>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="866" y="80">pseudo: "lea13"</text>
+    <text x="866" y="117">ville: "Marseille"</text>
+  </g>
+
+  <!-- après B -->
+  <rect x="850" y="160" width="308" height="130" rx="10" fill="#fdeeee" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="866" y="191" font-size="20" font-weight="bold" fill="#00684a">auteur</text>
+  <rect x="860" y="209" width="222" height="30" rx="5" fill="#13aa52" fill-opacity="0.22"/>
+  <text x="866" y="230" font-family="monospace" font-size="19" fill="#333">ville: "Marseille"</text>
+  <text x="866" y="270" font-family="monospace" font-size="19" fill="#c0392b" opacity="0.75">pseudo: "lea13"</text>
+  <line x1="862" y1="264" x2="1038" y2="264" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="1050" y="270" font-size="18" font-weight="bold" fill="#c0392b">disparu</text>
+</svg>

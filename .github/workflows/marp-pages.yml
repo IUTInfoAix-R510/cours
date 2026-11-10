@@ -1,0 +1,78 @@
+# Construit les supports Marp et les publie sur GitHub Pages.
+#
+# Chaque fichier s<N>-*.md (un support de point cours par séance) est
+# converti en HTML (diapositives) et en PDF. La page d'index est générée
+# par scripts/generate-index.sh : une ligne par séance (S1 à S8), avec
+# les liens HTML et PDF si le support existe, sinon « À venir ».
+# Le résultat est publié sur :
+#   https://iutinfoaix-r510.github.io/cours/
+
+name: Build & Deploy Slides
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Install dependencies (Marp)
+        run: npm ci
+
+      - name: Build HTML slides
+        run: |
+          mkdir -p _site
+          for f in s[0-9]*-*.md; do
+            [ -f "$f" ] || continue
+            name="${f%.md}"
+            echo "Building $f → _site/${name}.html"
+            npx marp --no-stdin --config marp.config.js --html "$f" --output "_site/${name}.html"
+          done
+
+      - name: Build PDF slides
+        run: |
+          npx playwright install --with-deps chromium
+          for f in s[0-9]*-*.md; do
+            [ -f "$f" ] || continue
+            name="${f%.md}"
+            echo "Building $f → _site/${name}.pdf"
+            npx marp --no-stdin --config marp.config.js --html "$f" --pdf --output "_site/${name}.pdf" --allow-local-files
+          done
+
+      - name: Generate index page
+        run: bash scripts/generate-index.sh
+
+      - name: Copy assets
+        run: |
+          if [ -d assets ]; then
+            cp -r assets _site/assets
+          fi
+
+      - name: Upload Pages artifact
+        uses: actions/upload-pages-artifact@v5
+        with:
+          path: _site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5

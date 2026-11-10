@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 245" font-family="sans-serif">
+  <title>Table, ligne, colonne en SQL ; collection, document, champ en MongoDB</title>
+
+  <!-- ===== SQL : table ===== -->
+  <text x="10" y="28" font-size="22" fill="#555">SQL : <tspan font-weight="bold" fill="#00684a">table employes</tspan></text>
+
+  <!-- en-tête -->
+  <rect x="10" y="44" width="80" height="40" fill="#dbe9f7" stroke="#4a90d9" stroke-width="2"/>
+  <text x="50" y="71" text-anchor="middle" font-size="20" font-weight="bold" fill="#4a90d9">id</text>
+  <rect x="90" y="44" width="140" height="40" fill="#fff4dc" stroke="#e8a838" stroke-width="2"/>
+  <text x="160" y="71" text-anchor="middle" font-size="20" font-weight="bold" fill="#b9771a">nom</text>
+  <rect x="230" y="44" width="150" height="40" fill="#f0f4f8" stroke="#999" stroke-width="2"/>
+  <text x="305" y="71" text-anchor="middle" font-size="20" font-weight="bold" fill="#555">manager</text>
+
+  <!-- colonne nom : contour orange -->
+  <rect x="90" y="44" width="140" height="120" fill="none" stroke="#e8a838" stroke-width="2"/>
+
+  <!-- ligne E01 (surlignée) -->
+  <rect x="10" y="84" width="370" height="40" fill="#e6f4ee"/>
+  <text x="50" y="111" text-anchor="middle" font-size="20">E01</text>
+  <text x="160" y="111" text-anchor="middle" font-size="20">Martin</text>
+  <text x="305" y="111" text-anchor="middle" font-size="20" font-style="italic" fill="#999">NULL</text>
+  <!-- ligne E03 -->
+  <text x="50" y="151" text-anchor="middle" font-size="20">E03</text>
+  <text x="160" y="151" text-anchor="middle" font-size="20">Durand</text>
+  <text x="305" y="151" text-anchor="middle" font-size="20">TRUE</text>
+  <!-- grille -->
+  <rect x="10" y="44" width="370" height="120" fill="none" stroke="#999" stroke-width="2"/>
+  <line x1="10" y1="124" x2="380" y2="124" stroke="#999" stroke-width="1.5"/>
+  <line x1="230" y1="84" x2="230" y2="164" stroke="#999" stroke-width="1.5"/>
+  <line x1="90" y1="84" x2="90" y2="164" stroke="#999" stroke-width="1.5"/>
+  <!-- contours colorés par-dessus la grille -->
+  <rect x="10" y="84" width="370" height="40" fill="none" stroke="#13aa52" stroke-width="4"/>
+  <rect x="90" y="44" width="140" height="120" fill="none" stroke="#e8a838" stroke-width="3"/>
+  <rect x="10" y="44" width="80" height="120" fill="none" stroke="#4a90d9" stroke-width="3"/>
+
+  <!-- ===== Correspondances ===== -->
+  <g font-size="20" font-weight="bold" text-anchor="middle">
+    <text x="545" y="28" fill="#00684a">table → collection</text>
+    <text x="545" y="111" fill="#13aa52">ligne → document</text>
+    <text x="545" y="166" fill="#b9771a">colonne → champ</text>
+    <text x="545" y="221" fill="#4a90d9">clé primaire → _id</text>
+  </g>
+  <line x1="395" y1="104" x2="440" y2="104" stroke="#13aa52" stroke-width="3"/>
+  <line x1="650" y1="104" x2="695" y2="104" stroke="#13aa52" stroke-width="3"/>
+
+  <!-- ===== MongoDB : collection ===== -->
+  <text x="710" y="28" font-size="22" fill="#555">MongoDB : <tspan font-weight="bold" fill="#00684a">collection employes</tspan></text>
+
+  <!-- document E01 -->
+  <rect x="710" y="44" width="385" height="90" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="4"/>
+  <text x="726" y="78" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E01", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Martin" }</text>
+  <text x="726" y="114" font-size="18" font-style="italic" fill="#555">// pas de champ manager</text>
+
+  <!-- document E03 -->
+  <rect x="710" y="148" width="385" height="90" rx="10" fill="#ffffff" stroke="#999" stroke-width="2"/>
+  <text x="726" y="182" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E03", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Durand",</text>
+  <text x="742" y="216" font-size="20">manager: true }</text>
+</svg>

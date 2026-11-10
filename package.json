@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "cours-r510",
+  "description": "R5.Real.10 : supports des points cours (build Marp)",
+  "scripts": {
+    "dev": "marp --config marp.config.js --server --html .",
+    "build": "npm run build:html",
+    "build:html": "mkdir -p _site && for f in s[0-9]*-*.md; do [ -f \"$f\" ] || continue; npx marp --no-stdin --config marp.config.js --html \"$f\" --output \"_site/${f%.md}.html\"; done",
+    "build:all": "bash scripts/build-all.sh",
+    "preview": "marp --config marp.config.js --preview --html s[0-9]*-*.md"
+  },
+  "devDependencies": {
+    "@marp-team/marp-cli": "^4"
+  }
+}

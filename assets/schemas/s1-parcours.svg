@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif">
+  <title>Parcours de la ressource : document, graphe, projet</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+    <marker id="flv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/>
+    </marker>
+  </defs>
+
+  <!-- Document -->
+  <rect x="10" y="10" width="330" height="260" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <path d="M10,24 a14,14 0 0 1 14,-14 h302 a14,14 0 0 1 14,14 v42 h-330 z" fill="#13aa52"/>
+  <text x="30" y="49" font-size="27" font-weight="bold" fill="#fff">Document</text>
+  <text x="320" y="49" font-size="22" font-weight="bold" fill="#fff" text-anchor="end">S1 à S4</text>
+  <!-- icône : page avec accolades -->
+  <path d="M150,84 h38 l16,16 v52 h-54 z" fill="#fff" stroke="#00684a" stroke-width="3" stroke-linejoin="round"/>
+  <path d="M188,84 v16 h16" fill="none" stroke="#00684a" stroke-width="3" stroke-linejoin="round"/>
+  <text x="177" y="139" font-size="24" font-weight="bold" fill="#00684a" text-anchor="middle">{ }</text>
+  <text x="175" y="196" font-size="24" font-weight="bold" fill="#00684a" text-anchor="middle">MongoDB</text>
+  <text x="175" y="227" font-size="20" fill="#555" text-anchor="middle">requêtes, agrégation,</text>
+  <text x="175" y="253" font-size="20" fill="#555" text-anchor="middle">modélisation, index</text>
+
+  <!-- flèche -->
+  <line x1="346" y1="140" x2="388" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+
+  <!-- Graphe -->
+  <rect x="395" y="10" width="330" height="260" rx="14" fill="#f4ecf8" stroke="#8e44ad" stroke-width="3"/>
+  <path d="M395,24 a14,14 0 0 1 14,-14 h302 a14,14 0 0 1 14,14 v42 h-330 z" fill="#8e44ad"/>
+  <text x="415" y="49" font-size="27" font-weight="bold" fill="#fff">Graphe</text>
+  <text x="705" y="49" font-size="22" font-weight="bold" fill="#fff" text-anchor="end">S5</text>
+  <!-- icône : petit graphe -->
+  <g stroke="#8e44ad" stroke-width="3">
+    <line x1="530" y1="96" x2="590" y2="90"/>
+    <line x1="530" y1="96" x2="555" y2="146"/>
+    <line x1="590" y1="90" x2="555" y2="146"/>
+    <line x1="590" y1="90" x2="622" y2="132"/>
+  </g>
+  <g fill="#fff" stroke="#8e44ad" stroke-width="3">
+    <circle cx="530" cy="96" r="11"/>
+    <circle cx="590" cy="90" r="11"/>
+    <circle cx="555" cy="146" r="11"/>
+    <circle cx="622" cy="132" r="11"/>
+  </g>
+  <text x="560" y="196" font-size="24" font-weight="bold" fill="#8e44ad" text-anchor="middle">Neo4j et Cypher</text>
+  <text x="560" y="227" font-size="20" fill="#555" text-anchor="middle">motifs, chemins,</text>
+  <text x="560" y="253" font-size="20" fill="#555" text-anchor="middle">recommandation</text>
+
+  <!-- flèche -->
+  <line x1="731" y1="140" x2="773" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+
+  <!-- Projet -->
+  <rect x="780" y="10" width="330" height="260" rx="14" fill="#fdf3e1" stroke="#e8a838" stroke-width="3"/>
+  <path d="M780,24 a14,14 0 0 1 14,-14 h302 a14,14 0 0 1 14,14 v42 h-330 z" fill="#e8a838"/>
+  <text x="800" y="49" font-size="27" font-weight="bold" fill="#3b2a05">Projet</text>
+  <text x="1090" y="49" font-size="22" font-weight="bold" fill="#3b2a05" text-anchor="end">S6 à S8</text>
+  <!-- icône : équipe -->
+  <g fill="#fff" stroke="#b07a12" stroke-width="3">
+    <circle cx="912" cy="104" r="11"/>
+    <path d="M893,150 a19,19 0 0 1 38,0 z"/>
+    <circle cx="978" cy="104" r="11"/>
+    <path d="M959,150 a19,19 0 0 1 38,0 z"/>
+    <circle cx="945" cy="96" r="13"/>
+    <path d="M922,150 a23,23 0 0 1 46,0 z"/>
+  </g>
+  <text x="945" y="196" font-size="24" font-weight="bold" fill="#9a6a0e" text-anchor="middle">Java, Javalin, MongoDB</text>
+  <text x="945" y="227" font-size="20" fill="#555" text-anchor="middle">API REST en équipe,</text>
+  <text x="945" y="253" font-size="20" fill="#555" text-anchor="middle">bonus Neo4j</text>
+
+  <!-- Fil conducteur : la médiathèque -->
+  <path d="M175,274 C175,330 560,330 560,280" fill="none" stroke="#8e44ad" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#flv)"/>
+  <text x="367" y="362" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Fil conducteur : la médiathèque</text>
+  <text x="367" y="390" font-size="20" fill="#555" text-anchor="middle">en document (S2), puis en graphe (TP4)</text>
+</svg>

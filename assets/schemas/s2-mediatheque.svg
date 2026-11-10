@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Un livre de la collection livres et un membre de la collection membres, avec leurs documents imbriqués et leurs tableaux</title>
+  <style>
+    .c { font-size: 18px; fill: #333; }
+    .h { font-size: 20px; font-weight: bold; fill: #00684a; }
+    .s { font-size: 17px; fill: #555; }
+    .tag { font-size: 17px; font-weight: bold; }
+  </style>
+
+  <!-- Livre L06 -->
+  <rect x="1" y="1" width="698" height="428" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2"/>
+  <text x="16" y="28"><tspan class="h">livres</tspan><tspan class="s"> · un des 26 documents</tspan></text>
+  <text class="c" x="16" y="60">{ _id: "L06", titre: "Dune", annee: 1965,</text>
+  <text class="c" x="30" y="88">auteurs: [ { id: "A04", prenom: "Frank", nom: "Herbert", … } ],</text>
+  <text class="c" x="30" y="116">categories: [ "Science-Fiction" ],</text>
+
+  <!-- serie : document imbriqué -->
+  <text class="c" x="30" y="153">serie:</text>
+  <rect x="88" y="131" width="232" height="32" rx="6" fill="#e8f1fb" stroke="#4a90d9" stroke-width="2"/>
+  <text class="c" x="100" y="153">{ nom: "Dune", tome: 1 },</text>
+  <text class="tag" x="336" y="153" fill="#4a90d9">← document imbriqué</text>
+
+  <!-- exemplaires : tableau de documents -->
+  <text class="c" x="30" y="193">exemplaires: [</text>
+  <text class="tag" x="684" y="193" text-anchor="end" fill="#c27c0e">tableau de documents</text>
+  <rect x="30" y="202" width="654" height="180" rx="8" fill="#fdf3e3" stroke="#e8a838" stroke-width="2"/>
+  <rect x="44" y="212" width="626" height="92" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <text class="c" x="56" y="236">{ code: "L06-1", etat: "Bon", disponible: false,</text>
+  <rect x="58" y="246" width="598" height="50" rx="6" fill="#f4ecf8" stroke="#8e44ad" stroke-width="2"/>
+  <text class="c" x="70" y="266">emprunt_actuel: { membre_id: "M12",</text>
+  <text class="tag" x="644" y="266" text-anchor="end" fill="#8e44ad">3e niveau</text>
+  <text class="c" x="86" y="288">date_emprunt: …, date_retour_prevue: … } },</text>
+  <rect x="44" y="312" width="626" height="34" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <text class="c" x="56" y="335">{ code: "L06-2", etat: "Neuf", disponible: true },</text>
+  <text class="c" x="56" y="372">…</text>
+  <text class="c" x="30" y="414">],  avis: [ { membre_id: "M01", note: 5 }, … ] }</text>
+
+  <!-- Membre M12 -->
+  <rect x="1" y="446" width="698" height="112" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2"/>
+  <text x="16" y="474"><tspan class="h">membres</tspan><tspan class="s"> · un des 14 documents</tspan></text>
+  <text class="c" x="16" y="506">{ _id: "M12", prenom: "Tom", nom: "Lambert", …,</text>
+  <text class="c" x="30" y="540"><tspan font-weight="bold" fill="#c27c0e">emprunts</tspan>: [ …, { exemplaire: "L06-1", titre: "Dune", … } ] }</text>
+</svg>

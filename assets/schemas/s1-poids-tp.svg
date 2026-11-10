@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" font-family="sans-serif">
+  <title>Poids des TP dans la note finale</title>
+
+  <text x="10" y="24" font-size="19" fill="#555">Note finale de la ressource</text>
+  <!-- barre 1 : TP 40 %, projet 60 % -->
+  <rect x="10" y="36" width="208" height="54" fill="#00684a"/>
+  <rect x="218" y="36" width="312" height="54" fill="#f6dfb3"/>
+  <text x="114" y="71" font-size="23" font-weight="bold" fill="#fff" text-anchor="middle">TP 40 %</text>
+  <text x="374" y="71" font-size="23" font-weight="bold" fill="#9a6a0e" text-anchor="middle">Projet 60 %</text>
+
+  <!-- entonnoir de zoom -->
+  <path d="M10,90 L218,90 L530,150 L10,150 z" fill="#e6f4ee"/>
+
+  <!-- barre 2 : détail des TP -->
+  <rect x="10" y="150" width="208" height="76" fill="#13aa52"/>
+  <rect x="218" y="150" width="104" height="76" fill="#13aa52"/>
+  <rect x="322" y="150" width="104" height="76" fill="#13aa52"/>
+  <rect x="426" y="150" width="104" height="76" fill="#8e44ad"/>
+  <g stroke="#fff" stroke-width="3">
+    <line x1="218" y1="150" x2="218" y2="226"/>
+    <line x1="322" y1="150" x2="322" y2="226"/>
+    <line x1="426" y1="150" x2="426" y2="226"/>
+  </g>
+  <g font-weight="bold" fill="#fff" text-anchor="middle">
+    <text x="114" y="182" font-size="23">TP1</text>
+    <text x="114" y="212" font-size="23">16 %</text>
+    <text x="270" y="182" font-size="21">TP2</text>
+    <text x="270" y="212" font-size="21">8 %</text>
+    <text x="374" y="182" font-size="21">TP3</text>
+    <text x="374" y="212" font-size="21">8 %</text>
+    <text x="478" y="182" font-size="21">TP4</text>
+    <text x="478" y="212" font-size="21">8 %</text>
+  </g>
+
+  <!-- séances -->
+  <g font-size="20" fill="#555" text-anchor="middle">
+    <text x="114" y="256">S1 + S2</text>
+    <text x="270" y="256">S3</text>
+    <text x="374" y="256">S4</text>
+    <text x="478" y="256">S5</text>
+  </g>
+  <g stroke="#bbb" stroke-width="2">
+    <line x1="14" y1="266" x2="214" y2="266"/>
+    <line x1="222" y1="266" x2="318" y2="266"/>
+    <line x1="326" y1="266" x2="422" y2="266"/>
+    <line x1="430" y1="266" x2="526" y2="266"/>
+  </g>
+
+  <text x="270" y="310" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">1 séance de TP = 8 % de la note</text>
+</svg>

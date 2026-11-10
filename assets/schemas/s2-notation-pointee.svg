@@ -1,0 +1,48 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Arbre du film F3 : le chemin realisation.pays descend dans le document imbriqué, le chemin seances.places traverse le tableau et vise places dans chaque séance</title>
+  <style>
+    .n { font-size: 18px; fill: #333; }
+    .nb { font-size: 18px; fill: #333; font-weight: bold; }
+    .g { fill: #ffffff; stroke: #b8c4cf; stroke-width: 1.5; }
+    .lien { fill: none; stroke: #b8c4cf; stroke-width: 2; }
+    .lv { fill: none; stroke: #13aa52; stroke-width: 4; }
+    .lo { fill: none; stroke: #e8a838; stroke-width: 4; }
+  </style>
+
+  <!-- liens -->
+  <path class="lien" d="M88,92 L128,92"/>
+  <path class="lv" d="M88,92 C108,92 108,39 128,39"/>
+  <path class="lo" d="M88,92 C108,92 108,145 128,145"/>
+  <path class="lien" d="M256,39 C276,39 276,20 296,20"/>
+  <path class="lv" d="M256,39 C276,39 276,58 296,58"/>
+  <path class="lo" d="M256,145 C276,145 276,126 296,126"/>
+  <path class="lo" d="M256,145 C276,145 276,164 296,164"/>
+
+  <!-- racine -->
+  <rect x="2" y="70" width="86" height="44" rx="8" fill="#f0f4f8" stroke="#00684a" stroke-width="2"/>
+  <text class="nb" x="45" y="98" text-anchor="middle">F3</text>
+
+  <!-- niveau 1 -->
+  <rect x="128" y="23" width="128" height="32" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text class="nb" x="192" y="45" text-anchor="middle">realisation</text>
+  <rect class="g" x="128" y="76" width="128" height="32" rx="6"/>
+  <text class="n" x="192" y="98" text-anchor="middle">titre</text>
+  <rect x="128" y="129" width="128" height="32" rx="6" fill="#fdf3e3" stroke="#e8a838" stroke-width="2"/>
+  <text class="nb" x="192" y="151" text-anchor="middle">seances [ ]</text>
+
+  <!-- niveau 2 -->
+  <rect class="g" x="296" y="4" width="262" height="32" rx="6"/>
+  <text class="n" x="310" y="26">nom: "Miyazaki"</text>
+  <rect x="296" y="42" width="262" height="32" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text class="n" x="310" y="64"><tspan font-weight="bold" fill="#00684a">pays</tspan>: "Japon"</text>
+  <rect class="g" x="296" y="110" width="262" height="32" rx="6"/>
+  <text class="n" x="310" y="132">{ …, <tspan font-weight="bold" fill="#b06f00">places</tspan>: 4 }</text>
+  <rect class="g" x="296" y="148" width="262" height="32" rx="6"/>
+  <text class="n" x="310" y="170">{ …, <tspan font-weight="bold" fill="#b06f00">places</tspan>: 0 }</text>
+
+  <!-- légende -->
+  <line class="lv" x1="4" y1="210" x2="34" y2="210"/>
+  <text class="n" x="44" y="216"><tspan font-weight="bold" fill="#00684a">"realisation.pays"</tspan> : dans le document imbriqué</text>
+  <line class="lo" x1="4" y1="238" x2="34" y2="238"/>
+  <text class="n" x="44" y="244"><tspan font-weight="bold" fill="#b06f00">"seances.places"</tspan> : dans chaque séance du tableau</text>
+</svg>

@@ -1,0 +1,73 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif">
+  <title>Huit séances de 4 h en quatre semaines</title>
+  <rect x="12" y="122" width="130" height="226" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <rect x="12" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
+  <text x="146" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 23/11</text>
+  <rect x="288" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
+  <text x="422" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 30/11</text>
+  <rect x="564" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
+  <text x="698" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 7/12</text>
+  <rect x="840" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
+  <text x="974" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 14/12</text>
+  <rect x="14" y="66" width="264" height="40" rx="20" fill="#13aa52"/>
+  <text x="146.0" y="93" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">TP1</text>
+  <rect x="290" y="66" width="126" height="40" rx="20" fill="#13aa52"/>
+  <text x="353.0" y="93" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">TP2</text>
+  <rect x="428" y="66" width="126" height="40" rx="20" fill="#13aa52"/>
+  <text x="491.0" y="93" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">TP3</text>
+  <rect x="566" y="66" width="126" height="40" rx="20" fill="#8e44ad"/>
+  <text x="629.0" y="93" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">TP4</text>
+  <rect x="704" y="66" width="402" height="40" rx="20" fill="#e8a838"/>
+  <text x="905.0" y="93" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">Projet</text>
+  <line x1="28" y1="164" x2="1092" y2="164" stroke="#bbb" stroke-width="4"/>
+  <circle cx="77.0" cy="164" r="27" fill="#13aa52" stroke="#fff" stroke-width="4"/>
+  <text x="77.0" y="172" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">S1</text>
+  <text x="77.0" y="226" font-size="19" fill="#333" text-anchor="middle">Documents</text>
+  <text x="77.0" y="252" font-size="19" fill="#333" text-anchor="middle">et CRUD</text>
+  <circle cx="215.0" cy="164" r="27" fill="#13aa52" stroke="#fff" stroke-width="4"/>
+  <text x="215.0" y="172" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">S2</text>
+  <text x="215.0" y="226" font-size="19" fill="#333" text-anchor="middle">Documents</text>
+  <text x="215.0" y="252" font-size="19" fill="#333" text-anchor="middle">imbriqués,</text>
+  <text x="215.0" y="278" font-size="19" fill="#333" text-anchor="middle">tableaux,</text>
+  <text x="215.0" y="304" font-size="19" fill="#333" text-anchor="middle">agrégation</text>
+  <circle cx="353.0" cy="164" r="27" fill="#13aa52" stroke="#fff" stroke-width="4"/>
+  <text x="353.0" y="172" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">S3</text>
+  <text x="353.0" y="226" font-size="19" fill="#333" text-anchor="middle">Requêtes</text>
+  <text x="353.0" y="252" font-size="19" fill="#333" text-anchor="middle">avancées,</text>
+  <text x="353.0" y="278" font-size="19" fill="#333" text-anchor="middle">agrégation,</text>
+  <text x="353.0" y="304" font-size="19" fill="#333" text-anchor="middle">index</text>
+  <circle cx="491.0" cy="164" r="27" fill="#13aa52" stroke="#fff" stroke-width="4"/>
+  <text x="491.0" y="172" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">S4</text>
+  <text x="491.0" y="226" font-size="19" fill="#333" text-anchor="middle">Modélisation,</text>
+  <text x="491.0" y="252" font-size="19" fill="#333" text-anchor="middle">patterns de</text>
+  <text x="491.0" y="278" font-size="19" fill="#333" text-anchor="middle">conception</text>
+  <circle cx="629.0" cy="164" r="27" fill="#8e44ad" stroke="#fff" stroke-width="4"/>
+  <text x="629.0" y="172" font-size="21" font-weight="bold" fill="#fff" text-anchor="middle">S5</text>
+  <text x="629.0" y="226" font-size="19" fill="#333" text-anchor="middle">Neo4j :</text>
+  <text x="629.0" y="252" font-size="19" fill="#333" text-anchor="middle">du relationnel</text>
+  <text x="629.0" y="278" font-size="19" fill="#333" text-anchor="middle">au graphe,</text>
+  <text x="629.0" y="304" font-size="19" fill="#333" text-anchor="middle">Cypher</text>
+  <circle cx="767.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
+  <text x="767.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S6</text>
+  <text x="767.0" y="226" font-size="19" fill="#333" text-anchor="middle">Lancement,</text>
+  <text x="767.0" y="252" font-size="19" fill="#333" text-anchor="middle">modèle,</text>
+  <text x="767.0" y="278" font-size="19" fill="#333" text-anchor="middle">chargement</text>
+  <text x="767.0" y="304" font-size="19" fill="#333" text-anchor="middle">des données</text>
+  <circle cx="905.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
+  <text x="905.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S7</text>
+  <text x="905.0" y="226" font-size="19" fill="#333" text-anchor="middle">Agrégations,</text>
+  <text x="905.0" y="252" font-size="19" fill="#333" text-anchor="middle">API REST,</text>
+  <text x="905.0" y="278" font-size="19" fill="#333" text-anchor="middle">index</text>
+  <circle cx="1043.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
+  <text x="1043.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S8</text>
+  <text x="1043.0" y="226" font-size="19" fill="#333" text-anchor="middle">Finalisation,</text>
+  <text x="1043.0" y="252" font-size="19" fill="#333" text-anchor="middle">questions</text>
+  <text x="1043.0" y="278" font-size="19" fill="#333" text-anchor="middle">individuelles</text>
+  <text x="77.0" y="334" font-size="19" font-style="italic" font-weight="bold" fill="#00684a" text-anchor="middle">vous êtes ici</text>
+  <rect x="250" y="370" width="22" height="22" rx="5" fill="#13aa52"/>
+  <text x="282" y="388" font-size="19" fill="#555">TP MongoDB</text>
+  <rect x="480" y="370" width="22" height="22" rx="5" fill="#8e44ad"/>
+  <text x="512" y="388" font-size="19" fill="#555">TP Neo4j</text>
+  <rect x="710" y="370" width="22" height="22" rx="5" fill="#e8a838"/>
+  <text x="742" y="388" font-size="19" fill="#555">Projet en équipe</text>
+</svg>

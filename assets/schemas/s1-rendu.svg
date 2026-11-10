@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="sans-serif">
+  <title>Du TP accepté à la note : Classroom 50, dépôt, codespace, rendu</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+    <marker id="flv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/>
+    </marker>
+    <marker id="flr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/>
+    </marker>
+  </defs>
+
+  <!-- r510-sauver : boucle au-dessus -->
+  <path d="M960,76 C960,20 550,20 550,72" fill="none" stroke="#13aa52" stroke-width="4" marker-end="url(#flv)"/>
+  <rect x="570" y="6" width="380" height="34" rx="8" fill="#fff"/>
+  <text x="755" y="31" font-size="21" fill="#00684a" text-anchor="middle"><tspan font-family="monospace" font-weight="bold">r510-sauver</tspan> : commit + push, sans note</text>
+
+  <!-- Classroom 50 -->
+  <rect x="10" y="80" width="280" height="120" rx="14" fill="#f0f4f8" stroke="#4a90d9" stroke-width="3"/>
+  <text x="150" y="120" font-size="24" font-weight="bold" fill="#2c6cb0" text-anchor="middle">Classroom 50</text>
+  <text x="150" y="152" font-size="20" fill="#555" text-anchor="middle">accepter le TP</text>
+  <text x="150" y="180" font-size="20" fill="#555" text-anchor="middle">suivre ses rendus</text>
+
+  <line x1="296" y1="140" x2="404" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <text x="350" y="128" font-size="19" fill="#555" text-anchor="middle">crée</text>
+
+  <!-- Dépôt -->
+  <rect x="410" y="80" width="280" height="120" rx="14" fill="#f0f4f8" stroke="#555" stroke-width="3"/>
+  <text x="550" y="120" font-size="24" font-weight="bold" fill="#333" text-anchor="middle">Dépôt GitHub privé</text>
+  <text x="550" y="154" font-size="19" font-family="monospace" fill="#555" text-anchor="middle">r510-tp1-&lt;login&gt;</text>
+  <text x="550" y="182" font-size="19" fill="#c0392b" text-anchor="middle">à ne jamais renommer</text>
+
+  <line x1="696" y1="140" x2="804" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <text x="750" y="128" font-size="19" fill="#555" text-anchor="middle">ouvrir</text>
+
+  <!-- Codespace -->
+  <rect x="810" y="80" width="300" height="150" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <text x="960" y="118" font-size="24" font-weight="bold" fill="#00684a" text-anchor="middle">Codespace</text>
+  <text x="960" y="146" font-size="19" fill="#333" text-anchor="middle">MongoDB 9.0.4, mongosh</text>
+  <text x="960" y="171" font-size="19" fill="#333" text-anchor="middle">VS Code, playgrounds, 2 cœurs</text>
+  <text x="960" y="208" font-size="19" fill="#c0392b" text-anchor="middle">à arrêter en fin de séance</text>
+
+  <!-- r510-rendre -->
+  <path d="M875,236 C875,315 800,325 696,325" fill="none" stroke="#c0392b" stroke-width="4" marker-end="url(#flr)"/>
+  <text x="905" y="282" font-size="21" font-weight="bold" font-family="monospace" fill="#c0392b">r510-rendre</text>
+  <text x="905" y="308" font-size="20" fill="#c0392b">commit + push</text>
+  <text x="905" y="333" font-size="20" fill="#c0392b">+ tag submit/…</text>
+  <text x="905" y="360" font-size="19" fill="#555">lance la correction</text>
+
+  <!-- Correcteur automatique -->
+  <rect x="410" y="270" width="280" height="110" rx="14" fill="#fdecea" stroke="#c0392b" stroke-width="3"/>
+  <text x="550" y="312" font-size="23" font-weight="bold" fill="#c0392b" text-anchor="middle">Correcteur</text>
+  <text x="550" y="340" font-size="23" font-weight="bold" fill="#c0392b" text-anchor="middle">automatique</text>
+  <text x="550" y="366" font-size="19" fill="#555" text-anchor="middle">exécute vos requêtes</text>
+
+  <line x1="404" y1="325" x2="296" y2="325" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <text x="350" y="313" font-size="19" fill="#555" text-anchor="middle">2 à 5 min</text>
+
+  <!-- Release -->
+  <rect x="10" y="270" width="280" height="110" rx="14" fill="#fdf3e1" stroke="#e8a838" stroke-width="3"/>
+  <text x="150" y="312" font-size="23" font-weight="bold" fill="#9a6a0e" text-anchor="middle">Release</text>
+  <text x="150" y="342" font-size="19" fill="#555" text-anchor="middle">score, détail</text>
+  <text x="150" y="366" font-size="19" fill="#555" text-anchor="middle">exercice par exercice</text>
+
+  <!-- score visible dans Classroom 50 -->
+  <line x1="150" y1="264" x2="150" y2="206" stroke="#e8a838" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#fl)"/>
+  <text x="164" y="243" font-size="19" fill="#9a6a0e">score aussi ici</text>
+</svg>

@@ -1,0 +1,35 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 570 286" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Deux exécutions du même pipeline sortent les groupes dans deux ordres différents ; un $sort final fixe l'ordre</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <text x="2" y="20" font-size="18" fill="#555">1re exécution</text>
+  <text x="2" y="172" font-size="18" fill="#555">2e exécution</text>
+  <path d="M91.0,68 C91.0,98 479.0,80 479.0,110" fill="none" stroke="#e8a838" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <path d="M285.0,68 C285.0,98 285.0,80 285.0,110" fill="none" stroke="#4a90d9" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <path d="M479.0,68 C479.0,98 91.0,80 91.0,110" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <rect x="2" y="28" width="178" height="40" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="91.0" y="55" font-size="19" text-anchor="middle" fill="#333">Cuisine</text>
+  <rect x="196" y="28" width="178" height="40" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="285.0" y="55" font-size="19" text-anchor="middle" fill="#333">Salon</text>
+  <rect x="390" y="28" width="178" height="40" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="479.0" y="55" font-size="19" text-anchor="middle" fill="#333">Chambre</text>
+  <rect x="2" y="110" width="178" height="40" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="91.0" y="137" font-size="19" text-anchor="middle" fill="#333">Chambre</text>
+  <rect x="196" y="110" width="178" height="40" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="285.0" y="137" font-size="19" text-anchor="middle" fill="#333">Salon</text>
+  <rect x="390" y="110" width="178" height="40" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="479.0" y="137" font-size="19" text-anchor="middle" fill="#333">Cuisine</text>
+  <line x1="285" y1="180" x2="285" y2="228" stroke="#00684a" stroke-width="2.5" marker-end="url(#fl)"/>
+  <text x="300" y="199" font-size="17" fill="#555"><tspan font-family="monospace">$project</tspan>, puis</text>
+  <text x="300" y="221" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$sort: { moyenne: -1 }</text>
+  <rect x="2" y="236" width="178" height="40" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="91.0" y="263" font-size="19" text-anchor="middle" fill="#333">Salon · <tspan font-family="monospace">20.8</tspan></text>
+  <rect x="196" y="236" width="178" height="40" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="285.0" y="263" font-size="19" text-anchor="middle" fill="#333">Cuisine · <tspan font-family="monospace">20.5</tspan></text>
+  <rect x="390" y="236" width="178" height="40" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="479.0" y="263" font-size="19" text-anchor="middle" fill="#333">Chambre · <tspan font-family="monospace">17.5</tspan></text>
+  <rect x="0" y="230" width="570" height="52" rx="10" fill="none" stroke="#13aa52" stroke-width="2.5"/>
+</svg>

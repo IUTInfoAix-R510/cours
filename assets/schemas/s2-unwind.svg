@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 230" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$unwind : le document C1 et son tableau de 3 mesures donne 3 documents, un par mesure</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+  <rect x="2" y="2" width="282" height="220" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="14" y="30">_id: "C1", piece: "Salon"</text>
+    <text x="14" y="62">mesures: [</text>
+    <rect x="34" y="72" width="200" height="36" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="134" y="96" text-anchor="middle">{ h: 8, v: 19.5 }</text>
+    <rect x="34" y="118" width="200" height="36" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="134" y="142" text-anchor="middle">{ h: 12, v: 21 }</text>
+    <rect x="34" y="164" width="200" height="36" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="134" y="188" text-anchor="middle">{ h: 18, v: 22.5 }</text>
+    <text x="244" y="212">]</text>
+  </g>
+  <path d="M236,90 C300,90 320,35 380,35" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="388" y="2" width="310" height="66" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="398" y="28">_id: "C1", piece: "Salon"</text>
+    <rect x="480" y="37" width="196" height="26" rx="5" fill="#13aa52" fill-opacity="0.2"/>
+    <text x="398" y="56">mesures: { h: 8, v: 19.5 }</text>
+  </g>
+  <path d="M236,136 C300,136 320,111 380,111" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="388" y="78" width="310" height="66" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="398" y="104">_id: "C1", piece: "Salon"</text>
+    <rect x="480" y="113" width="176" height="26" rx="5" fill="#13aa52" fill-opacity="0.2"/>
+    <text x="398" y="132">mesures: { h: 12, v: 21 }</text>
+  </g>
+  <path d="M236,182 C300,182 320,187 380,187" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="388" y="154" width="310" height="66" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="398" y="180">_id: "C1", piece: "Salon"</text>
+    <rect x="480" y="189" width="196" height="26" rx="5" fill="#13aa52" fill-opacity="0.2"/>
+    <text x="398" y="208">mesures: { h: 18, v: 22.5 }</text>
+  </g>
+  <text x="336" y="216" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$unwind</text>
+</svg>
