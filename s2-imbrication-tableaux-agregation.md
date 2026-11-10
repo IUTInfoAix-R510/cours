@@ -69,40 +69,34 @@ Les exemples portent sur des films, une recette et des capteurs, pas sur les don
 
 <!-- header: Séance 2 · la médiathèque -->
 
-## La médiathèque
+## La médiathèque : deux collections
 
-<div class="cols-62">
-<div>
+<img src="assets/schemas/s2-mediatheque-structure.svg" alt="Structure des deux collections. livres : _id, titre, annee ; auteurs, tableau de documents ; categories, tableau ; serie, document imbriqué facultatif ; exemplaires, tableau de documents dont chaque élément peut contenir emprunt_actuel, document imbriqué de troisième niveau avec membre_id qui référence un membre ; avis, tableau facultatif de documents avec membre_id. membres : _id, prenom, nom, ville, inscription ; parrain_id, référence facultative vers un membre ; emprunts, tableau de documents avec exemplaire, livre_id qui référence un livre, titre, dates et date_retour facultative. Un emprunt en cours est écrit deux fois : dans le livre et dans le membre." style="display:block; width:96%; margin:0.2rem auto 0 auto;">
 
-<img src="assets/schemas/s2-mediatheque.svg" alt="Un livre de la collection livres (L06, Dune) : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un exemplaire (troisième niveau). Un membre de la collection membres (M12) : emprunts est un tableau de documents." style="display:block; width:100%; max-height:560px; margin:0 auto;">
+<div class="box" style="margin-top: 0.2rem; font-size: 0.68em;"><b>Au programme</b> : partie 5, interroger (ex. 26 à 32) · partie 6, modifier (ex. 33 à 38) · partie 7, agréger (ex. 39 à 43). Même dépôt, même base <code>tp1</code>. Au <b>TP4</b>, la même médiathèque passe dans Neo4j.</div>
 
-</div>
-<div>
+<!--
+(1 min 30)
 
-<div class="petit">
+Lire la structure avant de lire un document : deux collections, livres et membres.
 
-**Au programme**
+Les couleurs disent la forme de chaque champ : orange pour les tableaux (auteurs, categories, exemplaires, avis, emprunts), bleu pour le document imbriqué serie, violet pour emprunt_actuel, un document imbriqué dans un élément du tableau exemplaires, soit un troisième niveau. Le point d'interrogation signale un champ facultatif.
 
-- Partie 5 : interroger (ex. 26 à 32)
-- Partie 6 : modifier (ex. 33 à 38)
-- Partie 7 : agréger (ex. 39 à 43)
+Les flèches grises sont des références : un identifiant qui renvoie à un document d'une autre collection (ou de la même, pour parrain_id).
 
-Même dépôt, même playground, même base `tp1`.
+Le choix à remarquer, en violet : un emprunt en cours est écrit deux fois, dans emprunt_actuel du livre et dans emprunts du membre. Chaque copie rend une requête simple ; le prix, c'est que l'exercice 37 doit écrire dans les deux collections. On y revient dans « Embarquer ou référencer ».
+-->
 
-</div>
+---
 
-<div class="box">
+## La médiathèque : un livre, un membre
 
-Au **TP4**, la même médiathèque passe dans **Neo4j**, avec les mêmes identifiants (`L06`, `M13`...). Plusieurs questions de ce TP y seront reposées en Cypher.
-
-</div>
-</div>
-</div>
+<img src="assets/schemas/s2-mediatheque.svg" alt="Un livre de la collection livres (L06, Dune) : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un exemplaire (troisième niveau). Un membre de la collection membres (M12) : emprunts est un tableau de documents." style="display:block; height:590px; margin:0.2rem auto 0 auto;">
 
 <!--
 La séance 2 se fait dans le même dépôt que la séance 1, sur deux nouvelles collections. Les exercices de la séance 2 ne dépendent pas des réponses de la séance 1 : le correcteur automatique part toujours de l'état attendu. Ceux qui n'ont pas fini la séance 1 commencent quand même la partie 5 et reviendront aux exercices manquants plus tard.
 
-Faire lire le modèle à voix haute : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un élément de ce tableau. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
+Faire lire le document de Dune à voix haute, en retrouvant la structure de la diapositive précédente. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
 
 Pour le lien avec le TP4 : les mêmes livres et les mêmes membres deviendront des nœuds, et les emprunts et parrainages des relations. Ne pas répondre ici aux questions de modélisation 4 et 5 (chaîne de parrainage, « lecteurs de Dune ») : la comparaison se fera au TP4.
 -->
