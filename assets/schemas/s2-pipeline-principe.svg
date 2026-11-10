@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 304" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Un pipeline d'agrégation : sur le serveur, les documents de la collection traversent des étapes successives, chacune produisant un nouveau flux ; seul le résultat est envoyé à l'application</title>
+  <rect x="2" y="2" width="760" height="300" rx="14" fill="none" stroke="#00684a" stroke-width="2" stroke-dasharray="8 6"/>
+  <text x="22" y="32" font-size="18" font-weight="bold" fill="#00684a">serveur MongoDB</text>
+  <rect x="30" y="72.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="80.5" x2="62" y2="80.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="86.5" x2="56" y2="86.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="30" y="101.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="109.5" x2="62" y2="109.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="115.5" x2="56" y2="115.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="30" y="130.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="138.5" x2="62" y2="138.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="144.5" x2="56" y2="144.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="30" y="159.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="167.5" x2="62" y2="167.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="173.5" x2="56" y2="173.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="30" y="188.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="196.5" x2="62" y2="196.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="202.5" x2="56" y2="202.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="30" y="217.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="38" y1="225.5" x2="62" y2="225.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="38" y1="231.5" x2="56" y2="231.5" stroke="#9fb3c6" stroke-width="2"/>
+  <text x="50.0" y="284" font-size="16" fill="#555" text-anchor="middle">collection</text>
+  <path d="M78,148.0 L89,156.0 L78,164.0 z" fill="#555"/>
+  <rect x="96" y="56" width="128" height="200" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="160.0" y="150.0" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">étape 1</text>
+  <text x="160.0" y="176.0" font-size="17" fill="#333" text-anchor="middle">filtrer</text>
+  <path d="M232,148.0 L243,156.0 L232,164.0 z" fill="#555"/>
+  <rect x="250" y="101.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="258" y1="109.5" x2="282" y2="109.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="258" y1="115.5" x2="276" y2="115.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="250" y="130.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="258" y1="138.5" x2="282" y2="138.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="258" y1="144.5" x2="276" y2="144.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="250" y="159.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="258" y1="167.5" x2="282" y2="167.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="258" y1="173.5" x2="276" y2="173.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="250" y="188.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="258" y1="196.5" x2="282" y2="196.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="258" y1="202.5" x2="276" y2="202.5" stroke="#9fb3c6" stroke-width="2"/>
+  <path d="M298,148.0 L309,156.0 L298,164.0 z" fill="#555"/>
+  <rect x="316" y="56" width="128" height="200" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="380.0" y="150.0" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">étape 2</text>
+  <text x="380.0" y="176.0" font-size="17" fill="#333" text-anchor="middle">découper</text>
+  <path d="M452,148.0 L463,156.0 L452,164.0 z" fill="#555"/>
+  <rect x="470" y="58.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="66.0" x2="502" y2="66.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="72.0" x2="496" y2="72.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="87.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="95.0" x2="502" y2="95.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="101.0" x2="496" y2="101.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="116.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="124.0" x2="502" y2="124.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="130.0" x2="496" y2="130.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="145.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="153.0" x2="502" y2="153.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="159.0" x2="496" y2="159.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="174.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="182.0" x2="502" y2="182.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="188.0" x2="496" y2="188.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="203.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="211.0" x2="502" y2="211.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="217.0" x2="496" y2="217.0" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="470" y="232.0" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="478" y1="240.0" x2="502" y2="240.0" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="478" y1="246.0" x2="496" y2="246.0" stroke="#9fb3c6" stroke-width="2"/>
+  <path d="M518,148.0 L529,156.0 L518,164.0 z" fill="#555"/>
+  <rect x="536" y="56" width="128" height="200" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="600.0" y="150.0" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">étape 3</text>
+  <text x="600.0" y="176.0" font-size="17" fill="#333" text-anchor="middle">regrouper</text>
+  <path d="M672,148.0 L683,156.0 L672,164.0 z" fill="#555"/>
+  <rect x="690" y="130.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="698" y1="138.5" x2="722" y2="138.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="698" y1="144.5" x2="716" y2="144.5" stroke="#9fb3c6" stroke-width="2"/>
+  <rect x="690" y="159.5" width="40" height="22" rx="4" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="698" y1="167.5" x2="722" y2="167.5" stroke="#9fb3c6" stroke-width="2"/>
+  <line x1="698" y1="173.5" x2="716" y2="173.5" stroke="#9fb3c6" stroke-width="2"/>
+  <text x="710.0" y="284" font-size="16" fill="#555" text-anchor="middle">résultat</text>
+  <line x1="736" y1="156.0" x2="918" y2="156.0" stroke="#555" stroke-width="2.5"/>
+  <path d="M916,148.0 L928,156.0 L916,164.0 z" fill="#555"/>
+  <text x="842.0" y="142.0" font-size="17" fill="#333" text-anchor="middle">seul le résultat</text>
+  <text x="842.0" y="184.0" font-size="17" fill="#333" text-anchor="middle">voyage</text>
+  <rect x="930" y="106.0" width="226" height="100" rx="12" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2.5"/>
+  <text x="1043" y="148.0" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">application</text>
+  <text x="1043" y="176.0" font-size="16" fill="#555" text-anchor="middle">API, tableau de bord…</text>
+</svg>

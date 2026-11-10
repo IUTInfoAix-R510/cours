@@ -56,9 +56,9 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 28 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 29 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 27, 9 minutes.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 28, 10 minutes et demie.
 
 Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
 
@@ -735,6 +735,37 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 
 ---
 
+
+## Un pipeline d'agrégation : quoi et pourquoi
+
+<img src="assets/schemas/s2-pipeline-principe.svg" alt="Sur le serveur MongoDB, les documents d'une collection traversent des étapes successives : étape 1, filtrer, il en reste moins ; étape 2, découper, il y en a plus ; étape 3, regrouper, il en reste deux, le résultat. Chaque étape reçoit les documents de la précédente et en produit de nouveaux. Seul le résultat voyage jusqu'à l'application, une API ou un tableau de bord." style="display:block; width:100%; margin:0.3em auto 0;">
+
+<div class="cols" style="margin-top: 0.4rem;">
+<div class="box">
+
+**Quoi.** Une suite d'étapes. Chacune reçoit les documents de la précédente, les transforme et passe le résultat à la suivante, comme <code style="white-space: nowrap;">grep | sort | head</code> dans un terminal.
+
+</div>
+<div class="box">
+
+**Pourquoi.** `find` sélectionne des documents un par un, sans les combiner : pas de moyenne ni de total par groupe. Le pipeline calcule sur le serveur, et seul le résultat voyage.
+
+</div>
+</div>
+
+<!--
+(1 min 30)
+
+Partir de la question que find ne résout pas : « quelle est la température moyenne de chaque pièce ? ». Avec find, il faudrait rapatrier toutes les mesures dans l'application et faire le calcul en JavaScript : beaucoup de données transférées pour trois nombres. Le pipeline fait ce calcul là où sont les données.
+
+Le parallèle avec le shell : cat mesures.txt | grep temperature | sort | head -5. Chaque commande lit la sortie de la précédente ; une étape d'agrégation lit les documents produits par l'étape d'avant. Le nombre de documents peut baisser (filtrer), monter (découper un tableau) ou se resserrer (regrouper).
+
+Côté SQL, c'est le rôle de SELECT … WHERE … GROUP BY … ORDER BY : la diapositive suivante met les deux en regard.
+
+C'est l'outil des tableaux de bord : le TP2 et le projet en feront une API qui renvoie des statistiques.
+-->
+
+---
 
 ## Le pipeline d'agrégation
 
