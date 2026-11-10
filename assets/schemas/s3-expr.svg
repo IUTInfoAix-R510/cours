@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 250" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Filtre classique contre $expr : à gauche, le filtre { duree: { $gt: 100 } } compare le champ duree du film La Haine (98) à la constante 100, ce qui donne faux ; à droite, $expr compare deux valeurs du même document, la première note de La Haine (5, obtenue par $arrayElemAt avec l'indice 0) et sa dernière note (2, indice -1), avec $gt, ce qui donne vrai ; $expr accepte les expressions du pipeline, comme $project</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Filtre classique -->
+  <rect x="2" y="2" width="400" height="246" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="18" y="30" font-size="20" font-weight="bold" fill="#333">Filtre classique</text>
+  <text x="18" y="54" font-size="16" fill="#555">un champ comparé à une constante</text>
+  <text x="18" y="86" font-family="monospace" font-size="17" fill="#333">{ duree: { <tspan fill="#00684a" font-weight="bold">$gt</tspan>: <tspan font-weight="bold">100</tspan> } }</text>
+  <rect x="18" y="100" width="190" height="70" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="30" y="126">titre: "La Haine"</text>
+    <text x="30" y="154">duree: <tspan font-weight="bold">98</tspan></text>
+  </g>
+  <line x1="208" y1="149" x2="232" y2="149" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="236" y="114" width="100" height="58" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="286" y="137" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$gt</text>
+  <text x="286" y="162" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">98 &gt; 100</text>
+  <line x1="286" y1="172" x2="286" y2="189" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="250" y="192" width="72" height="32" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="286" y="214" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">faux</text>
+  <text x="334" y="214" font-size="16" fill="#c0392b">écarté</text>
+  <text x="18" y="240" font-size="16" fill="#555">La valeur 100 est fixée dans la requête.</text>
+
+  <!-- $expr -->
+  <rect x="422" y="2" width="736" height="246" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="438" y="30" font-size="20" font-weight="bold" fill="#333"><tspan font-family="monospace" fill="#00684a">$expr</tspan> : deux valeurs du même document</text>
+  <rect x="438" y="44" width="300" height="162" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="452" y="70">titre: "La Haine",</text>
+    <text x="452" y="94">notes: [</text>
+    <text x="452" y="194">]</text>
+  </g>
+  <rect x="462" y="104" width="262" height="30" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="472" y="125" font-family="monospace" font-size="16" fill="#333">source: "presse", note: <tspan font-weight="bold">5</tspan></text>
+  <rect x="462" y="142" width="262" height="30" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="472" y="163" font-family="monospace" font-size="16" fill="#333">source: "public", note: <tspan font-weight="bold">2</tspan></text>
+
+  <path d="M724,119 C746,119 746,81 768,81" fill="none" stroke="#b8c4cf" stroke-width="2.2"/>
+  <path d="M724,157 C746,157 746,169 768,169" fill="none" stroke="#b8c4cf" stroke-width="2.2"/>
+
+  <rect x="768" y="52" width="222" height="58" rx="7" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="780" y="76">{ <tspan fill="#00684a" font-weight="bold">$arrayElemAt</tspan>:</text>
+    <text x="780" y="100">["$notes.note", 0] }</text>
+  </g>
+  <rect x="768" y="140" width="222" height="58" rx="7" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="780" y="164">{ <tspan fill="#00684a" font-weight="bold">$arrayElemAt</tspan>:</text>
+    <text x="780" y="188">["$notes.note", -1] }</text>
+  </g>
+
+  <line x1="990" y1="81" x2="1056" y2="96" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="1022" y="78" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5</text>
+  <line x1="990" y1="169" x2="1056" y2="124" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="1030" y="170" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">2</text>
+
+  <rect x="1062" y="76" width="80" height="60" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1102" y="100" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$gt</text>
+  <text x="1102" y="125" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">5 &gt; 2</text>
+  <line x1="1102" y1="136" x2="1102" y2="157" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="1066" y="160" width="72" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1102" y="182" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">vrai</text>
+  <text x="438" y="238" font-size="16" fill="#555"><tspan font-family="monospace">$expr</tspan> accepte les expressions du pipeline, comme dans <tspan font-family="monospace">$project</tspan>.</text>
+</svg>

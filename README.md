@@ -21,7 +21,7 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 |---|---|---|---|---|
 | S1 | 23/11 | MongoDB, documents et CRUD | TP1 | [diapositives](https://iutinfoaix-r510.github.io/cours/s1-ressource-et-mongodb.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s1-ressource-et-mongodb.pdf) |
 | S2 | 23/11 | Documents imbriqués, tableaux, initiation à l'agrégation | TP1 (suite) | [diapositives](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.pdf) |
-| S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | À venir |
+| S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | [diapositives](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.pdf) |
 | S4 | 30/11 | Modélisation des données et patterns de conception | TP3 | À venir |
 | S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | À venir |
 | S6 | 7/12 | Lancement du projet, modèle de données, chargement | Projet | À venir |
@@ -33,7 +33,8 @@ Les jours et horaires de chaque groupe sont dans ADE.
 ### Énoncés des TP
 
 - [TP1 : MongoDB, documents, CRUD, documents imbriqués, initiation à l'agrégation](https://iutinfoaix-r510.github.io/tp1/) (S1-S2)
-- TP2, TP3, TP4 et projet : à venir. Les liens seront ajoutés ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
+- [TP2 : MongoDB, requêtes avancées, agrégation, index, géospatial, pilote Java](https://iutinfoaix-r510.github.io/tp2/) (S3)
+- TP3, TP4 et projet : à venir. Les liens seront ajoutés ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
 
 ### Environnement
 
@@ -62,6 +63,7 @@ La publication sur GitHub Pages se fait à chaque push sur `main`.
 cours/
 ├── s1-ressource-et-mongodb.md             # S1 : point cours du TP1
 ├── s2-imbrication-tableaux-agregation.md  # S2 : point cours du TP1 (suite)
+├── s3-requetes-avancees-agregation-index.md  # S3 : point cours du TP2
 ├── themes/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/

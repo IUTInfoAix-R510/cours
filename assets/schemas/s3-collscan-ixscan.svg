@@ -1,0 +1,118 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 320" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La requête find({ borough: "Bronx" }) avec et sans index. Sans index, COLLSCAN lit tous les documents de la collection : 25 359 documents examinés pour 2 338 renvoyés, les autres sont lus pour rien. Avec l'index { borough: 1 }, les clés sont triées par arrondissement (Bronx, Brooklyn, Manhattan, Queens, Staten Island, plus 51 « Missing ») : IXSCAN ne parcourt que le segment Bronx, puis FETCH lit les documents correspondants : 2 338 clés et 2 338 documents examinés pour 2 338 renvoyés. Un index est trié, mais il coûte de la place et du temps à chaque écriture.</title>
+  <text x="580" y="24" font-family="monospace" font-size="19" fill="#333" text-anchor="middle">db.restaurants.find({ borough: "Bronx" })</text>
+  <line x1="580" y1="44" x2="580" y2="284" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="20" y="66" font-size="20" font-weight="bold" fill="#333">Sans index : <tspan font-family="monospace" fill="#c0392b">COLLSCAN</tspan></text>
+  <rect x="20" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="58" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="96" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="134" y="82" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="172" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="210" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="248" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="286" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="324" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="362" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="400" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="438" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="476" y="82" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="514" y="82" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="20" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="58" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="96" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="134" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="172" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="210" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="248" y="110" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="286" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="324" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="362" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="400" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="438" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="476" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="514" y="110" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="20" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="58" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="96" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="134" y="138" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="172" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="210" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="248" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="286" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="324" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="362" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="400" y="138" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="438" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="476" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="514" y="138" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="20" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="58" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="96" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="134" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="172" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="210" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="248" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="286" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="324" y="166" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="362" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="400" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="438" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="476" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="514" y="166" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="20" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="58" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="96" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="134" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="172" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="210" y="194" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="248" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="286" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="324" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="362" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="400" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="438" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="476" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <rect x="514" y="194" width="28" height="20" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <g font-size="16" fill="#555">
+    <rect x="110" y="232" width="24" height="18" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="142" y="247">renvoyé (Bronx)</text>
+    <rect x="310" y="232" width="24" height="18" rx="4" fill="#fdeeee" stroke="#c0392b" stroke-opacity="0.5" stroke-width="1.5" stroke-dasharray="4 3"/>
+    <text x="342" y="247">lu pour rien</text>
+  </g>
+  <text x="281" y="280" font-size="18" fill="#333" text-anchor="middle"><tspan font-weight="bold" fill="#c0392b">25 359</tspan> documents examinés → <tspan font-weight="bold" fill="#00684a">2 338</tspan> renvoyés</text>
+  <text x="600" y="66" font-size="20" font-weight="bold" fill="#333">Avec l'index <tspan font-family="monospace">{ borough: 1 }</tspan> : <tspan font-family="monospace" fill="#00684a">IXSCAN</tspan> puis <tspan font-family="monospace" fill="#00684a">FETCH</tspan></text>
+  <rect x="670" y="82" width="130" height="38" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5"/>
+  <text x="735" y="107" font-size="16" fill="#777" text-anchor="middle">Brooklyn</text>
+  <rect x="800" y="82" width="214" height="38" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5"/>
+  <text x="907" y="107" font-size="16" fill="#777" text-anchor="middle">Manhattan</text>
+  <rect x="1014" y="82" width="2" height="38" fill="#999"/>
+  <rect x="1016" y="82" width="116" height="38" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5"/>
+  <text x="1074" y="107" font-size="16" fill="#777" text-anchor="middle">Queens</text>
+  <rect x="1132" y="82" width="18" height="38" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5"/>
+  <rect x="610" y="82" width="60" height="38" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="640" y="107" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">Bronx</text>
+  <line x1="1015" y1="122" x2="1015" y2="134" stroke="#999" stroke-width="1.5"/>
+  <text x="1015" y="151" font-size="15" fill="#999" text-anchor="middle">Missing</text>
+  <line x1="1141" y1="122" x2="1141" y2="134" stroke="#999" stroke-width="1.5"/>
+  <text x="1156" y="151" font-size="15" fill="#777" text-anchor="end">Staten Island</text>
+  <line x1="612" y1="130" x2="660" y2="130" stroke="#13aa52" stroke-width="2.5"/>
+  <path d="M658,124 L670,130 L658,136 z" fill="#13aa52"/>
+  <text x="686" y="140" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">IXSCAN</tspan> : seules les clés Bronx</text>
+  <line x1="640" y1="140" x2="624" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="662" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="700" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="738" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="776" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="814" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <line x1="640" y1="140" x2="852" y2="194" stroke="#13aa52" stroke-width="1.5" stroke-opacity="0.6"/>
+  <rect x="610" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="648" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="686" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="724" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="762" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="800" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="838" y="196" width="28" height="20" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="890" y="212" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">FETCH</tspan> : lit les documents pointés</text>
+  <text x="879" y="280" font-size="18" fill="#333" text-anchor="middle"><tspan font-weight="bold" fill="#00684a">2 338</tspan> clés, <tspan font-weight="bold" fill="#00684a">2 338</tspan> documents examinés → <tspan font-weight="bold" fill="#00684a">2 338</tspan> renvoyés</text>
+  <text x="580" y="312" font-size="17" fill="#555" text-anchor="middle">Un index est <tspan font-weight="bold" fill="#333">trié</tspan> : on va droit aux bonnes clés. En échange, il coûte de la place, et du temps à chaque écriture.</text>
+</svg>

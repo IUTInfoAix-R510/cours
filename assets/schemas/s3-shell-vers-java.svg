@@ -1,0 +1,81 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 318" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Du shell au code : la requête find du playground mongosh sur borough et cuisine, avec projection sur name et tri par name, s'écrit en Java avec le pilote MongoDB (Filters, Sorts) et renvoie une List de Document ; une route Javalin lit le borough dans le chemin avec pathParam et la cuisine avec queryParam, et le navigateur qui demande GET /api/boroughs/Bronx/restaurants?cuisine=Pizza sur le port 7070 reçoit un tableau JSON de noms ; sous les deux premiers blocs, la correspondance filtre et Filters, projection et Projections, tri et Sorts, étapes et Aggregates, accumulateurs et Accumulators</title>
+
+  <!-- titres -->
+  <g font-size="18" font-weight="bold" fill="#333">
+    <text x="3" y="22">playground (mongosh)</text>
+    <text x="233" y="22">Java : pilote MongoDB</text>
+    <text x="543" y="22">Javalin : une route</text>
+    <text x="1158" y="22" text-anchor="end">navigateur (port 7070)</text>
+  </g>
+
+  <!-- 1. playground -->
+  <rect x="1" y="34" width="210" height="216" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="12" y="60">db.restaurants.find(</text>
+    <text x="30" y="83">{ borough: b,</text>
+    <text x="48" y="106">cuisine: c },</text>
+    <text x="30" y="129">{ _id: 0,</text>
+    <text x="48" y="152">name: 1 }</text>
+    <text x="12" y="175">).sort({ name: 1 })</text>
+  </g>
+
+  <!-- 2. pilote Java -->
+  <rect x="231" y="34" width="290" height="216" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="242" y="60">restaurants.find(<tspan fill="#00684a" font-weight="bold">Filters</tspan>.and(</text>
+    <text x="260" y="83"><tspan fill="#00684a" font-weight="bold">Filters</tspan>.eq("borough", b),</text>
+    <text x="260" y="106"><tspan fill="#00684a" font-weight="bold">Filters</tspan>.eq("cuisine", c)))</text>
+    <text x="242" y="129">.projection(…)</text>
+    <text x="242" y="152">.sort(<tspan fill="#00684a" font-weight="bold">Sorts</tspan>.ascending(</text>
+    <text x="260" y="175">"name"))</text>
+    <text x="242" y="198">.into(new ArrayList&lt;&gt;())</text>
+  </g>
+  <line x1="231" y1="212" x2="521" y2="212" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="242" y="237" font-family="monospace" font-size="15" fill="#555">→ List&lt;Document&gt;</text>
+
+  <!-- 3. route Javalin -->
+  <rect x="541" y="34" width="386" height="216" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="553" y="60">config.routes.get(</text>
+    <text x="571" y="83">"/api/boroughs/<tspan fill="#8e44ad" font-weight="bold">{borough}</tspan>/restaurants",</text>
+    <text x="571" y="106">ctx -&gt; ctx.json(…))</text>
+  </g>
+  <line x1="541" y1="150" x2="927" y2="150" stroke="#e8a838" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="553" y="184">b = ctx.<tspan fill="#8e44ad" font-weight="bold">pathParam</tspan>("borough")<tspan x="826" fill="#777">→</tspan><tspan x="846">"Bronx"</tspan></text>
+    <text x="553" y="208">c = ctx.<tspan fill="#b06f00" font-weight="bold">queryParam</tspan>("cuisine")<tspan x="826" fill="#777">→</tspan><tspan x="846">"Pizza"</tspan></text>
+  </g>
+
+  <!-- 4. navigateur -->
+  <rect x="947" y="34" width="212" height="216" rx="10" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="958" y="60"><tspan font-weight="bold">GET</tspan> /api/boroughs/</text>
+    <text x="976" y="83"><tspan fill="#8e44ad" font-weight="bold">Bronx</tspan>/restaurants</text>
+    <text x="976" y="106">?cuisine=<tspan fill="#b06f00" font-weight="bold">Pizza</tspan></text>
+  </g>
+  <line x1="947" y1="120" x2="1159" y2="120" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="958" y="143" font-size="16" fill="#555">réponse en JSON :</text>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="958" y="168">[ { "name": "…" },</text>
+    <text x="976" y="191">{ "name": "…" },</text>
+    <text x="976" y="214">… ]</text>
+  </g>
+
+  <!-- flèches -->
+  <g fill="#555">
+    <path d="M214,135 L227,142 L214,149 z"/>
+    <path d="M524,135 L537,142 L524,149 z"/>
+    <path d="M930,135 L943,142 L930,149 z"/>
+  </g>
+
+  <!-- correspondance shell / pilote -->
+  <path d="M6,262 L6,268 L516,268 L516,262" fill="none" stroke="#b8c4cf" stroke-width="2"/>
+  <g font-size="16" fill="#777">
+    <text x="12" y="290">filtre ↔ <tspan font-family="monospace" fill="#555">Filters</tspan></text>
+    <text x="170" y="290">projection ↔ <tspan font-family="monospace" fill="#555">Projections</tspan></text>
+    <text x="400" y="290">tri ↔ <tspan font-family="monospace" fill="#555">Sorts</tspan></text>
+    <text x="12" y="313">étapes ↔ <tspan font-family="monospace" fill="#555">Aggregates</tspan></text>
+    <text x="200" y="313">accumulateurs ↔ <tspan font-family="monospace" fill="#555">Accumulators</tspan></text>
+  </g>
+</svg>

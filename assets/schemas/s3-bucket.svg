@@ -1,0 +1,56 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 272" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$bucket sur la durée des films : un axe de 0 à 130 minutes porte les bornes boundaries: [0, 90, 120], et output compte les films de chaque tranche dans nb ; Les Glaneurs et la Glaneuse (82 min) tombe dans la tranche [0, 90[, La Haine (98 min) dans la tranche [90, 120[, borne basse incluse et borne haute exclue ; Amélie Poulain (122 min) et Le Voyage de Chihiro (125 min) dépassent 120 et vont dans default: "long" ; en sortie, trois documents : { _id: 0, nb: 1 }, { _id: 90, nb: 1 } et { _id: "long", nb: 2 }</title>
+  <text x="2" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">groupBy: "$duree", boundaries: [0, 90, 120], default: "long", output: { nb: { $sum: 1 } }</text>
+  <rect x="641" y="74" width="130" height="30" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="651" y="95" font-size="17" fill="#333">Glaneurs</text>
+  <text x="761" y="95" font-family="monospace" font-size="17" fill="#333" text-anchor="end">82</text>
+  <rect x="766" y="34" width="136" height="30" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="776" y="55" font-size="17" fill="#333">La Haine</text>
+  <text x="892" y="55" font-family="monospace" font-size="17" fill="#333" text-anchor="end">98</text>
+  <rect x="900" y="74" width="136" height="30" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="910" y="95" font-size="17" fill="#333">Amélie</text>
+  <text x="1026" y="95" font-family="monospace" font-size="17" fill="#333" text-anchor="end">122</text>
+  <rect x="985" y="34" width="130" height="30" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="995" y="55" font-size="17" fill="#333">Chihiro</text>
+  <text x="1105" y="55" font-family="monospace" font-size="17" fill="#333" text-anchor="end">125</text>
+  <rect x="50" y="120" width="720" height="16" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="770" y="120" width="240" height="16" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <rect x="1010" y="120" width="140" height="16" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="706" y1="104" x2="706" y2="128" stroke="#4a90d9" stroke-width="2"/>
+  <circle cx="706" cy="128" r="6" fill="#4a90d9"/>
+  <line x1="834" y1="64" x2="834" y2="128" stroke="#e8a838" stroke-width="2"/>
+  <circle cx="834" cy="128" r="6" fill="#e8a838"/>
+  <line x1="1026" y1="104" x2="1026" y2="128" stroke="#8e44ad" stroke-width="2"/>
+  <circle cx="1026" cy="128" r="6" fill="#8e44ad"/>
+  <line x1="1050" y1="64" x2="1050" y2="128" stroke="#8e44ad" stroke-width="2"/>
+  <circle cx="1050" cy="128" r="6" fill="#8e44ad"/>
+  <line x1="290" y1="136" x2="290" y2="144" stroke="#777" stroke-width="2"/>
+  <line x1="530" y1="136" x2="530" y2="144" stroke="#777" stroke-width="2"/>
+  <line x1="1090" y1="136" x2="1090" y2="144" stroke="#777" stroke-width="2"/>
+  <text x="290" y="162" font-size="15" fill="#777" text-anchor="middle">30</text>
+  <text x="530" y="162" font-size="15" fill="#777" text-anchor="middle">60</text>
+  <text x="1090" y="162" font-size="15" fill="#777" text-anchor="middle">130 min</text>
+  <line x1="50" y1="110" x2="50" y2="146" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="50" y="164" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">0</text>
+  <line x1="770" y1="110" x2="770" y2="146" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="770" y="164" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">90</text>
+  <line x1="1010" y1="110" x2="1010" y2="146" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="1010" y="164" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">120</text>
+  <text x="410" y="194" font-family="monospace" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">[0, 90[</text>
+  <text x="462" y="194" font-size="16" fill="#555">borne basse incluse, borne haute exclue</text>
+  <text x="890" y="194" font-family="monospace" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">[90, 120[</text>
+  <text x="1156" y="194" font-family="monospace" font-size="17" font-weight="bold" fill="#333" text-anchor="end">default: "long"</text>
+  <text x="2" y="255" font-size="17" fill="#555">en sortie :</text>
+  <rect x="310" y="232" width="200" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="410" y="255" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">{ _id: 0, nb: 1 }</text>
+  <rect x="680" y="232" width="208" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="784" y="255" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">{ _id: 90, nb: 1 }</text>
+  <rect x="908" y="232" width="248" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="1032" y="255" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">{ _id: "long", nb: 2 }</text>
+  <line x1="410" y1="202" x2="410" y2="222" stroke="#555" stroke-width="2.2"/>
+  <path d="M404,219 L410,231 L416,219 z" fill="#555"/>
+  <line x1="890" y1="202" x2="784" y2="222" stroke="#555" stroke-width="2.2"/>
+  <path d="M786,216 L775,224 L788,227 z" fill="#555"/>
+  <line x1="1080" y1="202" x2="1032" y2="222" stroke="#555" stroke-width="2.2"/>
+  <path d="M1032,215 L1024,225 L1037,226 z" fill="#555"/>
+</svg>

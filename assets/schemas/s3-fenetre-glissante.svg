@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 278" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Fenêtre glissante avec $setWindowFields : six documents triés par mois ont pour moyenne 10, 12, 11, 14, 13 et 15 ; pour le mois 4, document courant, la fenêtre documents: [-2, 0] couvre les mois 2, 3 et 4 et donne (12 + 11 + 14) / 3 = 12.33 ; les moyennes glissantes valent 10, 11, 11, 12.33, 12.67 et 14 ; en début de suite, la fenêtre contient moins de 3 documents (1 pour le mois 1, 2 pour le mois 2)</title>
+  <text x="2" y="86" font-size="17" font-weight="bold" fill="#333">documents</text>
+  <text x="2" y="108" font-size="16" fill="#555">triés par mois</text>
+  <text x="2" y="190" font-size="17" font-weight="bold" fill="#333">moyenne</text>
+  <text x="2" y="209" font-size="17" font-weight="bold" fill="#333">glissante</text>
+  <text x="2" y="237" font-size="16" fill="#777">calcul</text>
+  <text x="346" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">window: { documents: [-2, 0] }</text>
+  <rect x="346" y="30" width="488" height="108" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">
+    <text x="424" y="50" font-family="monospace">-2</text>
+    <text x="590" y="50" font-family="monospace">-1</text>
+    <text x="756" y="50"><tspan font-family="monospace">0</tspan> (courant)</text>
+  </g>
+  <path d="M424,127 C424,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M590,127 C590,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M756,127 C756,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M749,164 L756,176 L763,164 z" fill="#13aa52"/>
+  <rect x="190" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="202" y="86">mois: 1</text>
+    <text x="202" y="114">moyenne: 10</text>
+  </g>
+  <rect x="356" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="368" y="86">mois: 2</text>
+    <text x="368" y="114">moyenne: 12</text>
+  </g>
+  <rect x="522" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="534" y="86">mois: 3</text>
+    <text x="534" y="114">moyenne: 11</text>
+  </g>
+  <rect x="688" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="17" fill="#333" font-weight="bold">
+    <text x="700" y="86">mois: 4</text>
+    <text x="700" y="114">moyenne: 14</text>
+  </g>
+  <rect x="854" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="866" y="86">mois: 5</text>
+    <text x="866" y="114">moyenne: 13</text>
+  </g>
+  <rect x="1020" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="1032" y="86">mois: 6</text>
+    <text x="1032" y="114">moyenne: 15</text>
+  </g>
+  <rect x="190" y="178" width="136" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="258" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">10</text>
+  <text x="258" y="237" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">10 / 1</text>
+  <rect x="356" y="178" width="136" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="424" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">11</text>
+  <text x="424" y="237" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">(10+12) / 2</text>
+  <rect x="522" y="178" width="136" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="590" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">11</text>
+  <text x="590" y="237" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">(10+12+11) / 3</text>
+  <rect x="688" y="178" width="136" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="756" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle" font-weight="bold">12.33</text>
+  <text x="756" y="237" font-family="monospace" font-size="15" fill="#333" text-anchor="middle" font-weight="bold">(12+11+14) / 3</text>
+  <rect x="854" y="178" width="136" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="922" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">12.67</text>
+  <text x="922" y="237" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">(11+14+13) / 3</text>
+  <rect x="1020" y="178" width="136" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1088" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">14</text>
+  <text x="1088" y="237" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">(14+13+15) / 3</text>
+  <text x="2" y="268" font-size="17" fill="#b06f00">En début de suite, la fenêtre contient moins de 3 documents : la moyenne porte sur 1 document (mois 1), puis sur 2 (mois 2).</text>
+</svg>

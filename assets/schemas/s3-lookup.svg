@@ -1,0 +1,106 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 346" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$lookup : chacun des 4 films de la collection brouillon reçoit dans le tableau r les documents de brouillon_realisateurs dont le nom est égal à son realisateur ; Amélie Poulain, Le Voyage de Chihiro et Les Glaneurs et la Glaneuse reçoivent un document, La Haine reçoit un tableau vide car aucun réalisateur Kassovitz n'existe, comme un LEFT OUTER JOIN ; un $unwind placé derrière retirerait La Haine</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- en-têtes -->
+  <g font-size="17" fill="#555" text-anchor="middle">
+    <text x="140" y="20">collection <tspan font-family="monospace">brouillon</tspan></text>
+    <text x="495" y="20">collection <tspan font-family="monospace">brouillon_realisateurs</tspan></text>
+    <text x="941" y="20">en sortie : chaque film reçoit le tableau <tspan font-family="monospace">r</tspan></text>
+  </g>
+
+  <!-- films vers $lookup -->
+  <g fill="none" stroke="#4a90d9" stroke-width="2.2" stroke-opacity="0.85">
+    <path d="M278,61 C304,61 300,234 320,234"/>
+    <path d="M278,133 C304,133 300,234 320,234"/>
+    <path d="M278,205 C304,205 300,234 320,234"/>
+    <path d="M278,277 C304,277 300,234 320,234"/>
+  </g>
+  <path d="M319,227 L329,234 L319,241 z" fill="#555"/>
+
+  <!-- films en entrée -->
+  <g font-size="17" fill="#333">
+    <rect x="2" y="32" width="276" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="14" y="56" font-weight="bold">Amélie Poulain</text>
+    <text x="14" y="79" font-family="monospace" font-size="16">realisateur: "Jeunet"</text>
+    <rect x="2" y="104" width="276" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="14" y="128" font-weight="bold">Le Voyage de Chihiro</text>
+    <text x="14" y="151" font-family="monospace" font-size="16">realisateur: "Miyazaki"</text>
+    <rect x="2" y="176" width="276" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="14" y="200" font-weight="bold">Les Glaneurs et la Glaneuse</text>
+    <text x="14" y="223" font-family="monospace" font-size="16">realisateur: "Varda"</text>
+    <rect x="2" y="248" width="276" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="14" y="272" font-weight="bold">La Haine</text>
+    <text x="14" y="295" font-family="monospace" font-size="16">realisateur: <tspan fill="#c0392b">"Kassovitz"</tspan></text>
+  </g>
+
+  <!-- collection brouillon_realisateurs -->
+  <g font-family="monospace" font-size="16" fill="#333" text-anchor="middle">
+    <rect x="330" y="32" width="330" height="28" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+    <text x="495" y="52">nom: "Jeunet", pays: "France"</text>
+    <rect x="330" y="66" width="330" height="28" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+    <text x="495" y="86">nom: "Miyazaki", pays: "Japon"</text>
+    <rect x="330" y="100" width="330" height="28" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+    <text x="495" y="120">nom: "Varda", pays: "France"</text>
+  </g>
+  <line x1="495" y1="131" x2="495" y2="150" stroke="#555" stroke-width="2.2"/>
+  <path d="M488,149 L495,160 L502,149 z" fill="#555"/>
+  <text x="512" y="152" font-size="16" fill="#555"><tspan font-family="monospace">realisateur</tspan> = <tspan font-family="monospace">nom</tspan></text>
+
+  <!-- étape $lookup -->
+  <rect x="330" y="162" width="330" height="144" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="495" y="188" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$lookup</text>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="342" y="216">from: "brouillon_realisateurs",</text>
+    <text x="342" y="240">localField: "realisateur",</text>
+    <text x="342" y="264">foreignField: "nom", as: "r"</text>
+  </g>
+  <line x1="330" y1="276" x2="660" y2="276" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="495" y="298" font-family="monospace" font-size="16" fill="#777" text-anchor="middle">LEFT OUTER JOIN</text>
+
+  <!-- $lookup vers les films en sortie -->
+  <g fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)">
+    <path d="M662,234 C694,234 690,61 723,61"/>
+    <path d="M662,234 C694,234 690,133 723,133"/>
+    <path d="M662,234 C694,234 690,205 723,205"/>
+    <path d="M662,234 C694,234 690,277 723,277"/>
+  </g>
+
+  <!-- films en sortie -->
+  <g font-size="17" fill="#333">
+    <rect x="725" y="32" width="433" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="739" y="56" font-weight="bold">Amélie Poulain</text>
+    <rect x="788" y="62" width="323" height="24" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.8"/>
+    <text x="739" y="80" font-family="monospace">r: [</text>
+    <text x="950" y="80" font-family="monospace" text-anchor="middle">nom: "Jeunet", pays: "France"</text>
+    <text x="1119" y="80" font-family="monospace">]</text>
+
+    <rect x="725" y="104" width="433" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="739" y="128" font-weight="bold">Le Voyage de Chihiro</text>
+    <rect x="788" y="134" width="323" height="24" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.8"/>
+    <text x="739" y="152" font-family="monospace">r: [</text>
+    <text x="950" y="152" font-family="monospace" text-anchor="middle">nom: "Miyazaki", pays: "Japon"</text>
+    <text x="1119" y="152" font-family="monospace">]</text>
+
+    <rect x="725" y="176" width="433" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="739" y="200" font-weight="bold">Les Glaneurs et la Glaneuse</text>
+    <rect x="788" y="206" width="323" height="24" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.8"/>
+    <text x="739" y="224" font-family="monospace">r: [</text>
+    <text x="950" y="224" font-family="monospace" text-anchor="middle">nom: "Varda", pays: "France"</text>
+    <text x="1119" y="224" font-family="monospace">]</text>
+
+    <rect x="725" y="248" width="433" height="58" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="739" y="272" font-weight="bold">La Haine</text>
+    <rect x="765" y="278" width="44" height="24" rx="6" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+    <text x="739" y="296" font-family="monospace">r: <tspan fill="#c0392b" font-weight="bold">[ ]</tspan></text>
+    <text x="822" y="296" font-size="16" font-weight="bold" fill="#c0392b">aucun réalisateur Kassovitz</text>
+  </g>
+
+  <!-- mentions -->
+  <text x="2" y="336" font-size="17" fill="#555"><tspan font-family="monospace">r</tspan> est toujours un tableau : vide, un ou plusieurs documents</text>
+  <text x="1158" y="336" font-size="17" fill="#555" text-anchor="end">un <tspan font-family="monospace">$unwind</tspan> placé derrière retirerait La Haine</text>
+</svg>

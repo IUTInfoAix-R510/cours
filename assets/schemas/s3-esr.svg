@@ -1,0 +1,104 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 396" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Règle ESR pour la requête find({ annee: 2001, duree: { $gt: 100 } }).sort({ titre: 1 }) : avec l'index { annee: 1, titre: 1, duree: 1 }, l'égalité sur annee mène directement au bloc contigu des clés 2001, ce bloc est déjà rangé par titre donc aucun tri en mémoire, et la condition duree &gt; 100 est vérifiée dans la clé, ce qui écarte Shrek sans lire le document ; le plan est FETCH ← IXSCAN, et avec la projection { _id: 0, titre: 1, duree: 1 } la requête devient couverte, PROJECTION_COVERED ← IXSCAN. Avec le contre-exemple { annee: 1, duree: 1 }, les clés du bloc 2001 sont rangées par durée et non par titre, le plan devient SORT ← FETCH ← IXSCAN avec un tri en mémoire</title>
+  <text x="250" y="26" font-family="monospace" font-size="18" fill="#333">find({ <tspan fill="#4a90d9" font-weight="bold">annee</tspan>: 2001, <tspan fill="#b06f00" font-weight="bold">duree</tspan>: { $gt: 100 } }).sort({ <tspan fill="#00684a" font-weight="bold">titre</tspan>: 1 })</text>
+  <line x1="326" y1="34" x2="380" y2="34" stroke="#4a90d9" stroke-width="3"/>
+  <text x="353" y="54" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">E · Égalité</text>
+  <line x1="467" y1="34" x2="521" y2="34" stroke="#e8a838" stroke-width="3"/>
+  <text x="494" y="54" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">R · Range</text>
+  <line x1="792" y1="34" x2="846" y2="34" stroke="#13aa52" stroke-width="3"/>
+  <text x="819" y="54" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">S · Sort</text>
+  <rect x="2" y="66" width="600" height="328" rx="10" fill="#f0f4f8" stroke="#13aa52" stroke-width="2.5"/>
+  <rect x="612" y="66" width="546" height="328" rx="10" fill="#f0f4f8" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="18" y="92" font-size="19" font-weight="bold" fill="#00684a">Index ESR</text>
+  <text x="128" y="92" font-family="monospace" font-size="17" fill="#333">{ <tspan fill="#4a90d9" font-weight="bold">annee</tspan>: 1, <tspan fill="#00684a" font-weight="bold">titre</tspan>: 1, <tspan fill="#b06f00" font-weight="bold">duree</tspan>: 1 }</text>
+  <text x="628" y="92" font-size="19" font-weight="bold" fill="#c0392b">Contre-exemple : E puis R</text>
+  <text x="896" y="92" font-family="monospace" font-size="17" fill="#333">{ <tspan fill="#4a90d9" font-weight="bold">annee</tspan>: 1, <tspan fill="#b06f00" font-weight="bold">duree</tspan>: 1 }</text>
+  <rect x="18" y="104" width="292" height="25" rx="7" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <text y="122" font-family="monospace" font-size="17" fill="#999"><tspan x="30">2000</tspan><tspan x="84">"Gladiator"</tspan></text>
+  <text x="298" y="122" font-family="monospace" font-size="17" fill="#999" text-anchor="end">155</text>
+  <rect x="18" y="133" width="292" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text y="151" font-family="monospace" font-size="17"><tspan x="30" fill="#4a90d9">2001</tspan><tspan x="84" fill="#00684a">"Amélie"</tspan></text>
+  <text x="298" y="151" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">122</text>
+  <rect x="18" y="162" width="292" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text y="180" font-family="monospace" font-size="17"><tspan x="30" fill="#4a90d9">2001</tspan><tspan x="84" fill="#00684a">"Donnie Darko"</tspan></text>
+  <text x="298" y="180" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">113</text>
+  <rect x="18" y="191" width="292" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text y="209" font-family="monospace" font-size="17"><tspan x="30" fill="#4a90d9">2001</tspan><tspan x="84" fill="#00684a">"Ocean's Eleven"</tspan></text>
+  <text x="298" y="209" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">116</text>
+  <rect x="18" y="220" width="292" height="25" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text y="238" font-family="monospace" font-size="17"><tspan x="30" fill="#4a90d9">2001</tspan><tspan x="84" fill="#00684a">"Shrek"</tspan></text>
+  <text x="298" y="238" font-family="monospace" font-size="17" fill="#c0392b" font-weight="bold" text-anchor="end">90</text>
+  <rect x="18" y="249" width="292" height="25" rx="7" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <text y="267" font-family="monospace" font-size="17" fill="#999"><tspan x="30">2002</tspan><tspan x="84">"Chicago"</tspan></text>
+  <text x="298" y="267" font-family="monospace" font-size="17" fill="#999" text-anchor="end">113</text>
+  <path d="M318,133 h6 v112 h-6" fill="none" stroke="#4a90d9" stroke-width="2.2"/>
+  <rect x="334" y="133" width="26" height="25" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="347" y="151" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">E</text>
+  <text x="370" y="151" font-size="16" fill="#333">saut direct au bloc 2001</text>
+  <rect x="334" y="162" width="26" height="25" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="347" y="180" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">S</text>
+  <text x="370" y="180" font-size="16" fill="#333">déjà rangées par titre</text>
+  <text x="370" y="209" font-size="16" fill="#00684a" font-weight="bold">→ pas de tri en mémoire</text>
+  <rect x="334" y="220" width="26" height="25" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="347" y="238" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">R</text>
+  <text x="370" y="238" font-size="16" fill="#333">duree testée dans la clé</text>
+  <text x="370" y="267" font-size="16" fill="#c0392b">Shrek écarté sans FETCH</text>
+  <rect x="628" y="104" width="140" height="25" rx="7" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="640" y="122" font-family="monospace" font-size="17" fill="#999">2000</text>
+  <text x="756" y="122" font-family="monospace" font-size="17" fill="#999" text-anchor="end">155</text>
+  <text x="780" y="122" font-size="16" fill="#777">(Gladiator)</text>
+  <rect x="628" y="133" width="140" height="25" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="640" y="151" font-family="monospace" font-size="17" fill="#4a90d9">2001</text>
+  <text x="756" y="151" font-family="monospace" font-size="17" fill="#c0392b" font-weight="bold" text-anchor="end">90</text>
+  <text x="780" y="151" font-size="16" fill="#777">(Shrek)</text>
+  <rect x="628" y="162" width="140" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="640" y="180" font-family="monospace" font-size="17" fill="#4a90d9">2001</text>
+  <text x="756" y="180" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">113</text>
+  <text x="780" y="180" font-size="16" fill="#777">(Donnie Darko)</text>
+  <rect x="628" y="191" width="140" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="640" y="209" font-family="monospace" font-size="17" fill="#4a90d9">2001</text>
+  <text x="756" y="209" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">116</text>
+  <text x="780" y="209" font-size="16" fill="#777">(Ocean's Eleven)</text>
+  <rect x="628" y="220" width="140" height="25" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="640" y="238" font-family="monospace" font-size="17" fill="#4a90d9">2001</text>
+  <text x="756" y="238" font-family="monospace" font-size="17" fill="#b06f00" font-weight="bold" text-anchor="end">122</text>
+  <text x="780" y="238" font-size="16" fill="#777">(Amélie)</text>
+  <rect x="628" y="249" width="140" height="25" rx="7" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="640" y="267" font-family="monospace" font-size="17" fill="#999">2002</text>
+  <text x="756" y="267" font-family="monospace" font-size="17" fill="#999" text-anchor="end">113</text>
+  <text x="780" y="267" font-size="16" fill="#777">(Chicago)</text>
+  <path d="M926,162 h6 v83 h-6" fill="none" stroke="#c0392b" stroke-width="2.2"/>
+  <text x="944" y="180" font-size="16" font-weight="bold" fill="#c0392b">rangées par durée,</text>
+  <text x="944" y="209" font-size="16" font-weight="bold" fill="#c0392b">pas par titre</text>
+  <text x="944" y="238" font-size="16" fill="#333">Amélie arrive en dernier</text>
+  <text x="944" y="151" font-size="16" fill="#555">sauté (duree ≤ 100)</text>
+  <text x="18" y="309" font-size="17" fill="#555">Plan :</text>
+  <rect x="72" y="290" width="68" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="106" y="309" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">FETCH</text>
+  <line x1="168" y1="304" x2="154" y2="304" stroke="#555" stroke-width="2.2"/>
+  <path d="M156,298 L145,304 L156,310 z" fill="#555"/>
+  <rect x="174" y="290" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="213" y="309" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
+  <text x="266" y="309" font-size="17" fill="#00684a" font-weight="bold">aucune étape SORT</text>
+  <text x="18" y="343" font-size="17" fill="#555">avec la projection <tspan font-family="monospace" font-size="16" fill="#333">{ _id: 0, titre: 1, duree: 1 }</tspan> :</text>
+  <rect x="18" y="356" width="193" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="114" y="375" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">PROJECTION_COVERED</text>
+  <line x1="239" y1="370" x2="225" y2="370" stroke="#555" stroke-width="2.2"/>
+  <path d="M227,364 L216,370 L227,376 z" fill="#555"/>
+  <rect x="245" y="356" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="284" y="375" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
+  <text x="337" y="375" font-size="17" fill="#00684a" font-weight="bold">requête couverte</text>
+  <text x="628" y="309" font-size="17" fill="#555">Plan :</text>
+  <rect x="682" y="290" width="59" height="28" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="712" y="309" font-family="monospace" font-size="16" font-weight="bold" fill="#c0392b" text-anchor="middle">SORT</text>
+  <line x1="769" y1="304" x2="755" y2="304" stroke="#555" stroke-width="2.2"/>
+  <path d="M757,298 L746,304 L757,310 z" fill="#555"/>
+  <rect x="775" y="290" width="68" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="809" y="309" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">FETCH</text>
+  <line x1="871" y1="304" x2="857" y2="304" stroke="#555" stroke-width="2.2"/>
+  <path d="M859,298 L848,304 L859,310 z" fill="#555"/>
+  <rect x="877" y="290" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="916" y="309" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
+  <text x="628" y="343" font-size="17" fill="#c0392b" font-weight="bold">SORT = tri en mémoire</text>
+  <text x="628" y="375" font-size="17" fill="#333">il faut lire tout le bloc avant de renvoyer un résultat</text>
+</svg>

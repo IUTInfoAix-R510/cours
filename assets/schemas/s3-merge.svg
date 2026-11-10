@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Une vue matérialisée est le résultat d'un pipeline enregistré, relu sans le recalculer : la dernière étape $merge écrit dans films_par_annee, qui contient déjà { _id: 2001, nb: 1, note: "ancien" } ; le document entrant { _id: 2001, nb: 2 } donne { _id: 2001, nb: 2 } avec whenMatched "replace", { _id: 2001, nb: 2, note: "ancien" } avec "merge", le défaut, et { _id: 2001, nb: 1, note: "ancien" } avec "keepExisting" ; $out, lui, remplace toute la collection</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <text x="2" y="22" font-size="19" font-weight="bold" fill="#333">Une vue matérialisée = le résultat d'un pipeline enregistré, relu sans le recalculer</text>
+
+  <!-- pipeline -->
+  <rect x="2" y="36" width="110" height="42" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="57" y="63" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$match</text>
+  <line x1="114" y1="57" x2="146" y2="57" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="150" y="36" width="110" height="42" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="205" y="63" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$group</text>
+  <line x1="262" y1="57" x2="294" y2="57" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="298" y="36" width="560" height="42" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="314" y="63" font-family="monospace" font-size="17" fill="#333"><tspan font-size="18" font-weight="bold" fill="#00684a">$merge</tspan> { into: "films_par_annee", whenMatched: … }</text>
+  <line x1="860" y1="57" x2="892" y2="57" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="900" y="63" font-size="17" fill="#555">écrit dans <tspan font-family="monospace">films_par_annee</tspan></text>
+
+  <!-- entrées -->
+  <text x="2" y="106" font-size="17" fill="#555">document entrant (sortie de <tspan font-family="monospace">$group</tspan>)</text>
+  <rect x="2" y="116" width="400" height="44" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="16" y="144" font-family="monospace" font-size="17" fill="#333">{ _id: 2001, nb: 2 }</text>
+  <text x="2" y="218" font-size="17" fill="#555">déjà dans <tspan font-family="monospace">films_par_annee</tspan> (même <tspan font-family="monospace">_id</tspan>)</text>
+  <rect x="2" y="228" width="400" height="44" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="16" y="256" font-family="monospace" font-size="17" fill="#333">{ _id: 2001, nb: 1, note: "ancien" }</text>
+
+  <!-- convergence puis éventail -->
+  <g fill="none" stroke="#b8c4cf" stroke-width="2.2">
+    <path d="M402,138 C425,138 420,194 440,194"/>
+    <path d="M402,250 C425,250 420,194 440,194"/>
+    <path d="M440,194 C455,194 448,138 466,138"/>
+    <path d="M440,194 L466,194"/>
+    <path d="M440,194 C455,194 448,250 466,250"/>
+  </g>
+  <path d="M462,131 L474,138 L462,145 z" fill="#b8c4cf"/>
+  <path d="M462,187 L474,194 L462,201 z" fill="#b8c4cf"/>
+  <path d="M462,243 L474,250 L462,257 z" fill="#b8c4cf"/>
+
+  <!-- options whenMatched -->
+  <text x="476" y="106" font-size="17" fill="#555">selon <tspan font-family="monospace">whenMatched</tspan> :</text>
+  <text x="730" y="106" font-size="17" fill="#555">contenu final de <tspan font-family="monospace">films_par_annee</tspan></text>
+
+  <rect x="476" y="116" width="224" height="44" rx="7" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <text x="490" y="144" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">"replace"</text>
+  <rect x="476" y="172" width="224" height="44" rx="7" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <text x="490" y="200" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">"merge" <tspan font-family="sans-serif" font-weight="normal" fill="#555">(le défaut)</tspan></text>
+  <rect x="476" y="228" width="224" height="44" rx="7" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <text x="490" y="256" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">"keepExisting"</text>
+
+  <line x1="702" y1="138" x2="726" y2="138" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="702" y1="194" x2="726" y2="194" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="702" y1="250" x2="726" y2="250" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+
+  <!-- résultats -->
+  <rect x="730" y="116" width="428" height="44" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="744" y="144" font-family="monospace" font-size="17" fill="#333">{ _id: 2001, nb: 2 }</text>
+  <text x="1144" y="144" font-size="16" fill="#c0392b" text-anchor="end">note perdue</text>
+  <rect x="730" y="172" width="428" height="44" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="744" y="200" font-family="monospace" font-size="17" fill="#333">{ _id: 2001, nb: 2, note: "ancien" }</text>
+  <rect x="730" y="228" width="428" height="44" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="744" y="256" font-family="monospace" font-size="17" fill="#333">{ _id: 2001, nb: 1, note: "ancien" }</text>
+
+  <text x="2" y="302" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#c0392b">$out</tspan>, lui, remplace <tspan font-weight="bold">toute la collection</tspan>.</text>
+</svg>

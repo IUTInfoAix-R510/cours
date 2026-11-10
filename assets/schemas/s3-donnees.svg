@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 432" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Les trois collections du TP2 : restaurants (25 359 documents) avec _id, le document imbriqué address qui contient building, le tableau coord [longitude, latitude], street et zipcode, puis borough, cuisine, le tableau de documents grades { date, grade, score } rangé de la plus récente à la plus ancienne, name et restaurant_id, une chaîne ; neighborhoods (195 documents) avec _id, name et geometry, un Polygon ou MultiPolygon GeoJSON ; boroughs (5 documents, créée pour le TP) avec _id (code FIPS), nom, comte, population (recensement 2020) et superficie_km2. Le champ borough se relie à nom par $lookup (partie 3), et address.coord se situe dans le polygone geometry avec $geoWithin (partie 5). Le score compte des points de pénalité : plus il est bas, mieux c'est.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#999"/>
+    </marker>
+  </defs>
+
+  <!-- Collection neighborhoods -->
+  <rect x="2" y="8" width="240" height="304" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="18" y="40" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">neighborhoods</text>
+  <text x="18" y="66" font-size="17" fill="#555">195 documents</text>
+  <rect x="12" y="146" width="220" height="124" rx="6" fill="#e3eefa"/>
+  <rect x="32" y="232" width="182" height="30" rx="6" fill="#fdf3e0"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="22" y="104">_id</text>
+    <text x="22" y="134">name</text>
+    <text x="22" y="168">geometry: {</text>
+    <text x="42" y="196">type: "Polygon"</text>
+    <text x="42" y="222"><tspan font-family="sans-serif" fill="#555">ou</tspan> "MultiPolygon",</text>
+    <text x="42" y="253">coordinates: […] }</text>
+  </g>
+  <text x="18" y="296" font-size="16" fill="#777">géométrie GeoJSON</text>
+
+  <!-- Collection restaurants -->
+  <rect x="392" y="8" width="410" height="416" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="410" y="40" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">restaurants</text>
+  <text x="562" y="40" font-size="17" fill="#555">25 359 documents</text>
+  <rect x="402" y="90" width="390" height="120" rx="6" fill="#e3eefa"/>
+  <rect x="432" y="150" width="346" height="30" rx="6" fill="#fdf3e0"/>
+  <rect x="402" y="286" width="390" height="62" rx="6" fill="#fdf3e0"/>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="412" y="78">_id</text>
+    <text x="412" y="112">address: {</text>
+    <text x="440" y="140">building,</text>
+    <text x="440" y="171">coord: [ longitude, latitude ],</text>
+    <text x="440" y="200">street, zipcode }</text>
+    <text x="412" y="242">borough: "Bronx"</text>
+    <text x="412" y="274">cuisine</text>
+    <text x="412" y="308">grades: [ { date, grade, score } ]</text>
+    <text x="412" y="378">name</text>
+    <text x="412" y="410">restaurant_id: "40356018"</text>
+  </g>
+  <text x="440" y="334" font-size="16" fill="#555">de la plus récente à la plus ancienne</text>
+  <text x="680" y="410" font-size="16" fill="#777">chaîne</text>
+
+  <!-- Collection boroughs -->
+  <rect x="918" y="8" width="240" height="262" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="934" y="40" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">boroughs</text>
+  <text x="1047" y="40" font-size="17" fill="#555">5 documents</text>
+  <text x="934" y="66" font-size="17" fill="#555">créée pour le TP</text>
+  <g font-family="monospace" font-size="17" fill="#333">
+    <text x="934" y="104">_id</text>
+    <text x="934" y="136">nom: "Bronx"</text>
+    <text x="934" y="168">comte</text>
+    <text x="934" y="200">population</text>
+    <text x="934" y="254">superficie_km2</text>
+  </g>
+  <text x="976" y="104" font-size="16" fill="#777">code FIPS</text>
+  <text x="952" y="224" font-size="16" fill="#777">recensement 2020</text>
+
+  <!-- Lien address.coord → geometry -->
+  <circle cx="432" cy="165" r="4" fill="#999"/>
+  <line x1="428" y1="165" x2="238" y2="165" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl)"/>
+  <g font-size="16" fill="#555" text-anchor="middle">
+    <text x="317" y="152">dans le polygone :</text>
+    <text x="317" y="190" font-family="monospace" font-weight="bold" fill="#00684a">$geoWithin</text>
+    <text x="317" y="212">partie 5</text>
+  </g>
+
+  <!-- Lien borough → nom -->
+  <circle cx="594" cy="236" r="4" fill="#999"/>
+  <path d="M 598 236 L 812 236 C 866 236, 862 130, 922 130" fill="none" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl)"/>
+  <g font-size="16" fill="#555" text-anchor="middle">
+    <text x="860" y="268" font-family="monospace" font-weight="bold" fill="#00684a">$lookup</text>
+    <text x="860" y="290">partie 3</text>
+  </g>
+
+  <!-- Score -->
+  <g font-size="16" fill="#555">
+    <text x="918" y="306"><tspan font-family="monospace" fill="#333">score</tspan> = points de pénalité :</text>
+    <text x="918" y="328">plus il est bas, mieux c'est</text>
+  </g>
+  <line x1="796" y1="317" x2="910" y2="317" stroke="#b8c4cf" stroke-width="1.5"/>
+
+  <!-- Légende -->
+  <g font-size="16" fill="#333">
+    <rect x="18" y="340" width="24" height="20" rx="4" fill="#e3eefa"/>
+    <text x="52" y="356">document imbriqué</text>
+    <rect x="18" y="370" width="24" height="20" rx="4" fill="#fdf3e0"/>
+    <text x="52" y="386">tableau</text>
+    <line x1="18" y1="410" x2="44" y2="410" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 5"/>
+    <text x="52" y="416">lien par valeur</text>
+  </g>
+</svg>
