@@ -436,23 +436,50 @@ Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré
 
 <!-- header: Partie 6 · modifier -->
 
-## `$set` et la notation pointée
+## Modifier un document imbriqué
 
-<p class="petit" style="margin-bottom: 0.3rem;"><b>Objectif</b> : l'auteur de la recette R1 a déménagé. On veut passer sa ville de « Aix » à « Marseille », <b>sans toucher au reste</b> du document imbriqué <code>auteur</code>.</p>
+<p style="margin-bottom: 0.4rem;"><b>Objectif</b> : l'auteur de la recette R1 a déménagé. On veut passer sa ville de «&nbsp;Aix&nbsp;» à «&nbsp;Marseille&nbsp;», <b>sans toucher au reste</b> du document imbriqué <code>auteur</code>.</p>
 
 ```js
+// la recette, avant
 { _id: "R1", nom: "Crêpes", auteur: { pseudo: "lea13", ville: "Aix" }, ingredients: [ … ] }
-
-db.recettes.updateOne({ _id: "R1" },        // 1er argument, le filtre : quel document
-                      { $set: { … } })      // 2e argument, la mise à jour : quoi changer
 ```
 
-<p class="petit" style="margin: 0.2rem 0 0 0;">Deux façons d'écrire ce <code>$set</code>, essayées chacune sur la recette de départ :</p>
+```js
+db.recettes.updateOne(
+  { _id: "R1" },                              // 1er argument, le filtre : quel document
+  { $set: { "auteur.ville": "Marseille" } }   // 2e argument, la mise à jour : quoi changer
+)
+```
 
-<img src="assets/schemas/s2-set-pointee.svg" alt="Avant : auteur vaut { pseudo: lea13, ville: Aix }. Avec $set sur auteur.ville, seul ville passe à Marseille et pseudo reste. Avec $set sur auteur, le document imbriqué entier est remplacé : il ne reste que ville: Marseille, pseudo a disparu." style="display: block; margin: 0.6em auto 0; width: 100%;">
+<div class="res-titre" style="font-size: 0.6em; color: #00684a; font-weight: bold;">auteur, relu avec findOne</div>
+
+```js
+{ auteur: { pseudo: 'lea13', ville: 'Marseille' } }
+```
+
+<p class="petit"><code>"auteur.ville"</code> : la <b>notation pointée</b> désigne un champ à l'intérieur du document imbriqué, comme dans un filtre. Guillemets obligatoires.</p>
 
 <!--
-Lire l'objectif d'abord : on modifie un champ d'un document imbriqué. Les deux mises à jour du schéma ont été exécutées chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
+(1 min)
+
+Lire l'objectif d'abord : on modifie un seul champ d'un document imbriqué. Puis l'appel : le premier argument dit quel document (comme un find), le second dit quoi changer, avec un opérateur ($set). Résultat sur MongoDB 9.0.4 : matchedCount 1, modifiedCount 1 ; seul ville a changé.
+
+La diapositive suivante montre ce qui se passe si l'on oublie la notation pointée.
+-->
+
+---
+
+## `$set` : notation pointée ou remplacement ?
+
+<p class="petit" style="margin-bottom: 0.2rem;">Deux écritures du <code>$set</code> de la diapositive précédente, essayées chacune sur la recette de départ :</p>
+
+<img src="assets/schemas/s2-set-pointee.svg" alt="Deux écritures de $set. Avant : auteur vaut { pseudo: lea13, ville: Aix }. Avec $set sur auteur.ville, seul ville passe à Marseille et pseudo reste. Avec $set sur auteur, le document imbriqué entier est remplacé : il ne reste que ville: Marseille, pseudo a disparu." style="display: block; margin: 0.6em auto 0; width: 100%;">
+
+<p class="petit centre" style="margin-top: 0.5rem;">Sans notation pointée, <code>$set</code> remplace <b>tout</b> le document imbriqué.</p>
+
+<!--
+Les deux mises à jour du schéma ont été exécutées chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
 
 Pour rejouer (essais.mongodb.js) ; le script remet aussi la recette dans son état de départ entre deux démos :
 
