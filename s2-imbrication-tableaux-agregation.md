@@ -281,20 +281,21 @@ db.films.find({ genres: "Horreur" })                     // Alien, Les Dents de 
 db.films.find({ genres: ["SF", "Horreur"] })             // Alien
 db.films.find({ genres: ["Horreur", "SF"] })             // []
 db.films.find({ genres: { $all: ["Horreur", "SF"] } })   // Alien
+db.films.find({ genres: { $in: ["Policier", "Thriller"] } })  // Blade Runner, Les Dents de la mer
+db.films.find({ genres: { $size: 3 } })                  // Les Dents de la mer
 db.films.find({ "seances.0.places": 0 })                 // Alien
 ```
 
-- Une valeur seule : le tableau **contient** cette valeur.
-- Un tableau : égalité **exacte**, ordre compris.
-- `$all` : contient toutes ces valeurs, dans n'importe quel ordre.
-- `"seances.0"` : l'élément d'indice 0, le premier.
+- Une valeur seule : le tableau **contient** cette valeur. Un tableau : égalité **exacte**, ordre compris.
+- `$all` : **toutes** ces valeurs, dans n'importe quel ordre. `$in` : **au moins une**.
+- `$size` : **exactement** ce nombre d'éléments. `"seances.0"` : l'élément d'indice 0.
 
 <!--
 Projection { _id: 0, titre: 1 } omise ici aussi ; les commentaires donnent les titres obtenus.
 
 Faire le parallèle avec la diapositive précédente : un tableau écrit dans le filtre demande une égalité exacte, comme un document imbriqué.
 
-La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tableau a au moins deux éléments. L'opérateur $size compte les éléments d'un tableau dans un pipeline (partie 7, diapo 19).
+La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tableau a au moins deux éléments. $size existe sous deux formes : comme opérateur de requête, { genres: { $size: 3 } } (exactement 3 éléments ; pas de $size: { $gt: 2 }, il faut alors "genres.2": { $exists: true }), et comme opérateur d'expression dans un pipeline, pour calculer la longueur d'un tableau.
 -->
 
 ---
