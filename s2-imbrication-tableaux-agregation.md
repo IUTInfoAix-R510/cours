@@ -1043,7 +1043,62 @@ Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie
 
 $round arrondit 20.75 à 20.8. Les moyennes de $group restent exactes ; l'arrondi ne sert qu'à l'affichage, d'où sa place en fin de pipeline.
 
-Résultat obtenu sur MongoDB 9.0.4. L'ordre Cuisine, Salon, Chambre est celui de cette exécution : il n'est pas garanti, c'est l'objet de la diapositive suivante.
+Résultat obtenu sur MongoDB 9.0.4. L'ordre Cuisine, Salon, Chambre est celui de cette exécution : il n'est pas garanti, c'est l'objet de l'étape 5.
+-->
+
+---
+
+## `$project` calcule aussi : `$size`
+
+<div class="cols" style="grid-template-columns: 1.2fr 1fr; align-items: center;">
+<div>
+
+```js
+db.capteurs.aggregate([
+  { $project: { piece: 1,
+      nb_mesures: { $size: "$mesures" } } }
+])
+
+// { _id: "C1", piece: "Salon", nb_mesures: 3 }
+// { _id: "C2", piece: "Salon", nb_mesures: 2 } …
+```
+
+</div>
+<div>
+
+- `$size` est une **expression**, comme `$round` : elle calcule une valeur dans une étape.
+- Elle compte les éléments du tableau **de chaque document**.
+
+</div>
+</div>
+
+<div class="warn" style="margin-top: 1rem;">
+
+`$size` exige un tableau. Sur un document sans champ `mesures`, le pipeline s'arrête :<br><code>The argument to $size must be an array, but was of type: missing</code>
+
+</div>
+
+<p class="etiquette" style="margin-top: 1rem;">À ne pas confondre</p>
+
+<div class="cols" style="align-items: stretch;">
+<div class="box" style="margin-top: 0;">
+
+**Dans `find`, `$size` filtre** :<br>`{ genres: { $size: 3 } }` garde les documents dont le tableau a exactement 3 éléments.
+
+</div>
+<div class="box" style="margin-top: 0;">
+
+**Dans un pipeline, `$size` calcule** :<br>`{ $size: "$mesures" }` donne le nombre d'éléments et l'ajoute au document.
+
+</div>
+</div>
+
+<!--
+(1 min)
+
+L'opérateur de requête $size a été vu sur la diapositive « Tableaux de valeurs », avec les films. Il ne se combine pas avec $gt ; l'expression, si : { $gt: [ { $size: "$mesures" }, 2 ] } dans un $match avec $expr, hors programme ici.
+
+L'erreur a été obtenue sur MongoDB 9.0.4 en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
 -->
 
 ---
@@ -1173,61 +1228,6 @@ mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la document
 Le playground suffit pour construire un pipeline : le squelette commenté de chaque exercice de la partie 7 est fait pour être complété étape par étape. Ne pas laisser un aggregate([]) vide sous la réponse.
 
 Les messages du correcteur automatique dans ce cas : « Cet exercice demande un pipeline d'agrégation (aggregate) » ou « Terminez la réponse par le pipeline lui-même ».
--->
-
----
-
-## `$size` : compter les éléments d'un tableau
-
-<div class="cols" style="grid-template-columns: 1.2fr 1fr; align-items: center;">
-<div>
-
-```js
-db.capteurs.aggregate([
-  { $project: { piece: 1,
-      nb_mesures: { $size: "$mesures" } } }
-])
-
-// { _id: "C1", piece: "Salon", nb_mesures: 3 }
-// { _id: "C2", piece: "Salon", nb_mesures: 2 } …
-```
-
-</div>
-<div>
-
-- `$size` est une **expression** : elle calcule une valeur dans une étape, ici `$project`.
-- Elle compte les éléments du tableau **de chaque document**.
-
-</div>
-</div>
-
-<div class="warn" style="margin-top: 1rem;">
-
-`$size` exige un tableau. Sur un document sans champ `mesures`, le pipeline s'arrête :<br><code>The argument to $size must be an array, but was of type: missing</code>
-
-</div>
-
-<p class="etiquette" style="margin-top: 1rem;">À ne pas confondre</p>
-
-<div class="cols" style="align-items: stretch;">
-<div class="box" style="margin-top: 0;">
-
-**Dans `find`, `$size` filtre** :<br>`{ genres: { $size: 3 } }` garde les documents dont le tableau a exactement 3 éléments.
-
-</div>
-<div class="box" style="margin-top: 0;">
-
-**Dans un pipeline, `$size` calcule** :<br>`{ $size: "$mesures" }` donne le nombre d'éléments et l'ajoute au document.
-
-</div>
-</div>
-
-<!--
-(1 min)
-
-L'opérateur de requête $size a été vu sur la diapositive « Tableaux de valeurs », avec les films. Il ne se combine pas avec $gt ; l'expression, si : { $gt: [ { $size: "$mesures" }, 2 ] } dans un $match avec $expr, hors programme ici.
-
-L'erreur a été obtenue sur MongoDB 9.0.4 en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
 -->
 
 ---
