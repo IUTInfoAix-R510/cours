@@ -30,11 +30,11 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. Les diapos 34 et 35 (« À vous ») lancent ensuite le travail (2 minutes). Ce premier temps dure 25 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 18 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. Les diapos 34 et 35 (« À vous ») lancent ensuite le travail (2 minutes). Ce premier temps dure 28 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 33, 16 minutes.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 33, 15 minutes.
 
-Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
+Le cours seul dure 35 minutes (somme des durées notées en tête de chaque diapo). Présenté d'un bloc avec les questions de modélisation, il en prend 43. Si le temps manque : les diapos de référence 19 et 20 et la diapo 30 ($size) se laissent en lecture, les étudiants les retrouvent en ligne.
 
 Les exemples portent sur des films, une recette et des capteurs, pas sur les données du TP. Ils ont tous été exécutés sur MongoDB 9.0.4, et les résultats affichés sont ceux obtenus. Le script d'insertion de chaque jeu d'exemples est dans les notes de la diapositive qui le présente. Pour les rejouer en direct, le coller dans essais.mongodb.js : les démos tournent dans une base à part, demo (use('demo')), que le correcteur automatique ne lit pas, et chaque script commence par vider sa collection, si bien qu'on peut le relancer.
 -->
@@ -68,6 +68,8 @@ Le choix à remarquer, en violet : un emprunt en cours est écrit deux fois, dan
 <img src="assets/schemas/s2-mediatheque.svg" alt="Un livre de la collection livres (L06, Dune) : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un exemplaire (troisième niveau). Un membre de la collection membres (M12) : emprunts est un tableau de documents." style="display:block; height:590px; margin:0.2rem auto 0 auto;">
 
 <!--
+(1 min)
+
 La séance 2 se fait dans le même dépôt que la séance 1, sur deux nouvelles collections. Les exercices de la séance 2 ne dépendent pas des réponses de la séance 1 : le correcteur automatique part toujours de l'état attendu. Ceux qui n'ont pas fini la séance 1 commencent quand même la partie 5 et reviendront aux exercices manquants plus tard.
 
 Faire lire le document de Dune à voix haute, en retrouvant la structure de la diapositive précédente. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
@@ -108,6 +110,8 @@ L'énoncé du TP1 détaille ce choix dans « Modéliser la médiathèque », et 
 </div>
 
 <!--
+(1 min 30)
+
 Lire le tableau, puis les quatre questions : une réponse « oui » aux deux premières pousse à embarquer, une réponse « oui » aux deux dernières à référencer, ou à recopier la donnée en acceptant de modifier toutes les copies.
 
 Laisser vraiment les 5 minutes aux questions de modélisation de l'énoncé. Elles ne sont pas notées ; les réponses vont dans le bloc prévu du playground. Pour le N-N, ne pas donner d'exemple sur les livres et les auteurs : c'est la question de modélisation 2.
@@ -157,6 +161,8 @@ Même titre que la partie 5 de l'énoncé du TP1.
 <p class="petit">Les requêtes qui suivent renvoient le titre : <code>db.films.find(&lt;filtre&gt;, { _id: 0, titre: 1 })</code>.</p>
 
 <!--
+(1 min)
+
 Un document représente un film. On l'écrit avec la notation des objets JavaScript : pas de guillemets autour des clés simples. MongoDB le stocke en BSON.
 
 realisation est un document imbriqué, genres un tableau de valeurs, seances un tableau de documents : les trois formes de la médiathèque, sur d'autres données.
@@ -236,6 +242,8 @@ SyntaxError: Unexpected token, expected "," (1:27)
 </div>
 
 <!--
+(1 min)
+
 Lire le schéma : on enchaîne les noms de champ sur autant de niveaux qu'il faut ("a.b.c") ; à travers un tableau, le chemin vise le champ de chaque élément, et un seul élément qui vérifie la condition suffit.
 
 L'erreur vient de JavaScript, avant même d'atteindre le serveur : sans guillemets, realisation.nom est lu comme un accès à une propriété, pas comme une clé. Elle se produit à l'identique dans mongosh et dans le playground.
@@ -255,6 +263,8 @@ db.films.find({ "realisation.nom": "Scott" })                          // Alien,
 <img src="assets/schemas/s2-egalite-ou-champ.svg" alt="Lignes 1 à 3 : le filtre { realisation: { ... } } compare le document imbriqué entier d'Alien, nom: Scott puis pays: Royaume-Uni. Ligne 1, pays absent : pas de résultat. Ligne 2, identique : résultat. Ligne 3, ordre inversé : pas de résultat. Ligne 4 : realisation.nom ne teste que nom et ignore pays : un seul champ testé, presque toujours le bon choix." style="display:block; width:100%; max-height:330px; margin:0.5em auto 0 auto;">
 
 <!--
+(1 min)
+
 Les quatre requêtes ont été exécutées avec la projection { _id: 0, titre: 1 }, omise ici pour la lisibilité. Les commentaires donnent les titres obtenus.
 
 Encadré de la partie 5 de l'énoncé : il signale ce piège. La troisième ligne surprend toujours, avec les deux mêmes champs dans un autre ordre et plus aucun résultat.
@@ -284,6 +294,8 @@ db.films.find({ "seances.0.places": 0 })                     // Alien
 - `"seances.0"` : l'élément d'indice 0, le premier.
 
 <!--
+(1 min)
+
 Projection { _id: 0, titre: 1 } omise ici aussi ; les commentaires donnent les titres obtenus.
 
 Faire le parallèle avec la diapositive précédente : un tableau écrit dans le filtre demande une égalité exacte, comme un document imbriqué.
@@ -333,6 +345,8 @@ db.films.find({ seances: { $elemMatch:
 </div>
 
 <!--
+(1 min 30)
+
 Note de la partie 5 de l'énoncé. Retenir le sens « requête » de $elemMatch : deux conditions qui doivent porter sur le même élément, c'est $elemMatch.
 
 $elemMatch sert aussi dans le filtre d'une mise à jour, dès la partie 6.
@@ -410,9 +424,11 @@ db.films.find(
 </div>
 
 <!--
+(1 min)
+
 Les trois requêtes ont été exécutées sur MongoDB 9.0.4.
 
-Contre-exemple à montrer si le temps le permet : avec les deux conditions séparées de la diapositive précédente, la même projection "seances.$" renvoie pour Alien la séance B (vo: false, places: 35). Cette séance ne vérifie qu'une des deux conditions : le piège revient une seconde fois. Avec plusieurs conditions séparées sur le même tableau, la documentation ne garantit d'ailleurs pas quel élément "tableau.$" garde.
+Contre-exemple à montrer si le temps le permet : avec les deux conditions séparées de la diapositive précédente, la même projection "seances.$" renvoie pour Alien la séance B (vo: false, places: 35). Cette séance ne vérifie qu'une des deux conditions : le piège revient. Avec plusieurs conditions séparées sur le même tableau, la documentation ne garantit d'ailleurs pas quel élément "tableau.$" garde.
 
 Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré « Les dates » de la partie 5). Les dates de la médiathèque sont à minuit UTC.
 -->
@@ -480,6 +496,8 @@ La diapositive suivante montre ce qui se passe si l'on oublie la notation point�
 <p class="petit centre" style="margin-top: 0.5rem;">Sans notation pointée, <code>$set</code> remplace <b>tout</b> le document imbriqué.</p>
 
 <!--
+(1 min)
+
 Les deux mises à jour du schéma ont été exécutées chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
 
 Pour rejouer (essais.mongodb.js) ; le script remet aussi la recette dans son état de départ entre deux démos :
@@ -513,6 +531,8 @@ db.recettes.updateOne({ _id: "R1" },
 - La condition de `$pull` s'écrit comme un filtre de `find`.
 
 <!--
+(1 min)
+
 Exécutées l'une après l'autre sur la recette de départ. Pour la lisibilité, la diapositive résume le tableau par le nom et la quantité de chaque ingrédient ; le résultat complet contient aussi unite.
 
 Le $pull avec une condition surprend : il ne retire pas « le » premier élément trouvé, mais tous ceux qui la vérifient. Ici les œufs (3) et le sucre (30), deux quantités inférieures à 100.
@@ -545,6 +565,8 @@ MongoServerError: ... The positional operator did not find the match needed from
 </div>
 
 <!--
+(1 min)
+
 Exécutée sur la recette de départ. L'erreur a été obtenue avec le filtre { _id: "R1" } seul et la même mise à jour : le message complet commence par « Plan executor error during update :: caused by :: ».
 
 Deux critères sur le même élément : $elemMatch dans le filtre (diapo 9), puis $ dans la mise à jour.
@@ -594,6 +616,8 @@ Une donnée recopiée dans deux documents s'écrit en deux fois, sans garantie e
 </div>
 
 <!--
+(1 min)
+
 L'encadré « Deux documents, deux écritures » de la partie 6 traite ce point : un emprunt est écrit dans le livre et dans le membre, donc en deux instructions. Ne pas en dire plus sur les exercices 37 et 38.
 
 Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifiedCount: 1 (avec un document { _id: "lea13", nb_publiees: 0 } inséré au préalable dans auteurs).
@@ -965,6 +989,8 @@ Le cas du tableau vide a été vérifié sur MongoDB 9.0.4 : un capteur ajouté 
 <img src="assets/schemas/s2-group.svg" alt="$group : les 9 documents issus de $unwind sont rangés par pièce. Salon reçoit 19.5, 21, 22.5 et 20 ; Cuisine 18 et 23 ; Chambre 17, 17.5 et 18. Chaque groupe donne un document : Salon moyenne 20.75, max 22.5, nb 4 ; Cuisine moyenne 20.5, max 23, nb 2 ; Chambre moyenne 17.5, max 18, nb 3." style="display: block; margin: 0.5em auto 0; width: 100%;">
 
 <!--
+(1 min 30)
+
 Un groupe = un document en sortie, avec la clé dans _id. Le Salon a 4 mesures : 3 du capteur C1 et 1 du capteur C4, soit (19.5 + 21 + 22.5 + 20) / 4 = 20.75. Le capteur d'humidité C2 a été écarté par le $match. Les documents d'entrée sont abrégés (champs h et type omis).
 
 Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie 7.
@@ -1096,7 +1122,7 @@ Un résultat trié demande un **`$sort` explicite**, placé en fin de pipeline.
 <!--
 (1 min 30)
 
-Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Sur un autre poste, il peut encore être différent.
+Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Dans un autre codespace, il peut encore être différent.
 
 Avec { $sort: { moyenne: 1 } }, l'ordre devient Chambre, Cuisine, Salon (vérifié sur 9.0.4). Le 1 et le -1 sont ceux de sort() dans find : même convention, ORDER BY … ASC et ORDER BY … DESC en SQL.
 
@@ -1134,7 +1160,7 @@ db.capteurs.aggregate([
 
 $limit ne trie pas et ne choisit pas : il coupe le flux après n documents. Tout dépend donc de l'ordre qu'il reçoit, d'où sa place après $sort.
 
-Le second cas du schéma suppose que les groupes arrivent dans l'ordre de la 2e exécution de la diapositive précédente (Chambre, Salon, Cuisine). Sur quatre exécutions de $limit avant $sort, MongoDB 9.0.4 a rendu par hasard le bon classement : le piège ne se voit pas à tous les coups, d'où son danger.
+Le second cas du schéma suppose que les groupes arrivent dans l'ordre de la 2e exécution de la diapositive précédente (Chambre, Salon, Cuisine). Sur quatre exécutions de $limit avant $sort, MongoDB 9.0.4 a rendu par hasard le bon classement : le piège ne se voit pas à tous les coups.
 
 Résultat du pipeline : [ { piece: "Salon", moyenne: 20.8, nb: 4 }, { piece: "Cuisine", moyenne: 20.5, nb: 2 } ].
 
@@ -1149,7 +1175,9 @@ db.capteurs.aggregate([
       moyenne: { $round: ["$moyenne", 1] }, nb: "$nb" } },
   { $sort: { moyenne: -1 } },
   { $limit: 2 }
-]) Sur nos 3 pièces, $limit: 5 (diapositive « Le pipeline d'agrégation ») ne retire rien.
+])
+
+Sur nos 3 pièces, $limit: 5 (diapositive « Le pipeline d'agrégation ») ne retire rien.
 
 Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers documents : $sort, puis $skip, puis $limit.
 -->
@@ -1254,7 +1282,7 @@ Parties 5 à 7 : 18 exercices, 108 des 208 points du TP1.
 
 Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
 
-Le minutage suppose le point cours de début de séance (25 min, questions de modélisation comprises) déjà fait. Reste : partie 5 (7 exercices), 55 min ; partie 6 (6 exercices, plus difficiles), 1 h ; le second temps du point cours (environ 15 min) puis la partie 7 (5 exercices), 1 h 15 ; le rendu, 10 min. Le total fait 3 h 45 : il reste un quart d'heure de marge. En cas de retard, faire le deuxième rendu quand même, les exercices manquants iront au rendu final. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
+Le minutage suppose le point cours de début de séance (28 min, questions de modélisation comprises) déjà fait. Reste : partie 5 (7 exercices), 55 min ; partie 6 (6 exercices, plus difficiles), 1 h ; le second temps du point cours (environ 15 min) puis la partie 7 (5 exercices), 1 h 15 ; le rendu, 10 min. Le total fait 3 h 48 : il reste une dizaine de minutes de marge. En cas de retard, faire le deuxième rendu quand même, les exercices manquants iront au rendu final. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
 -->
 
 ---

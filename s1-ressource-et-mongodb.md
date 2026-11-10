@@ -28,8 +28,8 @@ Séance 1 · BUT Informatique 3e année · 2026-2027
 <!--
 (30 s)
 
-Point cours de 30 minutes, en trois temps :
-- ouverture, 23 min, avant le TP : la ressource (8 min), puis MongoDB jusqu'à « À vous » (15 min) ;
+Point cours de 33 minutes, en trois temps (somme des durées notées en tête de chaque diapo) :
+- ouverture, 26 min, avant le TP : la ressource (8 min), puis MongoDB jusqu'à « À vous » (18 min) ;
 - reprise avant la partie 3, 5 min : modifier et upsert ;
 - reprise avant la partie 4, 2 min : supprimer.
 
@@ -197,7 +197,7 @@ Pourquoi d'autres modèles, et lesquels
 <!--
 (10 s)
 
-Fin de la partie sur la ressource. Jusqu'à « À vous » : 15 minutes.
+Fin de la partie sur la ressource. Jusqu'à « À vous » : 18 minutes.
 -->
 
 ---
@@ -365,7 +365,7 @@ Dans le playground et mongosh, on écrit { _id: "E01", nom: "Martin" }, sans gui
 <!--
 (1 min)
 
-Lecture : à gauche, la modélisation relationnelle du film : une table pour les films, une pour les réalisateurs (relation plusieurs-à-un, clé étrangère realisateur_id), une table d'association pour les genres (relation un-à-plusieurs). Pour afficher le film complet, il faut deux jointures.
+Lecture : à gauche, la modélisation relationnelle du film : une table pour les films, une pour les réalisateurs (relation plusieurs-à-un, clé étrangère realisateur_id), une table pour les genres de chaque film (relation un-à-plusieurs : un film, plusieurs genres ; le genre n'est qu'une valeur, sans table genres). Pour afficher le film complet, il faut deux jointures.
 
 À droite, le même film en document : le réalisateur est un document imbriqué, les genres un tableau. Le film se lit en une fois.
 
@@ -823,7 +823,7 @@ Partie 1 très guidée (exemples A à C), partie 2 : la boucle écrire, exécute
 
 Modifier et supprimer viennent dans deux courtes reprises, quand le groupe arrive aux parties 3 et 4.
 
-Le minutage suppose l'ouverture du point cours (23 min) déjà faite. Reste : mise en place, 20 min ; partie 1 (2 exercices et 3 exemples guidés), 25 min ; partie 2 (12 exercices), 1 h 10 ; reprise de 5 min puis partie 3 (8 exercices), 55 min ; reprise de 2 min puis partie 4 (3 exercices), 20 min ; rendu, 10 min. Le total fait 3 h 43 : il reste environ un quart d'heure de marge. Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
+Le minutage suppose l'ouverture du point cours (26 min) déjà faite. Reste : mise en place, 20 min ; partie 1 (2 exercices et 3 exemples guidés), 25 min ; partie 2 (12 exercices), 1 h 10 ; reprise de 5 min puis partie 3 (8 exercices), 55 min ; reprise de 2 min puis partie 4 (3 exercices), 20 min ; rendu, 10 min. Le total fait 3 h 46 : il reste moins d'un quart d'heure de marge. Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
 -->
 
 ---
@@ -991,7 +991,7 @@ Exemples du schéma exécutés sur la collection films : Totoro reçoit diffusio
 
 $unset retire le champ ; le mettre à false ou à null ne suffit pas.
 
-Une mise à jour sans opérateur est refusée par updateOne. Remplacer un document entier, c'est replaceOne.
+updateOne refuse une mise à jour sans opérateur. Remplacer un document entier, c'est replaceOne.
 
 $addToSet, non demandé dans le TP1 : il ajoute un élément au tableau seulement s'il n'y est pas déjà.
 -->
