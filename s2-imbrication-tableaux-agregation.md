@@ -295,6 +295,14 @@ La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tabl
 
 ## Tableau de documents : le piège des deux conditions
 
+<style scoped>
+.cols { align-items: stretch; }
+.cols > div:first-child { display: flex; flex-direction: column; }
+.cols > div:first-child p { margin: 0.1em 0 0.2em; }
+.cols > div:first-child pre { flex: 1; display: grid; align-content: center; margin: 0 0 0.6em; }
+.cols > div:first-child pre:last-child { margin-bottom: 0; }
+</style>
+
 <div class="cols">
 <div>
 
@@ -303,32 +311,19 @@ La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tabl
 ```js
 db.films.find({ "seances.vo": true,
                 "seances.places": { $gt: 0 } })
+
+// Alien, Blade Runner, Le Voyage de Chihiro
 ```
-
-<div class="res">
-
-```js
-[ { titre: "Alien" }, { titre: "Blade Runner" },
-  { titre: "Le Voyage de Chihiro" } ]
-```
-
-</div>
 
 **`$elemMatch` : un même élément**
 
 ```js
 db.films.find({ seances: { $elemMatch:
     { vo: true, places: { $gt: 0 } } } })
+
+// Blade Runner, Le Voyage de Chihiro
 ```
 
-<div class="res">
-
-```js
-[ { titre: "Blade Runner" },
-  { titre: "Le Voyage de Chihiro" } ]
-```
-
-</div>
 </div>
 <div>
 
