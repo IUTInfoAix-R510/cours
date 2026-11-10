@@ -37,9 +37,9 @@
 
   <!-- CA -->
   <text x="196" y="200" text-anchor="end" font-size="30" font-weight="bold" fill="#777">CA</text>
-  <text x="196" y="230" text-anchor="end" font-size="22">sans partition :</text>
-  <text x="196" y="256" text-anchor="end" font-size="21" fill="#555">un seul serveur</text>
-  <text x="196" y="282" text-anchor="end" font-size="21" fill="#555">(le TP)</text>
+  <text x="196" y="230" text-anchor="end" font-size="22">SGBD relationnels</text>
+  <text x="196" y="256" text-anchor="end" font-size="21" fill="#555">sur un seul serveur</text>
+  <text x="196" y="282" text-anchor="end" font-size="21" fill="#555">(PostgreSQL…)</text>
 
   <!-- AP -->
   <text x="340" y="448" text-anchor="middle" font-size="30" font-weight="bold" fill="#b9771a">AP</text>

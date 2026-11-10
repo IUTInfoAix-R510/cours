@@ -288,7 +288,7 @@ Demander à la salle ce qu'elle choisirait pour une banque (refuser), pour un fi
 ## CAP en pratique
 
 <div class="g2" style="grid-template-columns: 1.2fr 1fr; align-items: center; margin-top: 0.2rem;">
-<img src="assets/schemas/s1-cap-triangle.svg" alt="Triangle CAP : sommets Cohérence, Disponibilité, Tolérance aux partitions. Côté CP : MongoDB avec les réglages par défaut. Côté AP : Cassandra. Côté CA : sans partition, un seul serveur, comme dans le TP. Une flèche indique que lire sur un secondaire rapproche MongoDB de AP." style="width: 100%;">
+<img src="assets/schemas/s1-cap-triangle.svg" alt="Triangle CAP : sommets Cohérence, Disponibilité, Tolérance aux partitions. Côté CP : MongoDB avec les réglages par défaut. Côté AP : Cassandra. Côté CA : les SGBD relationnels sur un seul serveur, comme PostgreSQL ou MySQL. Une flèche indique que lire sur un secondaire rapproche MongoDB de AP." style="width: 100%;">
 <div style="font-size: 0.8em;">
 <div class="carte"><b class="t">Le choix ne se pose que pendant une coupure</b>Sans partition, un système peut être cohérent et disponible. Mais une coupure finit toujours par arriver : il faut décider à l'avance.</div>
 <div class="carte violet" style="margin-top: 0.7rem;"><b class="t">Le C de CAP n'est pas le C d'ACID</b>ACID : les contraintes d'intégrité sont respectées. CAP : chaque lecture voit la dernière écriture, quelle que soit la copie.</div>
@@ -309,7 +309,7 @@ MongoDB : avec les réglages par défaut (lectures et écritures sur le primaire
 
 Cassandra, côté AP : chaque nœud accepte lectures et écritures, les copies se mettent d'accord après coup ; le niveau de cohérence se règle requête par requête.
 
-Côté CA : dans le TP, un seul serveur MongoDB, donc pas de partition et pas de choix à faire.
+Côté CA : un SGBD relationnel classique, sur un seul serveur, n'a pas de partition à gérer : il est cohérent et disponible tant que ce serveur tourne (et s'il tombe, tout tombe). Dès qu'on le réplique, il doit choisir lui aussi. Notre TP est dans ce cas : un seul serveur MongoDB, donc pas de choix à faire.
 
 Ce point n'est dans aucune des présentations MongoDB for Academia ; le syllabus l'annonce. Il servira à justifier un choix de base dans le projet ou en entreprise.
 -->
