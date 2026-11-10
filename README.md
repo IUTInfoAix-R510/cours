@@ -64,7 +64,7 @@ cours/
 ├── s2-imbrication-tableaux-agregation.md  # S2 : point cours du TP1 (suite)
 ├── assets/
 │   ├── logo.png, logo-amu.png             # logo d'Aix-Marseille Université
-│   └── mongodb-academia/                  # schémas repris de MongoDB for Academia
+│   └── mongodb-academia/                  # schémas repris de MongoDB for Academia (aucun pour l'instant)
 ├── scripts/
 │   ├── build-all.sh                       # build local complet (miroir du workflow)
 │   └── generate-index.sh                  # page d'accueil _site/index.html

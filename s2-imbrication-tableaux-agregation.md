@@ -56,9 +56,9 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 14 en 15 minutes. Les questions de modélisation prennent place après la diapo 4 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 20 lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 27 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
 
-Second temps, quand la majorité du groupe attaque la partie 7 : diapos 15 à 19, 8 minutes.
+Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 26, 8 minutes.
 
 Le cours seul dure 24 minutes. Présenté d'un bloc avec les questions de modélisation, il en prend 32.
 
@@ -147,6 +147,22 @@ Mise en commun (3 minutes), sur les questions 1 à 3 seulement ; les questions 4
 ---
 
 <!-- header: Partie 5 · interroger -->
+
+<!-- _class: lead -->
+<!-- _header: "" -->
+
+# Partie 5 - Interroger des documents imbriqués et des tableaux
+
+notation pointée, opérateurs sur les tableaux, `$elemMatch`, projection
+
+<!--
+(10 s)
+
+Même titre que la partie 5 de l'énoncé du TP1.
+-->
+
+---
+
 
 ## Des films pour les exemples
 
@@ -436,6 +452,22 @@ Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré
 
 <!-- header: Partie 6 · modifier -->
 
+<!-- _class: lead -->
+<!-- _header: "" -->
+
+# Partie 6 - Modifier des documents imbriqués et des tableaux
+
+`$set` en notation pointée, `$push`, `$pull`, opérateur `$`, atomicité
+
+<!--
+(10 s)
+
+Même titre que la partie 6 de l'énoncé du TP1.
+-->
+
+---
+
+
 ## Modifier un document imbriqué
 
 <p style="margin-bottom: 0.4rem;"><b>Objectif</b> : l'auteur de la recette R1 a déménagé. On veut passer sa ville de «&nbsp;Aix&nbsp;» à «&nbsp;Marseille&nbsp;», <b>sans toucher au reste</b> du document imbriqué <code>auteur</code>.</p>
@@ -688,40 +720,56 @@ Les opérateurs de pipeline reviennent en partie 7.
 
 <!-- header: Partie 7 · agréger -->
 
+<!-- _class: lead -->
+<!-- _header: "" -->
+
+# Partie 7 - Premiers pipelines d'agrégation
+
+`$match`, `$unwind`, `$group`, `$sort`
+
+<!--
+(10 s)
+
+Début du second temps : à projeter quand la majorité du groupe attaque la partie 7.
+-->
+
+---
+
+
 ## Le pipeline d'agrégation
 
 <div class="cols-62" style="grid-template-columns: 2.1fr 1fr;">
 <div>
 
 ```js
-db.capteurs.aggregate([      // un TABLEAU d'étapes
-  { $match: { ... } },       // filtrer               WHERE
-  { $unwind: "$..." },       // un doc. par élément   table « mesures »
-  { $group: { ... } },       // regrouper             GROUP BY
-  { $project: { ... } },     // choisir, calculer     SELECT
-  { $sort: { ... } },        // trier                 ORDER BY
-  { $limit: 5 }              // limiter               LIMIT
+db.capteurs.aggregate([                // un TABLEAU d'étapes
+  { $match: { type: "temperature" } }, // filtrer        WHERE
+  { $unwind: "$mesures" },             // 1 doc./mesure  table mesures
+  { $group: { _id: "$piece", ... } },  // regrouper      GROUP BY
+  { $project: { ... } },               // calculer       SELECT
+  { $sort: { moyenne: -1 } },          // trier          ORDER BY
+  { $limit: 5 }                        // limiter        LIMIT
 ])
 ```
 
-- Chaque étape reçoit les documents de la précédente.
+- Chaque étape reçoit les documents de la précédente et en produit de nouveaux : ici 5, puis 4, 9, 3.
 - Une étape peut revenir : un `$match` après `$group` filtre les groupes (`HAVING`).
-- Dans une expression (`$group`, `$project`...), `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
+- Dans `$group` ou `$project`, `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
 
 </div>
-<div class="centre">
+<div>
 
-![h:380](assets/mongodb-academia/pipeline-unwind-group-schema.png)
-
-<p class="legende">Ici : des ventes (<code>sales</code>) traversent deux <code>$unwind</code> puis un <code>$group</code> ; chaque ligne est un document.</p>
-
-<p class="legende">Schéma : MongoDB for Academia, <em>Querying Data with the MongoDB Aggregation Framework</em>, diapo 54, CC BY-NC-SA 3.0 (adapté : recadré)</p>
+<img src="assets/schemas/s2-pipeline.svg" alt="Le pipeline appliqué aux capteurs, de haut en bas ; chaque pastille est un document, colorée selon sa pièce : Salon en bleu, Cuisine en orange, Chambre en violet. Au départ, 5 documents, C1 à C5 ; C2, écrit en rouge, est le capteur d'humidité du Salon. $match garde les températures : 4 documents, C2 est écarté. $unwind crée un document par mesure : 9 documents, C1 trois fois, C3 deux fois, C4 une fois, C5 trois fois. $group crée un document par pièce : 3 documents, Cuisine moyenne 20.5, Salon 20.75, Chambre 17.5. $sort les trie par moyenne décroissante : Salon, Cuisine, Chambre, toujours 3 documents." style="display: block; width: 100%; margin: 0.1em auto 0;">
 
 </div>
 </div>
 
 <!--
-Le schéma d'origine montre une collection sales qui traverse deux $unwind puis un $group : les documents coulent d'une étape à l'autre, comme sur une chaîne de production. Chaque $unwind multiplie les documents, et le $group les rassemble.
+Le schéma suit les capteurs des trois diapos suivantes. Chaque pastille est un document, sa couleur donne la pièce ; C2, écrit en rouge, est le capteur d'humidité du Salon, celui que $match écarte. Lire la colonne des nombres : $match en écarte un (5 → 4), $unwind en crée un par mesure (4 → 9), $group en fait un par pièce (9 → 3), $sort les réordonne sans en changer le nombre.
+
+Le schéma s'arrête à $sort : $project change la forme des documents, pas leur nombre, et $limit: 5 ne retire rien ici puisqu'il ne reste que 3 documents. L'ordre Cuisine, Salon, Chambre en sortie de $group est celui d'une exécution réelle, mais il n'est pas garanti (diapo « L'ordre des groupes n'est pas garanti »).
+
+Les moyennes du schéma ne sont pas arrondies : le $project de la diapo « L'ordre des groupes n'est pas garanti » affiche 20.8 pour le Salon.
 
 Pour l'équivalent SQL de $unwind : une ligne par élément du tableau, comme dans la table mesures (capteur_id, h, v) d'un schéma relationnel.
 
@@ -1004,9 +1052,8 @@ Autres quiz proposés par l'énoncé : « Fais-moi un quiz sur la mise à jour d
 
 <div class="petit">
 
-**Schémas et contenus repris** de MongoDB for Academia, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) :
+**Contenus repris** de MongoDB for Academia, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/deed.fr) :
 
-- schéma : *Querying Data with the MongoDB Aggregation Framework*, diapo 54 (pipeline, recadré)
 - contenus reformulés : *MongoDB 101: Non-Relational for Beginners*, diapos 36 et 38 à 47 (relations et critères de choix)
 
 Détail des reprises : `ATTRIBUTION.md` du dépôt [IUTInfoAix-R510/cours](https://github.com/IUTInfoAix-R510/cours).

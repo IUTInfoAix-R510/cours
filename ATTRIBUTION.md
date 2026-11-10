@@ -38,7 +38,7 @@ Chaque présentation s'exporte en PDF sans connexion à l'adresse `https://docs.
 
 ### Règle de citation
 
-1. Un élément repris est enregistré dans `assets/mongodb-academia/`, sous un nom qui dit ce qu'il montre (par exemple `pipeline-unwind-group-schema.png`).
+1. Un élément repris est enregistré dans `assets/mongodb-academia/`, sous un nom qui dit ce qu'il montre (par exemple `pipeline-schema.png`).
 2. La diapositive qui l'affiche porte une légende de la forme :
 
    > Schéma : MongoDB for Academia, *<titre de la présentation>*, diapo N, CC BY-NC-SA 3.0
@@ -53,7 +53,7 @@ Une ligne par fichier de `assets/mongodb-academia/`. La colonne « Modification 
 
 | Fichier | Présentation source | Diapositive | Modification |
 |---|---|---|---|
-| `pipeline-unwind-group-schema.png` | Querying Data with the MongoDB Aggregation Framework | 54 (page 54 de l'export PDF) | recadrée : schéma seul, des deux `$unwind` au `$group` (sans le code, ni la flèche de la collection `sales` en haut), exporté à 220 ppp ; utilisée dans `s2-imbrication-tableaux-agregation.md` |
+| *aucun pour l'instant* | | | Le schéma du pipeline repris de *Querying Data with the MongoDB Aggregation Framework* (diapo 54) a été remplacé le 10/11/2026 par `assets/schemas/s2-pipeline.svg`, fait pour ce cours. |
 
 ### Contenus reformulés
 

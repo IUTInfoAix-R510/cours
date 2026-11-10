@@ -7,7 +7,7 @@ title: "Séance 1 : la ressource, MongoDB et le CRUD"
 description: "R5.Real.10, séance 1 : présentation de la ressource, NoSQL, modèle document et CRUD avec MongoDB (TP1, parties 1 à 4)"
 style: |
   section { font-size: 26px; }
-  section h2 { color: #00684a; }
+  section h1, section h2 { color: #00684a; }
   section pre { font-size: 0.74em; line-height: 1.35; }
   section table { font-size: 0.88em; }
   .res pre { background: #edf7f0; border-left: 6px solid #13aa52; }
