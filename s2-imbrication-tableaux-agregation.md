@@ -1,38 +1,12 @@
 ---
 marp: true
-theme: default
+theme: r510
 paginate: true
 lang: fr
 title: "Séance 2 : documents imbriqués, tableaux, agrégation"
 description: "R5.Real.10, point cours de la séance 2 (TP1, parties 5 à 7)"
 ---
 
-<style>
-section {
-  font-size: 27px;
-  padding: 44px 60px 50px 60px;
-  place-content: start !important;
-}
-section.lead { place-content: safe center center !important; }
-h1 { color: #00684a; }
-h2 { color: #00684a; margin: 0 0 0.45em 0; font-size: 1.45em; }
-header { font-size: 15px; color: #5c6c75; top: 14px; }
-pre { font-size: 0.66em; line-height: 1.35; margin: 0.3em 0; }
-table { font-size: 0.78em; }
-ul { margin: 0.2em 0; }
-li { margin: 0.12em 0; }
-.cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1.3rem; align-items: start; }
-.cols-62 { display: grid; grid-template-columns: 1.6fr 1fr; gap: 1.2rem; align-items: start; }
-.cols-38 { display: grid; grid-template-columns: 1fr 1.6fr; gap: 1.2rem; align-items: start; }
-.box { background: #e3f4ee; border-left: 5px solid #00a35c; padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.8em; margin-top: 0.5rem; }
-.warn { background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.5rem 0.9rem; border-radius: 6px; font-size: 0.8em; margin-top: 0.5rem; }
-.res pre { background: #eef6f2; border-left: 4px solid #00a35c; }
-.err pre { background: #fdeeee; border-left: 4px solid #c0392b; }
-.etiquette { font-size: 0.62em; color: #5c6c75; text-transform: uppercase; letter-spacing: 0.06em; margin: 0.4em 0 0 0; }
-.legende { font-size: 14px; color: #5c6c75; margin-top: 0.2rem; }
-.petit { font-size: 0.8em; }
-.centre { text-align: center; }
-</style>
 
 <!-- _class: lead -->
 <!-- _paginate: false -->
@@ -637,17 +611,16 @@ Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifie
 
 <style scoped>
 .recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
-.recap .bloc { background: #f0f4f8; border-left: 5px solid #4a90d9; border-radius: 6px; padding: 0.45rem 0.9rem; }
-.recap .bloc b.t { display: block; color: #00684a; margin-bottom: 0.2rem; }
+.recap .carte b.t { padding: 0.25em 1em; margin: 0 -1em 0.3em -1em; }
 .recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
 .recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
-.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent; vertical-align: top; }
+.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent !important; vertical-align: top; }
 .recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
 .recap code { font-size: 0.92em; }
 </style>
 
 <div class="recap">
-<div class="bloc" style="border-left-color: #4a90d9;"><b class="t">Interroger : filtre de find</b>
+<div class="carte"><b class="t">Interroger : filtre de find</b>
 <table>
 <tr><td><code>{ tab: v }</code></td><td>contient la valeur v</td></tr>
 <tr><td><code>{ tab: [v1, v2] }</code></td><td>égal à ce tableau, ordre compris</td></tr>
@@ -656,7 +629,7 @@ Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifie
 <tr><td><code>$elemMatch</code></td><td>un même élément vérifie toutes les conditions</td></tr>
 <tr><td><code>"tab.champ"</code> · <code>"tab.0"</code></td><td>un élément quelconque · l'élément d'indice 0</td></tr>
 </table></div>
-<div class="bloc" style="border-left-color: #13aa52;"><b class="t">Projeter : second argument de find</b>
+<div class="carte vert"><b class="t">Projeter : second argument de find</b>
 <table>
 <tr><td><code>{ "tab.champ": 1 }</code></td><td>ce champ dans chaque élément</td></tr>
 <tr><td><code>$slice: n</code></td><td>les n premiers éléments (n négatif : les n derniers)</td></tr>
@@ -680,17 +653,16 @@ $size ne se combine pas avec $gt : pour « au moins 3 éléments », on teste "t
 
 <style scoped>
 .recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
-.recap .bloc { background: #f0f4f8; border-left: 5px solid #4a90d9; border-radius: 6px; padding: 0.45rem 0.9rem; }
-.recap .bloc b.t { display: block; color: #00684a; margin-bottom: 0.2rem; }
+.recap .carte b.t { padding: 0.25em 1em; margin: 0 -1em 0.3em -1em; }
 .recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
 .recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
-.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent; vertical-align: top; }
+.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent !important; vertical-align: top; }
 .recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
 .recap code { font-size: 0.92em; }
 </style>
 
 <div class="recap">
-<div class="bloc" style="border-left-color: #e8a838;"><b class="t">Modifier : updateOne, updateMany</b>
+<div class="carte orange"><b class="t">Modifier : updateOne, updateMany</b>
 <table>
 <tr><td><code>$push</code> (avec <code>$each</code>)</td><td>ajoute à la fin (plusieurs valeurs)</td></tr>
 <tr><td><code>$addToSet</code></td><td>ajoute si la valeur n'y est pas déjà</td></tr>
@@ -699,7 +671,7 @@ $size ne se combine pas avec $gt : pour « au moins 3 éléments », on teste "t
 <tr><td><code>"tab.$"</code></td><td>l'élément trouvé par le filtre</td></tr>
 <tr><td><code>"tab.$[]"</code> · <code>"tab.$[x]"</code></td><td>tous les éléments · ceux retenus par <code>arrayFilters</code></td></tr>
 </table></div>
-<div class="bloc" style="border-left-color: #8e44ad;"><b class="t">Agréger : dans un pipeline (partie 7)</b>
+<div class="carte violet"><b class="t">Agréger : dans un pipeline (partie 7)</b>
 <table>
 <tr><td><code>$unwind</code></td><td>un document par élément</td></tr>
 <tr><td><code>$size</code> · <code>$arrayElemAt</code></td><td>la longueur · l'élément d'indice n</td></tr>
@@ -844,7 +816,7 @@ $project et $limit ne figurent pas dans le schéma : $project change la forme de
 </div>
 <div class="box">
 
-**La question** : quelle est la température moyenne de chaque pièce, de la plus chaude à la plus froide&nbsp;?
+❓ **La question** : quelle est la température moyenne de chaque pièce, de la plus chaude à la plus froide&nbsp;?
 
 </div>
 </div>
@@ -1212,7 +1184,7 @@ td:nth-child(1) code, td:nth-child(2) code { white-space: nowrap; }
 
 <div class="warn" style="margin-top: 1rem;">
 
-**Pour le correcteur automatique** : la réponse se **termine** par <code style="white-space: nowrap">db.&lt;collection&gt;.aggregate([...])</code> (ou `.toArray()`). Un `find` ou un calcul placé après vaut 0.
+🤖 **Pour le correcteur automatique** : la réponse se **termine** par <code style="white-space: nowrap">db.&lt;collection&gt;.aggregate([...])</code> (ou `.toArray()`). Un `find` ou un calcul placé après vaut 0.
 
 </div>
 
@@ -1237,49 +1209,48 @@ Les messages du correcteur automatique dans ce cas : « Cet exercice demande un 
 ## À vous : la séance 2
 
 <style scoped>
-.cols > div { display: flex; flex-direction: column; }
-.cols > div > .warn { margin-top: auto; height: 116px; box-sizing: border-box; }
+.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
+.g2 > div > .orange { margin-top: auto; }
 </style>
 
-**Énoncé :** [iutinfoaix-r510.github.io/tp1](https://iutinfoaix-r510.github.io/tp1/), section « Séance 2 »
+<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
+<a href="https://iutinfoaix-r510.github.io/tp1/">iutinfoaix-r510.github.io/tp1</a>, section « Séance 2 »
+</div>
 
-<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: stretch;">
+<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
 <div>
 
-1. Questions de modélisation : **5 min**, à deux
+1. Questions de modélisation, à deux : **5 min**
 2. Partie 5, interroger : **55 min**
 3. Partie 6, modifier : **1 h**
 4. Point cours, puis partie 7, agréger : **1 h 15**
 5. **Deuxième rendu** : `r510-rendre`, **10 min**
 
-<p class="petit">Minutage indicatif, sur une séance de 4 h.</p>
+<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
 
-<div class="warn" style="font-size: 0.9em;">
-
-**Rendu final du TP1 :**<br>dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
-
+<div class="carte orange">
+<b class="t">📅 Rendu final du TP1</b>
+dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
 </div>
 
 </div>
 <div>
 
-<div class="box" style="margin-top: 0.2rem;">
-
-**Les points** : 18 exercices à 6 points, soit 108 des 208 points du TP1.
-
+<div class="carte vert">
+<b class="t">Les points</b>
+Parties 5 à 7 : 18 exercices, 108 des 208 points du TP1.
 </div>
 
-<div class="box">
-
-**Le rendu** : `r510-rendre` lance `npm run check`, puis rend. Trois rendus au plus pour tout le TP1.
-
+<div class="carte vert">
+<b class="t">Le rendu</b>
+<code>r510-rendre</code> lance <code>npm run check</code>, puis rend. Trois rendus au plus pour tout le TP1.
 </div>
 
-<div class="warn">
-
-**Base abîmée** : `npm run seed -- --avant N` la remet dans l'état attendu avant l'exercice N.
-
+<div class="carte orange">
+<b class="t">Base abîmée ?</b>
+<code>npm run seed -- --avant N</code> la répare.
 </div>
+
 </div>
 </div>
 
@@ -1296,13 +1267,12 @@ Le minutage suppose le point cours de début de séance (25 min, questions de mo
 ## À vous : essayer et réviser
 
 <style scoped>
-table { font-size: 0.87em; width: 100%; }
-th { text-align: left; }
-td { padding-top: 0.45em; padding-bottom: 0.45em; }
-.etiquette { margin-top: 1.4rem !important; }
+table { font-size: 0.85em; width: 100%; }
+td { padding-top: 0.4em; padding-bottom: 0.4em; }
+.etiquette { margin-top: 1.2rem !important; }
 </style>
 
-<p class="etiquette">Essayer sans risque</p>
+<p class="etiquette">🧪 Essayer sans risque</p>
 
 <div class="box" style="margin-top: 0.3rem;">
 
@@ -1310,7 +1280,7 @@ Les essais vont dans `essais.mongodb.js` : dans la collection `brouillon` de `tp
 
 </div>
 
-<p class="etiquette" style="margin-top: 1rem;">Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+<p class="etiquette" style="margin-top: 1rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
 
 | Partie | À demander à l'assistant |
 |---|---|
@@ -1342,13 +1312,13 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 </div>
 
-<div style="margin-top: 1.6rem; background: #00684a; color: white; padding: 0.8rem 1.6rem; border-radius: 12px; font-size: 0.95em;">
+<div class="bandeau" style="margin-top: 1.6rem; text-align: left; font-size: 0.95em;">
 
-**Dès maintenant** : la partie 7, une étape à la fois, puis le deuxième rendu avec <code style="white-space: nowrap;">r510-rendre</code>.
+🎯 **Dès maintenant** : la partie 7, une étape à la fois, puis le deuxième rendu avec <code style="white-space: nowrap;">r510-rendre</code>.
 
 </div>
 
-<div style="margin-top: 1rem; background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.7rem 1rem; border-radius: 6px; font-size: 0.8em;">
+<div class="warn" style="margin-top: 1rem;">
 
 **D'ici le dimanche 6 décembre, 23&nbsp;h&nbsp;59** : terminez les exercices manquants, faites le quiz de chaque partie, puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
 

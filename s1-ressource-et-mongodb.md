@@ -1,31 +1,10 @@
 ---
 marp: true
-theme: default
+theme: r510
 paginate: true
 lang: fr
 title: "Séance 1 : la ressource, MongoDB et le CRUD"
 description: "R5.Real.10, séance 1 : présentation de la ressource, NoSQL, modèle document et CRUD avec MongoDB (TP1, parties 1 à 4)"
-style: |
-  section { font-size: 26px; }
-  section h1, section h2 { color: #00684a; }
-  section pre { font-size: 0.74em; line-height: 1.35; }
-  section table { font-size: 0.88em; }
-  .res pre { background: #edf7f0; border-left: 6px solid #13aa52; }
-  .res-titre { font-size: 0.6em; color: #00684a; font-weight: bold; margin: 0.2rem 0 -0.4rem 0; }
-  .legende { font-size: 0.6em; color: #555; margin-top: 0.3rem; }
-  .note { font-size: 0.75em; color: #555; }
-  .g2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.2rem; }
-  .g2 > *, .g3 > * { min-width: 0; }
-  .g3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 0.9rem; }
-  .carte { background: #f0f4f8; padding: 0.7rem 1rem; border-radius: 10px; border-left: 5px solid #4a90d9; }
-  .carte b.t { display: block; margin-bottom: 0.2rem; }
-  .vert { border-left-color: #13aa52; }
-  .orange { border-left-color: #e8a838; }
-  .violet { border-left-color: #8e44ad; }
-  .rouge { border-left-color: #c0392b; }
-  .bandeau { background: #00684a; color: white; padding: 0.7rem 1.2rem; border-radius: 10px; text-align: center; }
-  .bandeau a { color: white; }
-  .alerte { background: #fdecea; border-left: 5px solid #c0392b; padding: 0.6rem 1rem; border-radius: 8px; }
 ---
 
 <!-- _class: lead -->
@@ -59,6 +38,7 @@ Avant de commencer : demander qui n'a pas reçu ou pas accepté l'invitation à 
 
 ---
 
+<!-- header: Séance 1 · la ressource -->
 ## Le but de la ressource
 
 > Choisir le modèle de données adapté aux requêtes, puis l'intégrer dans une application.
@@ -206,6 +186,8 @@ Conseil : en S1, demander de l'aide sur la syntaxe et le playground ne pose aucu
 
 ---
 
+<!-- header: Séance 1 · NoSQL -->
+<!-- _header: "" -->
 <!-- _class: lead -->
 
 # MongoDB et le NoSQL
@@ -438,6 +420,8 @@ Attention, dans un filtre, { champ: null } trouve aussi les documents où le cha
 
 ---
 
+<!-- header: Parties 1 et 2 · créer et lire -->
+<!-- _header: "" -->
 <!-- _class: lead -->
 
 # Parties 1 et 2 - Créer et lire des documents
@@ -792,7 +776,7 @@ Pour l'enseignant, les erreurs relevées dans ces présentations, si un étudian
 <a href="https://iutinfoaix-r510.github.io/tp1/">iutinfoaix-r510.github.io/tp1</a>
 </div>
 
-<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr;">
+<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
 <div>
 
 1. Mise en place (TP1, codespace, vérifications) : **20 min**
@@ -805,7 +789,7 @@ Pour l'enseignant, les erreurs relevées dans ces présentations, si un étudian
 <p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
 
 <div class="carte orange">
-<b class="t">Rendu final du TP1</b>
+<b class="t">📅 Rendu final du TP1</b>
 dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
 </div>
 
@@ -847,17 +831,18 @@ Le minutage suppose l'ouverture du point cours (23 min) déjà faite. Reste : mi
 ## À vous : essayer et réviser
 
 <style scoped>
-table { font-size: 0.8em; width: 100%; }
-th { text-align: left; }
+table { font-size: 0.85em; width: 100%; }
+td { padding-top: 0.4em; padding-bottom: 0.4em; }
+.etiquette { margin-top: 1.2rem !important; }
 </style>
 
-<p style="font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin: 0.2rem 0;">Essayer sans risque</p>
+<p class="etiquette">🧪 Essayer sans risque</p>
 
-<div class="carte vert" style="font-size: 0.85em;">
+<div class="box" style="margin-top: 0.3rem; font-size: 0.85em;">
 Les essais vont dans <code>essais.mongodb.js</code>, à la racine du dépôt, sur la collection <code>brouillon</code> : le correcteur automatique ne lit ni l'un ni l'autre. <b>Jamais sous un <code>// Votre réponse :</code>.</b>
 </div>
 
-<p style="font-size: 0.7em; color: #555; text-transform: uppercase; letter-spacing: 0.06em; margin: 1.2rem 0 0.2rem;">Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+<p class="etiquette" style="margin-top: 1rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
 
 | Partie | À demander à l'assistant |
 |---|---|
@@ -876,6 +861,8 @@ Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
 
 ---
 
+<!-- header: Partie 3 · modifier -->
+<!-- _header: "" -->
 <!-- _class: lead -->
 
 # Partie 3 - Modifier des documents
@@ -1037,6 +1024,8 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 
 ---
 
+<!-- header: Partie 4 · supprimer -->
+<!-- _header: "" -->
 <!-- _class: lead -->
 
 # Partie 4 - Supprimer des documents
@@ -1111,6 +1100,7 @@ Pour essayer drop(), le faire sur la collection brouillon, jamais sur employes.
 
 ---
 
+<!-- header: "" -->
 <!-- _class: lead -->
 
 # Des questions ?
@@ -1125,13 +1115,13 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 </div>
 
-<div style="margin-top: 1.6rem; background: #00684a; color: white; padding: 0.8rem 1.6rem; border-radius: 12px; font-size: 0.95em;">
+<div class="bandeau" style="margin-top: 1.6rem; text-align: left; font-size: 0.95em;">
 
-**Dès maintenant** : la partie 4, puis le premier rendu avec <code style="white-space: nowrap;">r510-rendre</code>.
+🎯 **Dès maintenant** : la partie 4, puis le premier rendu avec <code style="white-space: nowrap;">r510-rendre</code>.
 
 </div>
 
-<div style="margin-top: 1rem; background: #fff4e0; border-left: 5px solid #e8a838; padding: 0.7rem 1rem; border-radius: 6px; font-size: 0.8em;">
+<div class="warn" style="margin-top: 1rem;">
 
 **Avant la séance 2** : terminez les parties 1 à 4, puis lisez « Modéliser la médiathèque » dans l'énoncé. La séance commencera par ces questions.
 

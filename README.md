@@ -62,14 +62,33 @@ La publication sur GitHub Pages se fait à chaque push sur `main`.
 cours/
 ├── s1-ressource-et-mongodb.md             # S1 : point cours du TP1
 ├── s2-imbrication-tableaux-agregation.md  # S2 : point cours du TP1 (suite)
+├── themes/
+│   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/
 │   ├── logo.png, logo-amu.png             # logo d'Aix-Marseille Université
+│   ├── schemas/                           # schémas SVG faits pour le cours
 │   └── mongodb-academia/                  # schémas repris de MongoDB for Academia (aucun pour l'instant)
+├── .vscode/settings.json                  # déclare le thème pour l'aperçu Marp de VS Code
 ├── scripts/
 │   ├── build-all.sh                       # build local complet (miroir du workflow)
 │   └── generate-index.sh                  # page d'accueil _site/index.html
 └── ATTRIBUTION.md                         # licences du dépôt, sources et éléments repris
 ```
+
+### Thème commun
+
+Tous les supports utilisent `theme: r510` (fichier `themes/r510.css`, déclaré dans `marp.config.js`). Le thème reprend le vocabulaire visuel des cours de R2.03 et R2.02, avec le vert MongoDB pour les titres. Pas de bloc `<style>` global dans un support : un réglage propre à une diapo va dans un `<style scoped>`.
+
+| Classe | Usage |
+|---|---|
+| `cols`, `g2`, `g3`, `cols-62`, `cols-38` | grilles à 2 ou 3 colonnes |
+| `carte` (+ `vert`, `orange`, `violet`, `rouge`) | carte à en-tête coloré : `<div class="carte vert"><b class="t">Titre</b> texte</div>` |
+| `box`, `warn`, `alerte` | remarque à bordure gauche : verte, orange, rouge |
+| `bandeau` | bandeau bleu nuit : lien, appel à l'action, message à retenir |
+| `res`, `err`, `res-titre` | bloc de résultat, d'erreur, et son titre |
+| `etiquette`, `legende`, `note`, `petit`, `centre` | petits textes |
+
+Les marges négatives s'écrivent en `em` : Marp réécrit `-1rem` en `-calc(…)`, que le navigateur ignore.
 
 ## Pour aller plus loin
 

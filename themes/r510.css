@@ -1,0 +1,259 @@
+/* @theme r510 */
+
+/*
+ * Thème commun des supports de R5.Real.10.
+ * Base : thème default de Marp. Vocabulaire visuel repris des cours de R2.03 et R2.02
+ * (cartes à en-tête coloré, remarques à bordure gauche, bandeau bleu nuit),
+ * avec le vert MongoDB pour les titres.
+ *
+ * Déclaré dans marp.config.js (themeSet) et dans .vscode/settings.json (aperçu VS Code).
+ * Un support l'utilise avec « theme: r510 » dans son front matter.
+ */
+
+@import 'default';
+
+:root {
+  --vert-mongo: #00684a;
+  --vert: #13aa52;
+  --bleu: #4a90d9;
+  --orange: #e8a838;
+  --rouge: #e74c3c;
+  --violet: #8e44ad;
+  --nuit: #2c3e50;
+  --gris: #5c6c75;
+  --pastel-vert: #e3f4ee;
+  --pastel-bleu: #eaf2fb;
+  --pastel-orange: #fff8e1;
+  --pastel-rouge: #fdecea;
+  --pastel-violet: #ede5f7;
+  --pastel-gris: #f0f4f8;
+}
+
+/* ---------- Page ---------- */
+
+section {
+  font-size: 26px;
+  padding: 44px 60px 50px 60px;
+  place-content: start !important;
+}
+
+section.lead {
+  place-content: safe center center !important;
+}
+
+h1, h2 {
+  color: var(--vert-mongo);
+}
+
+h2 {
+  margin: 0 0 0.45em 0;
+  font-size: 1.45em;
+}
+
+header {
+  font-size: 15px;
+  color: var(--gris);
+  top: 14px;
+}
+
+ul, ol {
+  margin: 0.2em 0;
+}
+
+li {
+  margin: 0.12em 0;
+}
+
+/* ---------- Code ---------- */
+
+pre {
+  font-size: 0.68em;
+  line-height: 1.35;
+  margin: 0.3em 0;
+}
+
+/* Résultat d'une commande, erreur */
+.res pre {
+  background: #eef6f2;
+  border-left: 5px solid var(--vert);
+}
+
+.err pre {
+  background: var(--pastel-rouge);
+  border-left: 5px solid var(--rouge);
+}
+
+.res-titre {
+  font-size: 0.6em;
+  color: var(--vert-mongo);
+  font-weight: bold;
+  margin: 0.35em 0 -0.6em 0;
+}
+
+/* ---------- Tableaux (en-tête bleu nuit, lignes alternées) ---------- */
+
+table {
+  font-size: 0.8em;
+  border-collapse: collapse;
+}
+
+table th {
+  background: var(--nuit);
+  color: #fff;
+  text-align: left;
+  border: none;
+}
+
+table td {
+  border: none;
+  border-bottom: 1px solid #e0e0e0;
+  vertical-align: top;
+}
+
+table tr:nth-child(2n) td {
+  background: #f4f6f8;
+}
+
+table tr {
+  background: #fff;
+}
+
+/* ---------- Mise en page ---------- */
+
+.cols,
+.g2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.g3 {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 0.9rem;
+}
+
+.cols-62 {
+  display: grid;
+  grid-template-columns: 1.6fr 1fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.cols-38 {
+  display: grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap: 1.2rem;
+  align-items: start;
+}
+
+.cols > *, .g2 > *, .g3 > *, .cols-62 > *, .cols-38 > * {
+  min-width: 0;
+}
+
+/* ---------- Remarques à bordure gauche ---------- */
+
+.box,
+.warn,
+.alerte {
+  padding: 0.55rem 1rem;
+  border-radius: 8px;
+  border-left: 5px solid;
+  font-size: 0.8em;
+  margin-top: 0.5rem;
+}
+
+.box {
+  background: var(--pastel-vert);
+  border-left-color: var(--vert);
+}
+
+.warn {
+  background: var(--pastel-orange);
+  border-left-color: var(--orange);
+}
+
+.alerte {
+  background: var(--pastel-rouge);
+  border-left-color: var(--rouge);
+}
+
+/* ---------- Cartes à en-tête coloré (R2.03) ----------
+ * <div class="carte vert"><b class="t">Titre</b> texte…</div>
+ * Couleurs : bleu par défaut, .vert, .orange, .violet, .rouge.
+ * Marges en em et non en rem : Marp réécrit « -1rem » en « -calc(…) », que le navigateur ignore.
+ */
+
+.carte {
+  background: var(--pastel-bleu);
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+  padding: 0 1em 0.7em 1em;
+}
+
+.carte b.t {
+  display: block;
+  margin: 0 -1em 0.5em -1em;
+  padding: 0.4em 1em;
+  background: var(--bleu);
+  color: #fff;
+}
+
+.carte.vert { background: var(--pastel-vert); }
+.carte.vert b.t { background: var(--vert); }
+.carte.orange { background: var(--pastel-orange); }
+.carte.orange b.t { background: var(--orange); }
+.carte.violet { background: var(--pastel-violet); }
+.carte.violet b.t { background: var(--violet); }
+.carte.rouge { background: var(--pastel-rouge); }
+.carte.rouge b.t { background: var(--rouge); }
+
+/* ---------- Bandeau bleu nuit : lien, appel à l'action, message à retenir ---------- */
+
+.bandeau {
+  background: var(--nuit);
+  color: #fff;
+  padding: 0.7rem 1.2rem;
+  border-radius: 8px;
+  text-align: center;
+}
+
+.bandeau a {
+  color: #fff;
+}
+
+.bandeau code {
+  background: rgba(255, 255, 255, 0.15);
+  color: #fff;
+}
+
+/* ---------- Petits textes ---------- */
+
+.etiquette {
+  font-size: 0.62em;
+  color: var(--gris);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 0.4em 0 0 0;
+}
+
+.legende {
+  font-size: 14px;
+  color: var(--gris);
+  margin-top: 0.2rem;
+}
+
+.note {
+  font-size: 0.75em;
+  color: var(--gris);
+}
+
+.petit {
+  font-size: 0.8em;
+}
+
+.centre {
+  text-align: center;
+}
