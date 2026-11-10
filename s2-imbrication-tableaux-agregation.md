@@ -56,7 +56,7 @@ Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 <!--
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. La diapo 34 (« À vous ») lance ensuite le travail (1 minute). Ce premier temps dure 24 minutes.
+Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 15 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. Les diapos 34 et 35 (« À vous ») lancent ensuite le travail (2 minutes). Ce premier temps dure 25 minutes.
 
 Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 33, 16 minutes.
 
@@ -1234,46 +1234,81 @@ Les messages du correcteur automatique dans ce cas : « Cet exercice demande un 
 
 <!-- header: "" -->
 
-## À vous
-
-<div class="cols">
-<div>
+## À vous : la séance 2
 
 **Énoncé :** [iutinfoaix-r510.github.io/tp1](https://iutinfoaix-r510.github.io/tp1/), section « Séance 2 »
+
+<div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: start;">
+<div>
 
 1. Questions de modélisation : 5 min, à deux
 2. Partie 5 : interroger
 3. Partie 6 : modifier
 4. Partie 7 : agréger
-5. **Deuxième rendu** : `r510-rendre` (il lance `npm run check` avant)
-
-<p class="petit">Séance 2 : 18 exercices à 6 points, soit 108 des 208 points. Trois rendus au plus pour tout le TP1.</p>
-
-<p class="petit">Base abîmée : <code>npm run seed -- --avant N</code></p>
+5. **Deuxième rendu** : `r510-rendre`
 
 </div>
 <div>
 
-**Fin de chaque partie : un quiz**
+<div class="box" style="margin-top: 0.2rem;">
 
-Dans Copilot Chat, Claude Code ou Codex :
+**Les points** : 18 exercices à 6 points, soit 108 des 208 points du TP1.
 
-```text
-Fais-moi un quiz sur la notation pointée
-et les requêtes sur les tableaux.
-```
+</div>
 
-<p class="petit">Les essais vont dans <code>essais.mongodb.js</code>, dans la collection <code>brouillon</code> de <code>tp1</code> ou dans une base à part (<code>use('demo')</code>, sélectionnée avec l'essai). Jamais sous un <code>// Votre réponse :</code>.</p>
+<div class="box">
 
+**Le rendu** : `r510-rendre` lance `npm run check`, puis rend. Trois rendus au plus pour tout le TP1.
+
+</div>
+
+<div class="warn">
+
+**Base abîmée** : `npm run seed -- --avant N` la remet dans l'état attendu avant l'exercice N.
+
+</div>
 </div>
 </div>
 
 <!--
+(1 min)
+
 Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59. r510-sauver sauvegarde, il ne note pas : seul r510-rendre, qui pose le tag submit/…, déclenche la correction.
+-->
+
+---
+
+## À vous : essayer et réviser
+
+<style scoped>
+table { font-size: 0.87em; width: 100%; }
+th { text-align: left; }
+td { padding-top: 0.45em; padding-bottom: 0.45em; }
+.etiquette { margin-top: 1.4rem !important; }
+</style>
+
+<p class="etiquette">Essayer sans risque</p>
+
+<div class="box" style="margin-top: 0.3rem;">
+
+Les essais vont dans `essais.mongodb.js` : dans la collection `brouillon` de `tp1`, ou dans une base à part (`use('demo')`, sélectionnée avec l'essai). **Jamais sous un `// Votre réponse :`.**
+
+</div>
+
+<p class="etiquette" style="margin-top: 1rem;">Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+
+| Partie | À demander à l'assistant |
+|---|---|
+| 5 | « Fais-moi un quiz sur la notation pointée et les requêtes sur les tableaux. » |
+| 6 | « Fais-moi un quiz sur la mise à jour des documents imbriqués et des tableaux : `$push`, `$pull`, l'opérateur positionnel. » |
+| 7 | « Fais-moi un quiz sur les pipelines d'agrégation : `$match`, `$unwind`, `$group`, `$project`, `$sort`. » |
+
+<!--
+(1 min)
 
 Les assistants du codespace sont configurés en tuteurs : ils expliquent, proposent un quiz sur d'autres données que celles du TP et le corrigent question par question, mais n'écrivent pas la réponse d'un exercice. Conseil de l'énoncé : pour la partie 7, aller le plus loin possible seul avant de les solliciter.
 
-Autres quiz proposés par l'énoncé : « Fais-moi un quiz sur la mise à jour des documents imbriqués et des tableaux : $push, $pull, l'opérateur positionnel. » et « Fais-moi un quiz sur les pipelines d'agrégation : $match, $unwind, $group, $project, $sort. »
+Les trois invites sont celles de l'énoncé, à la fin de chaque partie.
 -->
 
 ---
