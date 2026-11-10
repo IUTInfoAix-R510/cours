@@ -898,7 +898,6 @@ db.capteurs.aggregate([
 ```
 
 </div>
-</div>
 <div>
 
 <img src="assets/schemas/s2-match.svg" alt="$match : sur les 5 capteurs, C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre, seuls les 4 de type temperature passent. C2, de type humidite, est écarté." style="display: block; width: 100%; margin: 0 auto;">
