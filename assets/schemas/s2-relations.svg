@@ -66,7 +66,7 @@
     <line x1="156" y1="167" x2="111" y2="167" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <line x1="156" y1="210" x2="110" y2="176" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <rect x="16" y="254" width="246" height="62" rx="8" fill="#f3eaf8"/>
-    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">référencer : l'_id du</text>
+    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">référencer : l'<tspan font-family="monospace">_id</tspan> du</text>
     <text class="ch" x="139" y="304" text-anchor="middle" fill="#8e44ad">capteur dans chaque mesure</text>
   </g>
 
@@ -93,7 +93,7 @@
     <line x1="154" y1="146" x2="182" y2="166" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <line x1="154" y1="216" x2="182" y2="178" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <rect x="16" y="254" width="246" height="62" rx="8" fill="#f3eaf8"/>
-    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">un tableau d'_id</text>
+    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">un tableau d'<tspan font-family="monospace">_id</tspan></text>
     <text class="ch" x="139" y="304" text-anchor="middle" fill="#8e44ad">d'un côté, ou des deux</text>
   </g>
 </svg>

@@ -14,7 +14,6 @@
   <circle cx="353.1" cy="30" r="8" fill="#4a90d9" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="81" font-family="monospace" font-size="19" fill="#333">$ne: 98</text>
   <text x="218" y="81" font-family="monospace" font-size="19" fill="#888" text-anchor="end">&lt;></text>
-  <text x="10" y="101" font-size="17" fill="#555">+ sans champ <tspan font-family="monospace">duree</tspan></text>
   <line x1="232" y1="74" x2="548" y2="74" stroke="#d5dbe1" stroke-width="3"/>
   <line x1="242.0" y1="74" x2="538.0" y2="74" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)" marker-end="url(#fb)"/>
   <circle cx="353.1" cy="74" r="8" fill="white" stroke="#4a90d9" stroke-width="3"/>

@@ -190,7 +190,7 @@ Conseil : en S1, demander de l'aide sur la syntaxe et le playground ne pose aucu
 <!-- _header: "" -->
 <!-- _class: lead -->
 
-# MongoDB et le NoSQL
+# 🍃 MongoDB et le NoSQL
 
 Pourquoi d'autres modèles, et lesquels
 
@@ -424,7 +424,7 @@ Attention, dans un filtre, { champ: null } trouve aussi les documents où le cha
 <!-- _header: "" -->
 <!-- _class: lead -->
 
-# Parties 1 et 2 - Créer et lire des documents
+# Parties 1 et 2 - 📝 Créer et lire des documents
 
 `insertOne`, `insertMany`, `find`, opérateurs de requête, tri
 
@@ -624,7 +624,7 @@ db.films.find({ genres: "animation" },
 </div>
 </div>
 
-<p style="font-size: 0.75em; margin-top: 0.4rem;">Un opérateur commence par <code>$</code> et s'écrit dans un objet, à la place de la valeur. Plusieurs conditions se combinent par un ET. Aussi : <code>$nin</code> (NOT IN), <code>$exists</code> (le champ existe ou manque), <code>$regex</code> (LIKE, en plus riche).</p>
+<p style="font-size: 0.75em; margin-top: 0.4rem;">Un opérateur commence par <code>$</code> et s'écrit dans un objet, à la place de la valeur. Plusieurs conditions se combinent par un ET ; <code>$ne</code> garde aussi les documents sans le champ. Aussi : <code>$nin</code> (NOT IN), <code>$exists</code> (le champ existe ou manque), <code>$regex</code> (LIKE, en plus riche).</p>
 
 <!--
 (1 min 30)
@@ -865,7 +865,7 @@ Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
 <!-- _header: "" -->
 <!-- _class: lead -->
 
-# Partie 3 - Modifier des documents
+# Partie 3 - 🔧 Modifier des documents
 
 `updateOne`, `updateMany`, opérateurs de mise à jour, upsert
 
@@ -1028,7 +1028,7 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 <!-- _header: "" -->
 <!-- _class: lead -->
 
-# Partie 4 - Supprimer des documents
+# Partie 4 - 🗑️ Supprimer des documents
 
 `deleteOne`, `deleteMany`
 

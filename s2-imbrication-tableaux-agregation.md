@@ -125,7 +125,7 @@ Mise en commun (3 minutes), sur les questions 1 à 3 seulement ; les questions 4
 <!-- _class: lead -->
 <!-- _header: "" -->
 
-# Partie 5 - Interroger des documents imbriqués et des tableaux
+# Partie 5 - 🔎 Interroger des documents imbriqués et des tableaux
 
 notation pointée, opérateurs sur les tableaux, `$elemMatch`, projection
 
@@ -424,7 +424,7 @@ Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré
 <!-- _class: lead -->
 <!-- _header: "" -->
 
-# Partie 6 - Modifier des documents imbriqués et des tableaux
+# Partie 6 - 🔧 Modifier des documents imbriqués et des tableaux
 
 `$set` en notation pointée, `$push`, `$pull`, opérateur `$`, atomicité
 
@@ -690,7 +690,7 @@ Les opérateurs de pipeline reviennent en partie 7.
 <!-- _class: lead -->
 <!-- _header: "" -->
 
-# Partie 7 - Premiers pipelines d'agrégation
+# Partie 7 - ⚙️ Premiers pipelines d'agrégation
 
 `$match`, `$unwind`, `$group`, `$sort`
 
