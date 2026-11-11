@@ -57,6 +57,8 @@
     <text x="784" y="98"><tspan fill="#4a90d9" font-weight="bold">A</tspan> = { <tspan fill="#00684a" font-weight="bold">$arrayElemAt</tspan>:</text>
     <text x="784" y="122">["$notes.note", 0] }</text>
   </g>
+  <text x="885" y="69" font-size="14" font-weight="bold" fill="#4a90d9" text-anchor="middle">la première note</text>
+  <text x="885" y="229" font-size="14" font-weight="bold" fill="#4a90d9" text-anchor="middle">la dernière note</text>
   <rect x="772" y="154" width="226" height="58" rx="7" fill="#ffffff" stroke="#13aa52" stroke-width="2"/>
   <g font-family="monospace" font-size="16" fill="#333">
     <text x="784" y="178"><tspan fill="#4a90d9" font-weight="bold">B</tspan> = { <tspan fill="#00684a" font-weight="bold">$arrayElemAt</tspan>:</text>

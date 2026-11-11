@@ -1,0 +1,53 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Avec l'index { annee: 1, titre: 1, duree: 1 }, la requête find({ annee: 2001, duree: { $gt: 100 } }, projection).sort({ titre: 1 }) lit la clé (2001, "Amélie Poulain", 122). À gauche, avec la projection { _id: 0, titre: 1, duree: 1 }, titre et duree sont dans la clé : le résultat { titre: "Amélie Poulain", duree: 122 } se construit avec la clé seule ; plan PROJECTION_COVERED ← IXSCAN, totalDocsExamined: 0, aucun document lu. À droite, avec la projection { titre: 1, duree: 1 }, _id est projeté par défaut et n'est pas dans la clé : MongoDB doit lire le document (FETCH) pour y prendre _id ; résultat { _id: ObjectId('…'), titre: "Amélie Poulain", duree: 122 } ; plan PROJECTION_SIMPLE ← FETCH ← IXSCAN, totalDocsExamined: 2, chaque document est lu. Même chose pour Le Voyage de Chihiro.</title>
+  <defs>
+    <marker id="fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+    <marker id="fr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+  <text x="580" y="22" font-family="monospace" font-size="16" fill="#333" text-anchor="middle">index { annee: 1, titre: 1, duree: 1 }  ·  find({ annee: 2001, duree: { $gt: 100 } }, <tspan font-weight="bold" fill="#b06f00">projection</tspan>).sort({ titre: 1 })</text>
+
+  <!-- Couverte -->
+  <rect x="2" y="36" width="570" height="274" rx="10" fill="#f0f4f8" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="18" y="64" font-size="18" font-weight="bold" fill="#00684a">Couverte : <tspan font-family="monospace" font-size="16" fill="#b06f00">{ _id: 0, titre: 1, duree: 1 }</tspan></text>
+  <rect x="18" y="82" width="300" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text y="105" font-family="monospace" font-size="15"><tspan x="30" fill="#4a90d9">2001</tspan><tspan x="84" fill="#00684a" font-weight="bold">"Amélie Poulain"</tspan><tspan x="256" fill="#00684a" font-weight="bold">122</tspan></text>
+  <text x="330" y="104" font-size="15" fill="#555">une clé de l'index</text>
+  <line x1="168" y1="118" x2="168" y2="176" stroke="#13aa52" stroke-width="2.2" marker-end="url(#fv)"/>
+  <text x="182" y="153" font-size="15" fill="#00684a">titre et duree : pris dans la clé</text>
+  <rect x="18" y="180" width="380" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="30" y="203" font-family="monospace" font-size="15" fill="#333">{ titre: "Amélie Poulain", duree: 122 }</text>
+  <text x="18" y="258" font-size="16" fill="#555">Plan :</text>
+  <rect x="70" y="239" width="194" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="167" y="258" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">PROJECTION_COVERED</text>
+  <line x1="292" y1="253" x2="272" y2="253" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <rect x="298" y="239" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="337" y="258" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
+  <text x="18" y="290" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">totalDocsExamined: 0</tspan> : aucun document lu</text>
+
+  <!-- Non couverte -->
+  <rect x="588" y="36" width="570" height="274" rx="10" fill="#f0f4f8" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="604" y="64" font-size="18" font-weight="bold" fill="#c0392b">Non couverte : <tspan font-family="monospace" font-size="16" fill="#b06f00">{ titre: 1, duree: 1 }</tspan></text>
+  <rect x="604" y="82" width="300" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text y="105" font-family="monospace" font-size="15"><tspan x="616" fill="#4a90d9">2001</tspan><tspan x="670" fill="#00684a" font-weight="bold">"Amélie Poulain"</tspan><tspan x="842" fill="#00684a" font-weight="bold">122</tspan></text>
+  <line x1="906" y1="99" x2="954" y2="99" stroke="#c0392b" stroke-width="2.2" marker-end="url(#fr)"/>
+  <text x="930" y="88" font-family="monospace" font-size="13" font-weight="bold" fill="#c0392b" text-anchor="middle">FETCH</text>
+  <rect x="960" y="80" width="184" height="38" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="972" y="104" font-size="15" fill="#333">le <tspan font-weight="bold">document</tspan> Amélie</text>
+  <line x1="754" y1="118" x2="754" y2="176" stroke="#13aa52" stroke-width="2.2" marker-end="url(#fv)"/>
+  <text x="766" y="153" font-size="15" fill="#00684a">titre, duree</text>
+  <line x1="1052" y1="120" x2="1052" y2="176" stroke="#c0392b" stroke-width="2.2" marker-end="url(#fr)"/>
+  <text x="1040" y="153" font-size="15" fill="#c0392b" text-anchor="end">_id, absent de la clé</text>
+  <rect x="604" y="180" width="540" height="34" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="616" y="202" font-family="monospace" font-size="14" fill="#333">{ <tspan fill="#c0392b" font-weight="bold">_id: ObjectId('…')</tspan>, titre: "Amélie Poulain", duree: 122 }</text>
+  <text x="604" y="258" font-size="16" fill="#555">Plan :</text>
+  <rect x="656" y="239" width="184" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="748" y="258" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">PROJECTION_SIMPLE</text>
+  <line x1="868" y1="253" x2="848" y2="253" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <rect x="874" y="239" width="68" height="28" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="908" y="258" font-family="monospace" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">FETCH</text>
+  <line x1="970" y1="253" x2="950" y2="253" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <rect x="976" y="239" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1015" y="258" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
+  <text x="604" y="290" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#c0392b">totalDocsExamined: 2</tspan> : les 2 films renvoyés sont lus</text>
+</svg>

@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 274" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Comment une route Javalin lit les paramètres d'une URL. À gauche, un paramètre de chemin, sur la route des films config.routes.get("/api/annees/{annee}/films", ctx -> ctx.json(filmsDeLAnnee(Integer.parseInt(ctx.pathParam("annee"))))). Le motif /api/annees/{annee}/films est comparé à l'URL /api/annees/2001/films : {annee} capte le segment 2001. ctx.pathParam("annee") renvoie la chaîne "2001", que Integer.parseInt convertit en l'entier 2001. À droite, un paramètre de requête, sur la route fournie du TP, /api/boroughs/{borough}/restaurants, appelée avec l'URL /api/boroughs/Bronx/restaurants?cuisine=Pizza : ctx.pathParam("borough") renvoie "Bronx", ctx.queryParam("cuisine") renvoie "Pizza", et null si l'URL n'a pas de ?cuisine=. Après le point d'interrogation viennent des paires clé=valeur, séparées par &amp;.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Paramètre de chemin -->
+  <rect x="2" y="2" width="698" height="270" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="18" y="30" font-size="19" font-weight="bold" fill="#333">Paramètre de chemin : <tspan font-family="monospace" fill="#8e44ad">{annee}</tspan></text>
+  <g font-family="monospace" font-size="14" fill="#333">
+    <text x="18" y="58">config.routes.get("/api/annees/<tspan fill="#8e44ad" font-weight="bold">{annee}</tspan>/films", ctx -&gt;</text>
+    <text x="52" y="80">ctx.json(filmsDeLAnnee(Integer.parseInt(ctx.<tspan fill="#00684a" font-weight="bold">pathParam</tspan>("annee")))));</text>
+  </g>
+
+  <text x="18" y="124" font-size="14" fill="#555">motif</text>
+  <text x="80" y="124" font-family="monospace" font-size="16" fill="#333">/api/annees/</text>
+  <rect x="200" y="104" width="82" height="30" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="241" y="124" font-family="monospace" font-size="16" font-weight="bold" fill="#8e44ad" text-anchor="middle">{annee}</text>
+  <text x="288" y="124" font-family="monospace" font-size="16" fill="#333">/films</text>
+
+  <line x1="241" y1="134" x2="241" y2="151" stroke="#8e44ad" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <text x="18" y="172" font-size="14" fill="#555">URL</text>
+  <text x="80" y="172" font-family="monospace" font-size="16" fill="#333">/api/annees/</text>
+  <rect x="200" y="152" width="82" height="30" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="241" y="172" font-family="monospace" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">2001</text>
+  <text x="288" y="172" font-family="monospace" font-size="16" fill="#333">/films</text>
+
+  <text x="390" y="124" font-size="14" fill="#555"><tspan font-family="monospace">{annee}</tspan> capte le morceau d'URL entre deux /</text>
+  <text x="390" y="172" font-size="14" fill="#555">pour cette URL, il vaut <tspan font-family="monospace" fill="#b06f00" font-weight="bold">2001</tspan></text>
+
+  <!-- de la chaîne à l'entier -->
+  <rect x="18" y="200" width="205" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="28" y="221" font-family="monospace" font-size="14" fill="#333">ctx.<tspan fill="#00684a" font-weight="bold">pathParam</tspan>("annee")</text>
+  <line x1="223" y1="216" x2="247" y2="216" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="251" y="200" width="72" height="32" rx="7" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="287" y="221" font-family="monospace" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle">"2001"</text>
+  <text x="287" y="254" font-size="14" fill="#c0392b" text-anchor="middle">une chaîne</text>
+  <line x1="323" y1="216" x2="347" y2="216" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="351" y="200" width="155" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="361" y="221" font-family="monospace" font-size="14" fill="#333">Integer.parseInt</text>
+  <line x1="506" y1="216" x2="530" y2="216" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="534" y="200" width="60" height="32" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="564" y="221" font-family="monospace" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle">2001</text>
+  <text x="564" y="254" font-size="14" fill="#00684a" text-anchor="middle">un int</text>
+
+  <!-- Paramètre de requête -->
+  <rect x="720" y="2" width="438" height="270" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="736" y="30" font-size="19" font-weight="bold" fill="#333">Paramètre de requête HTTP : <tspan font-family="monospace" fill="#b06f00">?clé=valeur</tspan></text>
+  <text x="736" y="54" font-size="14" fill="#555">la route fournie dans <tspan font-family="monospace">ApiRestaurants.java</tspan></text>
+  <text x="736" y="80" font-family="monospace" font-size="14" fill="#333">"/api/boroughs/<tspan fill="#8e44ad" font-weight="bold">{borough}</tspan>/restaurants"</text>
+
+  <rect x="736" y="100" width="408" height="34" rx="7" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="746" y="122" font-family="monospace" font-size="14" fill="#333">/api/boroughs/<tspan fill="#8e44ad" font-weight="bold">Bronx</tspan>/restaurants<tspan fill="#b06f00" font-weight="bold">?cuisine=Pizza</tspan></text>
+
+  <g font-family="monospace" font-size="14" fill="#333">
+    <text x="736" y="166">ctx.<tspan fill="#00684a" font-weight="bold">pathParam</tspan>("borough")</text>
+    <text x="736" y="196">ctx.<tspan fill="#00684a" font-weight="bold">queryParam</tspan>("cuisine")</text>
+  </g>
+  <text x="736" y="226" font-size="14" fill="#555">URL sans <tspan font-family="monospace">?cuisine=…</tspan></text>
+  <g font-size="14" fill="#777">
+    <text x="962" y="166">→</text>
+    <text x="962" y="196">→</text>
+    <text x="962" y="226">→</text>
+  </g>
+  <g font-family="monospace" font-size="15" font-weight="bold">
+    <text x="986" y="166" fill="#8e44ad">"Bronx"</text>
+    <text x="986" y="196" fill="#b06f00">"Pizza"</text>
+    <text x="986" y="226" fill="#c0392b">null</text>
+  </g>
+  <text x="736" y="258" font-size="14" fill="#555">après <tspan font-family="monospace">?</tspan> : des paires <tspan font-family="monospace">clé=valeur</tspan>, séparées par <tspan font-family="monospace">&amp;</tspan></text>
+</svg>

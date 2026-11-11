@@ -44,5 +44,5 @@
   <text x="1010" y="201" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">427</text>
   <text x="1010" y="238" font-family="monospace" font-size="15" fill="#555" text-anchor="middle">98 + 82 + 122 + 125</text>
 
-  <text x="2" y="270" font-size="16" fill="#555">La fenêtre part toujours du premier document et s'arrête au document courant : elle s'agrandit d'une ligne à l'autre.</text>
+  <text x="2" y="270" font-size="16" fill="#555">La fenêtre part toujours du premier document et s'arrête au document courant : elle s'agrandit d'un document à l'autre.</text>
 </svg>

@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 306" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le même document, { titre: "La Haine", annee: "1995" }, où l'année est écrite comme une chaîne, inséré dans une collection catalogue qui contient déjà Les Glaneurs (annee: 2000). À gauche, sans règle, la collection accepte tout : insertOne réussit ; plus tard, find({ annee: { $gte: 1990 } }) trouve Les Glaneurs et la Glaneuse (annee: 2000) mais pas La Haine, car $gte ne compare que des valeurs de même type. À droite, avec une règle $jsonSchema vérifiée à chaque écriture : présence de titre et annee (required) vérifiée ; titre de type string vérifié ; annee de type int échoue, "1995" est une chaîne ; le minimum 1895 est sans objet, car minimum ne regarde que les nombres. L'insertion est refusée : MongoServerError: Document failed validation, et errInfo indique « type did not match » sur annee. La collection reste propre.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
+
+  <!-- Sans règle -->
+  <rect x="2" y="2" width="450" height="302" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="18" y="30" font-size="20" font-weight="bold" fill="#333">Sans règle (par défaut)</text>
+  <text x="18" y="54" font-size="15" fill="#555"><tspan font-family="monospace">catalogue</tspan> contient déjà Les Glaneurs (<tspan font-family="monospace">annee: 2000</tspan>)</text>
+
+  <rect x="18" y="70" width="210" height="62" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="30" y="95">titre: "La Haine",</text>
+    <text x="30" y="120">annee: <tspan fill="#c0392b" font-weight="bold">"1995"</tspan></text>
+  </g>
+  <text x="270" y="92" font-family="monospace" font-size="14" fill="#555" text-anchor="middle">insertOne</text>
+  <text x="368" y="138" font-size="13" fill="#555" text-anchor="middle">accepte tout</text>
+  <line x1="228" y1="101" x2="312" y2="101" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="316" y="84" width="104" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="368" y="107" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">accepté</text>
+
+  <text x="18" y="164" font-size="15" fill="#555">plus tard, une requête sur <tspan font-family="monospace">catalogue</tspan> :</text>
+  <rect x="18" y="174" width="318" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="30" y="197" font-family="monospace" font-size="15" fill="#333">find({ annee: { <tspan font-weight="bold" fill="#00684a">$gte</tspan>: <tspan font-weight="bold" fill="#b06f00">1990</tspan> } })</text>
+  <line x1="40" y1="208" x2="40" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="58" y="230" font-size="16" fill="#333">Les Glaneurs (<tspan font-family="monospace">annee: 2000</tspan>) : <tspan font-weight="bold" fill="#00684a">trouvé</tspan></text>
+  <text x="58" y="256" font-size="16" fill="#333">La Haine (<tspan font-family="monospace">annee: "1995"</tspan>) : <tspan font-weight="bold" fill="#c0392b">invisible</tspan></text>
+  <text x="18" y="290" font-size="15" fill="#555"><tspan font-family="monospace">$gte</tspan> ne compare un nombre qu'à des nombres.</text>
+
+  <!-- Avec une règle -->
+  <rect x="472" y="2" width="686" height="302" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="488" y="30" font-size="20" font-weight="bold" fill="#333">Avec une règle <tspan font-family="monospace" fill="#00684a">$jsonSchema</tspan></text>
+  <text x="488" y="54" font-size="16" fill="#555">vérifiée à chaque écriture : insertion et mise à jour</text>
+
+  <rect x="488" y="70" width="210" height="62" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="16" fill="#333">
+    <text x="500" y="95">titre: "La Haine",</text>
+    <text x="500" y="120">annee: <tspan fill="#c0392b" font-weight="bold">"1995"</tspan></text>
+  </g>
+  <line x1="698" y1="101" x2="738" y2="101" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+
+  <rect x="742" y="66" width="400" height="152" rx="10" fill="#ffffff" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="756" y="88" font-size="15" font-weight="bold" fill="#00684a">la règle de la collection</text>
+  <rect x="748" y="157" width="388" height="26" rx="5" fill="#fdeeee"/>
+  <g font-size="15">
+    <text x="760" y="119" font-weight="bold" fill="#00684a">✓</text>
+    <text x="782" y="119" font-weight="bold" fill="#333">présence</text>
+    <text x="862" y="119" font-family="monospace" font-size="14" fill="#333">required: ["titre", "annee"]</text>
+    <text x="760" y="146" font-weight="bold" fill="#00684a">✓</text>
+    <text x="782" y="146" font-weight="bold" fill="#333">type</text>
+    <text x="862" y="146" font-family="monospace" font-size="14" fill="#333">titre: { bsonType: "string" }</text>
+    <text x="760" y="175" font-weight="bold" fill="#c0392b">✗</text>
+    <text x="782" y="175" font-weight="bold" fill="#c0392b">type</text>
+    <text x="862" y="175" font-family="monospace" font-size="14" fill="#333">annee: { bsonType: <tspan font-weight="bold" fill="#c0392b">"int"</tspan> }</text>
+    <text x="760" y="204" font-weight="bold" fill="#777">–</text>
+    <text x="782" y="204" font-weight="bold" fill="#777">bornes</text>
+    <text x="862" y="204" font-family="monospace" font-size="14" fill="#777">annee: { minimum: 1895 }</text>
+  </g>
+
+  <text x="488" y="164" font-size="14" fill="#555"><tspan font-family="monospace">minimum</tspan> ne regarde que</text>
+  <text x="488" y="184" font-size="14" fill="#555">les nombres : seul <tspan font-family="monospace">bsonType</tspan></text>
+  <text x="488" y="204" font-size="14" fill="#555">refuse la chaîne <tspan font-family="monospace">"1995"</tspan>.</text>
+  <path d="M664,198 L738,198" fill="none" stroke="#b8c4cf" stroke-width="2" stroke-dasharray="4 3"/>
+
+  <line x1="942" y1="218" x2="942" y2="234" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="742" y="238" width="400" height="56" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="756" y="260" font-family="monospace" font-size="14" font-weight="bold" fill="#c0392b">MongoServerError: Document failed validation</text>
+  <text x="756" y="283" font-size="14" fill="#555"><tspan font-family="monospace">errInfo</tspan> : <tspan font-family="monospace">annee</tspan>, « type did not match »</text>
+
+  <text x="488" y="258" font-size="17" font-weight="bold" fill="#c0392b">refusé</text>
+  <text x="488" y="283" font-size="15" fill="#555">la collection reste propre</text>
+</svg>
