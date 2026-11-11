@@ -47,7 +47,7 @@ Trois jeux de données, comme dans l'énoncé : 📦 les paquets du registre Ruc
 
 <img src="assets/schemas/s5-donnees.svg" alt="Les deux jeux de données du TP4. À gauche, le registre de paquets Ruche, parties 1 à 5 : 25 nœuds :Developpeur reliés par MAINTIENT {depuis} à 79 nœuds :Paquet, dont 8 portent aussi le label :Application ; une boucle DEPEND_DE {contrainte} relie un paquet à un autre ; 6 nœuds :Faille reliés par TOUCHE à un paquet. À droite, la médiathèque du TP1, partie 6 : 14 nœuds :Membre reliés par EMPRUNTE {date_emprunt, date_retour_prevue, date_retour} à 43 nœuds :Exemplaire, eux-mêmes reliés par DE à 26 nœuds :Livre ; une boucle PARRAINE relie un membre à un autre." style="display:block; width:100%; margin:0.2rem auto 0;">
 
-<div class="box" style="margin-top: 0.3rem; font-size: 0.68em;"><b>Au programme</b> : 6 parties, 19 exercices, 95 points, tout en séance. Parties 1 à 5 sur les paquets ; partie 6 sur la médiathèque, pour répondre enfin aux questions 4 et 5 du TP1.</div>
+<div class="box" style="margin-top: 0.3rem; font-size: 0.68em;"><b>Au programme</b> : 6 parties, 12 exercices notés (60 points), tout en séance, et 12 bonus. Parties 1 à 5 sur les paquets ; partie 6 sur la médiathèque, pour répondre enfin aux questions 4 et 5 du TP1.</div>
 
 <!--
 (1 min)
@@ -72,7 +72,8 @@ Dix nœuds, deux labels (Personne, Jeu), deux types de relation (SUIT, AIME). SU
 
 Script, dans essais.cypher (déjà fourni) :
 
-MATCH (n) WHERE n:Personne OR n:Jeu DETACH DELETE n;
+MATCH (n) WHERE n:Personne OR n:Jeu DETACH DELETE n
+WITH count(*) AS supprimes
 CREATE (ana:Personne {nom: 'Ana', ville: 'Aix'}),
        (bilal:Personne {nom: 'Bilal', ville: 'Marseille'}),
        (camille:Personne {nom: 'Camille', ville: 'Aix'}),
@@ -245,7 +246,7 @@ Le modèle document choisit un ordre de lecture (le membre et ses emprunts) ; le
 
 # Partie 2 - ✏️ Lire un motif
 
-dessiner ce qu'on cherche · 📦 exercices 3 à 6
+dessiner ce qu'on cherche · 📦 exercices 3 et 4
 
 <!--
 (10 s)
@@ -263,11 +264,11 @@ dessiner ce qu'on cherche · 📦 exercices 3 à 6
 <div>
 
 ```
-(p:Personne)-[:SUIT]->(:Personne {nom: 'Dario'})
- │           │         │
- │           │         └─ un nœud, filtré sur une propriété
- │           └─ une relation de type SUIT, dans ce sens
- └─ un nœud de label Personne, dans la variable p
+(:Personne {nom: 'Ana'})-[:SUIT]->(p:Personne)
+ │                       │         │
+ │                       │         └─ un nœud de label Personne, dans la variable p
+ │                       └─ une relation de type SUIT, dans ce sens
+ └─ un nœud de label Personne, filtré sur une propriété
 ```
 
 </div>
@@ -276,7 +277,7 @@ dessiner ce qu'on cherche · 📦 exercices 3 à 6
 `(…)` un **nœud**, comme un cercle ; `()` un nœud quelconque
 `-[…]->` une **relation**, comme une flèche ; `<-[…]-` dans l'autre sens ; `-[…]-` sans sens
 `:Label`, `:TYPE` ce qu'ils sont
-`{nom: 'Dario'}` un filtre sur une propriété
+`{nom: 'Ana'}` un filtre sur une propriété
 
 </div>
 </div>
@@ -340,19 +341,18 @@ Le correspondant MongoDB : MATCH ressemble à un find avec des $lookup déjà é
 ## 🧪 Le sens compte
 
 ```cypher
-MATCH (p:Personne)-[:SUIT]->(:Personne {nom: 'Dario'})
+MATCH (:Personne {nom: 'Dario'})-[:SUIT]->(p:Personne)
 RETURN p.nom AS nom ORDER BY nom;
-// "Bilal"
-// "Camille"
+// "Elif"
 
-MATCH (p:Personne)-[:SUIT]-(:Personne {nom: 'Dario'})
+MATCH (:Personne {nom: 'Dario'})-[:SUIT]-(p:Personne)
 RETURN p.nom AS nom ORDER BY nom;
 // "Bilal"
 // "Camille"
 // "Elif"
 ```
 
-<div class="warn" style="margin-top: 0.3rem; font-size: 0.74em;">Sans flèche, le motif cherche dans les deux sens : Elif, <b>que Dario suit</b>, s'ajoute à ceux <b>qui suivent</b> Dario. Une autre question. Vérifiez le sens de chaque flèche dans la présentation des données.</div>
+<div class="warn" style="margin-top: 0.3rem; font-size: 0.74em;">Sans flèche, le motif cherche dans les deux sens : Bilal et Camille, <b>qui suivent</b> Dario, s'ajoutent à Elif, <b>que Dario suit</b>. Une autre question. Vérifiez le sens de chaque flèche dans la présentation des données.</div>
 
 <!--
 (1 min)
@@ -425,7 +425,7 @@ Neo4j n'a pas de schéma : un label ou un type inconnu n'est pas une erreur, jus
 
 # Partie 3 - 🧮 Agréger
 
-compter, collecter, filtrer après · 📦 exercices 7 à 9
+compter, collecter, filtrer après · 📦 exercices 5 à 7
 
 <!--
 (10 s)
@@ -570,7 +570,7 @@ Une sous-requête de comptage : deux colonnes (les jeux aimés, les abonnés) sa
 
 # Partie 4 - ✍️ Modifier le graphe
 
-créer sans doublon · 📦 exercices 10 à 13
+créer sans doublon · 📦 exercice 8
 
 <!--
 (10 s)
@@ -738,7 +738,7 @@ Le message de refus d'Enterprise est le vrai texte de Neo4j 2026.10.1 Community.
 <!--
 (1 min)
 
-Les chiffres sont mesurés dans la base de l'étudiant, données du TP et exemple d'essai chargés. « Estimés » est la prévision du planificateur, « lues » ce qui a vraiment été lu : on compare les db hits, pas les estimations. Le label divise déjà le travail ; l'index le réduit à presque rien. L'index ne sert qu'à trouver le point de départ : la suite d'un motif suit les relations (partie 1). Exercice 10 et bonus 3 du TP.
+Les chiffres sont mesurés dans la base de l'étudiant, données du TP et exemple d'essai chargés. « Estimés » est la prévision du planificateur, « lues » ce qui a vraiment été lu : on compare les db hits, pas les estimations. Le label divise déjà le travail ; l'index le réduit à presque rien. L'index ne sert qu'à trouver le point de départ : la suite d'un motif suit les relations (partie 1). Bonus 4 du TP.
 -->
 
 ---
@@ -754,7 +754,7 @@ Les chiffres sont mesurés dans la base de l'étudiant, données du TP et exempl
 <div class="carte orange"><b class="t">Écrire</b> <code>MATCH</code> puis <code>CREATE</code> ; <code>MERGE</code> sur chaque nœud séparément, puis sur la relation ; <code>DETACH DELETE</code> ; contrainte d'unicité.</div>
 </div>
 
-<div class="bandeau" style="margin-top: 0.6rem; font-size: 0.86em;">Parties 1 à 4 du TP : environ 1 h 40. Second temps du point cours avant la partie 5.</div>
+<div class="bandeau" style="margin-top: 0.6rem; font-size: 0.86em;">Parties 1 à 4 du TP : environ 1 h 35. Second temps du point cours avant la partie 5.</div>
 
 <!--
 (30 s)
@@ -771,7 +771,7 @@ Fin du premier temps (environ 30 minutes). Passer aux deux diapos « À vous » 
 
 # Partie 5 - 🧭 Suivre des chemins
 
-quand on ne connaît pas la longueur · 📦 exercices 14 à 16
+quand on ne connaît pas la longueur · 📦 exercices 9 et 10
 
 <!--
 (10 s)
@@ -836,29 +836,32 @@ Ancienne syntaxe, qu'on trouve partout sur le Web : [:SUIT*1..3]. Elle fonctionn
 <img src="assets/schemas/s5-parcours.svg" alt="Un parcours de longueur variable, étape par étape : (:Personne {nom: 'Ana'})-[:SUIT]->{1,3}(p), sur le graphe SUIT de l'exemple d'essai (Ana suit Bilal et Camille, Bilal et Camille suivent Dario, Dario suit Elif, Elif suit Farah). Étape 1, 1 saut : Bilal et Camille sont atteints, par les chemins Ana→Bilal et Ana→Camille. Étape 2, 2 sauts : Dario est atteint par deux chemins, Ana→Bilal→Dario et Ana→Camille→Dario, d'où la pastille ×2. Étape 3, 3 sauts : Elif est atteint par deux chemins, Ana→Bilal→Dario→Elif et Ana→Camille→Dario→Elif, ×2. Farah, à 4 sauts, reste gris : hors de {1,3}. Les lignes renvoyées (nom, sauts) : Bilal 1, Camille 1, Dario 2, Dario 2, Elif 3, Elif 3. Un chemin par ligne : Dario et Elif sortent deux fois." style="display:block; width:56%; margin:0 auto;">
 
 ```cypher
-MATCH c = (:Personne {nom: 'Ana'})-[:SUIT]->{1,3}(p:Personne)
-RETURN p.nom AS nom, length(c) AS sauts ORDER BY sauts, nom;
-// "Bilal", 1   "Camille", 1   "Dario", 2   "Dario", 2   "Elif", 3   "Elif", 3
+MATCH (:Personne {nom: 'Ana'})-[:SUIT]->{1,3}(p:Personne)
+RETURN p.nom AS nom ORDER BY nom;
+// "Bilal"   "Camille"   "Dario"   "Dario"   "Elif"   "Elif"
 ```
 
 <!--
 (1 min 30)
 
-Neo4j renvoie une ligne par chemin, pas une ligne par personne. Dario est atteint par deux chemins : il sort deux fois. Pour avoir chaque personne une seule fois, il faut une ligne par personne : c'est le travail des exercices 14 et 15, qui demandent en plus une distance par personne.
+Neo4j renvoie une ligne par chemin, pas une ligne par personne. Dario est atteint par deux chemins : il sort deux fois. Pour avoir chaque personne une seule fois, il faut une ligne par personne : c'est le travail de l'exercice 9, qui demande en plus une distance par personne.
 
-Dans un même chemin, Neo4j ne repasse jamais par la même relation : un cycle ne fait pas tourner une requête en rond (bonus 2).
+Dans un même chemin, Neo4j ne repasse jamais par la même relation : un cycle ne fait pas tourner une requête en rond (bonus 8).
 -->
 
 ---
 
 ## 🧪 Le plus court chemin
 
-<img src="assets/schemas/s5-shortest.svg" alt="Les plus courts chemins de Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana→Bilal→Dario→Elif→Farah ; en violet, Ana→Camille→Dario→Elif→Farah ; les relations Dario→Elif et Elif→Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j : [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. ALL SHORTEST renvoie les deux : [&quot;Ana&quot;, &quot;Bilal&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;] et [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. « Plus court » compte les relations, pas une distance ou une durée." style="display:block; width:84%; margin:0 auto;">
+<img src="assets/schemas/s5-shortest.svg" alt="Les plus courts chemins de Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana→Bilal→Dario→Elif→Farah ; en violet, Ana→Camille→Dario→Elif→Farah ; les relations Dario→Elif et Elif→Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j : [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. ALL SHORTEST renvoie les deux : [&quot;Ana&quot;, &quot;Bilal&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;] et [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. « Plus court » compte les relations, pas une distance ou une durée." style="display:block; width:64%; margin:0 auto;">
 
 ```cypher
 MATCH c = SHORTEST 1 (:Personne {nom: 'Ana'})-[:SUIT]->+(:Personne {nom: 'Farah'})
-RETURN [n IN nodes(c) | n.nom] AS chemin;
-// ["Ana", "Camille", "Dario", "Elif", "Farah"]
+RETURN length(c) AS sauts;
+// 4
+MATCH c = ALL SHORTEST (:Personne {nom: 'Ana'})-[:SUIT]->+(:Personne {nom: 'Farah'})
+RETURN count(c) AS chemins;
+// 2
 ```
 
 <!--
@@ -866,7 +869,7 @@ RETURN [n IN nodes(c) | n.nom] AS chemin;
 
 SHORTEST 1 renvoie un plus court chemin ; quand il y en a plusieurs de même longueur, Neo4j en choisit un. ALL SHORTEST les renvoie tous. « Plus court » compte les relations, pas une distance : pour un poids (des minutes, des kilomètres), il faut la bibliothèque GDS ou un calcul à la main sur des chemins bornés.
 
-[n IN nodes(c) | n.nom] est une compréhension de liste : les noms des nœuds du chemin, dans l'ordre. Ancienne syntaxe : shortestPath(), qui marche encore.
+nodes(c) donne la liste des nœuds du chemin, dans l'ordre ; une compréhension de liste, [x IN liste | expression], en tire une liste de propriétés (comme map en Java ou $map en MongoDB) : l'énoncé la montre sur une liste de nombres. Ancienne syntaxe : shortestPath(), qui marche encore.
 -->
 
 ---
@@ -991,7 +994,7 @@ Le graphe garde l'avantage pour l'écriture de la requête, quand la profondeur 
 
 # Partie 6 - 📚 La médiathèque, deux paradigmes
 
-charger, suivre, recommander · 📚 exercices 17 à 19
+charger, suivre, recommander · 📚 exercices 11 et 12
 
 <!--
 (10 s)
@@ -1018,7 +1021,7 @@ RETURN ligne LIMIT 2;
 <!--
 (1 min)
 
-LOAD CSV lit un fichier ligne par ligne ; avec WITH HEADERS, chaque ligne est une map. On regarde toujours quelques lignes avant de les écrire dans le graphe. Le CASE WHEN '' qu'on trouve dans beaucoup de tutoriels est inutile : vérifié sur Neo4j 2026.10.1, un champ vide arrive déjà à null. C'est le fichier de l'exercice 17, qu'on se contente ici de lire : l'énoncé montre la même lecture.
+LOAD CSV lit un fichier ligne par ligne ; avec WITH HEADERS, chaque ligne est une map. On regarde toujours quelques lignes avant de les écrire dans le graphe. Le CASE WHEN '' qu'on trouve dans beaucoup de tutoriels est inutile : vérifié sur Neo4j 2026.10.1, un champ vide arrive déjà à null. C'est le fichier du bonus 9, qu'on se contente ici de lire : l'énoncé montre la même lecture.
 -->
 
 ---
@@ -1053,7 +1056,7 @@ RETURN autre.titre AS jeu, count(p) AS score ORDER BY score DESC, jeu;
 <!--
 (1 min 15)
 
-Une seule requête : le motif dessine le chemin aller-retour, count compte. Les limites sont celles de toute recommandation simple : biais de popularité, objets déjà connus, absence des notes (le guide Recommendations de Neo4j les corrige ensuite avec Jaccard ou le cosinus). Dans la médiathèque, le chemin est plus long : un membre emprunte un exemplaire, pas un livre (exercice 19, bonus 4).
+Une seule requête : le motif dessine le chemin aller-retour, count compte. Les limites sont celles de toute recommandation simple : biais de popularité, objets déjà connus, absence des notes (le guide Recommendations de Neo4j les corrige ensuite avec Jaccard ou le cosinus). Dans la médiathèque, le chemin est plus long : un membre emprunte un exemplaire, pas un livre (exercice 12, bonus 10).
 -->
 
 ---
@@ -1093,7 +1096,7 @@ Lire un objet entier d'un coup ; des agrégats sur des millions de lignes (un en
 </div>
 </div>
 
-<div class="box" style="margin-top: 0.6rem; font-size: 0.74em;">Le projet garde MongoDB ; son module graphe, en bonus, met dans Neo4j la partie qui se parcourt (bonus 6 du TP : le pilote Java).</div>
+<div class="box" style="margin-top: 0.6rem; font-size: 0.74em;">Le projet garde MongoDB ; son module graphe, en bonus, met dans Neo4j la partie qui se parcourt (bonus 12 du TP : le pilote Java).</div>
 
 <!--
 (45 s)
@@ -1155,8 +1158,8 @@ Le passage à l'échelle horizontal est le point faible des bases graphe : coupe
 <div>
 
 1. Mise en place, extension Neo4j, exemple d'essai : **10&nbsp;min**
-2. Parties 1 à 4, relationnel, motifs, agrégation, écriture : **1&nbsp;h&nbsp;40**
-3. Point cours, puis partie 5, chemins : **30&nbsp;min**
+2. Parties 1 à 4, relationnel, motifs, agrégation, écriture : **1&nbsp;h&nbsp;35**
+3. Point cours, puis partie 5, chemins : **45&nbsp;min**
 4. Partie 6, la médiathèque : **30&nbsp;min**
 5. **Premier rendu** : `r510-rendre`, **5&nbsp;min**
 
@@ -1172,7 +1175,7 @@ dimanche 20 décembre 2026, 23&nbsp;h&nbsp;59. Trois rendus au plus.
 
 <div class="carte vert">
 <b class="t">Les points</b>
-19 exercices à 5 points : 95 points, 8 % de la note.
+12 exercices à 5 points : 60 points, 8 % de la note. 12 bonus pour aller plus loin.
 </div>
 
 <div class="carte vert">
@@ -1193,7 +1196,7 @@ dimanche 20 décembre 2026, 23&nbsp;h&nbsp;59. Trois rendus au plus.
 
 Trois rendus au plus : fin de séance 5, un rendu intermédiaire facultatif, puis le rendu final au plus tard le dimanche 20 décembre 2026 à 23 h 59.
 
-Le minutage suppose le premier temps du point cours (30 min, plus ces 2 min) déjà fait : 10 + 100 + 30 (dont le second temps, 15 min) + 30 + 5 = 2 h 55, plus le premier temps, soit 3 h 27 ; il reste environ 30 minutes de marge. Tout le TP se fait en séance ; les bonus prolongent en autonomie.
+Le minutage suppose le premier temps du point cours (30 min, plus ces 2 min) déjà fait : 10 + 95 + 45 (dont le second temps, 15 min) + 30 + 5 = 3 h 05, plus le premier temps (32 min), soit 3 h 37 ; il reste environ 20 minutes de marge. Tout le TP se fait en séance ; les bonus prolongent en autonomie.
 -->
 
 ---
@@ -1254,7 +1257,7 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 <div class="warn" style="margin-top: 1rem;">
 
-**D'ici le dimanche 20 décembre, 23&nbsp;h&nbsp;59** : finissez les exercices, faites le quiz de chaque partie, essayez le bonus 6 (le pilote Java, utile au projet), puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
+**D'ici le dimanche 20 décembre, 23&nbsp;h&nbsp;59** : finissez les exercices, faites le quiz de chaque partie, essayez le bonus 12 (le pilote Java, utile au projet), puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
 
 </div>
 
@@ -1272,7 +1275,7 @@ Questions sur le cours : en séance, ou par courriel à l'enseignant de son grou
 
 **Ce support** : R5.Real.10, IUT d'Aix-Marseille, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr). Exemples (personnes et jeux de société) écrits pour ce cours ; tous exécutés sur Neo4j 2026.10.1 Community, MongoDB 9.0.4 et PostgreSQL 18.4. Mesures de coût faites pour ce cours, le 11/11/2026 (protocole et requêtes dans le dépôt enseignant du TP4).
 
-**Données du TP** : le registre de paquets Ruche, inventé pour ce cours, et la médiathèque du TP1 (`data/PROVENANCE.md` du TP4).
+**Données du TP** : le registre de paquets Ruche, inventé pour ce cours, et la médiathèque du TP1 (`data/PROVENANCE.md` du TP4). Le TP4 s'appuie sur l'ébauche de TP Neo4j et les ressources Neo4j de Leïla Sakli Miled.
 
 **Sources** : [manuel Cypher](https://neo4j.com/docs/cypher-manual/current/) · [du relationnel au graphe](https://neo4j.com/docs/getting-started/data-modeling/relational-to-graph-modeling/) · [Cypher pour qui connaît SQL](https://neo4j.com/docs/getting-started/cypher-intro/cypher-sql/) · N. White, [*Common Confusions on Cypher*](https://neo4j.com/blog/cypher-and-gql/common-confusions-cypher/) · I. Robinson, J. Webber, E. Eifrem, [*Graph Databases*](https://neo4j.com/graph-databases-book/), 2e éd., O'Reilly, 2015 · R. Hohenstein, M. Jergler, [*Database Performance Comparisons: An Inspection of Fairness*](https://scitepress.org/Papers/2019/79266/pdf/index.html), DATA 2019 · S. Chen et al. (UIUC), [*A Quantitative Analysis of Student Solutions to Graph Database Problems*](https://sethpoulsen.github.io/papers/chen2021quantitative.pdf), ITiCSE 2021 · A. Pachera et al., [*Understanding Student Errors in Graph Query Formulation*](https://github.com/pake97/Understanding-Student-Errors-in-Graph-Query-Formulation), ACM TOCE 2025 · [&#36;graphLookup](https://www.mongodb.com/docs/manual/reference/operator/aggregation/graphLookup/) · [GQL, ISO/IEC 39075:2024](https://www.iso.org/standard/76120.html)
 
@@ -1283,5 +1286,4 @@ Questions sur le cours : en séance, ou par courriel à l'enseignant de son grou
 
 Les règles de traduction viennent du guide « relational to graph » de Neo4j ; la critique du tableau des amis d'amis, de Hohenstein et Jergler ; les erreurs fréquentes des débutants, des études de l'UIUC et de Pachera et al. ; la mise en garde sur MERGE, du manuel et de la base de connaissances de Neo4j. Les exemples et les schémas (assets/schemas/s5-*.svg) sont faits pour ce cours.
 
-Mention de Leïla Sakli Miled pour l'ébauche du TP Neo4j : à décider (question ouverte du plan).
 -->
