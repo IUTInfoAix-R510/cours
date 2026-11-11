@@ -92,7 +92,10 @@ CREATE (ana:Personne {nom: 'Ana', ville: 'Aix'}),
        (camille)-[:AIME {note: 4}]->(comete), (camille)-[:AIME {note: 5}]->(sortilege),
        (dario)-[:AIME {note: 4}]->(maree), (dario)-[:AIME {note: 2}]->(sortilege),
        (elif)-[:AIME {note: 3}]->(archipel), (elif)-[:AIME {note: 4}]->(maree),
-       (farah)-[:AIME {note: 5}]->(comete);
+       (farah)-[:AIME {note: 5}]->(comete)
+WITH count(*) AS fait
+MATCH (n) WHERE n:Personne OR n:Jeu
+RETURN count(n) AS noeuds_essai;
 -->
 
 ---
