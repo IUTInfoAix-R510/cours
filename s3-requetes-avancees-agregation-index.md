@@ -28,6 +28,8 @@ h1 { font-size: 1.9em; }
 Séance 3 · TP2 · semaine du 30 novembre 2026
 
 <!--
+(Hors minutage : diapo de titre.)
+
 Le point cours se fait en deux temps.
 
 Premier temps, en début de séance : diapos 2 à 37 (données, parties 1 à 4) en 30 minutes environ, puis les deux diapos « À vous » (55 et 56, 2 minutes).
@@ -182,12 +184,12 @@ Sur les vrais restaurants, l'écart est spectaculaire : c'est l'exercice 1 ; ne 
 <img src="assets/schemas/s3-expr.svg" alt="Sur le même film, La Haine. À gauche, un filtre classique, { duree: { $gt: 100 } }, compare une valeur du document (duree, 98) à une constante écrite dans la requête (100) : faux, le film est écarté. À droite, { $expr: { $gt: [A, B] } } compare deux valeurs du même document : A, la première note (5, $arrayElemAt indice 0), et B, la dernière (2, indice -1) ; 5 > 2, vrai." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** `$expr` écrit une condition avec les **expressions du pipeline**, comme dans `$project` : `{ $gt: [A, B] }`. Dans une expression, `"$champ"` désigne la **valeur** du champ.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Comparer **deux valeurs du même document** : deux champs, deux éléments d'un tableau, un calcul. Un filtre classique ne compare qu'à une **constante** : dans un filtre, `"$annee"` n'est qu'une chaîne, pas la valeur du champ.
 
@@ -297,6 +299,12 @@ C'est l'exercice 3 : une consigne qui dit « enregistré à null (le champ exist
 
 `$addFields` et fenêtres
 
+<!--
+(10 s)
+
+Même titre que la partie 2 de l'énoncé du TP2.
+-->
+
 ---
 
 ## Deux questions à se poser à chaque étape
@@ -304,12 +312,12 @@ C'est l'exercice 3 : une consigne qui dit « enregistré à null (le champ exist
 <img src="assets/schemas/s3-champs-documents.svg" alt="À gauche, quels champs restent : le film Chihiro (titre, annee, duree, realisateur, genres, notes) passe dans $project, qui ne garde que titre et nb_notes, ou dans $addFields, qui garde ses six champs et ajoute nb_notes. À droite, combien de documents restent : les 4 films passent dans $group par année, qui rend 3 documents (1995 : 1 film, 2000 : 1, 2001 : 2), ou dans $setWindowFields partitionné par année, qui rend les 4 films, chacun avec nb_annee, le nombre de films de son année." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.3rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **`$addFields`** ajoute des champs calculés **sans retirer** les autres. En SQL : `SELECT *, …` plutôt que `SELECT titre, …`.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **`$setWindowFields`** calcule sur un **groupe**, comme `$group`, mais **garde chaque document**. En SQL : `COUNT(*) OVER (PARTITION BY annee)` plutôt que `GROUP BY annee`.
 
@@ -372,12 +380,12 @@ L'exercice 4 utilise $addFields (nombre d'inspections, score moyen), puis un $ma
 <img src="assets/schemas/s3-fenetre-rang.svg" alt="$setWindowFields en trois temps sur les 4 films. 1, partitionBy: &quot;$annee&quot; : trois groupes, 1995 (La Haine), 2000 (Glaneurs), 2001 (Amélie et Chihiro, dans un ordre quelconque). 2, sortBy: { duree: -1 } : en 2001, Chihiro (125 min) passe avant Amélie (122 min). 3, output: { rang: { $rank: {} } } : chaque film reçoit son rang dans son groupe, La Haine 1, Glaneurs 1, Chihiro 1, Amélie 2. En SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC)." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **`partitionBy`** découpe les documents en groupes, ou **partitions** (sans lui : un seul groupe). **`sortBy`** ordonne chaque groupe.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **`output`** nomme les champs ajoutés et dit comment les calculer. Chaque film **garde tous ses champs** et reçoit `rang`.
 
@@ -621,7 +629,7 @@ db.films.aggregate([
 
 <div class="warn" style="margin-top: 0.4rem;">
 
-`"$r.pays"` est donc un **tableau** (`["France"]`), pas une valeur. Un calcul qui attend une valeur échoue : `$concat` avec `"$r.pays"` donne « $concat supports only strings ».
+`"$r.pays"` est donc un **tableau** (`["France"]`), pas une valeur. Un calcul qui attend une valeur échoue : `$concat` avec `"$r.pays"` donne « `$concat supports only strings` ».
 
 </div>
 
@@ -708,7 +716,7 @@ table { display: table; width: 100%; font-size: 0.76em; }
 <div class="cols" style="grid-template-columns: 1fr 1fr; align-items: start;">
 <div>
 
-<p class="etiquette">Un $group sur la durée</p>
+<p class="etiquette">Un <code style="text-transform: none;">&#36;group</code> sur la durée</p>
 
 ```js
 db.films.aggregate([
@@ -1098,6 +1106,12 @@ Lien avec l'exercice 9, le tableau de bord de Brooklyn : un filtre commun avant 
 
 `explain()` et règle ESR
 
+<!--
+(10 s)
+
+Même titre que la partie 4 de l'énoncé du TP2.
+-->
+
 ---
 
 ## Sans index, tout est lu
@@ -1267,7 +1281,7 @@ td:nth-child(1) code, td:nth-child(3) code { white-space: nowrap; }
 
 <p class="petit">Une requête qui filtre par <b>égalité</b>, filtre par <b>intervalle</b> et <b>trie</b> : dans quel ordre ranger ces trois champs dans l'index ? On essaie les ordres possibles sur les films.</p>
 
-<p class="centre"><code>db.films.find({ annee: 2001, duree: { &#36;gt: 100 } }).sort({ titre: 1 })</code><br><span class="petit"><b style="color:#4a90d9">E</b> : <code>annee</code> · <b style="color:#00684a">S</b> : <code>titre</code> · <b style="color:#b06f00">R</b> : <code>duree</code></span></p>
+<p class="centre"><code>db.films.find({ annee: 2001, duree: { &#36;gt: 100 } }).sort({ titre: 1 })</code><br><span class="petit"><b style="color: var(--bleu)">E</b> : <code>annee</code> · <b style="color: var(--vert-mongo)">S</b> : <code>titre</code> · <b style="color:#b06f00">R</b> : <code>duree</code></span></p>
 
 | Index essayé | Ordre | Plan obtenu | Clés lues | Documents lus | Pourquoi |
 |---|---|---|---|---|---|
@@ -1427,12 +1441,12 @@ Début du second temps : à projeter quand la majorité du groupe attaque la par
 <img src="assets/schemas/s3-geojson.svg" alt="Décrire un lieu en GeoJSON, sur deux documents inventés d'Aix-en-Provence. À gauche, une carte : la longitude en abscisse (x), la latitude en ordonnée (y). Le point de la Mairie a pour longitude 5.4474 et pour latitude 43.5297. La zone Centre est un rectangle dont les coins sont numérotés de 1 à 4. À droite, les documents. Collection lieux : { nom: &quot;Mairie&quot;, position: { type: &quot;Point&quot;, coordinates: [ 5.4474, 43.5297 ] } }, la longitude d'abord, puis la latitude. Collection zones : { nom: &quot;Centre&quot;, contour: { type: &quot;Polygon&quot;, coordinates: [ [ [5.440, 43.525], [5.455, 43.525], [5.455, 43.535], [5.440, 43.535], [5.440, 43.525] ] ] } } : une liste d'anneaux dont le premier est le contour ; le cinquième point répète le premier." style="display:block; width:100%; margin:0.1rem auto 0;">
 
 <div class="cols" style="margin-top: 0.3rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** **GeoJSON**, un format standard pour décrire une forme sur la Terre : un `type` (`Point`, `Polygon`, `MultiPolygon` pour une zone en plusieurs morceaux) et des `coordinates` en degrés.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Répondre à « où ? » : quels lieux sont dans une zone, dans quelle zone est un lieu. Un quartier n'est pas un rectangle : des `$gt` et `$lt` sur les coordonnées n'y suffisent pas.
 
@@ -1468,12 +1482,12 @@ Dans les vraies données : neighborhoods.geometry est un Polygon (168 quartiers)
 <img src="assets/schemas/s3-geo.svg" alt="Deux opérateurs, deux questions inverses. À gauche, $geoWithin répond à « quels points sont dans la zone ? » : { position: { $geoWithin: { $geometry: centre } } } sur la collection lieux ; la zone Centre est donnée dans la requête, la position est lue dans chaque document. La Mairie est dedans, retenue ; la Gare et l'IUT sont dehors, écartés ; résultat [ { nom: &quot;Mairie&quot; } ]. À droite, $geoIntersects répond à « quelles zones touchent le point ? » : { contour: { $geoIntersects: { $geometry: point } } } sur la collection zones ; le point est donné dans la requête, le contour est lu dans chaque document. Point de la Mairie : [ { nom: &quot;Centre&quot; } ] ; point de la Gare : []. En bleu, le champ lu dans chaque document ; en ambre, la forme donnée dans $geometry." style="display:block; width:100%; margin:0.1rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** Une condition sur un champ GeoJSON. `$geoWithin` garde les documents dont le champ est **entièrement dans** la forme donnée ; `$geoIntersects`, ceux dont le champ a **au moins un point commun** avec elle.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Lequel choisir ?** Des **points dans une zone** : `$geoWithin`, sur la collection des points. **La zone d'un point** : `$geoIntersects`, sur la collection des zones. Un point n'a pas d'intérieur : `$geoWithin` le refuse dans `$geometry`.
 
@@ -1616,12 +1630,12 @@ Même titre que la partie 6 de l'énoncé du TP2. Partie à finir en autonomie (
 <img src="assets/schemas/s3-merge.svg" alt="Ce que fait $merge, document par document. Le pipeline groupe les 4 films par année, puis $merge écrit sa sortie dans films_par_annee avec whenMatched &quot;replace&quot;. La cible contient déjà { _id: 1980, nb: 3 } et { _id: 2001, nb: 1, note: &quot;ancien&quot; }. $merge cherche chaque document de la sortie par son _id dans la cible : 1995 et 2000 n'y sont pas, ils sont insérés ; 2001 y est, whenMatched &quot;replace&quot; le remplace en entier par { _id: 2001, nb: 2 }, le champ note disparaît ; 1980 n'est pas dans la sortie, $merge n'y touche pas." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** La **dernière étape** d'un pipeline : elle écrit chaque document de la sortie dans une collection. Si son `_id` est nouveau, le document est inséré ; s'il existe déjà, `whenMatched` décide.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Une **vue matérialisée** : un tableau de bord relit un résultat enregistré au lieu de relancer le pipeline à chaque affichage. En SQL : `INSERT … SELECT … ON CONFLICT (id) DO UPDATE`.
 
@@ -1704,12 +1718,12 @@ Lien avec l'exercice 15 : le correcteur automatique exécute la réponse sur une
 <img src="assets/schemas/s3-jsonschema.svg" alt="Le même document, { titre: &quot;La Haine&quot;, annee: &quot;1995&quot; }, où l'année est écrite comme une chaîne, inséré dans une collection catalogue. À gauche, sans règle : insertOne réussit ; plus tard, find({ annee: { $gte: 1990 } }) trouve Les Glaneurs (annee: 2000) mais pas La Haine, car $gte ne compare que des valeurs de même type. À droite, avec une règle $jsonSchema : titre et annee sont présents (required) ; titre est bien une string ; annee n'est pas un int, &quot;1995&quot; est une chaîne ; le minimum 1895 est sans objet, car minimum ne regarde que les nombres. L'insertion est refusée : MongoServerError: Document failed validation, errInfo indique « type did not match » sur annee." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** Une **règle de validation** attachée à la collection. MongoDB la vérifie à **chaque écriture** ; un document qui ne la respecte pas est **refusé**, avec une erreur.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Un schéma libre accepte un document mal formé, qui fausse ensuite les requêtes **sans aucune erreur**. En SQL : le type des colonnes, `NOT NULL`, `CHECK (annee >= 1895)`.
 
@@ -1799,12 +1813,12 @@ Même titre que la partie 7 de l'énoncé du TP2. Les exemples de la partie port
 <p class="legende" style="margin: 0.1rem 0 0;">Exemple du cours : cette route des films n'est pas dans <code>requetes-java/</code> (voir la dernière diapo de la partie).</p>
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** **Javalin** associe une URL à une méthode Java. Le **pilote** MongoDB envoie depuis Java les requêtes que vous écrivez dans le playground : c'est le JDBC de MongoDB.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Le front du projet ne parle jamais à MongoDB : il demande une URL à une **API REST**, qui répond en **JSON**. La partie 7 en écrit un morceau.
 
@@ -1832,12 +1846,12 @@ Dans le TP : 3 méthodes à écrire dans RequetesRestaurants.java (exercices 17 
 <img src="assets/schemas/s3-shell-vers-java.svg" alt="Le code Java Filters.and( Filters.gte(&quot;annee&quot;, 2000), Filters.gt(&quot;duree&quot;, 100) ) fabrique, appel par appel, le document { &quot;$and&quot;: [ { &quot;annee&quot;: { &quot;$gte&quot;: 2000 } }, { &quot;duree&quot;: { &quot;$gt&quot;: 100 } } ] }, de même sens que { annee: { $gte: 2000 }, duree: { $gt: 100 } } en mongosh. MongoDB l'applique aux 4 films : Chihiro et Amélie retenus, Glaneurs écarté par la durée (82 ≤ 100), La Haine par l'année (1995 &lt; 2000). Une classe d'aide par rôle : Filters, Projections, Sorts, Aggregates, Accumulators." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** Des méthodes **statiques**, une par opérateur : `Filters.eq`, `Filters.gt`, `Filters.and`... Chacune renvoie un morceau de document : celui que vous écririez en mongosh.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Java n'a pas d'écriture `{ annee: 2001 }`. Les classes d'aide évitent d'assembler ces documents à la main ; le **compilateur** vérifie le nom de chaque méthode, mais **pas** les noms de champs : `"anee"` compile et ne trouve rien.
 
@@ -1994,12 +2008,12 @@ Méthode à conseiller pour les exercices 18 et 19 : écrire le pipeline dans es
 <img src="assets/schemas/s3-javalin-route.svg" alt="Comment une route Javalin lit les paramètres d'une URL. À gauche, un paramètre de chemin, sur la route des films config.routes.get(&quot;/api/annees/{annee}/films&quot;, ctx -> ctx.json(filmsDeLAnnee(Integer.parseInt(ctx.pathParam(&quot;annee&quot;))))) : le motif /api/annees/{annee}/films est comparé à l'URL /api/annees/2001/films, {annee} capte le segment 2001 ; ctx.pathParam(&quot;annee&quot;) renvoie la chaîne &quot;2001&quot;, que Integer.parseInt convertit en l'entier 2001. À droite, un paramètre de requête, sur la route fournie du TP /api/boroughs/{borough}/restaurants, appelée avec /api/boroughs/Bronx/restaurants?cuisine=Pizza : ctx.pathParam(&quot;borough&quot;) renvoie &quot;Bronx&quot;, ctx.queryParam(&quot;cuisine&quot;) renvoie &quot;Pizza&quot;, et null si l'URL n'a pas de ?cuisine=." style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **C'est quoi ?** Une **route** associe une méthode HTTP (`get`) et un **motif** de chemin à une fonction. Cette fonction reçoit le **contexte** `ctx` : elle y lit la requête et y écrit la réponse.
 
 </div>
-<div class="box">
+<div class="box" style="margin-top: 0;">
 
 **Pourquoi faire ?** Le **chemin** désigne ce qu'on demande (les films de 2001) ; un paramètre **de requête** précise la demande et **peut manquer**. Les deux arrivent en `String`.
 
@@ -2073,7 +2087,7 @@ Au premier ./mvnw, Maven télécharge ses dépendances (une à deux minutes) : l
 <div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
 <div>
 
-1. Mise en place, `./mvnw -q compile` : **15 min**
+1. Mise en place, compilation de <code style="white-space: nowrap">requetes-java/</code> : **15 min**
 2. Parties 1 et 2, filtrer et calculer : **50 min**
 3. Partie 3, joindre et résumer : **35 min**
 4. Partie 4, index : **30 min**
@@ -2084,7 +2098,7 @@ Au premier ./mvnw, Maven télécharge ses dépendances (une à deux minutes) : l
 
 <div class="carte orange">
 <b class="t">📅 Rendu final du TP2</b>
-dimanche 13 décembre 2026, 23&nbsp;h&nbsp;59
+dimanche 13 décembre 2026, 23&nbsp;h&nbsp;59. Trois rendus au plus.
 </div>
 
 </div>
@@ -2141,7 +2155,9 @@ Les essais vont dans `essais.mongodb.js`, sur les collections `films` et `realis
 | 2 | « Fais-moi un quiz sur `$addFields` et les fonctions de fenêtre. » |
 | 3 | « Fais-moi un quiz sur `$lookup`, `$bucket` et `$facet`. » |
 | 4 | « Fais-moi un quiz sur les index, `explain()` et la règle ESR. » |
-| 5 à 7 | « Fais-moi un quiz sur les requêtes géospatiales », « … sur `$merge` et `$jsonSchema` », « … sur le pilote Java de MongoDB et Javalin. » |
+| 5 | « Fais-moi un quiz sur les requêtes géospatiales. » |
+| 6 | « Fais-moi un quiz sur `$merge` et la validation `$jsonSchema`. » |
+| 7 | « Fais-moi un quiz sur le pilote Java de MongoDB et Javalin. » |
 
 <!--
 (1 min)
@@ -2167,7 +2183,7 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 
 <div class="bandeau" style="margin-top: 1.6rem; text-align: left; font-size: 0.95em;">
 
-🎯 **Dès maintenant** : accepter le TP2, `npm run seed`, `./mvnw -q compile`, puis la partie 1, une requête à la fois.
+🎯 **Dès maintenant** : accepter le TP2, `npm run seed`, `./mvnw -q compile` dans <code style="white-space: nowrap">requetes-java/</code>, puis la partie 1, une requête à la fois.
 
 </div>
 
@@ -2198,5 +2214,7 @@ Questions sur le cours : en séance, ou par courriel à l'enseignant de son grou
 </div>
 
 <!--
+(Hors minutage : diapo de référence, laissée en fin de support.)
+
 Ce support ne reprend aucun contenu de MongoDB for Academia. Pour les étudiants qui consultent les présentations officielles (en anglais, pensées pour Atlas et l'ancien shell) : « Querying Data with Operators and Compound Conditions » traite $expr, « The MongoDB Aggregation Framework » $addFields, $out et $merge, « Querying Data with the MongoDB Aggregation Framework » $facet et $bucket. Liens dans le README du dépôt cours.
 -->
