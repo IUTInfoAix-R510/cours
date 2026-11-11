@@ -68,14 +68,29 @@ cours/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/
 │   ├── logo.png, logo-amu.png             # logo d'Aix-Marseille Université
-│   ├── schemas/                           # schémas SVG faits pour le cours
-│   └── mongodb-academia/                  # schémas repris de MongoDB for Academia (aucun pour l'instant)
+│   └── schemas/                           # schémas SVG faits pour le cours (préfixe sN- par séance)
 ├── .vscode/settings.json                  # déclare le thème pour l'aperçu Marp de VS Code
 ├── scripts/
 │   ├── build-all.sh                       # build local complet (miroir du workflow)
 │   └── generate-index.sh                  # page d'accueil _site/index.html
 └── ATTRIBUTION.md                         # licences du dépôt, sources et éléments repris
 ```
+
+Un élément repris de MongoDB for Academia irait dans `assets/mongodb-academia/`, selon la règle de citation d'[ATTRIBUTION.md](ATTRIBUTION.md). Il n'y en a aucun pour l'instant.
+
+### Structure d'un support
+
+Les supports suivent le même plan :
+
+- une diapo d'intercalaire `_class: lead` « Partie N - … » pour chaque partie de l'énoncé, avec un émoji repère et une phrase d'accroche ;
+- le principe d'abord (le quoi et le pourquoi), l'exemple ensuite (le comment) ;
+- pour un processus (un pipeline, par exemple) : une diapo pour les données, puis une diapo par étape ;
+- une idée par diapo, sans diapo vide ni surchargée, avec des cartes de même hauteur ;
+- « À vous » en deux diapos : la séance (lien de l'énoncé, minutage, rendu, date du rendu final), puis « essayer et réviser » (quiz) ;
+- « Des questions ? » (enseignants, liens, bandeau « Dès maintenant » et appel à l'action en remarque), puis les crédits ;
+- la durée de chaque diapo dans ses notes, le total de la séance dans les notes de « À vous ».
+
+Les émojis servent de repères sur les étiquettes et les remarques (🎯, 📅, 🧪, 🧠, ❓, 🤖), pas sur chaque titre.
 
 ### Thème commun
 
@@ -94,7 +109,7 @@ Les marges négatives s'écrivent en `em` : Marp réécrit `-1rem` en `-calc(…
 
 ## Pour aller plus loin
 
-Les présentations officielles du programme **MongoDB for Academia** servaient de support de cours jusqu'en 2025. Nos supports en reprennent quelques schémas (voir [ATTRIBUTION.md](ATTRIBUTION.md)). Les présentations complètes restent utiles pour approfondir, avec trois précautions :
+Les présentations officielles du programme **MongoDB for Academia** servaient de support de cours jusqu'en 2025. Nos supports n'en reprennent aucun schéma ; le support S2 en reformule deux passages (voir [ATTRIBUTION.md](ATTRIBUTION.md)). Les présentations complètes restent utiles pour approfondir, avec trois précautions :
 
 - elles sont **en anglais** ;
 - elles ont été écrites pour MongoDB Atlas et l'ancien shell `mongo` : les résultats s'affichent autrement dans votre codespace ;
