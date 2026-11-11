@@ -23,7 +23,7 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 | S2 | 23/11 | Documents imbriqués, tableaux, initiation à l'agrégation | TP1 (suite) | [diapositives](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.pdf) |
 | S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | [diapositives](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.pdf) |
 | S4 | 30/11 | Modéliser à partir des requêtes, patterns de conception | TP3 | [diapositives](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.pdf) |
-| S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | À venir |
+| S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | [diapositives](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.pdf) |
 | S6 | 7/12 | Lancement du projet, modèle de données, chargement | Projet | À venir |
 | S7 | 14/12 | Agrégations, API REST, index ; module graphe en bonus | Projet | À venir |
 | S8 | 14/12 | Finalisation et questions individuelles | Projet | À venir |
@@ -35,7 +35,8 @@ Les jours et horaires de chaque groupe sont dans ADE.
 - [TP1 : MongoDB, documents, CRUD, documents imbriqués, initiation à l'agrégation](https://iutinfoaix-r510.github.io/tp1/) (S1-S2)
 - [TP2 : MongoDB, requêtes avancées, agrégation, index, géospatial, pilote Java](https://iutinfoaix-r510.github.io/tp2/) (S3)
 - [TP3 : MongoDB, modéliser à partir des requêtes, patterns de conception, séries temporelles, pilote Java](https://iutinfoaix-r510.github.io/tp3/) (S4)
-- TP4 et projet : à venir. Les liens seront ajoutés ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
+- [TP4 : Neo4j, du relationnel au graphe, Cypher, chemins, recommandation](https://iutinfoaix-r510.github.io/tp4/) (S5)
+- Projet : à venir. Le lien sera ajouté ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
 
 ### Environnement
 
