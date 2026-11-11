@@ -88,7 +88,9 @@ Les supports suivent le même plan :
 - une idée par diapo, sans diapo vide ni surchargée, avec des cartes de même hauteur ;
 - « À vous » en deux diapos : la séance (lien de l'énoncé, minutage, rendu, date du rendu final), puis « essayer et réviser » (quiz) ;
 - « Des questions ? » (enseignants, liens, bandeau « Dès maintenant » et appel à l'action en remarque), puis les crédits ;
-- la durée de chaque diapo dans ses notes, le total de la séance dans les notes de « À vous ».
+- la durée de chaque diapo dans ses notes, le total de la séance dans les notes de « À vous » ;
+- le résultat d'une requête en commentaire `// …` sous la requête, dans le même bloc de code ; le détail document par document, s'il en faut un, dans un tableau ; une erreur dans un bloc `err` (fond rouge), jamais dans un bloc vert ;
+- les données d'exemple présentées sur une diapo, et le script qui les recharge dans les notes.
 
 Les émojis servent de repères sur les étiquettes et les remarques (🎯, 📅, 🧪, 🧠, ❓, 🤖), pas sur chaque titre.
 
@@ -102,10 +104,24 @@ Tous les supports utilisent `theme: r510` (fichier `themes/r510.css`, déclaré 
 | `carte` (+ `vert`, `orange`, `violet`, `rouge`) | carte à en-tête coloré : `<div class="carte vert"><b class="t">Titre</b> texte</div>` |
 | `box`, `warn`, `alerte` | remarque à bordure gauche : verte, orange, rouge |
 | `bandeau` | bandeau bleu nuit : lien, appel à l'action, message à retenir |
-| `res`, `err`, `res-titre` | bloc de résultat, d'erreur, et son titre |
+| `err` | bloc de code d'erreur (fond rouge) |
+| `res`, `res-titre` | ancien bloc de résultat : ne plus l'utiliser, le résultat va en commentaire `// …` sous la requête |
 | `etiquette`, `legende`, `note`, `petit`, `centre` | petits textes |
 
 Les marges négatives s'écrivent en `em` : Marp réécrit `-1rem` en `-calc(…)`, que le navigateur ignore.
+
+Le signe `$` des opérateurs MongoDB peut déclencher le moteur de formules de Marp. Dans le texte Markdown, Marp met en formule ce qui se trouve entre deux `$` : `$match puis $group$` devient une formule. Ce texte-là compte aussi comme du Markdown :
+
+- une balise HTML écrite dans un paragraphe ou une liste Markdown : `- <b>$sum</b> et <b>$avg</b>` ;
+- du Markdown placé dans un `<div>` entre deux lignes vides.
+
+D'où la règle :
+
+- dans le Markdown, les opérateurs vont entre backticks (`` `$match` ``) ; les blocs de code, les notes et les attributs `alt` gardent le `$` tel quel ;
+- dans tout HTML brut (cartes, `p.petit`, `p.etiquette`, `<code>` écrit en HTML), le `$` s'écrit `&#36;` ;
+- jamais `\$`, qui s'afficherait tel quel dans du HTML.
+
+Pour vérifier un support, compter les `<mjx-container` dans le HTML construit (hors `<style>`) : il doit y en avoir zéro.
 
 ## Pour aller plus loin
 
