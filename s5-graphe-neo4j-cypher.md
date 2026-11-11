@@ -184,7 +184,7 @@ Ce vocabulaire est celui de l'énoncé et de l'assistant IA : on ne dit ni somme
 ## 🧪 Un nœud, une relation, pas à pas
 
 ```cypher
-// 🧪 Exemple d'essai
+// Exemple d'essai
 MATCH (ana:Personne {nom: 'Ana'}) RETURN ana;
 // (:Personne {nom: "Ana", ville: "Aix"})
 MATCH (:Personne {nom: 'Ana'})-[a:AIME]->(j:Jeu) RETURN a, j.titre;
