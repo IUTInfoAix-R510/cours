@@ -34,7 +34,8 @@ Les jours et horaires de chaque groupe sont dans ADE.
 
 - [TP1 : MongoDB, documents, CRUD, documents imbriqués, initiation à l'agrégation](https://iutinfoaix-r510.github.io/tp1/) (S1-S2)
 - [TP2 : MongoDB, requêtes avancées, agrégation, index, géospatial, pilote Java](https://iutinfoaix-r510.github.io/tp2/) (S3)
-- TP3, TP4 et projet : à venir. Les liens seront ajoutés ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
+- [TP3 : MongoDB, modéliser à partir des requêtes, patterns de conception, séries temporelles, pilote Java](https://iutinfoaix-r510.github.io/tp3/) (S4)
+- TP4 et projet : à venir. Les liens seront ajoutés ici et dans le [syllabus](https://github.com/IUTInfoAix-R510/syllabus).
 
 ### Environnement
 

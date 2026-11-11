@@ -111,7 +111,7 @@ ${ROWS}
   </table>
   </div>
 
-  <p>Énoncés en ligne : <a href="https://iutinfoaix-r510.github.io/tp1/">TP1</a>, <a href="https://iutinfoaix-r510.github.io/tp2/">TP2</a>.
+  <p>Énoncés en ligne : <a href="https://iutinfoaix-r510.github.io/tp1/">TP1</a>, <a href="https://iutinfoaix-r510.github.io/tp2/">TP2</a>, <a href="https://iutinfoaix-r510.github.io/tp3/">TP3</a>.
      Calendrier, évaluation et environnement de travail : <a href="https://github.com/IUTInfoAix-R510/syllabus">syllabus</a>.</p>
 
   <footer>
