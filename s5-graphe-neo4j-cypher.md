@@ -209,7 +209,7 @@ Dans l'extension Neo4j de VS Code, le même résultat se lit en tableau, ou en d
 
 ## Du relationnel au graphe : cinq règles, ligne par ligne
 
-<img src="assets/schemas/s5-relationnel-graphe.svg" alt="Traduire un schéma relationnel en graphe, ligne par ligne, avec des lignes du jeu de données. À gauche, quatre tables avec une ligne chacune : developpeur(id, pseudo, ville) avec la ligne (8, 'nora-f', 'Marseille') ; maintenance(developpeur_id, paquet_id, depuis) avec (8, 12, '2026-07-19') ; paquet(id, nom, licence, telechargements, publie_le) avec (12, 'rapporteur', 'Apache-2.0', 2055, '2023-06-03') ; faille(code, gravite, publiee_le, paquet_id) avec ('FV-2026-0073', 'critique', '2026-03-01', 12). À droite, le graphe obtenu, relié à chaque ligne par un pointillé : le nœud nora-f :Developpeur {pseudo: 'nora-f', ville: 'Marseille'} ; le nœud rapporteur :Paquet {nom: 'rapporteur', licence: 'Apache-2.0', telechargements: 2055, publie_le: date('2023-06-03')} ; le nœud FV-2026-0073 :Faille {code: 'FV-2026-0073', gravite: 'critique', publiee_le: date('2026-03-01')} ; la relation MAINTIENT {depuis: date('2026-07-19')} de nora-f vers rapporteur, et la relation TOUCHE de FV-2026-0073 vers rapporteur. Cinq règles numérotées : 1, une ligne devient un nœud et la table son label ; 2, la clé technique id disparaît, la clé métier (nom ou pseudo) identifie le nœud ; 3, une clé étrangère devient une relation (faille.paquet_id devient TOUCHE) ; 4, une table de jointure devient une relation et ses autres colonnes des propriétés de la relation (maintenance devient MAINTIENT {depuis}) ; 5, une date stockée en texte devient une vraie date." style="display:block; height:470px; margin:0 auto;">
+<img src="assets/schemas/s5-relationnel-graphe.svg" alt="Traduire un schéma relationnel en graphe, ligne par ligne, avec des lignes du jeu de données. À gauche, quatre tables avec une ligne chacune : developpeur(id, pseudo, ville) avec la ligne (8, 'nora-f', 'Marseille') ; maintenance(developpeur_id, paquet_id, depuis) avec (8, 12, '2026-07-19') ; paquet(id, nom, licence, telechargements, publie_le) avec (12, 'rapporteur', 'Apache-2.0', 2055, '2023-06-03') ; faille(code, gravite, publiee_le, paquet_id) avec ('FV-2026-0073', 'critique', '2026-03-01', 12). À droite, le graphe obtenu, relié à chaque ligne par un pointillé : le nœud nora-f :Developpeur {pseudo: 'nora-f', ville: 'Marseille'} ; le nœud rapporteur :Paquet {nom: 'rapporteur', …}, ses autres colonnes étant laissées à l'exercice 1 ; le nœud FV-2026-0073 :Faille {code: 'FV-2026-0073', gravite: 'critique', publiee_le: date('2026-03-01')} ; la relation MAINTIENT {depuis: date('2026-07-19')} de nora-f vers rapporteur, et la relation TOUCHE de FV-2026-0073 vers rapporteur. Cinq règles numérotées : 1, une ligne devient un nœud et la table son label ; 2, la clé technique id disparaît, la clé métier (nom ou pseudo) identifie le nœud ; 3, une clé étrangère devient une relation (faille.paquet_id devient TOUCHE) ; 4, une table de jointure devient une relation et ses autres colonnes des propriétés de la relation (maintenance devient MAINTIENT {depuis}) ; 5, une date stockée en texte devient une vraie date." style="display:block; height:470px; margin:0 auto;">
 
 <div class="warn" style="margin-top: 0.3rem; font-size: 0.72em;">Le <b>sens</b> de la relation se choisit pour se lire comme une phrase : le développeur <b>maintient</b> le paquet, le paquet <b>dépend de</b> sa dépendance.</div>
 
@@ -227,7 +227,7 @@ L'exercice 1 traduit une ligne de paquet, l'exercice 2 deux lignes de la table d
 
 ## Le document du TP1, le graphe du TP4
 
-<img src="assets/schemas/s5-mediatheque-document-graphe.svg" alt="La médiathèque du TP1 dans les deux modèles. À gauche, TP1, modèle document : un document de la collection livres, L06 Dune, avec trois tableaux imbriqués, auteurs [ {id, prenom, nom} ], exemplaires [ {code: 'L06-1', …}, … ] et avis [ {membre_id, note}, … ] ; un document de la collection membres, M01 Marie Dupont, avec le tableau imbriqué emprunts [ {exemplaire: 'L06-1', livre_id: 'L06', titre: 'Dune', date_emprunt, date_retour_prevue, date_retour}, … ], où le titre est recopié du livre (surligné en orange), et la référence parrain_id vers un autre membre (surlignée en orange ; chez les filleuls, par exemple M03 a parrain_id 'M01'). À droite, TP4, modèle graphe : 26 nœuds :Livre, 43 :Exemplaire, 14 :Membre, 18 :Auteur et 11 :Categorie. Relations : (:Exemplaire)-[:DE]->(:Livre) ; (:Livre)-[:ECRIT_PAR]->(:Auteur) ; (:Livre)-[:DANS]->(:Categorie) ; (:Categorie)-[:SOUS_CATEGORIE_DE]->(:Categorie), en boucle ; (:Livre)-[:SUITE_DE]->(:Livre), en boucle ; (:Membre)-[:EMPRUNTE {date_emprunt, date_retour_prevue, date_retour}]->(:Exemplaire), 48 emprunts ; (:Membre)-[:PARRAINE]->(:Membre), en boucle, 7 parrainages ; (:Membre)-[:A_NOTE {note}]->(:Livre), 36 avis. En bas : mêmes identifiants (L06, M13…) : un emprunt est une relation, pas une copie." style="display:block; height:540px; margin:0 auto;">
+<img src="assets/schemas/s5-mediatheque-document-graphe.svg" alt="La médiathèque du TP1 dans les deux modèles. À gauche, TP1, modèle document : un document de la collection livres, L06 Dune, avec trois tableaux imbriqués, auteurs [ {id, prenom, nom} ], exemplaires [ {code: 'L06-1', …}, … ] et avis [ {membre_id, note}, … ] ; un document de la collection membres, M01 Marie Dupont, avec le tableau imbriqué emprunts [ {exemplaire: 'L06-1', livre_id: 'L06', titre: 'Dune', date_emprunt, date_retour_prevue, date_retour}, … ], où le titre est recopié du livre (surligné en orange), et la référence parrain_id vers un autre membre (surlignée en orange ; chez un filleul de Marie, parrain_id vaut 'M01'). À droite, TP4, modèle graphe : 26 nœuds :Livre, 43 :Exemplaire, 14 :Membre, 18 :Auteur et 11 :Categorie. Relations : (:Exemplaire)-[:DE]->(:Livre) ; (:Livre)-[:ECRIT_PAR]->(:Auteur) ; (:Livre)-[:DANS]->(:Categorie) ; (:Categorie)-[:SOUS_CATEGORIE_DE]->(:Categorie), en boucle ; (:Livre)-[:SUITE_DE]->(:Livre), en boucle ; (:Membre)-[:EMPRUNTE {date_emprunt, date_retour_prevue, date_retour}]->(:Exemplaire), 48 emprunts ; (:Membre)-[:PARRAINE]->(:Membre), en boucle, 7 parrainages ; (:Membre)-[:A_NOTE {note}]->(:Livre), 36 avis. En bas : mêmes identifiants (L06, M13…) : un emprunt est une relation, pas une copie." style="display:block; height:540px; margin:0 auto;">
 
 <!--
 (1 min 15)
@@ -584,13 +584,13 @@ créer sans doublon · 📦 exercice 8
 CREATE (:Personne {nom: 'Gaspard', ville: 'Nice'});
 
 MATCH (g:Personne {nom: 'Gaspard'})
-MATCH (j:Jeu {titre: 'Comète'})
-CREATE (g)-[:AIME {note: 4}]->(j);
+MATCH (a:Personne {nom: 'Ana'})
+CREATE (g)-[:SUIT]->(a);
 ```
 
 <div class="cols" style="margin-top: 0.4rem; font-size: 0.76em; align-items: stretch;">
 <div class="carte vert"><b class="t">Relier deux nœuds existants</b> On les <b>retrouve</b> d'abord (<code>MATCH</code>), puis on crée la relation entre les variables.</div>
-<div class="carte rouge"><b class="t">Sans MATCH</b> <code>CREATE (g:Personne {…})-[:AIME]->(j:Jeu {…})</code> crée un <b>nouveau</b> Gaspard et un <b>nouveau</b> Comète.</div>
+<div class="carte rouge"><b class="t">Sans MATCH</b> <code>CREATE (g:Personne {…})-[:SUIT]->(a:Personne {nom: 'Ana'})</code> crée une <b>nouvelle</b> Ana.</div>
 </div>
 
 <!--
@@ -629,7 +629,7 @@ Attention : la leçon MERGE de GraphAcademy décrit un comportement nœud par n�
 
 ## Le piège : MERGE compare tout son motif
 
-<img src="assets/schemas/s5-merge.svg" alt="Le piège de MERGE, sur l'exemple d'essai, en trois colonnes. Avant : le nœud Gaspard :Personne {ville: 'Nice'}, sans aucune relation, et le nœud Comète :Jeu, qui a déjà 3 fans, Ana, Camille et Farah. Au milieu, en rouge, à éviter : MERGE (p:Personne {nom: 'Gaspard'})-[:AIME {note: 4}]->(j:Jeu {titre: 'Comète'}). Gaspard n'aime pas encore Comète, le motif entier n'existe pas : MERGE crée un nouveau Gaspard et un nouveau Comète, en pointillés rouges, reliés par AIME {note: 4}. Tout le motif est créé : 2 Gaspard, 2 Comète. À droite, en vert, à suivre : MATCH (g:Personne {nom: 'Gaspard'}) MATCH (j:Jeu {titre: 'Comète'}) MERGE (g)-[a:AIME]->(j) ON CREATE SET a.note = 4. Les deux nœuds existants sont retrouvés, et une seule relation AIME {note: 4} est créée entre le Gaspard et le Comète existants ; relancée, la requête ne change rien." style="display:block; width:96%; margin:0.4rem auto 0;">
+<img src="assets/schemas/s5-merge.svg" alt="Le piège de MERGE, sur l'exemple d'essai, en trois colonnes. Avant : le nœud Gaspard :Personne {ville: 'Nice'}, sans aucune relation, et le nœud Comète :Jeu, qui a déjà 3 fans, Ana, Camille et Farah. Au milieu, en rouge, à éviter : MERGE (p:Personne {nom: 'Gaspard'})-[:AIME {note: 4}]->(j:Jeu {titre: 'Comète'}). Gaspard n'aime pas encore Comète, le motif entier n'existe pas : MERGE crée un nouveau Gaspard et un nouveau Comète, en pointillés rouges, reliés par AIME {note: 4}. Tout le motif est créé : 2 Gaspard, 2 Comète. À droite, en vert, à suivre : MATCH (g:Personne {nom: 'Gaspard'}) MATCH (j:Jeu {titre: 'Comète'}) MERGE (g)-[:AIME]->(j). Les deux nœuds existants sont retrouvés, et une seule relation AIME est créée entre le Gaspard et le Comète existants ; relancée, la requête ne change rien." style="display:block; width:96%; margin:0.4rem auto 0;">
 
 <!--
 (1 min 30)
@@ -638,7 +638,7 @@ Deux pièges, sur l'exemple d'essai :
 - MERGE (p:Personne {nom: 'Gaspard', ville: 'Lyon'}) ne trouve pas de Gaspard à Lyon : il crée un second Gaspard. On met dans le motif seulement ce qui identifie le nœud, le reste dans ON CREATE SET.
 - MERGE (Gaspard)-[:AIME]->(Comète) écrit d'un bloc crée tout le motif, nœuds compris, s'il n'existe pas en entier : deux Gaspard, deux Comète.
 
-La bonne forme : retrouver (ou fusionner) chaque nœud séparément, puis fusionner la relation entre les variables.
+La bonne forme : retrouver chaque nœud séparément, puis fusionner la relation entre les variables.
 
 En direct : le schéma part de l'état « Avant ». Après la forme fautive, supprimer les doublons (première ligne de la diapo « Contraintes », et MATCH (j:Jeu {titre: 'Comète'}) WHERE j.joueurs IS NULL DELETE j), puis recréer Gaspard à Nice, avant de lancer la bonne forme ; sinon elle crée trois relations.
 -->
@@ -853,7 +853,7 @@ Dans un même chemin, Neo4j ne repasse jamais par la même relation : un cycle n
 
 ## 🧪 Le plus court chemin
 
-<img src="assets/schemas/s5-shortest.svg" alt="Les plus courts chemins de Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana→Bilal→Dario→Elif→Farah ; en violet, Ana→Camille→Dario→Elif→Farah ; les relations Dario→Elif et Elif→Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j : [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. ALL SHORTEST renvoie les deux : [&quot;Ana&quot;, &quot;Bilal&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;] et [&quot;Ana&quot;, &quot;Camille&quot;, &quot;Dario&quot;, &quot;Elif&quot;, &quot;Farah&quot;]. « Plus court » compte les relations, pas une distance ou une durée." style="display:block; width:64%; margin:0 auto;">
+<img src="assets/schemas/s5-shortest.svg" alt="Les plus courts chemins de Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana→Bilal→Dario→Elif→Farah ; en violet, Ana→Camille→Dario→Elif→Farah ; les relations Dario→Elif et Elif→Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j : Ana → Camille → Dario → Elif → Farah. ALL SHORTEST renvoie les deux : Ana → Bilal → Dario → Elif → Farah et Ana → Camille → Dario → Elif → Farah. « Plus court » compte les relations, pas une distance ou une durée." style="display:block; width:64%; margin:0 auto;">
 
 ```cypher
 MATCH c = SHORTEST 1 (:Personne {nom: 'Ana'})-[:SUIT]->+(:Personne {nom: 'Farah'})
@@ -869,7 +869,7 @@ RETURN count(c) AS chemins;
 
 SHORTEST 1 renvoie un plus court chemin ; quand il y en a plusieurs de même longueur, Neo4j en choisit un. ALL SHORTEST les renvoie tous. « Plus court » compte les relations, pas une distance : pour un poids (des minutes, des kilomètres), il faut la bibliothèque GDS ou un calcul à la main sur des chemins bornés.
 
-nodes(c) donne la liste des nœuds du chemin, dans l'ordre ; une compréhension de liste, [x IN liste | expression], en tire une liste de propriétés (comme map en Java ou $map en MongoDB) : l'énoncé la montre sur une liste de nombres. Ancienne syntaxe : shortestPath(), qui marche encore.
+nodes(c) donne la liste des nœuds du chemin, dans l'ordre. La compréhension de liste, [x IN liste | expression], applique une expression à chaque élément d'une liste (comme map en Java ou $map en MongoDB) : l'énoncé la montre sur une liste de nombres. Ancienne syntaxe : shortestPath(), qui marche encore.
 -->
 
 ---
