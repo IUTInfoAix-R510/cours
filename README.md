@@ -66,6 +66,7 @@ cours/
 ├── s2-imbrication-tableaux-agregation.md  # S2 : point cours du TP1 (suite)
 ├── s3-requetes-avancees-agregation-index.md  # S3 : point cours du TP2
 ├── s4-modelisation-patterns.md               # S4 : point cours du TP3
+├── s5-graphe-neo4j-cypher.md                 # S5 : point cours du TP4 (Neo4j)
 ├── themes/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/

@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 332" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Trois plans d'exécution, affichés par PROFILE, pour trouver Elif par son nom sur une base de 232 nœuds ; chaque plan se lit de bas en haut. (a) Sans label : AllNodesScan (232 lignes, 233 db hits), puis Filter p.nom = 'Elif' (232 db hits), Projection (1 db hit), ProduceResults : 466 db hits au total, en rouge. (b) Avec le label :Personne : NodeByLabelScan p:Personne (10 nœuds estimés, 6 lignes lues, 7 db hits), puis Filter (6 db hits), Projection (1 db hit), ProduceResults : 14 db hits, en orange. (c) Avec la contrainte d'unicité : NodeUniqueIndexSeek UNIQUE p:Personne(nom) (2 db hits), puis Projection (1 db hit), ProduceResults : 3 db hits, en vert.</title>
+  <defs>
+    <marker id="fk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
+  </defs>
+  <text x="10" y="24" font-size="17" font-weight="bold" fill="#333">Trouver Elif par son nom, sur une base de 232 nœuds : le plan se lit de bas en haut</text>
+  <text x="10" y="54" font-size="17" font-weight="bold" fill="#e74c3c">(a) sans label</text>
+  <rect x="10" y="280" width="286" height="44" rx="7" fill="#fdecea" stroke="#e74c3c" stroke-width="2"/>
+  <text x="20" y="299" font-size="15" font-weight="bold" font-family="monospace" fill="#333">AllNodesScan</text>
+  <text x="20" y="318" font-size="14" fill="#555">232 lignes · 233 db hits</text>
+  <rect x="10" y="212" width="286" height="44" rx="7" fill="#ffffff" stroke="#e74c3c" stroke-width="2"/>
+  <text x="20" y="231" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Filter</text>
+  <text x="20" y="250" font-size="14" fill="#555">p.nom = 'Elif' · 232 db hits</text>
+  <line x1="50" y1="277" x2="50" y2="264" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <rect x="10" y="144" width="286" height="44" rx="7" fill="#ffffff" stroke="#e74c3c" stroke-width="2"/>
+  <text x="20" y="163" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Projection</text>
+  <text x="20" y="182" font-size="14" fill="#555">1 db hit</text>
+  <line x1="50" y1="209" x2="50" y2="196" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <rect x="10" y="76" width="286" height="44" rx="7" fill="#ffffff" stroke="#e74c3c" stroke-width="2"/>
+  <text x="20" y="105" font-size="15" font-weight="bold" font-family="monospace" fill="#333">ProduceResults</text>
+  <line x1="50" y1="141" x2="50" y2="128" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <text x="354" y="254" font-size="54" font-weight="bold" fill="#e74c3c" text-anchor="middle">466</text>
+  <text x="354" y="280" font-size="15" font-weight="bold" fill="#555" text-anchor="middle">db hits</text>
+  <text x="354" y="298" font-size="14" fill="#777" text-anchor="middle">au total</text>
+  <text x="410" y="54" font-size="17" font-weight="bold" fill="#b06f00">(b) avec le label :Personne</text>
+  <rect x="410" y="280" width="286" height="44" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="420" y="299" font-size="15" font-weight="bold" font-family="monospace" fill="#333">NodeByLabelScan p:Personne</text>
+  <text x="420" y="318" font-size="14" fill="#555">10 estimés · 6 lignes · 7 db hits</text>
+  <rect x="410" y="212" width="286" height="44" rx="7" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="420" y="231" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Filter</text>
+  <text x="420" y="250" font-size="14" fill="#555">6 db hits</text>
+  <line x1="450" y1="277" x2="450" y2="264" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <rect x="410" y="144" width="286" height="44" rx="7" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="420" y="163" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Projection</text>
+  <text x="420" y="182" font-size="14" fill="#555">1 db hit</text>
+  <line x1="450" y1="209" x2="450" y2="196" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <rect x="410" y="76" width="286" height="44" rx="7" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="420" y="105" font-size="15" font-weight="bold" font-family="monospace" fill="#333">ProduceResults</text>
+  <line x1="450" y1="141" x2="450" y2="128" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <text x="754" y="254" font-size="54" font-weight="bold" fill="#d48a10" text-anchor="middle">14</text>
+  <text x="754" y="280" font-size="15" font-weight="bold" fill="#555" text-anchor="middle">db hits</text>
+  <text x="754" y="298" font-size="14" fill="#777" text-anchor="middle">au total</text>
+  <text x="810" y="54" font-size="17" font-weight="bold" fill="#27ae60">(c) avec la contrainte d'unicité</text>
+  <rect x="810" y="280" width="286" height="44" rx="7" fill="#e8f6ec" stroke="#27ae60" stroke-width="2"/>
+  <text x="820" y="299" font-size="15" font-weight="bold" font-family="monospace" fill="#333">NodeUniqueIndexSeek</text>
+  <text x="820" y="318" font-size="14" fill="#555">UNIQUE p:Personne(nom) · 2 db hits</text>
+  <rect x="810" y="212" width="286" height="44" rx="7" fill="#ffffff" stroke="#27ae60" stroke-width="2"/>
+  <text x="820" y="231" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Projection</text>
+  <text x="820" y="250" font-size="14" fill="#555">1 db hit</text>
+  <line x1="850" y1="277" x2="850" y2="264" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <rect x="810" y="144" width="286" height="44" rx="7" fill="#ffffff" stroke="#27ae60" stroke-width="2"/>
+  <text x="820" y="173" font-size="15" font-weight="bold" font-family="monospace" fill="#333">ProduceResults</text>
+  <line x1="850" y1="209" x2="850" y2="196" stroke="#777" stroke-width="2.5" marker-end="url(#fk)"/>
+  <text x="1154" y="254" font-size="54" font-weight="bold" fill="#27ae60" text-anchor="middle">3</text>
+  <text x="1154" y="280" font-size="15" font-weight="bold" fill="#555" text-anchor="middle">db hits</text>
+  <text x="1154" y="298" font-size="14" fill="#777" text-anchor="middle">au total</text>
+</svg>

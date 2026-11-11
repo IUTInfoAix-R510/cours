@@ -1,0 +1,108 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 400" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Suivre un lien, en relationnel et dans un graphe. À gauche, en relationnel : la table suit(source, cible) avec les lignes (1, 2), (1, 3), (2, 4), (3, 4), (4, 5), (5, 6), et la table personne(id, nom) avec 1 Ana, 2 Bilal, 3 Camille, 4 Dario, 5 Elif, 6 Farah, chacune avec son index en arbre B. Étape 1 : chercher Ana (1) dans l'index de suit, qui donne les lignes (1, 2) et (1, 3), Ana vers Bilal et Ana vers Camille. Étape 2 : chercher 2 (Bilal) puis 3 (Camille) dans l'index de personne. Chaque saut repasse par un index. À droite, dans un graphe : le nœud Ana a deux relations SUIT qui pointent directement vers Bilal et Camille ; un index ne sert qu'à trouver Ana, le départ. Un saut = suivre une relation.</title>
+  <defs>
+    <marker id="fk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
+    <marker id="fi" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker>
+  </defs>
+  <rect x="2" y="2" width="720" height="396" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <text x="20" y="32" font-size="18" font-weight="bold" fill="#333">En relationnel</text>
+  <text x="84" y="234" font-size="14" font-weight="bold" font-family="monospace" fill="#8e44ad" text-anchor="middle">index suit(source)</text>
+  <rect x="64" y="150" width="40" height="18" rx="4" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="84" y1="168" x2="40" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="24" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="84" y1="168" x2="84" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="68" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="84" y1="168" x2="128" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="112" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="196" y="62" font-size="16" font-weight="bold" font-family="monospace" fill="#333">suit</text>
+  <rect x="196" y="70" width="144" height="184" rx="6" fill="#ffffff" stroke="#4a6b8a" stroke-width="2"/>
+  <rect x="197" y="71" width="142" height="27" rx="5" fill="#f0f4f8"/>
+  <line x1="196" y1="98" x2="340" y2="98" stroke="#4a6b8a" stroke-width="1.5"/>
+  <text x="206" y="90" font-size="15" font-weight="bold" font-family="monospace" fill="#333">source</text>
+  <text x="286" y="90" font-size="15" font-weight="bold" font-family="monospace" fill="#333">cible</text>
+  <rect x="199" y="100" width="138" height="22" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="206" y="117" font-size="15" font-weight="bold" font-family="monospace" fill="#333">1</text>
+  <text x="286" y="117" font-size="15" font-weight="bold" font-family="monospace" fill="#333">2</text>
+  <rect x="199" y="126" width="138" height="22" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="206" y="143" font-size="15" font-weight="bold" font-family="monospace" fill="#333">1</text>
+  <text x="286" y="143" font-size="15" font-weight="bold" font-family="monospace" fill="#333">3</text>
+  <text x="206" y="169" font-size="15" font-family="monospace" fill="#333">2</text>
+  <text x="286" y="169" font-size="15" font-family="monospace" fill="#333">4</text>
+  <text x="206" y="195" font-size="15" font-family="monospace" fill="#333">3</text>
+  <text x="286" y="195" font-size="15" font-family="monospace" fill="#333">4</text>
+  <text x="206" y="221" font-size="15" font-family="monospace" fill="#333">4</text>
+  <text x="286" y="221" font-size="15" font-family="monospace" fill="#333">5</text>
+  <text x="206" y="247" font-size="15" font-family="monospace" fill="#333">5</text>
+  <text x="286" y="247" font-size="15" font-family="monospace" fill="#333">6</text>
+  <text x="444" y="234" font-size="14" font-weight="bold" font-family="monospace" fill="#8e44ad" text-anchor="middle">index personne(id)</text>
+  <rect x="424" y="150" width="40" height="18" rx="4" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="444" y1="168" x2="400" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="384" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="444" y1="168" x2="444" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="428" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="444" y1="168" x2="488" y2="194" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="472" y="194" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="560" y="62" font-size="16" font-weight="bold" font-family="monospace" fill="#333">personne</text>
+  <rect x="560" y="70" width="140" height="184" rx="6" fill="#ffffff" stroke="#4a6b8a" stroke-width="2"/>
+  <rect x="561" y="71" width="138" height="27" rx="5" fill="#f0f4f8"/>
+  <line x1="560" y1="98" x2="700" y2="98" stroke="#4a6b8a" stroke-width="1.5"/>
+  <text x="570" y="90" font-size="15" font-weight="bold" font-family="monospace" fill="#333">id</text>
+  <text x="610" y="90" font-size="15" font-weight="bold" font-family="monospace" fill="#333">nom</text>
+  <text x="570" y="117" font-size="15" font-family="monospace" fill="#333">1</text>
+  <text x="610" y="117" font-size="15" font-family="monospace" fill="#333">Ana</text>
+  <rect x="563" y="126" width="134" height="22" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="570" y="143" font-size="15" font-weight="bold" font-family="monospace" fill="#333">2</text>
+  <text x="610" y="143" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Bilal</text>
+  <rect x="563" y="152" width="134" height="22" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="570" y="169" font-size="15" font-weight="bold" font-family="monospace" fill="#333">3</text>
+  <text x="610" y="169" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Camille</text>
+  <text x="570" y="195" font-size="15" font-family="monospace" fill="#333">4</text>
+  <text x="610" y="195" font-size="15" font-family="monospace" fill="#333">Dario</text>
+  <text x="570" y="221" font-size="15" font-family="monospace" fill="#333">5</text>
+  <text x="610" y="221" font-size="15" font-family="monospace" fill="#333">Elif</text>
+  <text x="570" y="247" font-size="15" font-family="monospace" fill="#333">6</text>
+  <text x="610" y="247" font-size="15" font-family="monospace" fill="#333">Farah</text>
+  <path d="M84,144 Q100,112 182,111" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fk)"/>
+  <circle cx="96" cy="102" r="12" fill="#00684a"/><text x="96" y="107" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <path d="M346,111 Q430,104 436,138" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fk)"/>
+  <path d="M492,148 Q500,138 546,138" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fk)"/>
+  <circle cx="404" cy="92" r="12" fill="#00684a"/><text x="404" y="97" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <circle cx="30" cy="289" r="12" fill="#00684a"/><text x="30" y="294" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="50" y="294" font-size="15" fill="#333">chercher Ana (1) dans l'index de suit : lignes (1, 2) et (1, 3), Ana suit Bilal et Camille</text>
+  <circle cx="30" cy="317" r="12" fill="#00684a"/><text x="30" y="322" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="50" y="322" font-size="15" fill="#333">chercher 2 (Bilal), puis 3 (Camille), dans l'index de personne</text>
+  <rect x="18" y="342" width="688" height="42" rx="8" fill="#ede5f7"/>
+  <text x="362" y="369" font-size="17" font-weight="bold" fill="#8e44ad" text-anchor="middle">chaque saut repasse par un index</text>
+  <rect x="738" y="2" width="460" height="396" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <text x="756" y="32" font-size="18" font-weight="bold" fill="#333">Dans un graphe</text>
+  <path d="M900.6,193.1 L1054.8,128.8" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
+  <path d="M902.2,222.3 L1053,266.3" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
+  <text x="960" y="142" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5" text-anchor="middle">SUIT</text>
+  <text x="960" y="278" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5" text-anchor="middle">SUIT</text>
+  <g>
+  <circle cx="860" cy="210" r="40" fill="#eaf2fb" stroke="#2c3e50" stroke-width="3.5"/>
+  <text x="860" y="215.6" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
+  </g>
+  <g>
+  <circle cx="1100" cy="110" r="38" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="1100" y="115.6" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Bilal</text>
+  </g>
+  <g>
+  <circle cx="1100" cy="280" r="38" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="1100" y="285.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Camille</text>
+  </g>
+  <text x="816" y="154" font-size="14" font-weight="bold" font-family="monospace" fill="#8e44ad" text-anchor="middle"></text>
+  <rect x="796" y="70" width="40" height="18" rx="4" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="816" y1="88" x2="772" y2="114" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="756" y="114" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="816" y1="88" x2="816" y2="114" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="800" y="114" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <line x1="816" y1="88" x2="860" y2="114" stroke="#8e44ad" stroke-width="1.5"/>
+  <rect x="844" y="114" width="32" height="18" rx="4" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <path d="M802.5,139.1 L829.1,171.9" fill="none" stroke="#8e44ad" stroke-width="2.5" stroke-dasharray="6 4"/><path d="M823.5,164.9 L829.1,171.9" fill="none" stroke="#8e44ad" stroke-width="2.5" marker-end="url(#fi)"/>
+  <text x="890" y="84" font-size="15" font-weight="bold" fill="#8e44ad">index :</text>
+  <text x="890" y="104" font-size="15" font-weight="bold" fill="#8e44ad">trouver le départ</text>
+  <rect x="754" y="342" width="428" height="42" rx="8" fill="#eaf2fb"/>
+  <text x="968" y="369" font-size="17" font-weight="bold" fill="#2a6db5" text-anchor="middle">un saut = suivre une relation</text>
+</svg>

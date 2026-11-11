@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 380" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le vocabulaire d'un graphe, sur deux nœuds de l'exemple d'essai. Le nœud Ana, de label :Personne, a les propriétés {nom: 'Ana', ville: 'Aix'} ; le nœud Archipel, de label :Jeu, a les propriétés {titre: 'Archipel', joueurs: 4}. Une relation va de Ana vers Archipel : son type est AIME, son sens est donné par la flèche, et elle a la propriété {note: 5}. Des étiquettes nomment chaque élément : nœud, label, propriétés (clé : valeur, typées : 4 est un entier, 'Aix' une chaîne), relation, type de relation, sens, propriété de la relation.</title>
+  <defs>
+    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="16" markerHeight="16" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8a96a3"/></marker>
+  </defs>
+  <path d="M387,196 L791,196" fill="none" stroke="#e8a838" stroke-width="4.5" marker-end="url(#fo)"/>
+  <text x="595" y="182" font-size="19" font-weight="bold" font-family="monospace" fill="#b06f00" text-anchor="middle">AIME</text>
+  <text x="595" y="222" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">{note: 5}</text>
+  <g>
+  <circle cx="330" cy="196" r="52" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="330" y="202.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
+  <text x="330" y="134" font-size="17" font-weight="bold" fill="#4a90d9" text-anchor="middle" letter-spacing="0.5">:Personne</text>
+  </g>
+  <g>
+  <circle cx="860" cy="196" r="56" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="860" y="202" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">Archipel</text>
+  <text x="860" y="130" font-size="17" font-weight="bold" fill="#b06f00" text-anchor="middle" letter-spacing="0.5">:Jeu</text>
+  </g>
+  <text x="330" y="278" font-size="16" font-family="monospace" fill="#333" text-anchor="middle">{nom: 'Ana', ville: 'Aix'}</text>
+  <text x="860" y="278" font-size="16" font-family="monospace" fill="#333" text-anchor="middle">{titre: 'Archipel', joueurs: 4}</text>
+  <text x="150" y="202" font-size="16" font-weight="bold" fill="#555" text-anchor="end">nœud</text>
+  <line x1="160" y1="197" x2="267" y2="196" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="190" y="76" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">label</text>
+  <line x1="200" y1="84" x2="275.4" y2="114.1" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="470" y="70" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">relation</text>
+  <line x1="470" y1="80" x2="470" y2="181" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="640" y="70" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">type de relation</text>
+  <line x1="640" y1="80" x2="611.8" y2="155.3" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="760" y="70" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">sens</text>
+  <line x1="764" y1="80" x2="790.7" y2="179.2" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="595" y="300" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">propriété de la relation</text>
+  <line x1="595" y1="284" x2="595" y2="241" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <text x="595" y="362" font-size="16" font-weight="bold" fill="#555" text-anchor="middle">propriétés (clé : valeur, typées)<tspan font-weight="normal" fill="#777"> : <tspan font-family="monospace">4</tspan> est un entier, <tspan font-family="monospace">'Aix'</tspan> une chaîne</tspan></text>
+  <line x1="460" y1="346" x2="441.7" y2="294.7" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+  <line x1="730" y1="346" x2="748.3" y2="294.7" stroke="#8a96a3" stroke-width="2" marker-end="url(#fg)"/>
+</svg>

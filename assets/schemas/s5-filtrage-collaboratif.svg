@@ -1,0 +1,163 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 870" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le filtrage collaboratif sur l'exemple d'essai, en quatre étapes, pour le motif (:Jeu {titre: 'Archipel'})&lt;-[:AIME]-(p:Personne)-[:AIME]-&gt;(autre:Jeu) ; seules les personnes qui aiment Archipel sont dessinées. Étape 1 : partir d'Archipel. Étape 2 : qui l'aime, Ana, Bilal et Elif, par &lt;-[:AIME]-(p:Personne). Étape 3 : ce qu'ils aiment d'autre, par -[:AIME]-&gt;(autre:Jeu) : Ana aime Comète, Bilal aime Marée haute, Elif aime Marée haute ; autre ne vaut jamais Archipel, car une relation n'est jamais parcourue deux fois dans un même motif. Étape 4 : compter count(p) pour chaque autre : Marée haute 2 (Bilal et Elif), Comète 1 (Ana). Résultat : Marée haute 2, Comète 1, « ceux qui aiment Archipel aiment aussi… ».</title>
+  <defs>
+    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#f0c987"/></marker>
+    <marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c5ccd3"/></marker>
+  </defs>
+  <text x="20" y="34" font-size="21" font-weight="bold" fill="#00684a">🧪 Le filtrage collaboratif, en quatre étapes</text>
+  <text x="20" y="76" font-size="18" font-weight="bold" font-family="monospace" fill="#333">(:Jeu {titre: 'Archipel'})&lt;-[:AIME]-(<tspan fill="#8e44ad">p</tspan>:Personne)-[:AIME]-&gt;(<tspan fill="#8e44ad">autre</tspan>:Jeu)</text>
+  <text x="1180" y="76" font-size="15" fill="#777" text-anchor="end">seules les personnes qui aiment Archipel sont dessinées</text>
+  <rect x="10" y="96" width="585" height="340" rx="12" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <circle cx="36" cy="122" r="12" fill="#00684a"/><text x="36" y="127" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="56" y="128" font-size="18" font-weight="bold" fill="#333">partir d'Archipel</text>
+  <path d="M280.3,206 L167.3,251.8" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M278,271 L171,271" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M280.3,336 L167.3,290.2" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M341.8,197.9 L441.4,210.1" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M340.5,280.7 L443.3,313.2" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M341.8,344.5 L441.3,333.4" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <g>
+  <circle cx="120" cy="271" r="42" fill="#e8a838" stroke="#c77d0a" stroke-width="3"/>
+  <text x="120" y="276.2" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Archipel</text>
+  </g>
+  <g>
+  <circle cx="310" cy="194" r="28" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="310" y="198.9" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Ana</text>
+  </g>
+  <g>
+  <circle cx="310" cy="271" r="28" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="310" y="275.9" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Bilal</text>
+  </g>
+  <g>
+  <circle cx="310" cy="348" r="28" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="310" y="352.9" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Elif</text>
+  </g>
+  <g>
+  <circle cx="490" cy="216" r="40" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="490" y="220.9" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Comète</text>
+  </g>
+  <g>
+  <circle cx="490" cy="328" r="40" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="490" y="324.5" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Marée</text>
+  <text x="490" y="341.3" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">haute</text>
+  </g>
+  <text x="30" y="422" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5">(:Jeu {titre: 'Archipel'})</text>
+  <rect x="605" y="96" width="585" height="340" rx="12" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <circle cx="631" cy="122" r="12" fill="#00684a"/><text x="631" y="127" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="651" y="128" font-size="18" font-weight="bold" fill="#333">qui l'aime : Ana, Bilal, Elif</text>
+  <path d="M875.3,206 L763.2,251.5" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M873,271 L767,271" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M875.3,336 L763.2,290.5" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M936.8,197.9 L1036.4,210.1" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M935.5,280.7 L1038.3,313.2" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <path d="M936.8,344.5 L1036.3,333.4" fill="none" stroke="#c5ccd3" stroke-width="2.5" marker-end="url(#fg)"/>
+  <g>
+  <circle cx="715" cy="271" r="42" fill="#e8a838" stroke="#c77d0a" stroke-width="3"/>
+  <text x="715" y="276.2" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Archipel</text>
+  </g>
+  <g>
+  <circle cx="905" cy="194" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="198.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Ana</text>
+  </g>
+  <g>
+  <circle cx="905" cy="271" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="275.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Bilal</text>
+  </g>
+  <g>
+  <circle cx="905" cy="348" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="352.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Elif</text>
+  </g>
+  <g>
+  <circle cx="1085" cy="216" r="40" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="1085" y="220.9" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Comète</text>
+  </g>
+  <g>
+  <circle cx="1085" cy="328" r="40" fill="#f4f5f6" stroke="#b8c0c8" stroke-width="2"/>
+  <text x="1085" y="324.5" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">Marée</text>
+  <text x="1085" y="341.3" font-size="14" font-weight="bold" fill="#999" text-anchor="middle">haute</text>
+  </g>
+  <text x="625" y="422" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5">&lt;-[:AIME]-(p:Personne)</text>
+  <rect x="10" y="448" width="585" height="340" rx="12" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <circle cx="36" cy="474" r="12" fill="#00684a"/><text x="36" y="479" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
+  <text x="56" y="480" font-size="18" font-weight="bold" fill="#333">ce qu'ils aiment d'autre</text>
+  <path d="M280.3,558 L167.3,603.8" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M278,623 L171,623" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M280.3,688 L167.3,642.2" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M341.8,549.9 L440.4,561.9" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M340.5,632.7 L442.3,664.9" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M341.8,696.5 L440.3,685.5" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <g>
+  <circle cx="120" cy="623" r="42" fill="#e8a838" stroke="#c77d0a" stroke-width="3"/>
+  <text x="120" y="628.2" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Archipel</text>
+  </g>
+  <g>
+  <circle cx="310" cy="546" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="310" y="550.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Ana</text>
+  </g>
+  <g>
+  <circle cx="310" cy="623" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="310" y="627.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Bilal</text>
+  </g>
+  <g>
+  <circle cx="310" cy="700" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="310" y="704.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Elif</text>
+  </g>
+  <g>
+  <circle cx="490" cy="568" r="40" fill="#fdf3e0" stroke="#e8a838" stroke-width="3"/>
+  <text x="490" y="572.9" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  </g>
+  <g>
+  <circle cx="490" cy="680" r="40" fill="#fdf3e0" stroke="#e8a838" stroke-width="3"/>
+  <text x="490" y="676.5" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Marée</text>
+  <text x="490" y="693.3" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">haute</text>
+  </g>
+  <text x="32" y="684" font-size="14" font-weight="bold" fill="#b06f00">autre ≠ Archipel :</text>
+  <text x="32" y="703" font-size="14" fill="#555">une relation n'est</text>
+  <text x="32" y="722" font-size="14" fill="#555">jamais parcourue</text>
+  <text x="32" y="741" font-size="14" fill="#555">deux fois</text>
+  <text x="30" y="774" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5">-[:AIME]-&gt;(autre:Jeu)</text>
+  <rect x="605" y="448" width="585" height="340" rx="12" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
+  <circle cx="631" cy="474" r="12" fill="#00684a"/><text x="631" y="479" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="651" y="480" font-size="18" font-weight="bold" fill="#333">compter, par jeu</text>
+  <path d="M875.3,558 L762.3,603.8" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M873,623 L766,623" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M875.3,688 L762.3,642.2" fill="none" stroke="#f0c987" stroke-width="3" marker-end="url(#fl)"/>
+  <path d="M936.8,549.9 L1035.4,561.9" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M935.5,632.7 L1037.3,664.9" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M936.8,696.5 L1035.3,685.5" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <g>
+  <circle cx="715" cy="623" r="42" fill="#e8a838" stroke="#c77d0a" stroke-width="3"/>
+  <text x="715" y="628.2" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">Archipel</text>
+  </g>
+  <g>
+  <circle cx="905" cy="546" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="550.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Ana</text>
+  </g>
+  <g>
+  <circle cx="905" cy="623" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="627.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Bilal</text>
+  </g>
+  <g>
+  <circle cx="905" cy="700" r="28" fill="#4a90d9" stroke="#2a6db5" stroke-width="2.5"/>
+  <text x="905" y="704.9" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">Elif</text>
+  </g>
+  <g>
+  <circle cx="1085" cy="568" r="40" fill="#fdf3e0" stroke="#e8a838" stroke-width="3"/>
+  <text x="1085" y="572.9" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  </g>
+  <g>
+  <circle cx="1085" cy="680" r="40" fill="#fdf3e0" stroke="#e8a838" stroke-width="3"/>
+  <text x="1085" y="676.5" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">Marée</text>
+  <text x="1085" y="693.3" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">haute</text>
+  </g>
+  <rect x="1133" y="553" width="30" height="30" rx="15" fill="#e8a838"/>
+  <text x="1148" y="574" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="1133" y="665" width="30" height="30" rx="15" fill="#e8a838"/>
+  <text x="1148" y="686" font-size="17" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="625" y="774" font-size="16" font-weight="bold" font-family="monospace" fill="#2a6db5">count(p)<tspan font-family="sans-serif" font-weight="normal" fill="#555"> pour chaque </tspan>autre</text>
+  <rect x="10" y="804" width="1180" height="56" rx="10" fill="#2c3e50"/>
+  <text x="30" y="840" font-size="18" font-weight="bold" fill="#ffffff">Résultat</text>
+  <text x="140" y="840" font-size="20" font-family="monospace" fill="#ffffff"><tspan font-weight="bold">Marée haute 2</tspan>  ·  Comète 1</text>
+  <text x="1170" y="840" font-size="17" fill="#ffffff" text-anchor="end">« ceux qui aiment Archipel aiment aussi… »</text>
+</svg>

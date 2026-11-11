@@ -68,6 +68,8 @@ Le support de la séance 3 (`s3-requetes-avancees-agregation-index.md`) ne repre
 
 Le support de la séance 4 (`s4-modelisation-patterns.md`) ne reprend ni ne reformule aucun contenu de MongoDB for Academia : ses exemples (podcasts) et ses schémas (`assets/schemas/s4-*.svg`) sont faits pour ce cours. Il cite des idées publiées, avec leur source sur la diapo des crédits : la démarche en trois étapes et le catalogue des patterns (documentation et blog de MongoDB, D. Coupal et K. W. Alger), les trois tailles de relation (W. Zola), la mise en garde sur CQRS (M. Fowler). Les données du TP3 qu'il décrit (les vélos de Valcerise) sont inventées pour ce cours (`data/PROVENANCE.md` du dépôt TP3).
 
+Le support de la séance 5 (`s5-graphe-neo4j-cypher.md`) ne reprend ni ne reformule aucun contenu de MongoDB for Academia ni d'une formation Neo4j : ses exemples (personnes et jeux de société) et ses schémas (`assets/schemas/s5-*.svg`) sont faits pour ce cours, et ses mesures de coût ont été faites pour lui. Il cite des idées publiées, avec leur source sur la diapo des crédits : les règles de traduction du relationnel au graphe (documentation de Neo4j), la mise en garde sur `MERGE` (manuel et base de connaissances de Neo4j, N. White), le tableau des amis d'amis (I. Robinson, J. Webber, E. Eifrem) et sa critique (R. Hohenstein, M. Jergler), les erreurs fréquentes des débutants (S. Chen et al. ; A. Pachera et al.). Les données du TP4 qu'il décrit (le registre de paquets Ruche) sont inventées pour ce cours (`data/PROVENANCE.md` du dépôt TP4) ; la médiathèque est celle du TP1.
+
 ## Outils
 
 Les supports sont construits avec [Marp](https://marp.app/) (licence MIT).
