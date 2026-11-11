@@ -4,7 +4,7 @@ theme: r510
 paginate: true
 lang: fr
 title: "Séance 1 : la ressource, MongoDB et le CRUD"
-description: "R5.Real.10, séance 1 : présentation de la ressource, NoSQL, modèle document et CRUD avec MongoDB (TP1, parties 1 à 4)"
+description: "R5.Real.10, point cours de la séance 1 (TP1, parties 1 à 4)"
 ---
 
 <!-- _class: lead -->
@@ -17,21 +17,27 @@ section {
   background-position: bottom 40px center;
   background-size: 380px;
 }
+h1 { font-size: 1.9em; }
 </style>
 
 # La ressource, MongoDB et le CRUD
 
-**R5.Real.10 · Nouveaux paradigmes de base de données**
+**R5.Real.10 - Nouveaux paradigmes de base de données**
 
-Séance 1 · BUT Informatique 3e année · 2026-2027
+Séance 1 · TP1, parties 1 à 4 · semaine du 23 novembre 2026
 
 <!--
 (30 s)
 
-Point cours de 33 minutes, en trois temps (somme des durées notées en tête de chaque diapo) :
-- ouverture, 26 min, avant le TP : la ressource (8 min), puis MongoDB jusqu'à « À vous » (18 min) ;
-- reprise avant la partie 3, 5 min : modifier et upsert ;
-- reprise avant la partie 4, 2 min : supprimer.
+Point cours de 33 minutes environ, en trois temps (somme des durées notées en tête de chaque diapo).
+
+Premier temps, en début de séance : diapos 2 à 24 (la ressource, diapos 2 à 7, 8 minutes avec le titre ; MongoDB et les parties 1 et 2, diapos 8 à 24, 17 minutes), puis les deux diapos « À vous » (31 et 32, 1 minute). Ce premier temps dure 26 minutes.
+
+Deuxième temps, quand la majorité du groupe attaque la partie 3 : diapos 25 à 28 (modifier, upsert), 5 minutes.
+
+Troisième temps, quand la majorité du groupe attaque la partie 4 : diapos 29 et 30 (supprimer), 2 minutes.
+
+Les exemples portent sur des films, la collection employes et un capteur ; tout a été exécuté sur MongoDB 9.0.4 et les résultats affichés sont ceux obtenus. Le script qui recharge les films est dans les notes de la diapo « Insérer » (diapo 17).
 
 Avant de commencer : demander qui n'a pas reçu ou pas accepté l'invitation à l'organisation IUTInfoAix-R510-2026. Sans elle, impossible d'accepter le TP1.
 -->
@@ -187,8 +193,9 @@ Conseil : en S1, demander de l'aide sur la syntaxe et le playground ne pose aucu
 ---
 
 <!-- header: Séance 1 · NoSQL -->
-<!-- _header: "" -->
+
 <!-- _class: lead -->
+<!-- _header: "" -->
 
 # 🍃 MongoDB et le NoSQL
 
@@ -197,7 +204,7 @@ Pourquoi d'autres modèles, et lesquels
 <!--
 (10 s)
 
-Fin de la partie sur la ressource. Jusqu'à « À vous » : 18 minutes.
+Fin de la partie sur la ressource. Jusqu'aux pièges de la séance, puis « À vous » : 18 minutes.
 -->
 
 ---
@@ -232,23 +239,7 @@ En 2009, NoSQL était le mot-clé d'une rencontre de développeurs ; la lecture 
 
 <p style="margin: 0 0 0.3rem 0; font-size: 0.82em;">Deux copies de la même base, à Paris et à Marseille. Le livre <i>Dune</i> a <b>1</b> exemplaire disponible. Le réseau entre les deux se coupe.</p>
 
-<svg viewBox="0 0 900 230" style="width: 100%; height: 230px;" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif">
-  <rect x="40" y="60" width="230" height="110" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-  <text x="155" y="95" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Paris</text>
-  <text x="155" y="130" text-anchor="middle" font-size="21">Dune : <tspan font-weight="bold" fill="#c0392b">0</tspan> disponible</text>
-  <text x="155" y="158" text-anchor="middle" font-size="16" fill="#555">(Alice vient de l'emprunter)</text>
-  <rect x="630" y="60" width="230" height="110" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-  <text x="745" y="95" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Marseille</text>
-  <text x="745" y="130" text-anchor="middle" font-size="21">Dune : <tspan font-weight="bold">1</tspan> disponible</text>
-  <text x="745" y="158" text-anchor="middle" font-size="16" fill="#555">(n'a pas reçu l'emprunt)</text>
-  <line x1="275" y1="115" x2="625" y2="115" stroke="#999" stroke-width="4" stroke-dasharray="14 10"/>
-  <text x="450" y="103" text-anchor="middle" font-size="38" fill="#c0392b">✂</text>
-  <text x="450" y="150" text-anchor="middle" font-size="18" fill="#c0392b">coupure réseau (partition)</text>
-  <text x="155" y="35" text-anchor="middle" font-size="19">Alice : « j'emprunte Dune »</text>
-  <text x="745" y="35" text-anchor="middle" font-size="19">Bob : « Dune est-il disponible ? »</text>
-  <text x="155" y="215" text-anchor="middle" font-size="17" fill="#555">écriture acceptée</text>
-  <text x="745" y="215" text-anchor="middle" font-size="17" fill="#555">que doit répondre Marseille ?</text>
-</svg>
+<img src="assets/schemas/s1-cap-partition.svg" alt="Deux copies de la même base, à Paris et à Marseille, séparées par une coupure réseau (partition). À Paris, Alice dit « j'emprunte Dune » : l'écriture est acceptée, Dune y a 0 exemplaire disponible. Marseille n'a pas reçu l'emprunt et affiche toujours 1 disponible ; Bob y demande « Dune est-il disponible ? » : que doit répondre Marseille ?" style="display:block; width:100%; margin:0.2rem auto 0;">
 
 <div class="g2" style="margin-top: 0.3rem; font-size: 0.76em;">
 <div class="carte"><b class="t">Refuser : « réessayez plus tard »</b>Pas de réponse fausse : <b>cohérent (C)</b>. Mais Bob n'obtient rien : <b>pas disponible (A)</b>.</div>
@@ -365,7 +356,7 @@ Dans le playground et mongosh, on écrit { _id: "E01", nom: "Martin" }, sans gui
 <!--
 (1 min)
 
-Lecture : à gauche, la modélisation relationnelle du film : une table pour les films, une pour les réalisateurs (relation plusieurs-à-un, clé étrangère realisateur_id), une table pour les genres de chaque film (relation un-à-plusieurs : un film, plusieurs genres ; le genre n'est qu'une valeur, sans table genres). Pour afficher le film complet, il faut deux jointures.
+Lire le schéma de gauche à droite : à gauche, la modélisation relationnelle du film : une table pour les films, une pour les réalisateurs (relation plusieurs-à-un, clé étrangère realisateur_id), une table pour les genres de chaque film (relation un-à-plusieurs : un film, plusieurs genres ; le genre n'est qu'une valeur, sans table genres). Pour afficher le film complet, il faut deux jointures.
 
 À droite, le même film en document : le réalisateur est un document imbriqué, les genres un tableau. Le film se lit en une fois.
 
@@ -415,23 +406,26 @@ Faire évoluer un schéma reste du travail, même sans ALTER TABLE : le TP3 le m
 
 _id est unique dans sa collection : deux documents d'une même collection ne peuvent pas avoir le même.
 
-Attention, dans un filtre, { champ: null } trouve aussi les documents où le champ manque (vérifié sur 9.0.4) ; pour l'absence seule, c'est $exists: false.
+Attention, dans un filtre, { champ: null } trouve aussi les documents où le champ manque (vérifié sur MongoDB 9.0.4) ; pour l'absence seule, c'est $exists: false.
 -->
 
 ---
 
-<!-- header: Parties 1 et 2 · créer et lire -->
-<!-- _header: "" -->
+<!-- header: Partie 1 · insérer -->
+
 <!-- _class: lead -->
+<!-- _header: "" -->
 
-# Parties 1 et 2 - 📝 Créer et lire des documents
+# Partie 1 - 📝 Premiers documents
 
-`insertOne`, `insertMany`, `find`, opérateurs de requête, tri
+`insertOne`, `insertMany`, types BSON, `_id`
 
 <!--
 (10 s)
 
-Le CRUD de MongoDB, dans l'ordre des parties 1 et 2 du TP1. Modifier et supprimer viendront en reprise, au début des parties 3 et 4.
+Même titre que la partie 1 de l'énoncé du TP1.
+
+Le CRUD de MongoDB, dans l'ordre des parties du TP1. Modifier et supprimer viendront en reprise, au début des parties 3 et 4.
 -->
 
 ---
@@ -440,16 +434,8 @@ Le CRUD de MongoDB, dans l'ordre des parties 1 et 2 du TP1. Modifier et supprime
 
 ```js
 db.films.insertOne({ _id: "F01", titre: "Le Voyage de Chihiro", annee: 2001, /* … */ })
+// { acknowledged: true, insertedId: 'F01' }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-{ acknowledged: true, insertedId: 'F01' }
-```
-
-</div>
 
 ```js
 db.films.insertMany([
@@ -458,16 +444,8 @@ db.films.insertMany([
   { _id: "F04", titre: "Parasite", annee: 2019, duree: 132 },
   { _id: "F05", titre: "Le Fabuleux Destin d'Amélie Poulain", annee: 2001, duree: 122 }
 ])
+// { acknowledged: true, insertedIds: { '0': 'F02', '1': 'F03', '2': 'F04', '3': 'F05' } }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-{ acknowledged: true, insertedIds: { '0': 'F02', '1': 'F03', '2': 'F04', '3': 'F05' } }
-```
-
-</div>
 
 <!--
 (1 min)
@@ -479,6 +457,21 @@ insertMany prend un tableau de documents, en une seule instruction. Le résultat
 Les résultats affichés ici sont ceux de mongosh sur MongoDB 9.0.4. Le playground affiche les mêmes valeurs, présentées en JSON.
 
 writeConcern règle surtout l'attente des répliques : sur notre serveur unique, on le laisse par défaut. ordered: false fait continuer insertMany après une erreur, un doublon par exemple ; le TP n'en a pas besoin.
+
+Script de rechargement, vérifié sur MongoDB 9.0.4, à coller dans essais.mongodb.js : il remet les films dans l'état que supposent toutes les diapos qui suivent (lire, modifier, supprimer), vide la collection capteurs pour l'upsert, et se relance sans erreur. Les démos tournent dans une base à part, demo, que le correcteur automatique ne lit pas. Pour rejouer les insertions en direct, n'exécuter que les trois premières lignes, puis les requêtes des diapos.
+
+use('demo');
+db.films.deleteMany({});
+db.capteurs.deleteMany({});
+db.films.insertOne({ _id: "F01", titre: "Le Voyage de Chihiro", annee: 2001, duree: 125, sortie: ISODate("2001-07-20"),
+  realisation: { nom: "Miyazaki", pays: "Japon" }, genres: ["animation", "fantastique"] });
+db.films.insertMany([
+  { _id: "F02", titre: "Mon voisin Totoro", annee: 1988, duree: 86 },
+  { _id: "F03", titre: "La Haine", annee: 1995, duree: 98 },
+  { _id: "F04", titre: "Parasite", annee: 2019, duree: 132 },
+  { _id: "F05", titre: "Le Fabuleux Destin d'Amélie Poulain", annee: 2001, duree: 122 }
+]);
+db.films.insertOne({ titre: "Le Dîner de cons", annee: 1998 });
 -->
 
 ---
@@ -491,7 +484,7 @@ td code { white-space: nowrap; }
 th { white-space: nowrap; }
 </style>
 
-<div class="g2" style="grid-template-columns: 1.05fr 1.1fr; align-items: start;">
+<div class="g2" style="grid-template-columns: auto 1fr; gap: 1.6rem; align-items: start;">
 <div>
 
 | Valeur écrite | Type BSON |
@@ -510,29 +503,25 @@ th { white-space: nowrap; }
 <div style="font-size: 0.95em;">
 
 ```js
-db.films.insertOne({ titre: "Le Dîner de cons", annee: 1998 })
+db.films.insertOne(
+  { titre: "Le Dîner de cons", annee: 1998 })
+// sans _id, MongoDB génère un ObjectId :
+// { acknowledged: true,
+//   insertedId: ObjectId('6af2d8afcf3231a85a9f4fe7') }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat : sans _id, MongoDB génère un ObjectId</div>
 
 ```js
-{ acknowledged: true,
-  insertedId: ObjectId('6af2d8afcf3231a85a9f4fe7') }
+db.films.insertOne(
+  { _id: "F03", titre: "Ma 6-T va crack-er" })
 ```
 
-</div>
+<p class="petit" style="margin: 0.5rem 0 0;">Erreur : <code>_id</code> est unique dans la collection</p>
 
-```js
-db.films.insertOne({ _id: "F03", titre: "Ma 6-T va crack-er" })
-```
-
-<div class="res">
-<div class="res-titre">Résultat : _id est unique dans la collection</div>
+<div class="err">
 
 ```text
 MongoServerError: E11000 duplicate key error collection:
-cinema.films index: _id_ dup key: { _id: "F03" }
+demo.films index: _id_ dup key: { _id: "F03" }
 ```
 
 </div>
@@ -551,6 +540,23 @@ Dans le TP, les _id sont des chaînes choisies ("E01") : les résultats sont les
 
 ---
 
+<!-- header: Partie 2 · lire -->
+
+<!-- _class: lead -->
+<!-- _header: "" -->
+
+# Partie 2 - 🔎 Lire des documents
+
+`find`, opérateurs de requête, tri
+
+<!--
+(10 s)
+
+Même titre que la partie 2 de l'énoncé du TP1.
+-->
+
+---
+
 ## Lire : find(filtre, projection)
 
 <style scoped>
@@ -559,19 +565,17 @@ pre { font-size: 0.85em; }
 
 <img src="assets/schemas/s1-find-anatomie.svg" alt="Anatomie de db.films.find({ annee: 2001 }, { _id: 0, titre: 1 }) : films est la collection (FROM films) ; { annee: 2001 } est le filtre, qui choisit les documents (WHERE annee = 2001 ; {} les garde tous) ; { _id: 0, titre: 1 } est la projection, qui choisit les champs (SELECT titre ; 1 garde, 0 exclut)" style="display: block; margin: 0.8rem auto 1rem; width: 100%;">
 
-<div class="res">
-<div class="res-titre">Résultat</div>
-
 ```js
-[ { titre: 'Le Voyage de Chihiro' }, { titre: "Le Fabuleux Destin d'Amélie Poulain" } ]
+db.films.find({ annee: 2001 }, { _id: 0, titre: 1 })
+// [ { titre: 'Le Voyage de Chihiro' }, { titre: "Le Fabuleux Destin d'Amélie Poulain" } ]
 ```
-
-</div>
 
 <div class="carte" style="margin-top: 0.8rem; font-size: 0.78em;"><code>_id</code> revient toujours, sauf <code>_id: 0</code>. On ne mélange pas 1 et 0 dans une projection, sauf pour <code>_id</code>.</div>
 
 <!--
 (1 min)
+
+Résultat obtenu sur MongoDB 9.0.4, avec les films du script de la diapo « Insérer ».
 
 findOne renvoie un seul document, ou null ; find renvoie tous ceux qui correspondent.
 
@@ -597,30 +601,15 @@ db.films.find(
   { duree: { $gte: 90, $lt: 120 } },
   { _id: 0, titre: 1, duree: 1 }
 )
+// [ { titre: 'La Haine', duree: 98 } ]
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-[ { titre: 'La Haine', duree: 98 } ]
-```
-
-</div>
 
 ```js
 db.films.find({ genres: "animation" },
   { _id: 0, titre: 1 })
+// un élément du tableau suffit :
+// [ { titre: 'Le Voyage de Chihiro' } ]
 ```
-
-<div class="res">
-<div class="res-titre">Résultat : un élément du tableau suffit</div>
-
-```js
-[ { titre: 'Le Voyage de Chihiro' } ]
-```
-
-</div>
 </div>
 </div>
 
@@ -628,6 +617,8 @@ db.films.find({ genres: "animation" },
 
 <!--
 (1 min 30)
+
+Résultats obtenus sur MongoDB 9.0.4.
 
 Premier exemple : deux conditions sur le même champ, une durée entre 90 (compris) et 120 (exclu) minutes.
 
@@ -646,34 +637,21 @@ Les expressions régulières ont un tableau de motifs dans l'énoncé, partie 2.
 db.films.find({ annee: { $gte: 2000 } }, { _id: 0, titre: 1, duree: 1 })
         .sort({ duree: 1 })
         .limit(1)
+// [ { titre: "Le Fabuleux Destin d'Amélie Poulain", duree: 122 } ]
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-[ { titre: "Le Fabuleux Destin d'Amélie Poulain", duree: 122 } ]
-```
-
-</div>
 
 ```js
 db.films.countDocuments({ annee: { $lt: 2000 } })
+// un nombre, pas des documents :
+// 3
 ```
-
-<div class="res">
-<div class="res-titre">Résultat : un nombre, pas des documents</div>
-
-```js
-3
-```
-
-</div>
 
 <p style="font-size: 0.75em;"><code>1</code> trie par ordre croissant, <code>-1</code> par ordre décroissant ; une seconde clé départage les égalités. Le serveur trie toujours avant de limiter. <code>distinct("champ")</code> renvoie le tableau des valeurs différentes.</p>
 
 <!--
 (1 min)
+
+Résultats obtenus sur MongoDB 9.0.4.
 
 Le film le plus court depuis 2000. Sans sort, limit garde un document quelconque.
 
@@ -713,9 +691,9 @@ db.employes.find(…)    // dernière instruction :
 </div>
 
 <!--
-(1 min 30, démonstration comprise)
+(1 min 30)
 
-Démonstration conseillée : ouvrir le playground, se connecter, exécuter l'exemple A avec Ctrl+Alt+S.
+Démonstration conseillée, comprise dans la durée : ouvrir le playground, se connecter, exécuter l'exemple A avec Ctrl+Alt+S.
 
 Sans connexion, le playground affiche « Please connect to a database before running a playground » : cliquer sur Connect now et choisir MongoDB du Codespace.
 
@@ -761,109 +739,16 @@ Pour l'enseignant, les erreurs relevées dans ces présentations, si un étudian
 - MQL, diapo 73 : upsert avec update(), déprécié ; on écrit updateOne(…, { upsert: true }) ;
 - Inserting and Updating, diapo 23 : « delete : Always! » idempotent ; faux pour deleteOne avec un filtre qui désigne plusieurs documents, puisque chaque exécution en supprime un de plus ;
 - Deleting Data, diapo 11 : affiche le code de la diapo 7 au lieu de drop().
--->
 
----
-
-## À vous : la séance 1
-
-<style scoped>
-.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
-.g2 > div > .orange { margin-top: auto; }
-</style>
-
-<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
-<a href="https://iutinfoaix-r510.github.io/tp1/">iutinfoaix-r510.github.io/tp1</a>
-</div>
-
-<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
-<div>
-
-1. Mise en place (TP1, codespace, vérifications) : **20 min**
-2. Partie 1, premiers documents : **25 min**
-3. Partie 2, lire : **1 h 10**
-4. Reprise, puis partie 3, modifier : **55 min**
-5. Reprise, puis partie 4, supprimer : **20 min**
-6. **Premier rendu** : `r510-rendre`, **10 min**
-
-<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
-
-<div class="carte orange">
-<b class="t">📅 Rendu final du TP1</b>
-dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
-</div>
-
-</div>
-<div>
-
-<div class="carte vert">
-<b class="t">Les points</b>
-Parties 1 à 4 : 25 exercices, 100 des 208 points du TP1.
-</div>
-
-<div class="carte vert">
-<b class="t">Le rendu</b>
-<code>r510-rendre</code> lance <code>npm run check</code>, puis rend. Trois rendus au plus pour tout le TP1.
-</div>
-
-<div class="carte orange">
-<b class="t">En avance ?</b>
-Lisez « Modéliser la médiathèque ».
-</div>
-
-</div>
-</div>
-
-<!--
-(30 s)
-
-Les quatre vérifications de l'énoncé : r510-mongo status, npm run seed, mongosh tp1 --quiet --eval 'db.employes.countDocuments()' qui doit afficher 12, puis npm run check qui finit sur 0/208.
-
-Partie 1 très guidée (exemples A à C), partie 2 : la boucle écrire, exécuter, lire, corriger.
-
-Modifier et supprimer viennent dans deux courtes reprises, quand le groupe arrive aux parties 3 et 4.
-
-Le minutage suppose l'ouverture du point cours (26 min) déjà faite. Reste : mise en place, 20 min ; partie 1 (2 exercices et 3 exemples guidés), 25 min ; partie 2 (12 exercices), 1 h 10 ; reprise de 5 min puis partie 3 (8 exercices), 55 min ; reprise de 2 min puis partie 4 (3 exercices), 20 min ; rendu, 10 min. Le total fait 3 h 46 : il reste moins d'un quart d'heure de marge. Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
--->
-
----
-
-## À vous : essayer et réviser
-
-<style scoped>
-table { font-size: 0.85em; width: 100%; }
-td { padding-top: 0.4em; padding-bottom: 0.4em; }
-.etiquette { margin-top: 1.2rem !important; }
-</style>
-
-<p class="etiquette">🧪 Essayer sans risque</p>
-
-<div class="box" style="margin-top: 0.3rem; font-size: 0.85em;">
-Les essais vont dans <code>essais.mongodb.js</code>, à la racine du dépôt, sur la collection <code>brouillon</code> : le correcteur automatique ne lit ni l'un ni l'autre. <b>Jamais sous un <code>// Votre réponse :</code>.</b>
-</div>
-
-<p class="etiquette" style="margin-top: 1rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
-
-| Partie | À demander à l'assistant |
-|---|---|
-| 1 | « Fais-moi un quiz sur les documents, l'identifiant _id, insertOne et insertMany. » |
-| 2 | « Fais-moi un quiz sur les filtres, les opérateurs de comparaison, les expressions régulières, la projection et le tri. » |
-| 3 | « Fais-moi un quiz sur les opérateurs de mise à jour et l'upsert. » |
-| 4 | « Fais-moi un quiz sur deleteOne, deleteMany et les filtres de suppression. » |
-
-<!--
-(30 s)
-
-Les assistants du codespace sont configurés en tuteurs : ils posent une question à la fois, sur d'autres données que celles du TP, et corrigent chaque réponse en expliquant. Ils n'écrivent pas la réponse d'un exercice.
-
-Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
+Fin du premier temps : enchaîner sur les deux diapos « À vous » (31 et 32), puis lancer le travail. Le deuxième temps commence à la partie 3.
 -->
 
 ---
 
 <!-- header: Partie 3 · modifier -->
-<!-- _header: "" -->
+
 <!-- _class: lead -->
+<!-- _header: "" -->
 
 # Partie 3 - 🔧 Modifier des documents
 
@@ -872,7 +757,9 @@ Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
 <!--
 (10 s)
 
-À projeter quand la plupart des étudiants abordent la partie 3. Durée de la reprise : 5 minutes.
+Même titre que la partie 3 de l'énoncé du TP1.
+
+Début du deuxième temps : à projeter quand la majorité du groupe attaque la partie 3. Diapos 25 à 28, 5 minutes.
 -->
 
 ---
@@ -885,16 +772,8 @@ Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
 
 ```js
 db.films.updateOne({ titre: "La Haine" }, { $set: { pays: "France" } })
+// { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-{ acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }
-```
-
-</div>
 
 <div class="g2" style="margin-top: 0.4rem;">
 <div>
@@ -902,18 +781,11 @@ db.films.updateOne({ titre: "La Haine" }, { $set: { pays: "France" } })
 ```js
 db.films.updateOne({ titre: "La haine" },
   { $set: { pays: "France" } })
+// la casse compte, rien n'est trouvé :
+// { acknowledged: true, insertedId: null,
+//   matchedCount: 0, modifiedCount: 0,
+//   upsertedCount: 0 }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat : la casse compte, rien n'est trouvé</div>
-
-```js
-{ acknowledged: true, insertedId: null,
-  matchedCount: 0, modifiedCount: 0,
-  upsertedCount: 0 }
-```
-
-</div>
 </div>
 <div>
 
@@ -929,6 +801,10 @@ db.films.updateMany({ annee: { $lt: 2000 } },
 
 <!--
 (1 min 30)
+
+Résultats obtenus sur MongoDB 9.0.4 ; les films sont ceux du script des notes de la diapo « Insérer » (diapo 17), à recharger avant de rejouer les exemples.
+
+Lire le schéma colonne par colonne : le même filtre trouve trois films ; à gauche, updateOne ne modifie que le premier trouvé ; à droite, updateMany les modifie tous.
 
 matchedCount : documents trouvés par le filtre. modifiedCount : documents réellement changés. Un matchedCount à 0, c'est un filtre qui ne trouve rien, sans aucun message d'erreur.
 
@@ -954,16 +830,9 @@ db.films.updateOne({ _id: "F01" }, {
   $inc: { diffusions: 1 } })
 db.films.findOne({ _id: "F01" },
   { _id: 0, pays: 1, diffusions: 1 })
+// deux opérateurs, une seule mise à jour :
+// { diffusions: 1, pays: 'Japon' }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat : deux opérateurs, une seule mise à jour</div>
-
-```js
-{ diffusions: 1, pays: 'Japon' }
-```
-
-</div>
 </div>
 <div>
 
@@ -972,8 +841,9 @@ db.films.updateOne({ _id: "F03" },
   { pays: "France" })     // sans opérateur
 ```
 
-<div class="res">
-<div class="res-titre">Résultat</div>
+<p class="petit" style="margin: 0.5rem 0 0;">Erreur : il faut un opérateur</p>
+
+<div class="err">
 
 ```text
 MongoInvalidArgumentError:
@@ -987,7 +857,7 @@ Update document requires atomic operators
 <!--
 (1 min 30)
 
-Exemples du schéma exécutés sur la collection films : Totoro reçoit diffusions: 1, Parasite reçoit prix: [ "Palme d'or" ], Chihiro garde genres: [ 'animation' ], La Haine perd son champ pays. L'exemple de gauche vient ensuite : Chihiro reçoit pays et diffusions en une seule instruction. Le playground affiche le résultat de la dernière instruction, ici le findOne. Un même objet de mise à jour peut contenir plusieurs opérateurs, chacun sur des champs différents.
+Exemples du schéma exécutés sur MongoDB 9.0.4, sur la collection films : Totoro reçoit diffusions: 1, Parasite reçoit prix: [ "Palme d'or" ], Chihiro garde genres: [ 'animation' ], La Haine perd son champ pays. L'exemple de gauche vient ensuite : Chihiro reçoit pays et diffusions en une seule instruction. Le playground affiche le résultat de la dernière instruction, ici le findOne. Un même objet de mise à jour peut contenir plusieurs opérateurs, chacun sur des champs différents.
 
 $unset retire le champ ; le mettre à false ou à null ne suffit pas.
 
@@ -1015,6 +885,8 @@ db.capteurs.updateOne(
 <!--
 (1 min 30)
 
+Lire l'organigramme de gauche à droite : la question posée au filtre, puis la branche « non » (1re exécution, en haut) ou « oui » (2e exécution, en bas), et le résultat de chacune à droite. Résultats obtenus sur MongoDB 9.0.4, collection capteurs vidée par le script de la diapo « Insérer ».
+
 Un capteur envoie sa dernière mesure : s'il est inconnu, on le crée ; sinon, on met à jour.
 
 Le correcteur automatique exécute l'exercice 20 deux fois de suite, et aussi sur une base où le document existe déjà avec d'autres valeurs : seul le champ visé par la consigne doit changer.
@@ -1025,8 +897,9 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 ---
 
 <!-- header: Partie 4 · supprimer -->
-<!-- _header: "" -->
+
 <!-- _class: lead -->
+<!-- _header: "" -->
 
 # Partie 4 - 🗑️ Supprimer des documents
 
@@ -1035,7 +908,9 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 <!--
 (10 s)
 
-À projeter quand la plupart des étudiants abordent la partie 4. Durée de la reprise : 2 minutes.
+Même titre que la partie 4 de l'énoncé du TP1.
+
+Début du troisième temps : à projeter quand la majorité du groupe attaque la partie 4. Diapos 29 et 30, 2 minutes.
 -->
 
 ---
@@ -1049,32 +924,16 @@ L'upsert s'écrit avec updateOne et l'option { upsert: true }. update(), qu'on v
 // d'abord, voir ce qui partira
 db.films.find({ annee: { $lt: 1990 } },
   { titre: 1 })
+// [ { _id: 'F02', titre: 'Mon voisin Totoro' } ]
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-[ { _id: 'F02', titre: 'Mon voisin Totoro' } ]
-```
-
-</div>
 </div>
 <div>
 
 ```js
 db.films.deleteMany(
   { annee: { $lt: 1990 } })
+// { acknowledged: true, deletedCount: 1 }
 ```
-
-<div class="res">
-<div class="res-titre">Résultat</div>
-
-```js
-{ acknowledged: true, deletedCount: 1 }
-```
-
-</div>
 </div>
 </div>
 
@@ -1086,6 +945,10 @@ Aucune confirmation demandée. Dans le codespace, <code>npm run seed -- --avant 
 
 <!--
 (1 min 30)
+
+Résultats obtenus sur MongoDB 9.0.4.
+
+Lire le schéma de gauche à droite : trois suppressions de portée croissante. Un filtre supprime les documents qui y correspondent, deleteMany({}) vide la collection, drop() supprime la collection elle-même.
 
 Même filtre que find, mêmes opérateurs, même ET implicite. deleteOne supprime le premier document trouvé, deleteMany tous.
 
@@ -1101,6 +964,106 @@ Pour essayer drop(), le faire sur la collection brouillon, jamais sur employes.
 ---
 
 <!-- header: "" -->
+
+## À vous : la séance 1
+
+<style scoped>
+.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
+.g2 > div > .orange { margin-top: auto; }
+</style>
+
+<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
+<a href="https://iutinfoaix-r510.github.io/tp1/">iutinfoaix-r510.github.io/tp1</a> : accepter le TP1, puis <code>npm run seed</code>
+</div>
+
+<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
+<div>
+
+1. Mise en place (TP1, codespace, vérifications) : **20 min**
+2. Partie 1, premiers documents : **25 min**
+3. Partie 2, lire : **1 h 10**
+4. Reprise, puis partie 3, modifier : **55 min**
+5. Reprise, puis partie 4, supprimer : **20 min**
+6. **Premier rendu** : `r510-rendre`, **10 min**
+
+<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
+
+<div class="carte orange">
+<b class="t">📅 Rendu final du TP1</b>
+dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
+</div>
+
+</div>
+<div>
+
+<div class="carte vert">
+<b class="t">Les points</b>
+Parties 1 à 4 : 25 exercices, 100 des 208 points du TP1, qui compte pour 16 % de la note.
+</div>
+
+<div class="carte vert">
+<b class="t">Le rendu</b>
+<code>r510-rendre</code> lance <code>npm run check</code>, puis rend. Trois rendus au plus pour tout le TP1.
+</div>
+
+<div class="carte orange">
+<b class="t">Base abîmée ?</b>
+<code>npm run seed -- --avant N</code> la répare.
+</div>
+
+</div>
+</div>
+
+<!--
+(30 s)
+
+Rappeler les trois rendus du TP1 : fin de séance 1, fin de séance 2, rendu final au plus tard le dimanche 6 décembre 2026 à 23 h 59.
+
+Les quatre vérifications de l'énoncé : r510-mongo status, npm run seed, mongosh tp1 --quiet --eval 'db.employes.countDocuments()' qui doit afficher 12, puis npm run check qui finit sur 0/208.
+
+Partie 1 très guidée (exemples A à C), partie 2 : la boucle écrire, exécuter, lire, corriger.
+
+Modifier et supprimer viennent dans deux courtes reprises, quand le groupe arrive aux parties 3 et 4 : diapos 25 à 28, puis 29 et 30.
+
+Le minutage suppose l'ouverture du point cours (26 min) déjà faite. Reste : mise en place, 20 min ; partie 1 (2 exercices et 3 exemples guidés), 25 min ; partie 2 (12 exercices), 1 h 10 ; reprise de 5 min puis partie 3 (8 exercices), 55 min ; reprise de 2 min puis partie 4 (3 exercices), 20 min ; rendu, 10 min. Le total fait 26 + 20 + 25 + 70 + 55 + 20 + 10 = 3 h 46 : il reste moins d'un quart d'heure de marge.
+-->
+
+---
+
+## À vous : essayer et réviser
+
+<style scoped>
+table { font-size: 0.85em; width: 100%; }
+td { padding-top: 0.4em; padding-bottom: 0.4em; }
+</style>
+
+<p class="etiquette">🧪 Essayer sans risque</p>
+
+<div class="box" style="margin-top: 0.3rem;">
+
+Les essais vont dans `essais.mongodb.js`, à la racine du dépôt, sur la collection `brouillon` : le correcteur automatique ne lit ni l'un ni l'autre. **Jamais sous un <code style="white-space: nowrap;">// Votre réponse :</code>.**
+
+</div>
+
+<p class="etiquette" style="margin-top: 0.9rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+
+| Partie | À demander à l'assistant |
+|---|---|
+| 1 | « Fais-moi un quiz sur les documents, l'identifiant `_id`, `insertOne` et `insertMany`. » |
+| 2 | « Fais-moi un quiz sur les filtres, les opérateurs de comparaison, les expressions régulières, la projection et le tri. » |
+| 3 | « Fais-moi un quiz sur les opérateurs de mise à jour et l'upsert. » |
+| 4 | « Fais-moi un quiz sur `deleteOne`, `deleteMany` et les filtres de suppression. » |
+
+<!--
+(30 s)
+
+Les assistants du codespace sont configurés en tuteurs : ils posent une question à la fois, sur d'autres données que celles du TP, et corrigent chaque réponse en expliquant. Ils n'écrivent pas la réponse d'un exercice.
+
+Les quatre invites sont celles de l'énoncé, à la fin de chaque partie.
+-->
+
+---
+
 <!-- _class: lead -->
 
 # Des questions ?
@@ -1130,28 +1093,25 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 <!--
 (10 s)
 
-Les adresses sont celles du syllabus. Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe.
+Les adresses sont celles du syllabus. Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe ; entre les séances, une issue sur le dépôt syllabus.
 -->
 
 ---
 
 ## Crédits
 
-<div style="font-size: 0.72em;">
+<div class="petit">
 
-- **Supports d'origine**, dont ce support s'inspire : présentations du programme MongoDB for Academia, en anglais, sous licence [CC BY-NC-SA 3.0](https://creativecommons.org/licenses/by-nc-sa/3.0/) : *MongoDB 101: Non-Relational for Beginners*, *Querying in Relational and Non-Relational Databases*, *The MongoDB Query Language (MQL)*, *Inserting and Updating Data in MongoDB*, *Deleting Data in MongoDB*. Liens dans le README du dépôt `cours`.
-- **Documentation** : [MongoDB Manual](https://www.mongodb.com/docs/manual/), [correspondance SQL et MongoDB](https://www.mongodb.com/docs/manual/reference/sql-comparison/).
-- **Exemples** : exécutés sur MongoDB 9.0.4 avec mongosh ; les résultats affichés sont ceux obtenus.
-- **Énoncé et syllabus** : TP1 et syllabus de R5.Real.10, IUT d'Aix-Marseille.
+**Ce support** : R5.Real.10, IUT d'Aix-Marseille, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr). Exemples (films, employés, capteur) écrits pour ce cours ; tous exécutés sur MongoDB 9.0.4 avec mongosh, et les résultats affichés sont ceux obtenus. Le logo d'Aix-Marseille Université n'est pas couvert par cette licence.
 
-</div>
+**Pour aller plus loin** : [MongoDB Manual](https://www.mongodb.com/docs/manual/) · [correspondance SQL et MongoDB](https://www.mongodb.com/docs/manual/reference/sql-comparison/) · [opérations CRUD](https://www.mongodb.com/docs/manual/crud/) · [types BSON](https://www.mongodb.com/docs/manual/reference/bson-types/) · [opérateurs de requête](https://www.mongodb.com/docs/manual/reference/operator/query/) · [opérateurs de mise à jour](https://www.mongodb.com/docs/manual/reference/operator/update/)
 
-<div class="carte vert" style="margin-top: 0.8rem; font-size: 0.72em;">
-Ce support, R5.Real.10 (IUT d'Aix-Marseille, github.com/IUTInfoAix-R510/cours), est diffusé sous licence <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr">CC BY-NC-SA 4.0</a>. Le logo d'Aix-Marseille Université n'est couvert par aucune de ces licences.
 </div>
 
 <!--
 (Hors minutage : diapo de référence, laissée en fin de support.)
+
+Ce support s'inspire des présentations du programme MongoDB for Academia sans en reprendre de contenu. Pour les étudiants qui consultent ces présentations officielles (en anglais, pensées pour Atlas et l'ancien shell) : « MongoDB 101: Non-Relational for Beginners », « Querying in Relational and Non-Relational Databases », « The MongoDB Query Language (MQL) », « Inserting and Updating Data in MongoDB » et « Deleting Data in MongoDB » traitent les notions de cette séance, sous licence CC BY-NC-SA 3.0. Liens dans le README du dépôt cours ; leurs erreurs sont relevées dans les notes de la diapo « Les pièges de la séance ».
 
 Les licences du dépôt et le détail des reprises sont dans ATTRIBUTION.md.
 -->

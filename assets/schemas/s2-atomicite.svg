@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 200" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Une écriture sur un document est tout ou rien ; deux écritures sur deux documents peuvent être séparées par une panne</title>
+  <title id="t">À gauche, une seule écriture sur la recette R1 applique les deux modifications, auteur.ville et l'ajout du sel, ou aucune. À droite, l'écriture 1 passe publiee à true sur R1, puis une panne survient : l'écriture 2 sur l'auteur lea13 n'a pas lieu, nb_publiees reste à 0. Recette publiée, compteur faux.</title>
   <defs>
     <path id="ok" d="M0,9 L7,16 L20,0" fill="none" stroke="#13aa52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     <path id="ko" d="M0,0 L16,16 M16,0 L0,16" fill="none" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>

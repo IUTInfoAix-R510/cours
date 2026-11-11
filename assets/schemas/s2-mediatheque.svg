@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 560" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Un livre de la collection livres et un membre de la collection membres, avec leurs documents imbriqués et leurs tableaux</title>
+  <title id="t">Un des 26 documents de la collection livres : _id L06, titre Dune, annee 1965 ; auteurs, un tableau de documents, avec l'auteur A04, Frank Herbert ; categories, le tableau [ Science-Fiction ] ; serie, un document imbriqué { nom: Dune, tome: 1 } ; exemplaires, un tableau de documents : l'exemplaire L06-1, état Bon, disponible false, porte emprunt_actuel, un document imbriqué de troisième niveau avec membre_id M12, date_emprunt et date_retour_prevue ; l'exemplaire L06-2, état Neuf, disponible true, n'en a pas ; avis, un tableau de documents, dont celui du membre M01 avec la note 5. Un des 14 documents de la collection membres : _id M12, Tom Lambert ; emprunts, un tableau de documents, dont l'emprunt de l'exemplaire L06-1, titre Dune : le même emprunt que dans le livre.</title>
   <style>
-    .c { font-size: 18px; fill: #333; }
+    .c { font-size: 16px; fill: #333; font-family: monospace; }
     .h { font-size: 20px; font-weight: bold; fill: #00684a; }
     .s { font-size: 17px; fill: #555; }
     .tag { font-size: 17px; font-weight: bold; }
@@ -15,9 +15,9 @@
   <text class="c" x="30" y="116">categories: [ "Science-Fiction" ],</text>
 
   <!-- serie : document imbriqué -->
-  <text class="c" x="30" y="153">serie:</text>
+  <text class="c" x="30" y="153" textLength="52" lengthAdjust="spacingAndGlyphs">serie:</text>
   <rect x="88" y="131" width="232" height="32" rx="6" fill="#e8f1fb" stroke="#4a90d9" stroke-width="2"/>
-  <text class="c" x="100" y="153">{ nom: "Dune", tome: 1 },</text>
+  <text class="c" x="100" y="153" textLength="210" lengthAdjust="spacingAndGlyphs">{ nom: "Dune", tome: 1 },</text>
   <text class="tag" x="336" y="153" fill="#4a90d9">← document imbriqué</text>
 
   <!-- exemplaires : tableau de documents -->

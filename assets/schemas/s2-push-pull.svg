@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le tableau ingredients au départ, après $push, puis après $pull</title>
+  <title id="t">Le tableau ingredients de la recette : au départ farine 250, lait 500, oeufs 3. Après $push : sucre 30 est ajouté à la fin. Après $pull avec qte inférieure à 100 : oeufs et sucre sont retirés tous les deux, il reste farine et lait.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

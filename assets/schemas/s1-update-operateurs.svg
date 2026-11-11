@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 266" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Avant et après chaque opérateur de mise à jour : $set et $inc créent le champ, $push crée le tableau, $pull retire fantastique des genres, $unset retire le champ pays</title>
+  <title id="t">Avant et après chaque opérateur. La Haine, $set: { pays: "France" } : aucun champ pays avant, pays: "France" après. Totoro, $inc: { diffusions: 1 } : aucun champ diffusions avant, diffusions: 1 après. Parasite, $push: { prix: "Palme d'or" } : aucun champ prix avant, prix: ["Palme d'or"] après. Chihiro, $pull: { genres: "fantastique" } : genres: ["animation", "fantastique"] avant, genres: ["animation"] après. La Haine, $unset: { pays: "" } : pays: "France" avant, aucun champ pays après.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
   </defs>

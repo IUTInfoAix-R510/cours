@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 470" font-family="sans-serif">
-  <title>Embarquer ou référencer : un film et ses critiques, de deux façons</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 470" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Un film et ses critiques, de deux façons. Embarquer : les critiques sont un tableau dans le document du film ; db.films.findOne lit tout en une fois ; avantages : une seule lecture, modification atomique ; inconvénient : le document grossit, 16 Mo au plus. Référencer : une collection critiques où chaque critique porte film_id ; db.critiques.find({ film_id: 'F01' }) ; avantages : documents petits, critiques sans limite, une critique se lit ou se modifie seule ; inconvénient : deux lectures, ou $lookup.</title>
   <defs>
     <marker id="ref" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/>

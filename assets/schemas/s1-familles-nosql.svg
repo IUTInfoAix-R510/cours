@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="sans-serif">
-  <title>Six familles NoSQL</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Six familles NoSQL. Clé-valeur : une clé donne une valeur opaque, pour le cache et les sessions (Redis). Document : des documents structurés, interrogés champ par champ (MongoDB, CouchDB ; TP1 à TP3, projet). Colonnes (wide-column) : des lignes aux colonnes variables, regroupées en familles, sur de nombreuses machines (Cassandra, HBase). Graphe : des nœuds et des relations, pour parcourir des chemins (Neo4j ; TP4). Vectoriel : des embeddings et la recherche des plus proches voisins, pour l'IA (Qdrant, Milvus, pgvector pour PostgreSQL). Multi-modèle : document, graphe et clé-valeur dans un même moteur (ArangoDB).</title>
   <defs>
     <marker id="fb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>

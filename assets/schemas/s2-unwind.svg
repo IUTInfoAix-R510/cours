@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 230" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$unwind : le document C1 et son tableau de 3 mesures donne 3 documents, un par mesure</title>
+  <title id="t">$unwind : le document C1, dont le tableau mesures contient 3 éléments, devient 3 documents de même _id C1, chacun avec une seule mesure dans le champ mesures : h 8 v 19.5, h 12 v 21, h 18 v 22.5. Un document par élément.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

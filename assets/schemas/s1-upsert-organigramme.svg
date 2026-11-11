@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 290" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Upsert : si aucun document ne correspond au filtre, un document est inséré avec les champs du filtre, du $set et du $setOnInsert ; sinon le document trouvé est mis à jour, $set s'applique et $setOnInsert est ignoré</title>
+  <title id="t">Upsert : un document correspond-il au filtre { _id: "C42" } ? Non, à la 1re exécution : insertion d'un nouveau document, avec _id: "C42" venu du filtre, temperature: 21.5 venu du $set et les champs du $setOnInsert s'il y en a ; résultat upsertedCount: 1, insertedId: 'C42'. Oui, à la 2e exécution : mise à jour du document trouvé, $set écrase temperature et $setOnInsert est ignoré ; résultat matchedCount: 1, modifiedCount: 0, car 21.5 y était déjà.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

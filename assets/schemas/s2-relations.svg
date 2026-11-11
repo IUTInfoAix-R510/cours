@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Trois sortes de relations (la 1-N en deux cas) et le choix le plus courant pour chacune : embarquer ou référencer</title>
+  <title id="t">Trois sortes de relations, dont la 1-N en deux cas, et le choix le plus courant : 1-1, une personne et son adresse postale, embarquer le document ; 1-N avec peu d'éléments, un client et ses adresses de livraison, embarquer un tableau ; 1-N sans limite, un capteur et ses mesures, référencer avec l'_id du capteur dans chaque mesure ; N-N, des étudiants et des cours, un tableau d'_id d'un côté ou des deux.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
@@ -79,10 +79,10 @@
     <text class="ex" x="139" y="90" text-anchor="middle">et des cours</text>
     <rect class="doc" x="8" y="106" width="144" height="58" rx="8"/>
     <text class="bb" x="20" y="129">étudiant</text>
-    <text class="b" x="20" y="153">cours: [C1, C2]</text>
+    <text class="b" x="20" y="153" font-family="monospace" style="font-size: 14px">cours: [C1, C2]</text>
     <rect class="doc" x="8" y="180" width="144" height="58" rx="8"/>
     <text class="bb" x="20" y="203">étudiant</text>
-    <text class="b" x="20" y="227">cours: [C2]</text>
+    <text class="b" x="20" y="227" font-family="monospace" style="font-size: 14px">cours: [C2]</text>
     <rect class="doc" x="184" y="104" width="84" height="36" rx="6"/>
     <text class="b" x="226" y="128" text-anchor="middle">cours C1</text>
     <rect class="doc" x="184" y="154" width="84" height="36" rx="6"/>

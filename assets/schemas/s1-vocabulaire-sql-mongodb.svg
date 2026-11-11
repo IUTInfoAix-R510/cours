@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 245" font-family="sans-serif">
-  <title>Table, ligne, colonne en SQL ; collection, document, champ en MongoDB</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 245" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">À gauche, la table SQL employes : colonnes id, nom et manager ; ligne E01 Martin avec manager à NULL, ligne E03 Durand avec manager à TRUE. À droite, la collection employes : le document E01 n'a pas de champ manager, le document E03 a manager: true. Correspondances : table → collection, ligne → document, colonne → champ, clé primaire → _id.</title>
 
   <!-- ===== SQL : table ===== -->
   <text x="10" y="28" font-size="22" fill="#555">SQL : <tspan font-weight="bold" fill="#00684a">table employes</tspan></text>
@@ -39,7 +39,7 @@
     <text x="545" y="28" fill="#00684a">table → collection</text>
     <text x="545" y="111" fill="#13aa52">ligne → document</text>
     <text x="545" y="166" fill="#b9771a">colonne → champ</text>
-    <text x="545" y="221" fill="#4a90d9">clé primaire → _id</text>
+    <text x="545" y="221" fill="#4a90d9">clé primaire → <tspan font-family="monospace">_id</tspan></text>
   </g>
   <line x1="395" y1="104" x2="440" y2="104" stroke="#13aa52" stroke-width="3"/>
   <line x1="650" y1="104" x2="695" y2="104" stroke="#13aa52" stroke-width="3"/>
@@ -49,11 +49,11 @@
 
   <!-- document E01 -->
   <rect x="710" y="44" width="385" height="90" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="4"/>
-  <text x="726" y="78" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E01", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Martin" }</text>
-  <text x="726" y="114" font-size="18" font-style="italic" fill="#555">// pas de champ manager</text>
+  <text x="726" y="78" font-family="monospace" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E01", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Martin" }</text>
+  <text x="726" y="114" font-family="monospace" font-size="18" font-style="italic" fill="#555">// pas de champ manager</text>
 
   <!-- document E03 -->
   <rect x="710" y="148" width="385" height="90" rx="10" fill="#ffffff" stroke="#999" stroke-width="2"/>
-  <text x="726" y="182" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E03", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Durand",</text>
-  <text x="742" y="216" font-size="20">manager: true }</text>
+  <text x="726" y="182" font-family="monospace" font-size="20">{ <tspan fill="#4a90d9" font-weight="bold">_id</tspan>: "E03", <tspan fill="#b9771a" font-weight="bold">nom</tspan>: "Durand",</text>
+  <text x="742" y="216" font-family="monospace" font-size="20">manager: true }</text>
 </svg>

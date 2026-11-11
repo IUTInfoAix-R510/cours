@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 420" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Les deux séances d'Alien : avec deux conditions séparées, chacune est vraie pour une séance différente et Alien est renvoyé ; avec $elemMatch, aucune séance ne vérifie les deux et Alien est écarté</title>
+  <title id="t">Les deux séances d'Alien : salle A, vo true, 0 place ; salle B, vo false, 35 places. Avec deux conditions séparées, vo: true est vraie pour la séance A et places &gt; 0 pour la séance B : Alien est renvoyé. Avec $elemMatch, aucune séance ne vérifie les deux : Alien est écarté.</title>
   <style>
-    .c { font-size: 18px; fill: #333; }
+    .c { font-size: 18px; fill: #333; font-family: monospace; }
     .t { font-size: 20px; font-weight: bold; }
     .ok { fill: #00684a; font-weight: bold; }
     .ko { fill: #c0392b; font-weight: bold; }
@@ -29,7 +29,7 @@
 
   <!-- $elemMatch -->
   <rect x="2" y="286" width="556" height="132" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text class="t" x="18" y="314" fill="#00684a">$elemMatch : la même séance</text>
+  <text class="t" x="18" y="314" fill="#00684a"><tspan font-family="monospace">$elemMatch</tspan> : la même séance</text>
   <text class="c" x="135" y="352" text-anchor="middle">vo <tspan class="ok">✓</tspan>   places <tspan class="ko">✗</tspan></text>
   <text class="c" x="425" y="352" text-anchor="middle">vo <tspan class="ko">✗</tspan>   places <tspan class="ok">✓</tspan></text>
   <text class="r" x="18" y="396" fill="#00684a">→ aucune séance ne vérifie les deux : Alien écarté</text>

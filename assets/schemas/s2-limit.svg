@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 220" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$limit après $sort garde les 2 pièces les plus chaudes ; placé avant $sort, il coupe un ordre quelconque et le classement est faux</title>
+  <title id="t">Deux cas. $limit après $sort : les documents arrivent triés, Salon 20.8, Cuisine 20.5, Chambre 17.5 ; $limit: 2 garde Salon et Cuisine, les 2 pièces les plus chaudes. $limit avant $sort : les groupes arrivent dans un ordre quelconque, Chambre, Salon, Cuisine ; $limit: 2 puis $sort donnent Salon et Chambre : Cuisine, 20.5, manque au classement.</title>
   <text x="2" y="25" font-size="18" font-weight="bold" fill="#00684a">$limit après $sort</text>
   <text x="2" y="48" font-size="16" fill="#555">documents déjà triés</text>
   <rect x="196" y="8" width="148" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>

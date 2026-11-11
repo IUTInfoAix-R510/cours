@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="sans-serif">
-  <title>Du TP accepté à la note : Classroom 50, dépôt, codespace, rendu</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Classroom 50 crée un dépôt GitHub privé r510-tp1-login, à ne jamais renommer, qu'on ouvre dans un codespace (MongoDB 9.0.4, mongosh, VS Code, machine 2 cœurs, à arrêter en fin de séance). r510-sauver fait commit et push sans noter le travail ; r510-rendre lance npm run check, puis fait commit, push et pose un tag submit/… qui lance le correcteur automatique ; 2 à 5 minutes plus tard, le score apparaît dans la Release, et aussi dans Classroom 50</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

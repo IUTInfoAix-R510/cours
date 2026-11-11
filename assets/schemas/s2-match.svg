@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 268" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$match : sur les 5 capteurs, seuls les 4 de type temperature passent ; C2, capteur d'humidité, est écarté</title>
+  <title id="t">$match : sur les 5 capteurs, C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre, seuls les 4 de type temperature passent. C2, de type humidite, est écarté.</title>
   <rect x="2" y="2" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="14" y="28" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
   <text x="240" y="28" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>

@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif">
-  <title>Parcours de la ressource : document, graphe, projet</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Parcours de la ressource : le modèle document avec MongoDB de S1 à S4, le modèle graphe avec Neo4j et Cypher en S5, puis le projet en équipe (Java, Javalin, MongoDB, bonus Neo4j) de S6 à S8 ; la médiathèque de la séance 2 revient en graphe dans le TP4</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

@@ -1,8 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 250" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Arbre du film F3 : le chemin realisation.pays descend dans le document imbriqué, le chemin seances.places traverse le tableau et vise places dans chaque séance</title>
+  <title id="t">Arbre du film F3 : le chemin realisation.pays descend dans le document imbriqué realisation jusqu'à pays, qui vaut Japon ; le chemin seances.places traverse le tableau seances et vise le champ places de chaque séance (4 et 0).</title>
   <style>
-    .n { font-size: 18px; fill: #333; }
-    .nb { font-size: 18px; fill: #333; font-weight: bold; }
+    .n { font-size: 18px; fill: #333; font-family: monospace; }
+    .nb { font-size: 18px; fill: #333; font-weight: bold; font-family: monospace; }
     .g { fill: #ffffff; stroke: #b8c4cf; stroke-width: 1.5; }
     .lien { fill: none; stroke: #b8c4cf; stroke-width: 2; }
     .lv { fill: none; stroke: #13aa52; stroke-width: 4; }
@@ -42,7 +42,7 @@
 
   <!-- légende -->
   <line class="lv" x1="4" y1="210" x2="34" y2="210"/>
-  <text class="n" x="44" y="216"><tspan font-weight="bold" fill="#00684a">"realisation.pays"</tspan> : dans le document imbriqué</text>
+  <text x="44" y="216" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">"realisation.pays"</tspan> : dans le document imbriqué</text>
   <line class="lo" x1="4" y1="238" x2="34" y2="238"/>
-  <text class="n" x="44" y="244"><tspan font-weight="bold" fill="#b06f00">"seances.places"</tspan> : dans chaque séance du tableau</text>
+  <text x="44" y="244" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#b06f00">"seances.places"</tspan> : dans chaque séance du tableau</text>
 </svg>

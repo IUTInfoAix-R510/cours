@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" font-family="sans-serif">
-  <title>Poids des TP dans la note finale</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 330" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La note finale se partage entre les TP (40 %) et le projet (60 %) ; les 40 % des TP se répartissent en TP1 16 % (S1 et S2), TP2 8 % (S3), TP3 8 % (S4), TP4 8 % (S5) : une séance de TP vaut 8 % de la note</title>
 
   <text x="10" y="24" font-size="19" fill="#555">Note finale de la ressource</text>
   <!-- barre 1 : TP 40 %, projet 60 % -->

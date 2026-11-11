@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 462" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Les opérateurs de comparaison sur une droite des durées : $eq, $ne, $gt, $gte, $lt, $lte, $in, puis $gte: 90 et $lt: 120 combinés par un ET</title>
+  <title id="t">Les opérateurs sur une droite des durées. $eq: 98 (=) garde le point 98 ; $ne: 98 (&lt;&gt;) tout sauf 98, y compris les films sans champ duree ; $gt: 90 (&gt;) au-delà de 90, 90 exclu ; $gte: 90 (&gt;=) 90 compris ; $lt: 120 (&lt;) en deçà de 120, 120 exclu ; $lte: 120 (&lt;=) 120 compris ; $in: [90, 120] (IN) les deux points 90 et 120. En combinant $gte: 90 et $lt: 120 par un ET, il reste l'intervalle de 90 compris à 120 exclu, où se trouve La Haine, 98 minutes.</title>
   <defs>
     <marker id="fb" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
     <marker id="fv" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>

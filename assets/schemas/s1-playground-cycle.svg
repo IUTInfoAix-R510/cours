@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 464" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le travail dans le playground : se connecter, puis la boucle écrire, Ctrl+Alt+S, lire le panneau, corriger ; quand le résultat est juste, npm run check, puis r510-sauver en fin de partie</title>
+  <title id="t">Le travail dans le playground. D'abord Connect, « MongoDB du Codespace », à refaire à chaque réouverture. Puis une boucle : écrire la réponse, use('tp1') compris ; la sélectionner, puis Ctrl+Alt+S ; lire le panneau, qui montre la dernière instruction ; corriger, puis relancer. Quand le résultat est juste : npm run check, score indicatif, sans toucher à la base tp1 ; puis, en fin de partie, r510-sauver "feat(partieN): …".</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

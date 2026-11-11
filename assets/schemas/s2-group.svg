@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$group : les 9 mesures sont rangées par pièce, puis chaque groupe donne un document</title>
+  <title id="t">$group : les 9 documents issus de $unwind sont rangés par pièce. Salon reçoit 19.5, 21, 22.5 et 20 ; Cuisine 18 et 23 ; Chambre 17, 17.5 et 18. Chaque groupe donne un document : Salon moyenne 20.75, max 22.5, nb 4 ; Cuisine moyenne 20.5, max 23, nb 2 ; Chambre moyenne 17.5, max 18, nb 3.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

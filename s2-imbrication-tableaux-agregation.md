@@ -3,7 +3,7 @@ marp: true
 theme: r510
 paginate: true
 lang: fr
-title: "Séance 2 : documents imbriqués, tableaux, agrégation"
+title: "Séance 2 : documents imbriqués, tableaux et premiers pipelines"
 description: "R5.Real.10, point cours de la séance 2 (TP1, parties 5 à 7)"
 ---
 
@@ -28,6 +28,8 @@ h1 { font-size: 1.9em; }
 Séance 2 · TP1, parties 5 à 7 · semaine du 23 novembre 2026
 
 <!--
+(Hors minutage : plan des temps du point cours.)
+
 Le point cours se fait en deux temps.
 
 Premier temps, en début de séance : diapos 2 à 20 (médiathèque, parties 5 et 6) en 18 minutes. Les questions de modélisation prennent place après la diapo 5 : 5 minutes de travail à deux, puis 3 minutes de mise en commun. Les diapos 34 et 35 (« À vous ») lancent ensuite le travail (2 minutes). Ce premier temps dure 28 minutes.
@@ -36,7 +38,7 @@ Second temps, quand la majorité du groupe attaque la partie 7 : diapos 21 à 33
 
 Le cours seul dure 35 minutes (somme des durées notées en tête de chaque diapo). Présenté d'un bloc avec les questions de modélisation, il en prend 43. Si le temps manque : les diapos de référence 19 et 20 et la diapo 30 ($size) se laissent en lecture, les étudiants les retrouvent en ligne.
 
-Les exemples portent sur des films, une recette et des capteurs, pas sur les données du TP. Ils ont tous été exécutés sur MongoDB 9.0.4, et les résultats affichés sont ceux obtenus. Le script d'insertion de chaque jeu d'exemples est dans les notes de la diapositive qui le présente. Pour les rejouer en direct, le coller dans essais.mongodb.js : les démos tournent dans une base à part, demo (use('demo')), que le correcteur automatique ne lit pas, et chaque script commence par vider sa collection, si bien qu'on peut le relancer.
+Les exemples portent sur des films, une recette et des capteurs, pas sur les données du TP. Ils ont tous été exécutés sur MongoDB 9.0.4, et les résultats affichés sont ceux obtenus. Le script d'insertion de chaque jeu d'exemples est dans les notes de la diapo qui le présente. Pour les rejouer en direct, le coller dans essais.mongodb.js : les démos tournent dans une base à part, demo (use('demo')), que le correcteur automatique ne lit pas, et chaque script commence par vider sa collection, si bien qu'on peut le relancer.
 -->
 
 ---
@@ -45,9 +47,9 @@ Les exemples portent sur des films, une recette et des capteurs, pas sur les don
 
 ## La médiathèque : deux collections
 
-<img src="assets/schemas/s2-mediatheque-structure.svg" alt="Structure des deux collections. livres : _id, titre, annee ; auteurs, tableau de documents ; categories, tableau ; serie, document imbriqué facultatif ; exemplaires, tableau de documents dont chaque élément peut contenir emprunt_actuel, document imbriqué de troisième niveau avec membre_id qui référence un membre ; avis, tableau facultatif de documents avec membre_id. membres : _id, prenom, nom, ville, inscription ; parrain_id, référence facultative vers un membre ; emprunts, tableau de documents avec exemplaire, livre_id qui référence un livre, titre, dates et date_retour facultative. Un emprunt en cours est écrit deux fois : dans le livre et dans le membre." style="display:block; width:96%; margin:0.2rem auto 0 auto;">
+<img src="assets/schemas/s2-mediatheque-structure.svg" alt="Structure des deux collections. livres : _id, titre, annee ; auteurs, tableau de documents ; categories, tableau ; serie, document imbriqué facultatif ; exemplaires, tableau de documents dont chaque élément peut contenir emprunt_actuel, document imbriqué de troisième niveau avec membre_id qui référence un membre ; avis, tableau facultatif de documents avec membre_id. membres : _id, prenom, nom, ville, inscription ; parrain_id, référence facultative vers un membre ; emprunts, tableau de documents avec exemplaire, livre_id qui référence un livre, titre, dates et date_retour facultative. Un emprunt en cours est écrit deux fois : dans le livre et dans le membre." style="display:block; width:93%; margin:0.2rem auto 0 auto;">
 
-<div class="box" style="margin-top: 0.2rem; font-size: 0.68em;"><b>Au programme</b> : partie 5, interroger (ex. 26 à 32) · partie 6, modifier (ex. 33 à 38) · partie 7, agréger (ex. 39 à 43). Même dépôt, même base <code>tp1</code>. Au <b>TP4</b>, la même médiathèque passe dans Neo4j.</div>
+<div class="box" style="margin-top: 0.2rem; font-size: 0.68em;"><b>Au programme</b> : partie 5, interroger (ex. 26 à 32) · partie 6, modifier (ex. 33 à 38) · partie 7, agréger (ex. 39 à 43). Même dépôt, même base <code>tp1</code>. Au <b>TP4</b>, la même médiathèque passe dans Neo4j.<br><b>Dates</b> : <code>ISODate("2026-11-15")</code>, comparées avec <code>&#36;lt</code>, <code>&#36;gte</code>... Jamais la date du jour : le résultat changerait d'un jour à l'autre.</div>
 
 <!--
 (1 min 30)
@@ -59,20 +61,22 @@ Les couleurs disent la forme de chaque champ : orange pour les tableaux (auteurs
 Les flèches grises sont des références : un identifiant qui renvoie à un document d'une autre collection (ou de la même, pour parrain_id).
 
 Le choix à remarquer, en violet : un emprunt en cours est écrit deux fois, dans emprunt_actuel du livre et dans emprunts du membre. Chaque copie rend une requête simple ; le prix, c'est que l'exercice 37 doit écrire dans les deux collections. On y revient dans « Embarquer ou référencer ».
+
+Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré « Les dates » de la partie 5). Les dates de la médiathèque sont à minuit UTC.
 -->
 
 ---
 
 ## La médiathèque : un livre, un membre
 
-<img src="assets/schemas/s2-mediatheque.svg" alt="Un livre de la collection livres (L06, Dune) : serie est un document imbriqué, exemplaires un tableau de documents, emprunt_actuel un document imbriqué dans un exemplaire (troisième niveau). Un membre de la collection membres (M12) : emprunts est un tableau de documents." style="display:block; height:590px; margin:0.2rem auto 0 auto;">
+<img src="assets/schemas/s2-mediatheque.svg" alt="Un des 26 documents de la collection livres : _id L06, titre Dune, annee 1965 ; auteurs, un tableau de documents, avec l'auteur A04, Frank Herbert ; categories, le tableau [ Science-Fiction ] ; serie, un document imbriqué { nom: Dune, tome: 1 } ; exemplaires, un tableau de documents : l'exemplaire L06-1, état Bon, disponible false, porte emprunt_actuel, un document imbriqué de troisième niveau avec membre_id M12, date_emprunt et date_retour_prevue ; l'exemplaire L06-2, état Neuf, disponible true, n'en a pas ; avis, un tableau de documents, dont celui du membre M01 avec la note 5. Un des 14 documents de la collection membres : _id M12, Tom Lambert ; emprunts, un tableau de documents, dont l'emprunt de l'exemplaire L06-1, titre Dune : le même emprunt que dans le livre." style="display:block; height:590px; margin:0.2rem auto 0 auto;">
 
 <!--
 (1 min)
 
 La séance 2 se fait dans le même dépôt que la séance 1, sur deux nouvelles collections. Les exercices de la séance 2 ne dépendent pas des réponses de la séance 1 : le correcteur automatique part toujours de l'état attendu. Ceux qui n'ont pas fini la séance 1 commencent quand même la partie 5 et reviendront aux exercices manquants plus tard.
 
-Faire lire le document de Dune à voix haute, en retrouvant la structure de la diapositive précédente. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
+Faire lire le document de Dune à voix haute, en retrouvant la structure de la diapo précédente. Le modèle complet est dans l'énoncé, section « Modéliser la médiathèque ».
 
 Pour le lien avec le TP4 : les mêmes livres et les mêmes membres deviendront des nœuds, et les emprunts et parrainages des relations. Ne pas répondre ici aux questions de modélisation 4 et 5 (chaîne de parrainage, « lecteurs de Dune ») : la comparaison se fera au TP4.
 -->
@@ -190,7 +194,7 @@ db.films.insertMany([
     seances: [] }
 ]);
 
-Sans sort, l'ordre des résultats n'est pas garanti : ceux des diapositives suivantes sont dans l'ordre obtenu sur MongoDB 9.0.4.
+Sans sort, l'ordre des résultats n'est pas garanti : ceux des diapos suivantes sont dans l'ordre obtenu sur MongoDB 9.0.4.
 -->
 
 ---
@@ -205,15 +209,8 @@ db.films.find(
   { "realisation.pays": "Japon" },
   { _id: 0, titre: 1 }
 )
+// [ { titre: "Le Voyage de Chihiro" } ]
 ```
-
-<div class="res">
-
-```js
-[ { titre: "Le Voyage de Chihiro" } ]
-```
-
-</div>
 
 <img src="assets/schemas/s2-notation-pointee.svg" alt="Arbre du film F3 : le chemin realisation.pays descend dans le document imbriqué realisation jusqu'à pays, qui vaut Japon ; le chemin seances.places traverse le tableau seances et vise le champ places de chaque séance (4 et 0)." style="display:block; width:100%; max-height:250px; margin:0.5em auto 0 auto;">
 
@@ -265,11 +262,11 @@ db.films.find({ "realisation.nom": "Scott" })                          // Alien,
 <!--
 (1 min)
 
-Les quatre requêtes ont été exécutées avec la projection { _id: 0, titre: 1 }, omise ici pour la lisibilité. Les commentaires donnent les titres obtenus.
+Les quatre requêtes ont été exécutées sur MongoDB 9.0.4, avec la projection { _id: 0, titre: 1 }, omise ici pour la lisibilité. Les commentaires donnent les titres obtenus.
 
 Encadré de la partie 5 de l'énoncé : il signale ce piège. La troisième ligne surprend toujours, avec les deux mêmes champs dans un autre ordre et plus aucun résultat.
 
-Le même piège existe sur les tableaux : diapositive suivante.
+Le même piège existe sur les tableaux : diapo suivante.
 -->
 
 ---
@@ -298,7 +295,7 @@ db.films.find({ "seances.0.places": 0 })                     // Alien
 
 Projection { _id: 0, titre: 1 } omise ici aussi ; les commentaires donnent les titres obtenus.
 
-Faire le parallèle avec la diapositive précédente : un tableau écrit dans le filtre demande une égalité exacte, comme un document imbriqué.
+Faire le parallèle avec la diapo précédente : un tableau écrit dans le filtre demande une égalité exacte, comme un document imbriqué.
 
 La notation "tableau.N" teste aussi une longueur : "seances.1" existe si le tableau a au moins deux éléments. $size existe sous deux formes : comme opérateur de requête, { genres: { $size: 3 } } (exactement 3 éléments ; pas de $size: { $gt: 2 }, il faut alors "genres.2": { $exists: true }), et comme opérateur d'expression dans un pipeline, pour calculer la longueur d'un tableau.
 -->
@@ -364,31 +361,19 @@ $elemMatch sert aussi dans le filtre d'une mise à jour, dès la partie 6.
 ```js
 db.films.find({ _id: "F3" },
   { _id: 0, titre: 1, "realisation.pays": 1 })
+// [ { titre: "Le Voyage de Chihiro",
+//     realisation: { pays: "Japon" } } ]
 ```
-
-<div class="res">
-
-```js
-[ { titre: "Le Voyage de Chihiro",
-    realisation: { pays: "Japon" } } ]
-```
-
-</div>
 
 **Expression : le champ remonte**
 
 ```js
 db.films.find({ _id: "F3" },
   { _id: 0, titre: 1, pays: "$realisation.pays" })
+// [ { titre: "Le Voyage de Chihiro",
+//     pays: "Japon" } ]
 ```
 
-<div class="res">
-
-```js
-[ { titre: "Le Voyage de Chihiro", pays: "Japon" } ]
-```
-
-</div>
 </div>
 <div>
 
@@ -399,28 +384,17 @@ db.films.find(
   { seances: { $elemMatch:
       { vo: true, places: { $gt: 0 } } } },
   { _id: 0, titre: 1, "seances.$": 1 })
+// [ { titre: "Blade Runner",
+//     seances: [
+//       { salle: "A", vo: true, places: 12 } ] },
+//   { titre: "Le Voyage de Chihiro",
+//     seances: [
+//       { salle: "C", vo: true, places: 4 } ] } ]
 ```
-
-<div class="res">
-
-```js
-[ { titre: "Blade Runner",
-    seances: [ { salle: "A", vo: true, places: 12 } ] },
-  { titre: "Le Voyage de Chihiro",
-    seances: [ { salle: "C", vo: true, places: 4 } ] } ]
-```
-
-</div>
 
 <p class="petit">Seul le <b>premier</b> élément qui a satisfait le filtre reste. Le filtre doit porter sur ce tableau.</p>
 
 </div>
-</div>
-
-<div class="box">
-
-**Dates** : `ISODate("2026-11-15")`, comparées avec `$lt`, `$gte`... Jamais la date du jour : le résultat changerait d'un jour à l'autre.
-
 </div>
 
 <!--
@@ -428,9 +402,7 @@ db.films.find(
 
 Les trois requêtes ont été exécutées sur MongoDB 9.0.4.
 
-Contre-exemple à montrer si le temps le permet : avec les deux conditions séparées de la diapositive précédente, la même projection "seances.$" renvoie pour Alien la séance B (vo: false, places: 35). Cette séance ne vérifie qu'une des deux conditions : le piège revient. Avec plusieurs conditions séparées sur le même tableau, la documentation ne garantit d'ailleurs pas quel élément "tableau.$" garde.
-
-Pour les dates, le TP1 fixe sa date de référence au 15 novembre 2026 (encadré « Les dates » de la partie 5). Les dates de la médiathèque sont à minuit UTC.
+Contre-exemple à montrer si le temps le permet : avec les deux conditions séparées de la diapo précédente, la même projection "seances.$" renvoie pour Alien la séance B (vo: false, places: 35). Cette séance ne vérifie qu'une des deux conditions : le piège revient. Avec plusieurs conditions séparées sur le même tableau, la documentation ne garantit d'ailleurs pas quel élément "tableau.$" garde.
 -->
 
 ---
@@ -459,7 +431,11 @@ Même titre que la partie 6 de l'énoncé du TP1.
 
 ```js
 // la recette, avant
-{ _id: "R1", nom: "Crêpes", auteur: { pseudo: "lea13", ville: "Aix" }, ingredients: [ … ] }
+{ _id: "R1", nom: "Crêpes",
+  auteur: { pseudo: "lea13", ville: "Aix" },
+  ingredients: [ { nom: "farine", qte: 250, unite: "g" },
+                 { nom: "lait", qte: 500, unite: "ml" },
+                 { nom: "oeufs", qte: 3, unite: "pièce" } ] }
 ```
 
 ```js
@@ -467,12 +443,8 @@ db.recettes.updateOne(
   { _id: "R1" },                              // 1er argument, le filtre : quel document
   { $set: { "auteur.ville": "Marseille" } }   // 2e argument, la mise à jour : quoi changer
 )
-```
-
-<div class="res-titre" style="font-size: 0.6em; color: #00684a; font-weight: bold;">auteur, relu avec findOne</div>
-
-```js
-{ auteur: { pseudo: 'lea13', ville: 'Marseille' } }
+// auteur, relu avec findOne :
+// { auteur: { pseudo: 'lea13', ville: 'Marseille' } }
 ```
 
 <p class="petit"><code>"auteur.ville"</code> : la <b>notation pointée</b> désigne un champ à l'intérieur du document imbriqué, comme dans un filtre. Guillemets obligatoires.</p>
@@ -482,7 +454,20 @@ db.recettes.updateOne(
 
 Lire l'objectif d'abord : on modifie un seul champ d'un document imbriqué. Puis l'appel : le premier argument dit quel document (comme un find), le second dit quoi changer, avec un opérateur ($set). Résultat sur MongoDB 9.0.4 : matchedCount 1, modifiedCount 1 ; seul ville a changé.
 
-La diapositive suivante montre ce qui se passe si l'on oublie la notation pointée.
+La diapo suivante montre ce qui se passe si l'on oublie la notation pointée.
+
+Pour rejouer (essais.mongodb.js) ; relancé entre deux démos, le script remet aussi la recette dans son état de départ :
+
+use('demo');
+db.recettes.deleteMany({});
+db.recettes.insertOne({ _id: "R1", nom: "Crêpes",
+  auteur: { pseudo: "lea13", ville: "Aix" },
+  ingredients: [
+    { nom: "farine", qte: 250, unite: "g" },
+    { nom: "lait", qte: 500, unite: "ml" },
+    { nom: "oeufs", qte: 3, unite: "pièce" } ] });
+
+Ne jamais faire ces essais sur livres ou membres ; si c'est arrivé, npm run seed -- --avant N remet la base dans l'état attendu.
 -->
 
 ---
@@ -498,20 +483,9 @@ La diapositive suivante montre ce qui se passe si l'on oublie la notation point�
 <!--
 (1 min)
 
-Les deux mises à jour du schéma ont été exécutées chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapositive affiche le champ auteur relu avec findOne après chaque mise à jour.
+Les deux mises à jour du schéma ont été exécutées sur MongoDB 9.0.4, chacune sur la recette de départ. Chacune renvoie { acknowledged: true, insertedId: null, matchedCount: 1, modifiedCount: 1, upsertedCount: 0 }. La diapo affiche le champ auteur relu avec findOne après chaque mise à jour.
 
-Pour rejouer (essais.mongodb.js) ; le script remet aussi la recette dans son état de départ entre deux démos :
-
-use('demo');
-db.recettes.deleteMany({});
-db.recettes.insertOne({ _id: "R1", nom: "Crêpes",
-  auteur: { pseudo: "lea13", ville: "Aix" },
-  ingredients: [
-    { nom: "farine", qte: 250, unite: "g" },
-    { nom: "lait", qte: 500, unite: "ml" },
-    { nom: "oeufs", qte: 3, unite: "pièce" } ] });
-
-Ne jamais faire ces essais sur livres ou membres ; si c'est arrivé, npm run seed -- --avant N remet la base dans l'état attendu.
+Pour rejouer : script de la recette dans les notes de la diapo précédente, à relancer avant chaque essai.
 -->
 
 ---
@@ -533,7 +507,7 @@ db.recettes.updateOne({ _id: "R1" },
 <!--
 (1 min)
 
-Exécutées l'une après l'autre sur la recette de départ. Pour la lisibilité, la diapositive résume le tableau par le nom et la quantité de chaque ingrédient ; le résultat complet contient aussi unite.
+Exécutées sur MongoDB 9.0.4, l'une après l'autre, sur la recette de départ. Pour la lisibilité, la diapo résume le tableau par le nom et la quantité de chaque ingrédient ; le résultat complet contient aussi unite.
 
 Le $pull avec une condition surprend : il ne retire pas « le » premier élément trouvé, mais tous ceux qui la vérifient. Ici les œufs (3) et le sucre (30), deux quantités inférieures à 100.
 
@@ -567,9 +541,9 @@ MongoServerError: ... The positional operator did not find the match needed from
 <!--
 (1 min)
 
-Exécutée sur la recette de départ. L'erreur a été obtenue avec le filtre { _id: "R1" } seul et la même mise à jour : le message complet commence par « Plan executor error during update :: caused by :: ».
+Exécutée sur MongoDB 9.0.4, sur la recette de départ. L'erreur a été obtenue avec le filtre { _id: "R1" } seul et la même mise à jour : le message complet commence par « Plan executor error during update :: caused by :: ».
 
-Deux critères sur le même élément : $elemMatch dans le filtre (diapo 9), puis $ dans la mise à jour.
+Deux critères sur le même élément : $elemMatch dans le filtre (diapo 11), puis $ dans la mise à jour.
 
 Le $ positionnel s'utilise aussi avec $unset et $inc, et plusieurs champs du même élément peuvent être écrits dans la même mise à jour. Documentation : https://www.mongodb.com/docs/manual/reference/operator/update/positional/
 
@@ -659,7 +633,9 @@ Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifie
 <p class="legende">Vérifiés sur MongoDB 9.0.4. Manuel : <a href="https://www.mongodb.com/docs/manual/reference/operator/query-array/">opérateurs de requête</a> et <a href="https://www.mongodb.com/docs/manual/reference/operator/projection/">de projection</a> sur les tableaux.</p>
 
 <!--
-(30 s : diapositive de référence, à parcourir sans tout détailler ; les étudiants la retrouvent en ligne pendant le TP.)
+(30 s)
+
+Diapo de référence, à parcourir sans tout détailler : les étudiants la retrouvent en ligne pendant le TP.
 
 Rappeler les deux pièges : un tableau écrit dans le filtre demande une égalité exacte, ordre compris ; deux conditions sur un tableau de documents peuvent être satisfaites par deux éléments différents, d'où $elemMatch.
 
@@ -701,11 +677,15 @@ $size ne se combine pas avec $gt : pour « au moins 3 éléments », on teste "t
 <p class="legende">Vérifiés sur MongoDB 9.0.4. Manuel : <a href="https://www.mongodb.com/docs/manual/reference/operator/update-array/">opérateurs de mise à jour</a> sur les tableaux.</p>
 
 <!--
-(30 s : diapositive de référence.)
+(30 s)
+
+Diapo de référence.
 
 $push ajoute même si la valeur est déjà là ; $addToSet non. $pull retire selon une condition écrite comme un filtre ; $pullAll retire une liste de valeurs exactes. "tab.$" modifie l'élément trouvé par le filtre ; "tab.$[]" tous les éléments ; "tab.$[x]" ceux qui vérifient la condition de arrayFilters.
 
 Les opérateurs de pipeline reviennent en partie 7.
+
+Fin du premier temps : enchaîner sur les deux diapos « À vous » (34 et 35), puis lancer le travail. Le second temps commence à la partie 7.
 -->
 ---
 
@@ -721,7 +701,7 @@ Les opérateurs de pipeline reviennent en partie 7.
 <!--
 (10 s)
 
-Début du second temps : à projeter quand la majorité du groupe attaque la partie 7.
+Même titre que la partie 7 de l'énoncé du TP1. Début du second temps : à projeter quand la majorité du groupe attaque la partie 7. Diapos 21 à 33, 15 minutes environ.
 -->
 
 ---
@@ -753,61 +733,11 @@ Cluster et pas serveur : si la collection est répartie sur plusieurs nœuds (sh
 
 Le parallèle avec le shell : cat mesures.txt | grep temperature | sort | head -5. Chaque commande lit la sortie de la précédente ; une étape d'agrégation lit les documents produits par l'étape d'avant. Le nombre de documents peut baisser (filtrer), monter (découper un tableau) ou se resserrer (regrouper).
 
-Côté SQL, c'est le rôle de SELECT … WHERE … GROUP BY … ORDER BY : la diapositive suivante met les deux en regard.
+Côté SQL, c'est le rôle de SELECT … WHERE … GROUP BY … ORDER BY : après les données, la diapo « Le pipeline d'agrégation » met les deux en regard.
 
 C'est l'outil des tableaux de bord : le TP2 et le projet en feront une API qui renvoie des statistiques.
 -->
 
----
-
-## Le pipeline d'agrégation
-
-```js
-db.capteurs.aggregate([                // un TABLEAU d'étapes
-  { $match: { type: "temperature" } }, // filtrer             WHERE
-  { $unwind: "$mesures" },             // 1 doc. par mesure   JOIN mesures
-  { $group: { _id: "$piece", ... } },  // regrouper           GROUP BY
-  { $project: { ... } },               // choisir, calculer   SELECT
-  { $sort: { moyenne: -1 } },          // trier (décroissant) ORDER BY
-  { $limit: 5 }                        // limiter             LIMIT
-])
-```
-
-- Chaque étape reçoit les documents de la précédente et en produit de nouveaux.
-- Une étape peut revenir : un `$match` après `$group` filtre les groupes (`HAVING`).
-- Dans `$group` ou `$project`, `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
-
-<!--
-(1 min)
-
-Lire le code ligne à ligne avec la colonne SQL : c'est le repère des étudiants qui viennent du relationnel. La diapositive suivante montre ce pipeline sur les capteurs.
-
-Pour l'équivalent SQL de $unwind : dans un schéma relationnel, les mesures seraient dans une table mesures (capteur_id, h, v) ; la jointure capteurs JOIN mesures donne une ligne par mesure, comme $unwind donne un document par mesure.
-
-mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le pilote Java du TP2 (partie 7) et du projet, passent toujours un tableau (en Java, une List d'étapes : aggregate(List.of(Aggregates.match(...), ...))) : prendre dès maintenant l'habitude de aggregate([ ... ]).
-
-Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piece à la chaîne "$piece" et ne renvoie aucun document, alors que chaque capteur a bien une pièce. Comparer deux champs d'un même document demande $expr, hors programme ici.
--->
-
----
-
-## Le pipeline sur les capteurs
-
-<img src="assets/schemas/s2-pipeline.svg" alt="Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre." style="display:block; width:100%; margin:0.6em auto 0;">
-
-<p class="centre" style="margin-top: 0.6rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les diapositives suivantes reprennent les étapes une par une.</span></p>
-
-<!--
-(1 min)
-
-Lire le schéma de gauche à droite, en commençant par les nombres en haut des colonnes : $match en retire (5 puis 4), $unwind en crée (9, un par mesure), $group les rassemble (3, un par pièce), $sort ne fait que les réordonner (toujours 3).
-
-C2, encadré en rouge, est le capteur d'humidité du Salon : c'est lui que $match écarte.
-
-Le $group sort ses groupes dans un ordre quelconque (ici Cuisine, Salon, Chambre, celui d'une exécution réelle) : on y revient sur la diapo « L'ordre des groupes n'est pas garanti ». Le $sort final fixe l'ordre : Salon (20.75), Cuisine (20.5), Chambre (17.5). Les moyennes ne sont pas arrondies : le $project de cette diapo affiche 20.8 pour le Salon.
-
-$project et $limit ne figurent pas dans le schéma : $project change la forme des documents, pas leur nombre, et { $limit: 5 } en fin de pipeline ne retirerait rien, il n'y a que 3 documents.
--->
 ---
 
 ## Les données : 5 capteurs, une journée
@@ -864,7 +794,58 @@ db.capteurs.insertMany([
     mesures: [ { h: 8, v: 17 }, { h: 12, v: 17.5 }, { h: 18, v: 18 } ] }
 ]);
 
-Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt+S, on regarde ; on ajoute l'étape suivante, on réexécute, on regarde. Tous les résultats des diapositives suivantes ont été obtenus ainsi sur MongoDB 9.0.4.
+Montrer la démarche en direct : on écrit l'étape 1, on sélectionne, Ctrl+Alt+S, on regarde ; on ajoute l'étape suivante, on réexécute, on regarde. Tous les résultats des diapos suivantes ont été obtenus ainsi sur MongoDB 9.0.4.
+-->
+
+---
+
+## Le pipeline d'agrégation
+
+```js
+db.capteurs.aggregate([                // un TABLEAU d'étapes
+  { $match: { type: "temperature" } }, // filtrer             WHERE
+  { $unwind: "$mesures" },             // 1 doc. par mesure   JOIN mesures
+  { $group: { _id: "$piece", ... } },  // regrouper           GROUP BY
+  { $project: { ... } },               // choisir, calculer   SELECT
+  { $sort: { moyenne: -1 } },          // trier (décroissant) ORDER BY
+  { $limit: 5 }                        // limiter             LIMIT
+])
+```
+
+- Chaque étape reçoit les documents de la précédente et en produit de nouveaux.
+- Une étape peut revenir : un `$match` après `$group` filtre les groupes (`HAVING`).
+- Dans `$group` ou `$project`, `"$piece"` désigne **la valeur** du champ `piece`. Dans `$match`, on écrit un filtre comme dans `find`.
+
+<!--
+(1 min)
+
+Lire le code ligne à ligne avec la colonne SQL : c'est le repère des étudiants qui viennent du relationnel. La diapo suivante montre ce pipeline sur les capteurs.
+
+Pour l'équivalent SQL de $unwind : dans un schéma relationnel, les mesures seraient dans une table mesures (capteur_id, h, v) ; la jointure capteurs JOIN mesures donne une ligne par mesure, comme $unwind donne un document par mesure.
+
+mongosh accepte une étape isolée, aggregate({ $match: ... }), mais la documentation et les pilotes, dont le pilote Java du TP2 (partie 7) et du projet, passent toujours un tableau (en Java, une List d'étapes : aggregate(List.of(Aggregates.match(...), ...))) : prendre dès maintenant l'habitude de aggregate([ ... ]).
+
+Le piège de "$piece" dans $match : { $match: { piece: "$piece" } } compare piece à la chaîne "$piece" et ne renvoie aucun document, alors que chaque capteur a bien une pièce. Comparer deux champs d'un même document demande $expr, hors programme ici.
+-->
+
+---
+
+## Le pipeline sur les capteurs
+
+<img src="assets/schemas/s2-pipeline.svg" alt="Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre." style="display:block; width:100%; margin:0.6em auto 0;">
+
+<p class="centre" style="margin-top: 0.6rem;">Le nombre de documents change à chaque étape : <b>5 → 4 → 9 → 3 → 3</b>.<br><span class="petit">Les diapositives suivantes reprennent les étapes une par une.</span></p>
+
+<!--
+(1 min)
+
+Lire le schéma de gauche à droite, en commençant par les nombres en haut des colonnes : $match en retire (5 puis 4), $unwind en crée (9, un par mesure), $group les rassemble (3, un par pièce), $sort ne fait que les réordonner (toujours 3).
+
+C2, encadré en rouge, est le capteur d'humidité du Salon : c'est lui que $match écarte.
+
+Le $group sort ses groupes dans un ordre quelconque (ici Cuisine, Salon, Chambre, celui d'une exécution réelle) : on y revient à l'étape 5 (diapo 31). Le $sort final fixe l'ordre : Salon (20.75), Cuisine (20.5), Chambre (17.5). Les moyennes ne sont pas arrondies : le $project de l'étape 4 (diapo 29) affiche 20.8 pour le Salon.
+
+$project et $limit ne figurent pas dans le schéma : $project change la forme des documents, pas leur nombre, et { $limit: 5 } en fin de pipeline ne retirerait rien, il n'y a que 3 documents.
 -->
 
 ---
@@ -907,7 +888,7 @@ db.capteurs.aggregate([
 
 $match ne change pas les documents : il les laisse passer ou non. C'est le WHERE du SQL.
 
-Plus tard dans un pipeline, après $group, un $match filtre les groupes : c'est le HAVING du SQL (diapositive « Le pipeline d'agrégation »).
+Plus tard dans un pipeline, après $group, un $match filtre les groupes : c'est le HAVING du SQL (diapo « Le pipeline d'agrégation »).
 -->
 
 ---
@@ -1012,12 +993,13 @@ Le tableau des accumulateurs et leur équivalent SQL est dans l'énoncé, partie
 <img src="assets/schemas/s2-project.svg" alt="$project sur le document du Salon. En entrée : _id Salon, moyenne 20.75, max 22.5, nb 4. En sortie : piece Salon, renommé depuis _id ; moyenne 20.8, calculée par $round ; max, non cité, disparaît ; nb 4, recopié." style="display: block; width: 100%; margin: 0.5em auto 0.4em;">
 
 <div class="cols" style="grid-template-columns: 1.1fr 1fr; align-items: center;">
-<div class="res">
+<div>
 
 ```js
-[ { piece: "Cuisine", moyenne: 20.5, nb: 2 },
-  { piece: "Salon", moyenne: 20.8, nb: 4 },
-  { piece: "Chambre", moyenne: 17.5, nb: 3 } ]
+// résultat des étapes 1 à 4 :
+// [ { piece: "Cuisine", moyenne: 20.5, nb: 2 },
+//   { piece: "Salon", moyenne: 20.8, nb: 4 },
+//   { piece: "Chambre", moyenne: 17.5, nb: 3 } ]
 ```
 
 </div>
@@ -1089,7 +1071,7 @@ db.capteurs.aggregate([
 <!--
 (1 min)
 
-L'opérateur de requête $size a été vu sur la diapositive « Tableaux de valeurs », avec les films. Il ne se combine pas avec $gt ; l'expression, si : { $gt: [ { $size: "$mesures" }, 2 ] } dans un $match avec $expr, hors programme ici.
+L'opérateur de requête $size a été vu sur la diapo « Tableaux de valeurs », avec les films. Il ne se combine pas avec $gt ; l'expression, si : { $gt: [ { $size: "$mesures" }, 2 ] } dans un $match avec $expr, hors programme ici.
 
 L'erreur a été obtenue sur MongoDB 9.0.4 en ajoutant un capteur sans champ mesures ; le message complet commence par « Executor error during aggregate command on namespace: demo.capteurs :: caused by :: ».
 -->
@@ -1124,7 +1106,7 @@ Un résultat trié demande un **`$sort` explicite**, placé en fin de pipeline.
 
 Les deux ordres viennent de six exécutions consécutives du même pipeline sur MongoDB 9.0.4 : l'ordre a changé d'une exécution à l'autre. Dans un autre codespace, il peut encore être différent.
 
-Avec { $sort: { moyenne: 1 } }, l'ordre devient Chambre, Cuisine, Salon (vérifié sur 9.0.4). Le 1 et le -1 sont ceux de sort() dans find : même convention, ORDER BY … ASC et ORDER BY … DESC en SQL.
+Avec { $sort: { moyenne: 1 } }, l'ordre devient Chambre, Cuisine, Salon (vérifié sur MongoDB 9.0.4). Le 1 et le -1 sont ceux de sort() dans find : même convention, ORDER BY … ASC et ORDER BY … DESC en SQL.
 
 Lien avec le TP : un exercice qui impose un tri et qui reçoit les bons documents dans le mauvais ordre ne rapporte que la moitié des points.
 -->
@@ -1160,7 +1142,7 @@ db.capteurs.aggregate([
 
 $limit ne trie pas et ne choisit pas : il coupe le flux après n documents. Tout dépend donc de l'ordre qu'il reçoit, d'où sa place après $sort.
 
-Le second cas du schéma suppose que les groupes arrivent dans l'ordre de la 2e exécution de la diapositive précédente (Chambre, Salon, Cuisine). Sur quatre exécutions de $limit avant $sort, MongoDB 9.0.4 a rendu par hasard le bon classement : le piège ne se voit pas à tous les coups.
+Le second cas du schéma suppose que les groupes arrivent dans l'ordre de la 2e exécution de la diapo précédente (Chambre, Salon, Cuisine). Sur quatre exécutions de $limit avant $sort, MongoDB 9.0.4 a rendu par hasard le bon classement : le piège ne se voit pas à tous les coups.
 
 Résultat du pipeline : [ { piece: "Salon", moyenne: 20.8, nb: 4 }, { piece: "Cuisine", moyenne: 20.5, nb: 2 } ].
 
@@ -1177,7 +1159,7 @@ db.capteurs.aggregate([
   { $limit: 2 }
 ])
 
-Sur nos 3 pièces, $limit: 5 (diapositive « Le pipeline d'agrégation ») ne retire rien.
+Sur nos 3 pièces, $limit: 5 (diapo « Le pipeline d'agrégation ») ne retire rien.
 
 Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers documents : $sort, puis $skip, puis $limit.
 -->
@@ -1261,7 +1243,7 @@ dimanche 6 décembre 2026, 23&nbsp;h&nbsp;59
 
 <div class="carte vert">
 <b class="t">Les points</b>
-Parties 5 à 7 : 18 exercices, 108 des 208 points du TP1.
+Parties 5 à 7 : 18 exercices, 108 des 208 points du TP1, qui compte pour 16 % de la note.
 </div>
 
 <div class="carte vert">
@@ -1292,7 +1274,6 @@ Le minutage suppose le point cours de début de séance (28 min, questions de mo
 <style scoped>
 table { font-size: 0.85em; width: 100%; }
 td { padding-top: 0.4em; padding-bottom: 0.4em; }
-.etiquette { margin-top: 1.2rem !important; }
 </style>
 
 <p class="etiquette">🧪 Essayer sans risque</p>
@@ -1303,7 +1284,7 @@ Les essais vont dans `essais.mongodb.js` : dans la collection `brouillon` de `tp
 
 </div>
 
-<p class="etiquette" style="margin-top: 1rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+<p class="etiquette" style="margin-top: 0.9rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
 
 | Partie | À demander à l'assistant |
 |---|---|
@@ -1350,7 +1331,7 @@ sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
 <!--
 (10 s)
 
-Les adresses sont celles du syllabus. Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe.
+Les adresses sont celles du syllabus. Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe ; entre les séances, une issue sur le dépôt syllabus.
 -->
 
 ---
@@ -1372,11 +1353,13 @@ Détail des reprises : `ATTRIBUTION.md` du dépôt [IUTInfoAix-R510/cours](https
 </div>
 
 <!--
+(Hors minutage : diapo de référence, laissée en fin de support.)
+
 Les présentations d'origine sont en anglais et pensées pour Atlas et l'ancien shell. Les liens sont dans le README du dépôt cours.
 
 Si des étudiants consultent les présentations officielles, voici les passages qui touchent cette séance, avec leurs écarts par rapport au TP (numéros de page de l'export PDF) :
 - MongoDB 101, diapos 31 à 34 : le schéma part des besoins de l'application. Diapo 46 : l'exemple N-N des livres et des auteurs répond à la question de modélisation 2, à ne pas montrer avant la mise en commun.
-- Querying Complex Data with MQL, diapo 38 : { dim_cm.1: { $gt: 25 } } sans guillemets, qui provoque la SyntaxError de la diapo 6. La diapo 36 est cassée. Les tableaux sont traités aux diapos 30-31, 33, 35, 38 et 40, $elemMatch aux diapos 49 à 54, sur une collection inventory.
+- Querying Complex Data with MQL, diapo 38 : { dim_cm.1: { $gt: 25 } } sans guillemets, qui provoque la SyntaxError de la diapo 8. La diapo 36 est cassée. Les tableaux sont traités aux diapos 30-31, 33, 35, 38 et 40, $elemMatch aux diapos 49 à 54, sur une collection inventory.
 - The MongoDB Query Language, diapo 53 : « toutes les écritures sont atomiques » ne vaut que pour un document (Inserting and Updating Data in MongoDB, diapo 43, le dit correctement). Diapo 67 : elle mélange le sens requête et le sens projection de $elemMatch.
 - Aucune présentation ne traite l'opérateur positionnel $ dans une mise à jour.
 - Querying Data with the MongoDB Aggregation Framework, diapos 5 à 9 : aggregate({ $match: ... }) avec une étape seule, sans tableau. Diapos 25 à 28 : { $project: { $field: <expr> } }, refusé par le serveur.

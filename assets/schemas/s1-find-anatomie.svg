@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 200" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Anatomie de db.films.find : la collection, le filtre et la projection, avec leur équivalent SQL</title>
+  <title id="t">Anatomie de db.films.find({ annee: 2001 }, { _id: 0, titre: 1 }) : films est la collection (FROM films) ; { annee: 2001 } est le filtre, qui choisit les documents (WHERE annee = 2001 ; {} les garde tous) ; { _id: 0, titre: 1 } est la projection, qui choisit les champs (SELECT titre ; 1 garde, 0 exclut)</title>
 
   <!-- cadres du filtre et de la projection -->
   <rect x="332" y="18" width="286" height="56" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="3"/>

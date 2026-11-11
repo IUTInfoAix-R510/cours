@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Sans $sort, deux exécutions du même pipeline donnent deux ordres différents. Avec $sort sur moyenne, -1 donne l'ordre décroissant et 1 l'ordre croissant, à chaque exécution</title>
+  <title id="t">À gauche, sans $sort, l'ordre peut changer : 1re exécution Cuisine 20.5, Salon 20.8, Chambre 17.5 ; 2e exécution Chambre, Salon, Cuisine. À droite, avec $sort, l'ordre est fixé : moyenne -1, décroissant, Salon 20.8, Cuisine 20.5, Chambre 17.5 ; moyenne 1, croissant, Chambre, Cuisine, Salon.</title>
   <rect x="94.0" y="2" width="972" height="132" rx="12" fill="none" stroke="#c0392b" stroke-width="2"/>
   <text x="110.0" y="28" font-size="19" font-weight="bold" fill="#c0392b">sans $sort : l'ordre peut changer</text>
   <text x="110.0" y="64" font-size="17" fill="#333">1re exécution</text>

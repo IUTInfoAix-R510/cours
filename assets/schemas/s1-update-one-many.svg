@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 246" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Même filtre annee inférieure à 2000, qui trouve trois films : updateOne modifie le premier trouvé, updateMany les trois</title>
+  <title id="t">Le même filtre, annee inférieure à 2000, trouve trois films : Mon voisin Totoro (1988), La Haine (1995) et Le Dîner de cons (1998). updateOne modifie le premier trouvé, Totoro, qui reçoit classique: true, et ignore les deux autres : matchedCount 1, modifiedCount 1. updateMany modifie les trois : matchedCount 3, modifiedCount 3.</title>
   <line x1="270" y1="6" x2="270" y2="240" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"/>
   <text x="130" y="24" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">updateOne</text>
   <text x="130" y="49" font-size="17" fill="#555" text-anchor="middle">le premier trouvé</text>

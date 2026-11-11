@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 224" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Portée des suppressions sur la collection films : deleteMany avec un filtre retire Totoro, deleteMany({}) vide la collection qui existe toujours, drop() supprime la collection</title>
+  <title id="t">Trois suppressions sur la collection films. deleteMany avec le filtre { annee: { $lt: 1990 } } supprime un document, Totoro ; les cinq autres films restent. deleteMany({}) vide la collection, qui existe toujours. drop() supprime la collection, qui n'existe plus.</title>
   <text x="180" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">deleteMany({ annee: … })</text>
   <rect x="10" y="38" width="340" height="150" rx="12" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
   <text x="24" y="62" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">films</text>

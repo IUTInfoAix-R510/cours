@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif">
-  <title>Note de projet : note d'équipe pondérée pour chaque étudiant</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La note d'équipe sur 100 (données, API REST et tests, front web, documentation, bonus Neo4j jusqu'à 10 points, note plafonnée à 100) est pondérée pour chaque étudiant par les questions individuelles en S8 (environ 6 minutes : expliquer une partie de son code puis la modifier), les contributions (au moins une pull request significative et la revue de celle d'un coéquipier) et un détecteur d'IA appliqué au code rendu</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>

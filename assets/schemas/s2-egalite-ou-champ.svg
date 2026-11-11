@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le filtre sur le document imbriqué entier compare tous les champs dans l'ordre ; le filtre en notation pointée ne teste qu'un champ</title>
+  <title id="t">Lignes 1 à 3 : le filtre { realisation: { ... } } compare le document imbriqué entier d'Alien, nom: Scott puis pays: Royaume-Uni. Ligne 1, pays absent : pas de résultat. Ligne 2, identique : résultat. Ligne 3, ordre inversé : pas de résultat. Ligne 4 : realisation.nom ne teste que nom et ignore pays : un seul champ testé, presque toujours le bon choix.</title>
   <style>
-    .c { font-size: 18px; fill: #333; }
+    .c { font-size: 16px; fill: #333; font-family: monospace; }
     .l { font-size: 18px; fill: #555; }
     .t { font-size: 20px; font-weight: bold; }
     .ok { font-size: 18px; font-weight: bold; fill: #00684a; }
@@ -13,7 +13,7 @@
 
   <!-- ===== Panneau gauche : document entier ===== -->
   <rect x="1" y="1" width="728" height="328" rx="10" fill="#fff8ec" stroke="#e8a838" stroke-width="2"/>
-  <text class="t" x="18" y="32" fill="#b06f00">Lignes 1 à 3 : { realisation: { … } }</text>
+  <text class="t" x="18" y="32" fill="#b06f00">Lignes 1 à 3 : <tspan font-family="monospace">{ realisation: { … } }</tspan></text>
 
   <text class="l" x="18" y="76" font-weight="bold">Alien</text>
   <rect class="stock" x="132" y="52" width="210" height="36" rx="6"/>
@@ -48,14 +48,14 @@
 
   <!-- ===== Panneau droit : un seul champ ===== -->
   <rect x="749" y="1" width="410" height="328" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text class="t" x="766" y="32" fill="#00684a">Ligne 4 : "realisation.nom"</text>
+  <text class="t" x="766" y="32" fill="#00684a">Ligne 4 : <tspan font-family="monospace">"realisation.nom"</tspan></text>
 
   <rect x="766" y="52" width="148" height="36" rx="6" fill="#ffffff" stroke="#13aa52" stroke-width="3"/>
   <text class="c" x="778" y="76">nom: "Scott"</text>
   <rect x="924" y="52" width="218" height="36" rx="6" fill="none" stroke="#b8c4cf" stroke-width="1.5" stroke-dasharray="6 4"/>
   <text class="c" x="938" y="76" fill="#9aa5b0">pays: "Royaume-Uni"</text>
 
-  <text class="ok" x="840" y="116" text-anchor="middle">✓ "Scott"</text>
+  <text class="ok" x="840" y="116" text-anchor="middle">✓ <tspan font-family="monospace">"Scott"</tspan></text>
   <text class="l" x="1033" y="116" text-anchor="middle">ignoré</text>
 
   <text class="regle" x="954" y="196" fill="#00684a" style="font-size: 21px" text-anchor="middle">Un seul champ testé :</text>

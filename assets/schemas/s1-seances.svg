@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif">
-  <title>Huit séances de 4 h en quatre semaines</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Frise des huit séances : semaine du 23/11, S1 et S2 (TP1, documents et CRUD, puis documents imbriqués, tableaux, agrégation) ; semaine du 30/11, S3 (TP2, requêtes avancées, agrégation, index) et S4 (TP3, modélisation, patterns de conception) ; semaine du 7/12, S5 (TP4, Neo4j et Cypher) et S6 (projet : lancement, modèle, chargement des données) ; semaine du 14/12, S7 (projet : agrégations, API REST, index) et S8 (projet : finalisation, questions individuelles)</title>
   <rect x="12" y="122" width="130" height="226" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
   <rect x="12" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
   <text x="146" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 23/11</text>

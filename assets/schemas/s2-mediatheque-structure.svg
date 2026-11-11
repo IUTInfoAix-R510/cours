@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 470" font-family="sans-serif">
-  <title>La médiathèque : structure des collections livres et membres</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 470" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Structure des deux collections. livres : _id, titre, annee ; auteurs, tableau de documents ; categories, tableau ; serie, document imbriqué facultatif ; exemplaires, tableau de documents dont chaque élément peut contenir emprunt_actuel, document imbriqué de troisième niveau avec membre_id qui référence un membre ; avis, tableau facultatif de documents avec membre_id. membres : _id, prenom, nom, ville, inscription ; parrain_id, référence facultative vers un membre ; emprunts, tableau de documents avec exemplaire, livre_id qui référence un livre, titre, dates et date_retour facultative. Un emprunt en cours est écrit deux fois : dans le livre et dans le membre.</title>
 
   <!-- Collection livres -->
   <rect x="10" y="10" width="690" height="350" rx="14" fill="#f0f4f8" stroke="#00684a" stroke-width="3"/>
