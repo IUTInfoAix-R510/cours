@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 432" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Les trois collections du TP2 : restaurants (25 359 documents) avec _id, le document imbriqué address qui contient building, le tableau coord [longitude, latitude], street et zipcode, puis borough, cuisine, le tableau de documents grades { date, grade, score } rangé de la plus récente à la plus ancienne, name et restaurant_id, une chaîne ; neighborhoods (195 documents) avec _id, name et geometry, un Polygon ou MultiPolygon GeoJSON ; boroughs (5 documents, créée pour le TP) avec _id (code FIPS), nom, comte, population (recensement 2020) et superficie_km2. Le champ borough se relie à nom par $lookup (partie 3), et address.coord se situe dans le polygone geometry avec $geoWithin (partie 5). Le score compte des points de pénalité : plus il est bas, mieux c'est.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#999"/>
     </marker>
   </defs>
@@ -61,7 +61,7 @@
 
   <!-- Lien address.coord → geometry -->
   <circle cx="432" cy="165" r="4" fill="#999"/>
-  <line x1="428" y1="165" x2="238" y2="165" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl)"/>
+  <line x1="428" y1="165" x2="252.5" y2="165" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 4.75" marker-end="url(#fl)"/>
   <g font-size="16" fill="#555" text-anchor="middle">
     <text x="317" y="152">dans le polygone :</text>
     <text x="317" y="190" font-family="monospace" font-weight="bold" fill="#00684a">$geoWithin</text>
@@ -70,7 +70,7 @@
 
   <!-- Lien borough → nom -->
   <circle cx="594" cy="236" r="4" fill="#999"/>
-  <path d="M 598 236 L 812 236 C 866 236, 862 130, 922 130" fill="none" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl)"/>
+  <path d="M 598 236 L 812 236 C 866 236, 860 130, 907.5 130" fill="none" stroke="#b8c4cf" stroke-width="2.5" stroke-dasharray="7 4.83" marker-end="url(#fl)"/>
   <g font-size="16" fill="#555" text-anchor="middle">
     <text x="860" y="268" font-family="monospace" font-weight="bold" fill="#00684a">$lookup</text>
     <text x="860" y="290">partie 3</text>

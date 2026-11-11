@@ -1,9 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 462" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Les opérateurs sur une droite des durées. $eq: 98 (=) garde le point 98 ; $ne: 98 (&lt;&gt;) tout sauf 98, y compris les films sans champ duree ; $gt: 90 (&gt;) au-delà de 90, 90 exclu ; $gte: 90 (&gt;=) 90 compris ; $lt: 120 (&lt;) en deçà de 120, 120 exclu ; $lte: 120 (&lt;=) 120 compris ; $in: [90, 120] (IN) les deux points 90 et 120. En combinant $gte: 90 et $lt: 120 par un ET, il reste l'intervalle de 90 compris à 120 exclu, où se trouve La Haine, 98 minutes.</title>
   <defs>
-    <marker id="fb" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
-    <marker id="fv" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
-    <marker id="fg" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="18" markerHeight="18" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
+    <marker id="fb" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
+    <marker id="fv" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+    <marker id="fg" viewBox="0 0 10 10" refX="4" refY="5" markerUnits="userSpaceOnUse" markerWidth="16" markerHeight="16" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
   </defs>
   <line x1="469.0" y1="16" x2="469.0" y2="414" stroke="#999" stroke-width="1.2" stroke-dasharray="3 5"/>
   <line x1="353.1" y1="16" x2="353.1" y2="414" stroke="#999" stroke-width="1.2" stroke-dasharray="3 5"/>
@@ -15,27 +15,27 @@
   <text x="10" y="81" font-family="monospace" font-size="19" fill="#333">$ne: 98</text>
   <text x="218" y="81" font-family="monospace" font-size="19" fill="#888" text-anchor="end">&lt;></text>
   <line x1="232" y1="74" x2="548" y2="74" stroke="#d5dbe1" stroke-width="3"/>
-  <line x1="242.0" y1="74" x2="538.0" y2="74" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)" marker-end="url(#fb)"/>
+  <line x1="238.6" y1="74" x2="541.4" y2="74" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)" marker-end="url(#fb)"/>
   <circle cx="353.1" cy="74" r="8" fill="white" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="125" font-family="monospace" font-size="19" fill="#333">$gt: 90</text>
   <text x="218" y="125" font-family="monospace" font-size="19" fill="#888" text-anchor="end">></text>
   <line x1="232" y1="118" x2="548" y2="118" stroke="#d5dbe1" stroke-width="3"/>
-  <line x1="311.0" y1="118" x2="538.0" y2="118" stroke="#4a90d9" stroke-width="7" marker-end="url(#fb)"/>
+  <line x1="311.0" y1="118" x2="541.4" y2="118" stroke="#4a90d9" stroke-width="7" marker-end="url(#fb)"/>
   <circle cx="311.0" cy="118" r="8" fill="white" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="169" font-family="monospace" font-size="19" fill="#333">$gte: 90</text>
   <text x="218" y="169" font-family="monospace" font-size="19" fill="#888" text-anchor="end">>=</text>
   <line x1="232" y1="162" x2="548" y2="162" stroke="#d5dbe1" stroke-width="3"/>
-  <line x1="311.0" y1="162" x2="538.0" y2="162" stroke="#4a90d9" stroke-width="7" marker-end="url(#fb)"/>
+  <line x1="311.0" y1="162" x2="541.4" y2="162" stroke="#4a90d9" stroke-width="7" marker-end="url(#fb)"/>
   <circle cx="311.0" cy="162" r="8" fill="#4a90d9" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="213" font-family="monospace" font-size="19" fill="#333">$lt: 120</text>
   <text x="218" y="213" font-family="monospace" font-size="19" fill="#888" text-anchor="end">&lt;</text>
   <line x1="232" y1="206" x2="548" y2="206" stroke="#d5dbe1" stroke-width="3"/>
-  <line x1="242.0" y1="206" x2="469.0" y2="206" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)"/>
+  <line x1="238.6" y1="206" x2="469.0" y2="206" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)"/>
   <circle cx="469.0" cy="206" r="8" fill="white" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="257" font-family="monospace" font-size="19" fill="#333">$lte: 120</text>
   <text x="218" y="257" font-family="monospace" font-size="19" fill="#888" text-anchor="end">&lt;=</text>
   <line x1="232" y1="250" x2="548" y2="250" stroke="#d5dbe1" stroke-width="3"/>
-  <line x1="242.0" y1="250" x2="469.0" y2="250" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)"/>
+  <line x1="238.6" y1="250" x2="469.0" y2="250" stroke="#4a90d9" stroke-width="7" marker-start="url(#fb)"/>
   <circle cx="469.0" cy="250" r="8" fill="#4a90d9" stroke="#4a90d9" stroke-width="3"/>
   <text x="10" y="301" font-family="monospace" font-size="19" fill="#333">$in: [90, 120]</text>
   <text x="218" y="301" font-family="monospace" font-size="19" fill="#888" text-anchor="end">IN</text>

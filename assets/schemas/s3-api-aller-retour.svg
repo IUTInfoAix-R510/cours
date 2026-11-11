@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 324" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">L'aller-retour d'une requête dans le projet, sur les films, en six messages entre quatre acteurs : le navigateur (le front du projet), Javalin (qui associe une URL à une fonction), Java avec le pilote MongoDB (qui fabrique et envoie la requête) et MongoDB (qui l'exécute sur la collection films). Aller : 1, le navigateur demande GET /api/annees/2001/films ; 2, la route Javalin appelle la méthode Java filmsDeLAnnee(2001) ; 3, le pilote envoie à MongoDB la requête find({ annee: 2001 }). Retour : 4, MongoDB renvoie 2 documents ; 5, la méthode rend une List de Document de 2 éléments ; 6, Javalin répond avec le statut 200 et un corps JSON. Le navigateur reçoit [{"titre":"Amélie Poulain","duree":122},{"titre":"Le Voyage de Chihiro","duree":125}].</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -25,43 +25,43 @@
 
   <!-- lignes de vie -->
   <g stroke="#b8c4cf" stroke-width="2" stroke-dasharray="6 5">
-    <line x1="130" y1="60" x2="130" y2="276"/>
-    <line x1="430" y1="60" x2="430" y2="276"/>
-    <line x1="730" y1="60" x2="730" y2="276"/>
-    <line x1="1030" y1="60" x2="1030" y2="276"/>
+    <line x1="130" y1="60" x2="130" y2="284"/>
+    <line x1="430" y1="60" x2="430" y2="284"/>
+    <line x1="730" y1="60" x2="730" y2="284"/>
+    <line x1="1030" y1="60" x2="1030" y2="284"/>
   </g>
 
   <!-- aller -->
-  <line x1="134" y1="98" x2="426" y2="98" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="135" y1="98" x2="420" y2="98" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <circle cx="152" cy="83" r="11" fill="#00684a"/>
   <text x="152" y="88" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
   <text x="172" y="89" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold">GET</tspan> /api/annees/<tspan fill="#b06f00" font-weight="bold">2001</tspan>/films</text>
 
-  <line x1="434" y1="134" x2="726" y2="134" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="435" y1="134" x2="720" y2="134" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <circle cx="452" cy="119" r="11" fill="#00684a"/>
   <text x="452" y="124" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
   <text x="472" y="125" font-family="monospace" font-size="15" fill="#333">filmsDeLAnnee(<tspan fill="#b06f00" font-weight="bold">2001</tspan>)</text>
 
-  <line x1="734" y1="170" x2="1026" y2="170" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="735" y1="170" x2="1020" y2="170" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <circle cx="752" cy="155" r="11" fill="#00684a"/>
   <text x="752" y="160" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
   <text x="772" y="161" font-family="monospace" font-size="15" fill="#333">find({ annee: <tspan fill="#b06f00" font-weight="bold">2001</tspan> })</text>
 
   <!-- retour -->
-  <line x1="1026" y1="206" x2="734" y2="206" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
-  <circle cx="752" cy="191" r="11" fill="#4a90d9"/>
-  <text x="752" y="196" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
-  <text x="772" y="197" font-size="15" fill="#333"><tspan font-weight="bold">2 documents</tspan> (Amélie, Chihiro)</text>
+  <line x1="1025" y1="206" x2="740" y2="206" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
+  <circle cx="752" cy="189" r="11" fill="#4a90d9"/>
+  <text x="752" y="194" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">4</text>
+  <text x="772" y="195" font-size="15" fill="#333"><tspan font-weight="bold">2 documents</tspan> (Amélie, Chihiro)</text>
 
-  <line x1="726" y1="242" x2="434" y2="242" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
-  <circle cx="452" cy="227" r="11" fill="#4a90d9"/>
-  <text x="452" y="232" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
-  <text x="472" y="233" font-size="15" fill="#333"><tspan font-family="monospace" font-weight="bold">List&lt;Document&gt;</tspan> de 2 éléments</text>
+  <line x1="725" y1="242" x2="440" y2="242" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
+  <circle cx="452" cy="225" r="11" fill="#4a90d9"/>
+  <text x="452" y="230" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">5</text>
+  <text x="472" y="231" font-size="15" fill="#333"><tspan font-family="monospace" font-weight="bold">List&lt;Document&gt;</tspan> de 2 éléments</text>
 
-  <line x1="426" y1="278" x2="134" y2="278" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
-  <circle cx="152" cy="263" r="11" fill="#4a90d9"/>
-  <text x="152" y="268" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
-  <text x="172" y="269" font-size="15" fill="#333">statut <tspan font-weight="bold">200</tspan>, corps en <tspan font-weight="bold">JSON</tspan></text>
+  <line x1="425" y1="278" x2="140" y2="278" stroke="#555" stroke-width="2.2" stroke-dasharray="7 4" marker-end="url(#fl)"/>
+  <circle cx="152" cy="261" r="11" fill="#4a90d9"/>
+  <text x="152" y="266" font-size="14" font-weight="bold" fill="#ffffff" text-anchor="middle">6</text>
+  <text x="172" y="267" font-size="15" fill="#333">statut <tspan font-weight="bold">200</tspan>, corps en <tspan font-weight="bold">JSON</tspan></text>
 
   <text x="1150" y="125" font-size="14" fill="#777" text-anchor="end">aller</text>
   <text x="1150" y="233" font-size="14" fill="#777" text-anchor="end">retour</text>

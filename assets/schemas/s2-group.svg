@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">$group : les 9 documents issus de $unwind sont rangés par pièce. Salon reçoit 19.5, 21, 22.5 et 20 ; Cuisine 18 et 23 ; Chambre 17, 17.5 et 18. Chaque groupe donne un document : Salon moyenne 20.75, max 22.5, nb 4 ; Cuisine moyenne 20.5, max 23, nb 2 ; Chambre moyenne 17.5, max 18, nb 3.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -47,7 +47,7 @@
   <text x="518" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">22.5</text>
   <rect x="556" y="76" width="60" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
   <text x="586" y="97" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">20</text>
-  <line x1="640" y1="77.0" x2="742" y2="77.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="640" y1="77.0" x2="739" y2="77.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
   <rect x="750" y="36" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <g font-family="monospace" font-size="17" fill="#333">
     <text x="764" y="67">{ _id: "Salon",</text>
@@ -59,7 +59,7 @@
   <text x="382" y="191" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">18</text>
   <rect x="420" y="170" width="60" height="30" rx="6" fill="#fff" stroke="#e8a838" stroke-width="1.8"/>
   <text x="450" y="191" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">23</text>
-  <line x1="640" y1="171.0" x2="742" y2="171.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="640" y1="171.0" x2="739" y2="171.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
   <rect x="750" y="130" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <g font-family="monospace" font-size="17" fill="#333">
     <text x="764" y="161">{ _id: "Cuisine",</text>
@@ -73,7 +73,7 @@
   <text x="450" y="285" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">17.5</text>
   <rect x="488" y="264" width="60" height="30" rx="6" fill="#fff" stroke="#8e44ad" stroke-width="1.8"/>
   <text x="518" y="285" font-family="monospace" font-size="17" fill="#333" text-anchor="middle">18</text>
-  <line x1="640" y1="265.0" x2="742" y2="265.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="640" y1="265.0" x2="739" y2="265.0" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
   <rect x="750" y="224" width="408" height="82" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <g font-family="monospace" font-size="17" fill="#333">
     <text x="764" y="255">{ _id: "Chambre",</text>

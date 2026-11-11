@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 222" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">$addFields: { nb_notes: { $size: "$notes" } } sur le film Chihiro. Avant : titre, annee, duree, realisateur, genres et notes, un tableau de deux notes (presse 5, public 4). L'expression "$notes" donne la valeur du champ notes, un tableau de 2 documents ; $size donne sa taille, 2. Après : les six champs sont toujours là, et nb_notes: 2 est ajouté à la fin.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
-    <marker id="flb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="flb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
     </marker>
   </defs>
@@ -22,7 +22,7 @@
     <text x="30" y="202">{ source: "public", note: 4 } ]</text>
   </g>
   <rect x="10" y="137" width="80" height="23" rx="5" fill="none" stroke="#4a90d9" stroke-width="2"/>
-  <line x1="90" y1="148" x2="352" y2="148" stroke="#4a90d9" stroke-width="2" stroke-dasharray="5 3" marker-end="url(#flb)"/>
+  <line x1="95" y1="148" x2="346" y2="148" stroke="#4a90d9" stroke-width="2" stroke-dasharray="5 3.1" marker-end="url(#flb)"/>
 
   <!-- L'expression, évaluée pour ce film -->
   <text x="560" y="104" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">{ <tspan fill="#00684a">$size</tspan>: <tspan fill="#4a90d9">"$notes"</tspan> }</text>
@@ -31,17 +31,16 @@
   <rect x="356" y="131" width="120" height="34" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
   <text x="416" y="154" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">"$notes"</text>
   <text x="416" y="188" font-size="14" fill="#555" text-anchor="middle">la valeur du champ</text>
-  <line x1="476" y1="148" x2="496" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="480" y1="148" x2="490" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <rect x="500" y="131" width="120" height="34" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
   <text x="560" y="153" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">[ {…}, {…} ]</text>
   <text x="560" y="188" font-size="14" fill="#555" text-anchor="middle">2 documents</text>
-  <line x1="620" y1="148" x2="640" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="624" y1="148" x2="634" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <rect x="644" y="131" width="120" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="704" y="154" font-family="monospace" font-size="16" fill="#333" text-anchor="middle"><tspan font-weight="bold" fill="#00684a">$size</tspan> → <tspan font-weight="bold">2</tspan></text>
   <text x="704" y="188" font-size="14" fill="#555" text-anchor="middle">sa taille</text>
-  <line x1="764" y1="148" x2="832" y2="174" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <!-- Après -->
   <text x="828" y="20" font-size="17" font-weight="bold" fill="#333">après</text>
@@ -56,4 +55,7 @@
   <rect x="836" y="164" width="140" height="28" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="846" y="183" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a">nb_notes: 2</text>
   <text x="988" y="183" font-size="14" fill="#555">ajouté à la fin</text>
+
+  <!-- flèche $size → nb_notes, tracée après le cadre « après » pour que la tête reste visible -->
+  <path d="M769,148 C793,148 789,178 818,178" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 </svg>

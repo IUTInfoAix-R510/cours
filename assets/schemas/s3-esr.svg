@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 336" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">L'index composé { annee: 1, titre: 1 } sur les 4 films range ses clés par annee, puis par titre à annee égale : (1995, "La Haine"), (2000, "Les Glaneurs et la Glaneuse"), (2001, "Amélie Poulain"), (2001, "Le Voyage de Chihiro"). À gauche, une égalité, find({ annee: 2001 }).sort({ titre: 1 }) : les clés 2001 forment un seul bloc, déjà rangé par titre ; l'ordre de lecture est celui des titres, le plan est FETCH ← IXSCAN, sans tri. À droite, un intervalle, find({ annee: { $gte: 2000 } }).sort({ titre: 1 }) : deux blocs, 2000 puis 2001 ; l'ordre de lecture est Les Glaneurs, Amélie Poulain, Le Voyage de Chihiro, alors que l'ordre des titres est Amélie Poulain, Le Voyage de Chihiro, Les Glaneurs ; MongoDB doit trier en mémoire, le plan est FETCH ← SORT ← IXSCAN.</title>
-  <defs><marker id="fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <defs><marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
   <text x="580" y="22" font-size="17" fill="#333" text-anchor="middle">Index <tspan font-family="monospace" font-weight="bold">{ annee: 1, titre: 1 }</tspan> : clés rangées par <tspan font-weight="bold">annee</tspan>, puis par <tspan font-weight="bold">titre</tspan> à annee égale</text>
 
   <!-- Égalité -->
@@ -28,7 +28,7 @@
   <text x="18" y="314" font-size="16" fill="#555">Plan :</text>
   <rect x="70" y="295" width="68" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="104" y="314" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">FETCH</text>
-  <line x1="166" y1="309" x2="146" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <line x1="168" y1="309" x2="147" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
   <rect x="172" y="295" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="211" y="314" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
   <text x="266" y="314" font-size="16" font-weight="bold" fill="#00684a">pas de tri</text>
@@ -62,10 +62,10 @@
   <text x="604" y="314" font-size="16" fill="#555">Plan :</text>
   <rect x="656" y="295" width="68" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="690" y="314" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">FETCH</text>
-  <line x1="752" y1="309" x2="732" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <line x1="754" y1="309" x2="733" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
   <rect x="758" y="295" width="62" height="28" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
   <text x="789" y="314" font-family="monospace" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">SORT</text>
-  <line x1="848" y1="309" x2="828" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <line x1="850" y1="309" x2="829" y2="309" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
   <rect x="854" y="295" width="78" height="28" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="893" y="314" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">IXSCAN</text>
   <text x="946" y="314" font-size="16" font-weight="bold" fill="#c0392b">SORT : tri en mémoire</text>

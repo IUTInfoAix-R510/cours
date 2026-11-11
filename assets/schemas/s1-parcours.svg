@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Parcours de la ressource : le modèle document avec MongoDB de S1 à S4, le modèle graphe avec Neo4j et Cypher en S5, puis le projet en équipe (Java, Javalin, MongoDB, bonus Neo4j) de S6 à S8 ; la médiathèque de la séance 2 revient en graphe dans le TP4</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="fl" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="14" markerHeight="14" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
-    <marker id="flv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="flv" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/>
     </marker>
   </defs>
@@ -23,7 +23,7 @@
   <text x="175" y="253" font-size="20" fill="#555" text-anchor="middle">modélisation, index</text>
 
   <!-- flèche -->
-  <line x1="346" y1="140" x2="388" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <line x1="346" y1="140" x2="385" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
 
   <!-- Graphe -->
   <rect x="395" y="10" width="330" height="260" rx="14" fill="#f4ecf8" stroke="#8e44ad" stroke-width="3"/>
@@ -48,7 +48,7 @@
   <text x="560" y="253" font-size="20" fill="#555" text-anchor="middle">recommandation</text>
 
   <!-- flèche -->
-  <line x1="731" y1="140" x2="773" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <line x1="731" y1="140" x2="770" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
 
   <!-- Projet -->
   <rect x="780" y="10" width="330" height="260" rx="14" fill="#fdf3e1" stroke="#e8a838" stroke-width="3"/>
@@ -69,7 +69,7 @@
   <text x="945" y="253" font-size="20" fill="#555" text-anchor="middle">bonus Neo4j</text>
 
   <!-- Fil conducteur : la médiathèque -->
-  <path d="M175,274 C175,330 560,330 560,280" fill="none" stroke="#8e44ad" stroke-width="3" stroke-dasharray="9 7" marker-end="url(#flv)"/>
+  <path d="M175,276 C175,335 560,345 560,300 L560,280" fill="none" stroke="#8e44ad" stroke-width="3" stroke-dasharray="8.93 6.95" marker-end="url(#flv)"/>
   <text x="367" y="362" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Fil conducteur : la médiathèque</text>
   <text x="367" y="390" font-size="20" fill="#555" text-anchor="middle">en document (S2), puis en graphe (TP4)</text>
 </svg>

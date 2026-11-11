@@ -1,14 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 300" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Décrire un lieu en GeoJSON, sur deux documents inventés d'Aix-en-Provence. À gauche, une carte : la longitude en abscisse (x, position est-ouest), la latitude en ordonnée (y, position nord-sud). Le point de la Mairie a pour longitude 5.4474 et pour latitude 43.5297. La zone Centre est un rectangle dont les coins sont numérotés de 1 à 4 dans l'ordre du contour. À droite, les documents correspondants. Collection lieux : { nom: "Mairie", position: { type: "Point", coordinates: [ 5.4474, 43.5297 ] } }, la longitude d'abord, puis la latitude. Collection zones : { nom: "Centre", contour: { type: "Polygon", coordinates: [ [ 1 [5.440, 43.525], 2 [5.455, 43.525], 3 [5.455, 43.535], 4 [5.440, 43.535], 5 [5.440, 43.525] ] ] } } : une liste d'anneaux dont le premier est le contour ; le cinquième point répète le premier, l'anneau est fermé.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
   </defs>
 
   <!-- carte : axes -->
-  <line x1="82" y1="240" x2="446" y2="240" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <line x1="82" y1="240" x2="82" y2="20" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="82" y1="240" x2="442" y2="240" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="82" y1="241.1" x2="82" y2="24" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <text x="94" y="24" font-size="16" fill="#8e44ad" font-weight="bold">latitude (y) : nord-sud</text>
   <text x="446" y="290" font-size="16" fill="#00684a" font-weight="bold" text-anchor="end">longitude (x) : est-ouest</text>
   <g stroke="#555" stroke-width="2">

@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 332" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Mécanisme de $facet sur les 4 films. Les 4 films (La Haine, 1995, 98 min ; Les Glaneurs et la Glaneuse, 2000, 82 min ; Amélie Poulain, 2001, 122 min ; Le Voyage de Chihiro, 2001, 125 min) entrent dans le $facet, qui en donne une copie complète à chacune de ses deux facettes. La facette par_annee reçoit les 4 films et applique $group par année ({ _id: "$annee", nb: { $sum: 1 } }) puis $sort sur _id. La facette plus_long reçoit aussi les 4 films et applique $sort par durée décroissante, $limit 1, puis $project titre. En sortie, un seul document, avec un champ par facette, chacun un tableau : par_annee vaut [ { _id: 1995, nb: 1 }, { _id: 2000, nb: 1 }, { _id: 2001, nb: 2 } ] et plus_long vaut [ { titre: "Le Voyage de Chihiro" } ], un tableau même pour un seul résultat.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -15,10 +15,10 @@
 
   <!-- films en entrée -->
   <g fill="none" stroke="#9fb3c6" stroke-width="2.2">
-    <path d="M214,96 C228,96 222,178 236,178"/>
-    <path d="M214,148 C228,148 222,178 236,178"/>
-    <path d="M214,200 C228,200 222,178 236,178"/>
-    <path d="M214,252 C228,252 222,178 236,178"/>
+    <path d="M214,96 C224,96 220,178 230,178"/>
+    <path d="M214,148 C224,148 220,178 230,178"/>
+    <path d="M214,200 C224,200 220,178 230,178"/>
+    <path d="M214,252 C224,252 220,178 230,178"/>
   </g>
   <rect x="2" y="74" width="212" height="44" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="12" y="92" font-size="15" font-weight="bold" fill="#333">La Haine</text>
@@ -36,8 +36,8 @@
   <!-- $facet -->
   <rect x="244" y="34" width="512" height="262" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <text x="258" y="58" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$facet</text>
-  <path d="M236,178 C246,178 244,124 256,124" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <path d="M236,178 C246,178 244,232 256,232" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <path d="M230,178 V130 Q230,124 236,124 H250" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <path d="M230,178 V226 Q230,232 236,232 H250" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <!-- facette par_annee -->
   <rect x="258" y="72" width="484" height="100" rx="8" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
@@ -52,15 +52,15 @@
     <rect x="338" y="134" width="62" height="24" rx="5" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.6"/>
     <text x="369" y="150">Chihiro</text>
   </g>
-  <line x1="402" y1="132" x2="420" y2="132" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="403" y1="132" x2="414" y2="132" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="422" y="102" width="152" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="498" y="121" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$group</text>
   <text x="498" y="139" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">_id: "$annee",</text>
   <text x="498" y="156" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">nb: { $sum: 1 }</text>
-  <line x1="574" y1="132" x2="592" y2="132" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="594" y="102" width="92" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="640" y="125" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$sort</text>
-  <text x="640" y="148" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">_id: 1</text>
+  <line x1="577" y1="132" x2="588" y2="132" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="596" y="102" width="92" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="642" y="125" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$sort</text>
+  <text x="642" y="148" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">_id: 1</text>
 
   <!-- facette plus_long -->
   <rect x="258" y="182" width="484" height="100" rx="8" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
@@ -75,23 +75,23 @@
     <rect x="338" y="244" width="62" height="24" rx="5" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.6"/>
     <text x="369" y="260">Chihiro</text>
   </g>
-  <line x1="402" y1="242" x2="420" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="422" y="212" width="102" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="473" y="235" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$sort</text>
-  <text x="473" y="258" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">duree: -1</text>
-  <line x1="524" y1="242" x2="540" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="403" y1="242" x2="414" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="422" y="212" width="98" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="471" y="235" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$sort</text>
+  <text x="471" y="258" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">duree: -1</text>
+  <line x1="523" y1="242" x2="534" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="542" y="212" width="72" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="578" y="235" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$limit</text>
   <text x="578" y="258" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">1</text>
-  <line x1="614" y1="242" x2="630" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="632" y="212" width="98" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="681" y="231" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$project</text>
-  <text x="681" y="249" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">_id: 0,</text>
-  <text x="681" y="266" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">titre: 1</text>
+  <line x1="617" y1="242" x2="628" y2="242" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="636" y="212" width="94" height="62" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="683" y="231" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle">$project</text>
+  <text x="683" y="249" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">_id: 0,</text>
+  <text x="683" y="266" font-family="monospace" font-size="13" fill="#333" text-anchor="middle">titre: 1</text>
 
   <!-- vers la sortie -->
-  <line x1="742" y1="122" x2="786" y2="122" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <line x1="742" y1="232" x2="786" y2="232" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="746" y1="122" x2="780" y2="122" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="746" y1="232" x2="780" y2="232" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <!-- document de sortie -->
   <rect x="790" y="34" width="368" height="262" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>

@@ -23,8 +23,8 @@
   <text x="182.5" y="270" font-size="16" fill="#c0392b" text-anchor="middle"><tspan font-weight="bold">C2</tspan> écarté</text>
   <line x1="134.5" y1="340" x2="230.5" y2="340" stroke="#13aa52" stroke-width="1.5"/>
   <text x="182.5" y="368" font-family="monospace" font-size="16" fill="#777" text-anchor="middle">WHERE</text>
-  <path d="M122.2,205.0 L131.8,212.0 L122.2,219.0 z" fill="#555"/>
-  <path d="M233.8,205.0 L243.2,212.0 L233.8,219.0 z" fill="#555"/>
+  <path d="M121.75,205 L130.25,212 L121.75,219 z" fill="#555"/>
+  <path d="M233.5,205 L242,212 L233.5,219 z" fill="#555"/>
   <text x="305.0" y="24" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">4 documents</text>
   <rect x="246.0" y="40.0" width="118" height="60" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="256.0" y="64.0" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
@@ -44,8 +44,8 @@
   <text x="427.5" y="229" font-size="16" fill="#333" text-anchor="middle">par mesure</text>
   <line x1="379.5" y1="340" x2="475.5" y2="340" stroke="#13aa52" stroke-width="1.5"/>
   <text x="427.5" y="368" font-family="monospace" font-size="16" fill="#777" text-anchor="middle">JOIN</text>
-  <path d="M367.2,205.0 L376.8,212.0 L367.2,219.0 z" fill="#555"/>
-  <path d="M478.8,205.0 L488.2,212.0 L478.8,219.0 z" fill="#555"/>
+  <path d="M366.75,205 L375.25,212 L366.75,219 z" fill="#555"/>
+  <path d="M478.5,205 L487,212 L478.5,219 z" fill="#555"/>
   <text x="546.0" y="24" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">9 documents</text>
   <rect x="491.0" y="40.0" width="110" height="33" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="501.0" y="62.5" font-size="16" fill="#333" font-family="monospace"><tspan font-weight="bold">C1</tspan> v: 19.5</text>
@@ -71,8 +71,8 @@
   <text x="664.5" y="229" font-size="16" fill="#333" text-anchor="middle">par pièce</text>
   <line x1="616.5" y1="340" x2="712.5" y2="340" stroke="#13aa52" stroke-width="1.5"/>
   <text x="664.5" y="368" font-family="monospace" font-size="16" fill="#777" text-anchor="middle">GROUP BY</text>
-  <path d="M604.2,205.0 L613.8,212.0 L604.2,219.0 z" fill="#555"/>
-  <path d="M715.8,205.0 L725.2,212.0 L715.8,219.0 z" fill="#555"/>
+  <path d="M603.75,205 L612.25,212 L603.75,219 z" fill="#555"/>
+  <path d="M715.5,205 L724,212 L715.5,219 z" fill="#555"/>
   <text x="804.0" y="24" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3 documents</text>
   <rect x="728.0" y="40.0" width="152" height="92" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
   <text x="738.0" y="65.0" font-size="17" fill="#333" font-weight="bold">Cuisine</text>
@@ -95,8 +95,8 @@
   <text x="943.5" y="229" font-size="16" fill="#333" text-anchor="middle">moyenne</text>
   <line x1="895.5" y1="340" x2="991.5" y2="340" stroke="#13aa52" stroke-width="1.5"/>
   <text x="943.5" y="368" font-family="monospace" font-size="16" fill="#777" text-anchor="middle">ORDER BY</text>
-  <path d="M883.2,205.0 L892.8,212.0 L883.2,219.0 z" fill="#555"/>
-  <path d="M994.8,205.0 L1004.2,212.0 L994.8,219.0 z" fill="#555"/>
+  <path d="M882.75,205 L891.25,212 L882.75,219 z" fill="#555"/>
+  <path d="M994.5,205 L1003,212 L994.5,219 z" fill="#555"/>
   <text x="1083.0" y="24" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">3 documents</text>
   <rect x="1007.0" y="40.0" width="152" height="92" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="1017.0" y="65.0" font-size="17" fill="#333" font-weight="bold">Salon</text>

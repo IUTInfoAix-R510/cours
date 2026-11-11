@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 500" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Triangle CAP : sommets Cohérence, Disponibilité, Tolérance aux partitions. Côté CP : MongoDB avec les réglages par défaut. Côté AP : Cassandra. Côté CA : les SGBD relationnels sur un seul serveur, comme PostgreSQL ou MySQL. Une flèche indique que lire sur un secondaire rapproche MongoDB de AP.</title>
   <defs>
-    <marker id="fo" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto-start-reverse">
+    <marker id="fo" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#b9771a"/>
     </marker>
   </defs>
@@ -12,7 +12,7 @@
   <line x1="150" y1="400" x2="530" y2="400" stroke="#e8a838" stroke-width="9"/>
 
   <!-- lire sur un secondaire : de CP vers AP -->
-  <path d="M 440 240 Q 360 300 392 390" fill="none" stroke="#b9771a" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#fo)"/>
+  <path d="M 433 245 Q 385 285 385 387.4" fill="none" stroke="#b9771a" stroke-width="3" stroke-dasharray="6.96 4.97" marker-end="url(#fo)"/>
   <text x="318" y="266" text-anchor="middle" font-size="21" fill="#555">lire sur un</text>
   <text x="318" y="292" text-anchor="middle" font-size="21" fill="#555">secondaire</text>
 

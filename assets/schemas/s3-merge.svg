@@ -1,18 +1,16 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 378" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Ce que fait $merge, document par document. Le pipeline groupe les 4 films par année, puis $merge écrit sa sortie dans films_par_annee avec whenMatched "replace". La cible contient déjà { _id: 1980, nb: 3 } et { _id: 2001, nb: 1, note: "ancien" }. $merge cherche chaque document de la sortie par son _id dans la cible. _id 1995 et _id 2000 n'y sont pas : ils sont insérés. _id 2001 y est : whenMatched "replace" remplace l'ancien document en entier, qui devient { _id: 2001, nb: 2 } ; le champ note disparaît. _id 1980 n'est pas dans la sortie : $merge n'y touche pas. Après l'étape, films_par_annee contient 1980, 1995, 2000 et 2001.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
   </defs>
 
   <!-- Le pipeline -->
   <rect x="2" y="2" width="148" height="54" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
   <text x="76" y="35" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">les 4 films</text>
-  <line x1="150" y1="29" x2="182" y2="29" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="155" y1="29" x2="176" y2="29" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="186" y="2" width="470" height="54" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <text x="200" y="35" font-family="monospace" font-size="16" fill="#333">{ <tspan font-weight="bold" fill="#00684a">$group</tspan>: { _id: "$annee", nb: { $sum: 1 } } }</text>
-  <line x1="656" y1="29" x2="686" y2="29" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="661" y1="29" x2="680" y2="29" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="690" y="2" width="468" height="54" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <g font-family="monospace" font-size="16" fill="#333">
     <text x="704" y="24">{ <tspan font-weight="bold" fill="#00684a">$merge</tspan>: { into: "films_par_annee",</text>
@@ -32,50 +30,50 @@
   <text x="112" y="131" font-size="15" fill="#777" text-anchor="middle">pas d'<tspan font-family="monospace">_id</tspan> 1980</text>
   <rect x="252" y="106" width="360" height="40" rx="7" fill="#ffffff" stroke="#777" stroke-width="2"/>
   <text x="264" y="131" font-family="monospace" font-size="15" fill="#333">{ _id: <tspan font-weight="bold">1980</tspan>, nb: 3 }</text>
-  <line x1="612" y1="126" x2="638" y2="126" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="617" y1="126" x2="632" y2="126" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="642" y="106" width="240" height="40" rx="7" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
   <text x="762" y="131" font-size="15" fill="#555" text-anchor="middle">absent de la sortie : inchangé</text>
-  <line x1="882" y1="126" x2="908" y2="126" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="887" y1="126" x2="902" y2="126" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="912" y="106" width="246" height="40" rx="7" fill="#ffffff" stroke="#777" stroke-width="2"/>
   <text x="924" y="132" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">1980</tspan>, nb: 3 }</text>
 
   <!-- Ligne 1995 : nouvel _id -->
   <rect x="2" y="158" width="220" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="14" y="184" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">1995</tspan>, nb: 1 }</text>
-  <line x1="222" y1="178" x2="248" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="227" y1="178" x2="242" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="252" y="158" width="360" height="40" rx="7" fill="none" stroke="#b8c4cf" stroke-width="2" stroke-dasharray="6 4"/>
   <text x="432" y="183" font-size="15" fill="#777" text-anchor="middle">aucun document d'<tspan font-family="monospace">_id</tspan> 1995</text>
-  <line x1="612" y1="178" x2="638" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="617" y1="178" x2="632" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="642" y="158" width="240" height="40" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="762" y="183" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle"><tspan font-family="monospace">_id</tspan> nouveau : inséré</text>
-  <line x1="882" y1="178" x2="908" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="887" y1="178" x2="902" y2="178" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="912" y="158" width="246" height="40" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="924" y="184" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">1995</tspan>, nb: 1 }</text>
 
   <!-- Ligne 2000 : nouvel _id -->
   <rect x="2" y="210" width="220" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
   <text x="14" y="236" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">2000</tspan>, nb: 1 }</text>
-  <line x1="222" y1="230" x2="248" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="227" y1="230" x2="242" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="252" y="210" width="360" height="40" rx="7" fill="none" stroke="#b8c4cf" stroke-width="2" stroke-dasharray="6 4"/>
   <text x="432" y="235" font-size="15" fill="#777" text-anchor="middle">aucun document d'<tspan font-family="monospace">_id</tspan> 2000</text>
-  <line x1="612" y1="230" x2="638" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="617" y1="230" x2="632" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="642" y="210" width="240" height="40" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="762" y="235" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle"><tspan font-family="monospace">_id</tspan> nouveau : inséré</text>
-  <line x1="882" y1="230" x2="908" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="887" y1="230" x2="902" y2="230" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="912" y="210" width="246" height="40" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
   <text x="924" y="236" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">2000</tspan>, nb: 1 }</text>
 
   <!-- Ligne 2001 : _id déjà présent -->
   <rect x="2" y="274" width="220" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="14" y="300" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">2001</tspan>, nb: 2 }</text>
-  <line x1="222" y1="294" x2="248" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="227" y1="294" x2="242" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="252" y="274" width="360" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="264" y="299" font-family="monospace" font-size="15" fill="#333">{ _id: <tspan font-weight="bold">2001</tspan>, nb: 1, note: "ancien" }</text>
-  <line x1="612" y1="294" x2="638" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="617" y1="294" x2="632" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="642" y="262" width="240" height="64" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="762" y="285" font-size="15" font-weight="bold" fill="#00684a" text-anchor="middle"><tspan font-family="monospace">_id</tspan> trouvé : <tspan font-family="monospace">whenMatched</tspan></text>
   <text x="762" y="311" font-size="15" fill="#333" text-anchor="middle"><tspan font-family="monospace" font-weight="bold" fill="#00684a">"replace"</tspan> : remplacé en entier</text>
-  <line x1="882" y1="294" x2="908" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="887" y1="294" x2="902" y2="294" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="912" y="274" width="246" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="924" y="300" font-family="monospace" font-size="16" fill="#333">{ _id: <tspan font-weight="bold">2001</tspan>, nb: 2 }</text>
   <text x="1158" y="336" font-size="15" fill="#c0392b" text-anchor="end"><tspan font-family="monospace">note</tspan> a disparu</text>

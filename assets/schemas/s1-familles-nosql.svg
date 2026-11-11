@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Six familles NoSQL. Clé-valeur : une clé donne une valeur opaque, pour le cache et les sessions (Redis). Document : des documents structurés, interrogés champ par champ (MongoDB, CouchDB ; TP1 à TP3, projet). Colonnes (wide-column) : des lignes aux colonnes variables, regroupées en familles, sur de nombreuses machines (Cassandra, HBase). Graphe : des nœuds et des relations, pour parcourir des chemins (Neo4j ; TP4). Vectoriel : des embeddings et la recherche des plus proches voisins, pour l'IA (Qdrant, Milvus, pgvector pour PostgreSQL). Multi-modèle : document, graphe et clé-valeur dans un même moteur (ArangoDB).</title>
   <defs>
-    <marker id="fb" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+    <marker id="fb" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
     </marker>
   </defs>
@@ -12,11 +12,11 @@
     <rect width="7" height="230" fill="#4a90d9"/>
     <rect x="70" y="18" width="90" height="30" rx="5" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
     <text x="115" y="39" text-anchor="middle" font-size="17" fill="#4a90d9" font-weight="bold">clé</text>
-    <line x1="166" y1="33" x2="196" y2="33" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
+    <line x1="166" y1="33" x2="195.4" y2="33" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
     <rect x="204" y="18" width="80" height="30" rx="5" fill="#8a96a3"/>
     <rect x="70" y="58" width="90" height="30" rx="5" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
     <text x="115" y="79" text-anchor="middle" font-size="17" fill="#4a90d9" font-weight="bold">clé</text>
-    <line x1="166" y1="73" x2="196" y2="73" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
+    <line x1="166" y1="73" x2="195.4" y2="73" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
     <rect x="204" y="58" width="80" height="30" rx="5" fill="#8a96a3"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Clé-valeur</text>
     <text x="175" y="164" text-anchor="middle" font-size="18">valeur opaque :</text>

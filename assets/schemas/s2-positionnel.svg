@@ -1,14 +1,17 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 226" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Le tableau ingredients : farine en position 0, lait en position 1, oeufs en position 2. Le filtre ingredients.nom égal à lait trouve l'élément en position 1 ; dans ingredients.$.qte, $ vaut cette position, et la quantité du lait passe de 500 à 600.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    <marker id="fl-bleu" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
+    </marker>
+    <marker id="fl-vert" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#00684a"/>
     </marker>
   </defs>
 
   <!-- étape 1 : le filtre -->
   <text x="610" y="22" font-size="20" text-anchor="middle" fill="#4a90d9"><tspan font-weight="bold">1.</tspan> le filtre <tspan font-family="monospace" font-weight="bold">"ingredients.nom": "lait"</tspan> trouve l'élément</text>
-  <line x1="610" y1="30" x2="610" y2="60" stroke="#4a90d9" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="610" y1="31" x2="610" y2="54.5" stroke="#4a90d9" stroke-width="2.5" marker-end="url(#fl-bleu)"/>
 
   <!-- le tableau -->
   <text x="140" y="114" font-size="20" text-anchor="end" fill="#555" font-family="monospace">ingredients</text>
@@ -36,6 +39,6 @@
   </g>
 
   <!-- étape 2 : $ -->
-  <line x1="610" y1="192" x2="610" y2="158" stroke="#00684a" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="610" y1="198" x2="610" y2="161.5" stroke="#00684a" stroke-width="2.5" marker-end="url(#fl-vert)"/>
   <text x="610" y="218" font-size="20" text-anchor="middle" fill="#00684a"><tspan font-weight="bold">2.</tspan> dans <tspan font-family="monospace" font-weight="bold">"ingredients.$.qte"</tspan>, <tspan font-family="monospace" font-weight="bold">$</tspan> vaut la position trouvée : 1</text>
 </svg>

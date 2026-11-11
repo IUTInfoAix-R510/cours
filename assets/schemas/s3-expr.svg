@@ -1,10 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 258" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Filtre classique contre $expr, sur le même film La Haine. À gauche, le filtre { duree: { $gt: 100 } } compare une valeur du document (duree, 98) à une constante écrite dans la requête (100) : 98 > 100 est faux, le film est écarté. À droite, { $expr: { $gt: [A, B] } } compare deux valeurs prises dans le même document : A, la première note (5, $arrayElemAt avec l'indice 0), et B, la dernière (2, indice -1) ; 5 > 2 est vrai. A et B se calculent comme dans $project.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
-    <marker id="fla" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#b06f00"/>
     </marker>
   </defs>
@@ -21,17 +21,17 @@
     <text x="30" y="160">duree: <tspan fill="#4a90d9" font-weight="bold">98</tspan></text>
   </g>
 
-  <path d="M198,93 C198,108 300,100 300,116" fill="none" stroke="#b06f00" stroke-width="2.2" stroke-dasharray="5 3" marker-end="url(#fla)"/>
-  <line x1="208" y1="155" x2="244" y2="155" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <path d="M198,92 Q198,96 202,96 H294 Q300,96 300,102 V108" fill="none" stroke="#b06f00" stroke-width="2.2" stroke-dasharray="5 3.095" marker-end="url(#fla)"/>
+  <line x1="212" y1="155" x2="239" y2="155" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
-  <rect x="248" y="120" width="104" height="60" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="300" y="144" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$gt</text>
-  <text x="300" y="169" font-family="monospace" font-size="17" fill="#333" text-anchor="middle"><tspan fill="#4a90d9" font-weight="bold">98</tspan> &gt; <tspan fill="#b06f00" font-weight="bold">100</tspan></text>
-  <line x1="300" y1="180" x2="300" y2="194" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="264" y="197" width="72" height="30" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
-  <text x="300" y="218" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">faux</text>
-  <text x="344" y="218" font-size="16" fill="#c0392b">écarté</text>
-  <text x="18" y="246" font-size="15" fill="#555"><tspan fill="#b06f00" font-weight="bold">100</tspan> : le même pour tous les documents.</text>
+  <rect x="248" y="118" width="104" height="60" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="300" y="142" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$gt</text>
+  <text x="300" y="167" font-family="monospace" font-size="17" fill="#333" text-anchor="middle"><tspan fill="#4a90d9" font-weight="bold">98</tspan> &gt; <tspan fill="#b06f00" font-weight="bold">100</tspan></text>
+  <line x1="300" y1="181" x2="300" y2="191" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="264" y="200" width="72" height="30" rx="7" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="300" y="221" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">faux</text>
+  <text x="344" y="221" font-size="16" fill="#c0392b">écarté</text>
+  <text x="18" y="248" font-size="15" fill="#555"><tspan fill="#b06f00" font-weight="bold">100</tspan> : le même pour tous les documents.</text>
 
   <!-- $expr -->
   <rect x="422" y="2" width="736" height="254" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
@@ -65,16 +65,16 @@
     <text x="784" y="202">["$notes.note", -1] }</text>
   </g>
 
-  <line x1="998" y1="103" x2="1058" y2="116" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="1002" y1="104" x2="1053.1" y2="115" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <text x="1026" y="100" font-family="monospace" font-size="18" font-weight="bold" fill="#4a90d9" text-anchor="middle">5</text>
-  <line x1="998" y1="183" x2="1058" y2="142" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="1002" y1="180" x2="1053.9" y2="144.8" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <text x="1034" y="184" font-family="monospace" font-size="18" font-weight="bold" fill="#4a90d9" text-anchor="middle">2</text>
 
   <rect x="1062" y="98" width="84" height="60" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text x="1104" y="122" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$gt</text>
   <text x="1104" y="147" font-family="monospace" font-size="17" fill="#333" text-anchor="middle"><tspan fill="#4a90d9" font-weight="bold">5</tspan> &gt; <tspan fill="#4a90d9" font-weight="bold">2</tspan></text>
-  <line x1="1104" y1="158" x2="1104" y2="174" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="1068" y="177" width="72" height="30" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="1104" y="198" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">vrai</text>
-  <text x="438" y="246" font-size="15" fill="#555"><tspan fill="#4a90d9" font-weight="bold">A</tspan> et <tspan fill="#4a90d9" font-weight="bold">B</tspan> se calculent sur chaque document, comme dans <tspan font-family="monospace">$project</tspan>.</text>
+  <line x1="1104" y1="161" x2="1104" y2="172" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="1068" y="181" width="72" height="30" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="1104" y="202" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">vrai</text>
+  <text x="438" y="248" font-size="15" fill="#555"><tspan fill="#4a90d9" font-weight="bold">A</tspan> et <tspan fill="#4a90d9" font-weight="bold">B</tspan> se calculent sur chaque document, comme dans <tspan font-family="monospace">$project</tspan>.</text>
 </svg>

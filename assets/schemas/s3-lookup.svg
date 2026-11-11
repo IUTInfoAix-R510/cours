@@ -1,15 +1,9 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 344" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Mécanisme de $lookup: { from: "realisateurs", localField: "realisateur", foreignField: "nom", as: "r" }, montré sur deux films. Pour chaque film : 1, on prend la valeur de son champ realisateur (localField) ; 2, on compare cette valeur au champ nom (foreignField) de chaque document de la collection realisateurs (from) ; 3, les documents égaux sont rangés dans un tableau r (as), ajouté au film, qui garde ses autres champs. Le Voyage de Chihiro, réalisateur "Miyazaki" : parmi Miyazaki, Varda et Jeunet, seul Miyazaki est égal, r contient { nom: "Miyazaki", pays: "Japon" }. La Haine, réalisateur "Kassovitz" : aucun nom n'est égal, r est un tableau vide. Le même travail est fait pour chaque film : r reçoit 0, 1 ou plusieurs documents, toujours dans un tableau.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
-    <marker id="flv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/>
-    </marker>
-    <marker id="flg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#b8c4cf"/>
-    </marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+    <marker id="flg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b8c4cf"/></marker>
   </defs>
 
   <!-- le code -->
@@ -33,10 +27,10 @@
   <text x="14" y="128" font-family="monospace" font-size="14" fill="#333">annee: 2001, …</text>
   <rect x="8" y="136" width="224" height="28" rx="6" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
   <text x="14" y="155" font-family="monospace" font-size="14" fill="#333">realisateur: <tspan fill="#4a90d9" font-weight="bold">"Miyazaki"</tspan></text>
-  <line x1="232" y1="150" x2="262" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="264" y="135" width="124" height="30" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="326" y="156" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">"Miyazaki"</text>
-  <line x1="388" y1="150" x2="404" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="242" y1="150" x2="253" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="262" y="135" width="120" height="30" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <text x="322" y="156" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">"Miyazaki"</text>
+  <line x1="386" y1="150" x2="397" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <rect x="406" y="74" width="360" height="106" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
   <rect x="416" y="82" width="292" height="28" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
@@ -49,7 +43,7 @@
   <text x="426" y="165" font-family="monospace" font-size="15" fill="#777">nom: "Jeunet", pays: "France"</text>
   <text x="738" y="167" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
 
-  <path d="M754,96 C778,96 774,150 790,150" fill="none" stroke="#13aa52" stroke-width="2.4" marker-end="url(#flv)"/>
+  <path d="M752,96 H763 Q772,96 772,105 V141 Q772,150 781,150 L782,150" fill="none" stroke="#13aa52" stroke-width="2.4" marker-end="url(#flv)"/>
 
   <rect x="792" y="80" width="366" height="94" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="804" y="104" font-size="16" font-weight="bold" fill="#333">Le Voyage de Chihiro</text>
@@ -65,10 +59,10 @@
   <text x="14" y="252" font-family="monospace" font-size="14" fill="#333">annee: 1995, …</text>
   <rect x="8" y="260" width="224" height="28" rx="6" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
   <text x="14" y="279" font-family="monospace" font-size="14" fill="#333">realisateur: <tspan fill="#8e44ad" font-weight="bold">"Kassovitz"</tspan></text>
-  <line x1="232" y1="274" x2="262" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="264" y="259" width="124" height="30" rx="7" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="326" y="280" font-family="monospace" font-size="16" font-weight="bold" fill="#8e44ad" text-anchor="middle">"Kassovitz"</text>
-  <line x1="388" y1="274" x2="404" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="242" y1="274" x2="253" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="262" y="259" width="120" height="30" rx="7" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="322" y="280" font-family="monospace" font-size="16" font-weight="bold" fill="#8e44ad" text-anchor="middle">"Kassovitz"</text>
+  <line x1="386" y1="274" x2="397" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <rect x="406" y="198" width="360" height="106" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
   <rect x="416" y="206" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
@@ -81,7 +75,7 @@
   <text x="426" y="289" font-family="monospace" font-size="15" fill="#777">nom: "Jeunet", pays: "France"</text>
   <text x="738" y="291" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
 
-  <line x1="768" y1="274" x2="790" y2="274" stroke="#b8c4cf" stroke-width="2.2" stroke-dasharray="4 3" marker-end="url(#flg)"/>
+  <line x1="770" y1="274" x2="783" y2="274" stroke="#b8c4cf" stroke-width="2.2" stroke-dasharray="3 2" marker-end="url(#flg)"/>
 
   <rect x="792" y="204" width="366" height="94" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="804" y="228" font-size="16" font-weight="bold" fill="#333">La Haine</text>

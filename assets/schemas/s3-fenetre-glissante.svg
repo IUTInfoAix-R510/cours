@@ -1,5 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 278" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Fenêtre glissante avec $setWindowFields : six documents triés par mois ont pour moyenne 10, 12, 11, 14, 13 et 15 ; pour le mois 4, document courant, la fenêtre documents: [-2, 0] couvre les mois 2, 3 et 4 et donne (12 + 11 + 14) / 3 = 12.33 ; les moyennes glissantes valent 10, 11, 11, 12.33, 12.67 et 14 ; en début de suite, la fenêtre contient moins de 3 documents (1 pour le mois 1, 2 pour le mois 2)</title>
+  <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker></defs>
   <text x="2" y="86" font-size="17" font-weight="bold" fill="#333">documents</text>
   <text x="2" y="108" font-size="16" fill="#555">triés par mois</text>
   <text x="2" y="190" font-size="17" font-weight="bold" fill="#333">moyenne</text>
@@ -12,10 +13,9 @@
     <text x="590" y="50" font-family="monospace">-1</text>
     <text x="756" y="50"><tspan font-family="monospace">0</tspan> (courant)</text>
   </g>
-  <path d="M424,127 C424,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M590,127 C590,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M756,127 C756,172 756,140 756,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M749,164 L756,176 L763,164 z" fill="#13aa52"/>
+  <path d="M424,130 C424,166 756,136 756,156 L756,168" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M590,130 C590,166 756,136 756,156 L756,168" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M756,130 L756,168" fill="none" stroke="#13aa52" stroke-width="2.2" marker-end="url(#fl)"/>
   <rect x="190" y="58" width="136" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <g font-family="monospace" font-size="17" fill="#333">
     <text x="202" y="86">mois: 1</text>

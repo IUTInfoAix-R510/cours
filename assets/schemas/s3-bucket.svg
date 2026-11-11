@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 320" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Mécanisme de $bucket: { groupBy: "$duree", boundaries: [0, 90, 120], default: "long", output: { nb: { $sum: 1 } } }. Les bornes 0, 90 et 120 découpent l'axe des durées en deux tranches, de 0 inclus à 90 exclu et de 90 inclus à 120 exclu ; default reçoit tout le reste, ici les durées de 120 et plus. Chaque film tombe dans la tranche qui contient sa durée : Les Glaneurs et la Glaneuse, 82 minutes, dans la tranche de 0 à 90 ; La Haine, 98 minutes, dans la tranche de 90 à 120 ; Amélie Poulain, 122 minutes, et Le Voyage de Chihiro, 125 minutes, dans default. En sortie, un document par tranche, dont l'_id est la borne basse ou la valeur de default : { _id: 0, nb: 1 }, { _id: 90, nb: 1 }, { _id: "long", nb: 2 }.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -74,9 +74,9 @@
 
   <!-- sorties -->
   <g stroke="#555" stroke-width="2.2" marker-end="url(#fl)">
-    <line x1="461" y1="192" x2="461" y2="236"/>
-    <line x1="836" y1="192" x2="836" y2="236"/>
-    <line x1="1050" y1="192" x2="1050" y2="236"/>
+    <line x1="461" y1="195" x2="461" y2="230"/>
+    <line x1="836" y1="195" x2="836" y2="230"/>
+    <line x1="1050" y1="195" x2="1050" y2="230"/>
   </g>
   <g font-family="monospace" font-size="15" fill="#333">
     <rect x="371" y="240" width="180" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>

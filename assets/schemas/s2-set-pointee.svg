@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 300" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Deux écritures de $set. Avant : auteur vaut { pseudo: lea13, ville: Aix }. Avec $set sur auteur.ville, seul ville passe à Marseille et pseudo reste. Avec $set sur auteur, le document imbriqué entier est remplacé : il ne reste que ville: Marseille, pseudo a disparu.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -16,8 +16,8 @@
   </g>
 
   <!-- flèches -->
-  <path d="M240,150 C280,150 280,75 320,75 L842,75" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
-  <path d="M240,150 C280,150 280,225 320,225 L842,225" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <path d="M244,150 C282,150 282,75 320,75 L838.5,75" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <path d="M244,150 C282,150 282,225 320,225 L838.5,225" fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
 
   <g font-family="monospace" font-size="18" fill="#333" text-anchor="middle">
     <text x="580" y="62">{ $set: { <tspan fill="#13aa52" font-weight="bold">"auteur.ville"</tspan>: "Marseille" } }</text>

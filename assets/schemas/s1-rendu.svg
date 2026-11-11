@@ -1,20 +1,22 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 390" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Classroom 50 crée un dépôt GitHub privé r510-tp1-login, à ne jamais renommer, qu'on ouvre dans un codespace (MongoDB 9.0.4, mongosh, VS Code, machine 2 cœurs, à arrêter en fin de séance). r510-sauver fait commit et push sans noter le travail ; r510-rendre lance npm run check, puis fait commit, push et pose un tag submit/… qui lance le correcteur automatique ; 2 à 5 minutes plus tard, le score apparaît dans la Release, et aussi dans Classroom 50</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="fl" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
-    <marker id="flv" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="flv" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/>
     </marker>
-    <marker id="flr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <marker id="flo" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/>
+    </marker>
+    <marker id="flr" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/>
     </marker>
   </defs>
 
   <!-- r510-sauver : boucle au-dessus -->
-  <path d="M960,76 C960,20 550,20 550,72" fill="none" stroke="#13aa52" stroke-width="4" marker-end="url(#flv)"/>
-  <rect x="570" y="6" width="380" height="34" rx="8" fill="#fff"/>
+  <path d="M960,74 L960,52 C960,40 550,40 550,52 L550,69" fill="none" stroke="#13aa52" stroke-width="4" marker-end="url(#flv)"/>
   <text x="755" y="31" font-size="21" fill="#00684a" text-anchor="middle"><tspan font-family="monospace" font-weight="bold">r510-sauver</tspan> : commit + push, sans note</text>
 
   <!-- Classroom 50 -->
@@ -23,7 +25,7 @@
   <text x="150" y="152" font-size="20" fill="#555" text-anchor="middle">accepter le TP</text>
   <text x="150" y="180" font-size="20" fill="#555" text-anchor="middle">suivre ses rendus</text>
 
-  <line x1="296" y1="140" x2="404" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <line x1="296" y1="140" x2="398.9" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
   <text x="350" y="128" font-size="19" fill="#555" text-anchor="middle">crée</text>
 
   <!-- Dépôt -->
@@ -32,7 +34,7 @@
   <text x="550" y="154" font-size="19" font-family="monospace" fill="#555" text-anchor="middle">r510-tp1-&lt;login&gt;</text>
   <text x="550" y="182" font-size="19" fill="#c0392b" text-anchor="middle">à ne jamais renommer</text>
 
-  <line x1="696" y1="140" x2="804" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <line x1="696" y1="140" x2="798.9" y2="140" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
   <text x="750" y="128" font-size="19" fill="#555" text-anchor="middle">ouvrir</text>
 
   <!-- Codespace -->
@@ -43,7 +45,7 @@
   <text x="960" y="208" font-size="19" fill="#c0392b" text-anchor="middle">à arrêter en fin de séance</text>
 
   <!-- r510-rendre -->
-  <path d="M875,236 C875,315 800,325 696,325" fill="none" stroke="#c0392b" stroke-width="4" marker-end="url(#flr)"/>
+  <path d="M875,236 C875,315 800,325 701.1,325" fill="none" stroke="#c0392b" stroke-width="4" marker-end="url(#flr)"/>
   <text x="905" y="282" font-size="21" font-weight="bold" font-family="monospace" fill="#c0392b">r510-rendre</text>
   <text x="905" y="308" font-size="20" fill="#c0392b">commit + push</text>
   <text x="905" y="333" font-size="20" fill="#c0392b">+ tag submit/…</text>
@@ -55,7 +57,7 @@
   <text x="550" y="340" font-size="23" font-weight="bold" fill="#c0392b" text-anchor="middle">automatique</text>
   <text x="550" y="366" font-size="19" fill="#555" text-anchor="middle">exécute vos requêtes</text>
 
-  <line x1="404" y1="325" x2="296" y2="325" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
+  <line x1="404" y1="325" x2="301.1" y2="325" stroke="#555" stroke-width="4" marker-end="url(#fl)"/>
   <text x="350" y="313" font-size="19" fill="#555" text-anchor="middle">2 à 5 min</text>
 
   <!-- Release -->
@@ -65,6 +67,6 @@
   <text x="150" y="366" font-size="19" fill="#555" text-anchor="middle">exercice par exercice</text>
 
   <!-- score visible dans Classroom 50 -->
-  <line x1="150" y1="264" x2="150" y2="206" stroke="#e8a838" stroke-width="4" stroke-dasharray="8 6" marker-end="url(#fl)"/>
+  <line x1="150" y1="264" x2="150" y2="211.1" stroke="#e8a838" stroke-width="4" stroke-dasharray="8 4.53" marker-end="url(#flo)"/>
   <text x="164" y="243" font-size="19" fill="#9a6a0e">score aussi ici</text>
 </svg>

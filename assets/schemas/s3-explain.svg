@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 296" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Extraits de db.restaurants.find({ borough: "Bronx" }).explain("executionStats"), sans index et avec l'index { borough: 1 }. Sans index, queryPlanner.winningPlan n'a qu'une étape, stage: 'COLLSCAN', qui parcourt toute la collection ; executionStats donne nReturned: 2338, totalKeysExamined: 0, totalDocsExamined: 25359, soit 23 021 documents lus pour rien. Avec l'index, winningPlan a pour étape FETCH, qui lit les documents, et pour entrée (inputStage) l'étape IXSCAN sur l'index borough_1, qui parcourt l'index et s'exécute en premier : le plan se lit de l'intérieur vers l'extérieur. executionStats donne nReturned: 2338, totalKeysExamined: 2338, totalDocsExamined: 2338 : aucun document lu pour rien.</title>
-  <defs><marker id="fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <defs><marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
 
   <!-- Sans index -->
   <rect x="2" y="2" width="440" height="292" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
@@ -39,7 +39,7 @@
     <text x="492" y="260">totalDocsExamined: <tspan font-weight="bold" fill="#00684a">2338</tspan>, …</text>
     <text x="474" y="280">}</text>
   </g>
-  <line x1="766" y1="112" x2="766" y2="80" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
+  <line x1="766" y1="112" x2="766" y2="85" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
   <text x="782" y="76" font-size="14" fill="#333"><tspan font-weight="bold" fill="#00684a">2.</tspan> étape finale : lit les documents pointés</text>
   <text x="782" y="116" font-size="14" fill="#333"><tspan font-weight="bold" fill="#00684a">1.</tspan> son entrée, exécutée d'abord : parcourt l'index</text>
   <text x="782" y="96" font-size="14" fill="#777">se lit de l'intérieur vers l'extérieur</text>

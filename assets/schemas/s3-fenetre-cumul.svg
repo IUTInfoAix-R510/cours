@@ -1,5 +1,8 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 278" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Cumul avec $setWindowFields : les 4 films triés par année puis titre ont pour durée 98 (La Haine), 82 (Glaneurs), 122 (Amélie) et 125 (Chihiro). Pour Amélie, document courant, la fenêtre documents: ["unbounded", "current"] va du premier film jusqu'à elle et donne 98 + 82 + 122 = 302. Les durées cumulées valent 98, 180, 302 et 427 : la fenêtre s'agrandit d'un document à chaque ligne.</title>
+  <defs>
+    <marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+  </defs>
   <text x="2" y="86" font-size="17" font-weight="bold" fill="#333">documents</text>
   <text x="2" y="108" font-size="15" fill="#555">triés par annee,</text>
   <text x="2" y="126" font-size="15" fill="#555">puis titre</text>
@@ -13,10 +16,9 @@
     <text x="770" y="50"><tspan font-family="monospace">"current"</tspan> : le courant</text>
   </g>
 
-  <path d="M290,127 C290,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M530,127 C530,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M770,127 C770,172 770,140 770,166" fill="none" stroke="#13aa52" stroke-width="2.2"/>
-  <path d="M763,164 L770,176 L777,164 z" fill="#13aa52"/>
+  <path d="M290,130 C290,172 770,144 770,160" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M530,130 C530,172 770,144 770,160" fill="none" stroke="#13aa52" stroke-width="2.2"/>
+  <path d="M770,130 L770,168" fill="none" stroke="#13aa52" stroke-width="2.2" marker-end="url(#fv)"/>
 
   <rect x="190" y="58" width="200" height="68" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="202" y="84" font-size="17" font-weight="bold" fill="#333">La Haine</text>

@@ -1,13 +1,13 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 430" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">À gauche, en SQL, trois tables : films (F01, Le Voyage de Chihiro, 2001, realisateur_id R1), realisateurs (R1, Miyazaki, Japon) et films_genres (F01 animation, F01 fantastique), reliées par des clés étrangères. À droite, le document MongoDB F01 : la table realisateurs devient le document imbriqué realisation, la table films_genres devient le tableau genres. Le document se lit en une fois, sans jointure.</title>
   <defs>
-    <marker id="fk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+    <marker id="fk" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
-    <marker id="bleu" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="bleu" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
     </marker>
-    <marker id="orange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="orange" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/>
     </marker>
   </defs>
@@ -45,7 +45,7 @@
     <text x="240" y="261">Japon</text>
   </g>
   <!-- Clé étrangère films.realisateur_id -> realisateurs (R1) -->
-  <path d="M 395 148 C 395 195, 380 214, 344 216" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#fk)"/>
+  <path d="M 395 149 C 395 195, 385 216, 349.5 216" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4.34" marker-end="url(#fk)"/>
   <text x="410" y="190" font-size="15" fill="#555">clé étrangère</text>
 
   <!-- Table films_genres -->
@@ -61,8 +61,8 @@
     <text x="160" y="407">fantastique</text>
   </g>
   <!-- Clé étrangère films_genres.film_id -> films (F01), par la marge gauche -->
-  <path d="M 38 376 C 12 376, 12 126, 36 126" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4" marker-end="url(#fk)"/>
-  <text x="16" y="250" font-size="15" fill="#555" text-anchor="middle" transform="rotate(-90 16 250)">clé étrangère</text>
+  <path d="M 34 376 C 2 376, 2 126, 31 126" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4.04" marker-end="url(#fk)"/>
+  <text x="29" y="250" font-size="15" fill="#555" text-anchor="middle" transform="rotate(-90 29 250)">clé étrangère</text>
 
   <!-- Document MongoDB -->
   <rect x="600" y="60" width="550" height="300" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
@@ -82,8 +82,8 @@
   <text x="1140" y="328" text-anchor="end" font-size="15" font-weight="bold" fill="#c27c0e">tableau</text>
 
   <!-- Flèches des tables vers le document -->
-  <path d="M 342 262 C 480 262, 500 236, 626 236" fill="none" stroke="#4a90d9" stroke-width="3" marker-end="url(#bleu)"/>
-  <path d="M 342 395 C 480 395, 520 293, 626 293" fill="none" stroke="#e8a838" stroke-width="3" marker-end="url(#orange)"/>
+  <path d="M 345 262 C 480 262, 500 236, 621.2 236" fill="none" stroke="#4a90d9" stroke-width="3" marker-end="url(#bleu)"/>
+  <path d="M 345 395 C 480 395, 520 293, 621.2 293" fill="none" stroke="#e8a838" stroke-width="3" marker-end="url(#orange)"/>
 
   <!-- Conclusions -->
   <text x="875" y="395" text-anchor="middle" font-size="19" fill="#00684a" font-weight="bold">lu en une fois, sans jointure</text>

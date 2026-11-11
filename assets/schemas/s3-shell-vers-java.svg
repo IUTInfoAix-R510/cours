@@ -1,9 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 270" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Les classes d'aide du pilote Java fabriquent le document de la requête. À gauche, le code Java Filters.and( Filters.gte("annee", 2000), Filters.gt("duree", 100) ). Au milieu, le document que chaque appel fabrique, ligne à ligne : Filters.and donne { "$and": [ ... ] }, Filters.gte("annee", 2000) donne { "annee": { "$gte": 2000 } }, Filters.gt("duree", 100) donne { "duree": { "$gt": 100 } }. Il a le même sens qu'en mongosh { annee: { $gte: 2000 }, duree: { $gt: 100 } }. À droite, MongoDB l'applique aux 4 films : Chihiro (2001, 125 min) et Amélie (2001, 122 min) sont retenus ; Glaneurs est écarté par la durée (82 ≤ 100), La Haine par l'année (1995 &lt; 2000). En bas, une classe d'aide par rôle : Filters (filtre), Projections (projection), Sorts (tri), Aggregates (étapes), Accumulators (accumulateurs).</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
   </defs>
 
   <!-- en-têtes -->
@@ -24,9 +22,9 @@
 
   <!-- correspondance ligne à ligne -->
   <g stroke="#555" stroke-width="2" marker-end="url(#fl)">
-    <line x1="410" y1="61" x2="456" y2="61"/>
-    <line x1="410" y1="93" x2="456" y2="93"/>
-    <line x1="410" y1="125" x2="456" y2="125"/>
+    <line x1="411" y1="61" x2="452" y2="61"/>
+    <line x1="411" y1="93" x2="452" y2="93"/>
+    <line x1="411" y1="125" x2="452" y2="125"/>
   </g>
 
   <!-- document fabriqué -->
@@ -38,7 +36,7 @@
     <text x="476" y="162">] }</text>
   </g>
 
-  <line x1="818" y1="108" x2="870" y2="108" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="823" y1="108" x2="866" y2="108" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
   <!-- les 4 films -->
   <g font-size="15">

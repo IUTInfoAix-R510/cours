@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 520 464" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Le travail dans le playground. D'abord Connect, « MongoDB du Codespace », à refaire à chaque réouverture. Puis une boucle : écrire la réponse, use('tp1') compris ; la sélectionner, puis Ctrl+Alt+S ; lire le panneau, qui montre la dernière instruction ; corriger, puis relancer. Quand le résultat est juste : npm run check, score indicatif, sans toucher à la base tp1 ; puis, en fin de partie, r510-sauver "feat(partieN): …".</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="11" markerHeight="11" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -29,13 +29,13 @@
   <text x="125" y="257" font-size="17" fill="#555" text-anchor="middle">puis relancer</text>
 
   <g stroke="#555" stroke-width="2.5" marker-end="url(#fl)">
-    <line x1="125" y1="62" x2="125" y2="89"/>
-    <line x1="241" y1="127" x2="277" y2="127"/>
-    <line x1="395" y1="163" x2="395" y2="199"/>
-    <line x1="279" y1="237" x2="243" y2="237"/>
-    <line x1="125" y1="201" x2="125" y2="165"/>
-    <line x1="395" y1="273" x2="395" y2="313"/>
-    <line x1="260" y1="374" x2="260" y2="401"/>
+    <line x1="125" y1="67" x2="125" y2="83.5"/>
+    <line x1="245" y1="127" x2="271.5" y2="127"/>
+    <line x1="395" y1="167" x2="395" y2="193.5"/>
+    <line x1="275" y1="237" x2="248.5" y2="237"/>
+    <line x1="125" y1="197" x2="125" y2="170.5"/>
+    <line x1="395" y1="277" x2="395" y2="307.5"/>
+    <line x1="260" y1="379" x2="260" y2="395.5"/>
   </g>
   <text x="407" y="299" font-size="17" font-weight="bold" fill="#00684a">résultat juste</text>
 

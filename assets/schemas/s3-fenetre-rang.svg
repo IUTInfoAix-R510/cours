@@ -1,6 +1,6 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 306" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">$setWindowFields en trois temps sur les 4 films. 1, partitionBy: "$annee" : trois groupes, 1995 (La Haine, 98 min), 2000 (Glaneurs, 82 min), 2001 (Amélie, 122 min, et Chihiro, 125 min, dans un ordre quelconque). 2, sortBy: { duree: -1 } : dans chaque groupe, durée décroissante ; en 2001, Chihiro passe avant Amélie. 3, output: { rang: { $rank: {} } } : chaque film reçoit son rang dans son groupe, La Haine 1, Glaneurs 1, Chihiro 1, Amélie 2. En SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC).</title>
-  <defs><marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
   <circle cx="16" cy="24" r="13" fill="#00684a"/>
   <text x="16" y="30" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
   <text x="36" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">partitionBy: "$annee"</text>
@@ -71,7 +71,7 @@
   <text x="870" y="244" font-size="16" font-weight="bold" fill="#333">Amélie</text>
   <text x="1042" y="244" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 122</text>
   <text x="1140" y="244" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">rang: 2</text>
-  <line x1="364" y1="166" x2="396" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <line x1="762" y1="166" x2="794" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="367" y1="166" x2="390" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="765" y1="166" x2="788" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
   <text x="580" y="294" font-size="16" fill="#555" text-anchor="middle">En SQL : <tspan font-family="monospace">RANK() OVER (PARTITION BY annee ORDER BY duree DESC)</tspan></text>
 </svg>

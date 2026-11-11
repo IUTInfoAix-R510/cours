@@ -1,7 +1,7 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 290" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Upsert : un document correspond-il au filtre { _id: "C42" } ? Non, à la 1re exécution : insertion d'un nouveau document, avec _id: "C42" venu du filtre, temperature: 21.5 venu du $set et les champs du $setOnInsert s'il y en a ; résultat upsertedCount: 1, insertedId: 'C42'. Oui, à la 2e exécution : mise à jour du document trouvé, $set écrase temperature et $setOnInsert est ignoré ; résultat matchedCount: 1, modifiedCount: 0, car 21.5 y était déjà.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+    <marker id="fl" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
@@ -17,8 +17,8 @@
 
   <!-- branches -->
   <g stroke="#555" stroke-width="2.5" fill="none" marker-end="url(#fl)">
-    <path d="M222,78 L337,68"/>
-    <path d="M222,212 L337,220"/>
+    <path d="M226.2,76.2 L330.1,68.3"/>
+    <path d="M226.2,213.8 L330.1,219.7"/>
   </g>
   <text x="262" y="62" font-size="20" font-weight="bold" fill="#13aa52">non</text>
   <text x="262" y="244" font-size="20" font-weight="bold" fill="#4a90d9">oui</text>
@@ -52,8 +52,8 @@
 
   <!-- résultats -->
   <g stroke="#555" stroke-width="2.5" marker-end="url(#fl)">
-    <line x1="874" y1="68" x2="896" y2="68"/>
-    <line x1="874" y1="220" x2="896" y2="220"/>
+    <line x1="877.5" y1="68" x2="892.6" y2="68"/>
+    <line x1="877.5" y1="220" x2="892.6" y2="220"/>
   </g>
   <text x="902" y="40" font-size="18" font-weight="bold" fill="#00684a">1re exécution</text>
   <g font-family="monospace" font-size="17" fill="#333">

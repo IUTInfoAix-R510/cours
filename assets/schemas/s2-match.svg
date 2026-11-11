@@ -1,5 +1,10 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 700 268" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">$match : sur les 5 capteurs, C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre, seuls les 4 de type temperature passent. C2, de type humidite, est écarté.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
+    </marker>
+  </defs>
   <rect x="2" y="2" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="14" y="28" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
   <text x="240" y="28" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
@@ -20,8 +25,8 @@
   <text x="350" y="128" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">type:</text>
   <text x="350" y="148" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">"temperature"</text>
   <text x="350" y="196" font-size="16" fill="#c0392b" text-anchor="middle"><tspan font-weight="bold">C2</tspan> écarté</text>
-  <path d="M264,126 L275,134 L264,142 z" fill="#555"/>
-  <path d="M426,126 L437,134 L426,142 z" fill="#555"/>
+  <line x1="257" y1="134" x2="275.75" y2="134" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="419.25" y1="134" x2="438" y2="134" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
   <rect x="448" y="30.0" width="250" height="40" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="460" y="56.0" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
   <text x="686" y="56.0" font-size="16" font-family="monospace" fill="#555" text-anchor="end">temperature</text>
