@@ -57,7 +57,7 @@ ROWS=$(
   seance_row 1 "23/11" "MongoDB, documents et CRUD"                                  "TP1"
   seance_row 2 "23/11" "Documents imbriqués, tableaux, initiation à l'agrégation"    "TP1 (suite)"
   seance_row 3 "30/11" "Requêtes avancées, pipeline d'agrégation, index"             "TP2"
-  seance_row 4 "30/11" "Modélisation des données et patterns de conception"          "TP3"
+  seance_row 4 "30/11" "Modéliser à partir des requêtes, patterns de conception"      "TP3"
   seance_row 5 "7/12"  "Du relationnel au graphe : Neo4j et Cypher"                  "TP4 (Neo4j)"
   seance_row 6 "7/12"  "Lancement du projet, modèle de données, chargement"          "Projet"
   seance_row 7 "14/12" "Agrégations, API REST, index ; module graphe en bonus"       "Projet"

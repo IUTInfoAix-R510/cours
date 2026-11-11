@@ -1,0 +1,63 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 296" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">CQRS sur les podcasts. À gauche, le modèle d'écriture : les collections normalisées où l'application écrit (episodes, commentaires, ecoutes). À droite, le modèle de lecture : des collections faites pour une page (la fiche de l'épisode, le classement des épisodes), reconstruites à partir du modèle d'écriture par un pipeline terminé par $merge, ou tenues à jour à chaque écriture. Les écritures vont à gauche, les lectures à droite ; entre les deux, un temps de retard.</title>
+  <defs>
+    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+    <marker id="flg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
+  </defs>
+
+  <!-- l'application écrit -->
+  <rect x="2" y="112" width="140" height="64" rx="8" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="72" y="139" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">l'application</text>
+  <text x="72" y="160" font-size="14" fill="#b06f00" text-anchor="middle">écrit (commandes)</text>
+  <line x1="146" y1="144" x2="177" y2="144" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+
+  <!-- modèle d'écriture -->
+  <rect x="186" y="34" width="270" height="220" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="321" y="20" font-size="17" font-weight="bold" fill="#b06f00" text-anchor="middle">modèle d'écriture</text>
+  <text x="321" y="60" font-size="14" fill="#555" text-anchor="middle">normalisé, sans doublon</text>
+  <g fill="#ffffff" stroke="#b8c4cf" stroke-width="2">
+    <rect x="206" y="78" width="230" height="44" rx="7"/>
+    <rect x="206" y="132" width="230" height="44" rx="7"/>
+    <rect x="206" y="186" width="230" height="44" rx="7"/>
+  </g>
+  <g font-family="monospace" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">
+    <text x="321" y="106">episodes</text>
+    <text x="321" y="160">commentaires</text>
+    <text x="321" y="214">ecoutes</text>
+  </g>
+
+  <!-- entre les deux -->
+  <g font-size="14" text-anchor="middle">
+    <text x="580" y="90" fill="#555">par lot : un pipeline</text>
+    <text x="580" y="109" fill="#555">terminé par <tspan font-family="monospace" font-weight="bold" fill="#00684a">$merge</tspan></text>
+    <text x="580" y="202" font-weight="bold" fill="#b06f00">ou à chaque écriture</text>
+  </g>
+  <line x1="460" y1="124" x2="695" y2="124" stroke="#777" stroke-width="3" stroke-dasharray="7 5" marker-end="url(#flg)"/>
+  <line x1="460" y1="180" x2="695" y2="180" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+  <circle cx="514" cy="235" r="9" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+  <path d="M514,229 V235 H519" fill="none" stroke="#c0392b" stroke-width="2"/>
+  <text x="530" y="240" font-size="15" font-weight="bold" fill="#c0392b">un temps de retard</text>
+
+  <!-- modèle de lecture -->
+  <rect x="704" y="34" width="270" height="220" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="839" y="20" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">modèle de lecture</text>
+  <text x="839" y="60" font-size="14" fill="#555" text-anchor="middle">une collection par page</text>
+  <g fill="#e6f4ee" stroke="#13aa52" stroke-width="2">
+    <rect x="724" y="100" width="230" height="48" rx="7"/>
+    <rect x="724" y="162" width="230" height="48" rx="7"/>
+  </g>
+  <g font-size="16" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="839" y="130">la fiche de l'épisode</text>
+    <text x="839" y="192">le classement des épisodes</text>
+  </g>
+
+  <!-- les pages lisent -->
+  <line x1="978" y1="144" x2="1009" y2="144" stroke="#13aa52" stroke-width="3" marker-end="url(#flv)"/>
+  <rect x="1018" y="112" width="140" height="64" rx="8" fill="#ffffff" stroke="#13aa52" stroke-width="2"/>
+  <text x="1088" y="139" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">les pages</text>
+  <text x="1088" y="160" font-size="14" fill="#00684a" text-anchor="middle">lisent (requêtes)</text>
+
+  <!-- légende -->
+  <text x="2" y="286" font-size="15" fill="#555">Les <tspan font-weight="bold" fill="#b06f00">écritures</tspan> vont à gauche, les <tspan font-weight="bold" fill="#00684a">lectures</tspan> à droite ; entre les deux, <tspan font-weight="bold" fill="#c0392b">un temps de retard</tspan>.</text>
+</svg>

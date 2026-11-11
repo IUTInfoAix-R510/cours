@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 312" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Deux nouvelles écoutes arrivent, une à la fois. 1, E1 le 8 septembre à 12 h, 61 auditeurs : le bucket E1-2026-09-08 existe ; la mesure est ajoutée à la fin du tableau mesures, nb passe de 2 à 3, max de 52 à 61 (61 est plus grand). 2, E4 le 11 septembre à 7 h, 9 auditeurs : le bucket E4-2026-09-11 n'existe pas ; il est créé, avec episode et jour, nb: 1, max: 9 et un tableau d'une mesure. Une même écriture « trouve le bucket ou crée-le » : c'est un upsert (TP1).</title>
+  <defs>
+    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+  </defs>
+
+  <!-- en-têtes de colonnes -->
+  <g font-size="15" font-weight="bold" fill="#333">
+    <text x="34" y="20">la nouvelle écoute</text>
+    <text x="296" y="20">son bucket : épisode et jour</text>
+    <text x="566" y="20">le bucket après l'écriture</text>
+  </g>
+
+  <!-- 1 : le bucket existe -->
+  <circle cx="14" cy="90" r="12" fill="#00684a"/>
+  <text x="14" y="96" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <rect x="34" y="54" width="230" height="72" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="46" y="80" font-size="16" font-weight="bold" fill="#333">E1 · 8 septembre, 12 h</text>
+  <text x="46" y="109" font-size="16" fill="#333"><tspan font-weight="bold" fill="#b06f00">61</tspan> auditeurs</text>
+  <line x1="268" y1="90" x2="287" y2="90" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+
+  <rect x="296" y="54" width="236" height="72" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="308" y="81" font-family="monospace" font-size="16" font-weight="bold" fill="#333">"E1-2026-09-08"</text>
+  <text x="308" y="110" font-size="15" font-weight="bold" fill="#00684a">existe : mis à jour</text>
+  <line x1="536" y1="90" x2="557" y2="90" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+
+  <rect x="566" y="38" width="592" height="104" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="578" y="63">_id: "E1-2026-09-08", episode: "E1", jour: 2026-09-08</text>
+    <text x="578" y="92">nb: <tspan fill="#777">2</tspan> → <tspan font-weight="bold" fill="#b06f00">3</tspan>, max: <tspan fill="#777">52</tspan> → <tspan font-weight="bold" fill="#b06f00">61</tspan></text>
+    <text x="578" y="124">mesures: [</text>
+  </g>
+  <text x="820" y="92" font-size="14" fill="#555">61 est plus grand que 52</text>
+  <g font-size="14" fill="#333" text-anchor="middle">
+    <rect x="676" y="106" width="96" height="26" rx="6" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+    <text x="724" y="124">0 h 10 · 35</text>
+    <rect x="778" y="106" width="96" height="26" rx="6" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+    <text x="826" y="124">7 h 30 · 52</text>
+    <rect x="880" y="106" width="84" height="26" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+    <text x="922" y="124" font-weight="bold">12 h · 61</text>
+  </g>
+  <text x="970" y="124" font-family="monospace" font-size="15" fill="#333">]</text>
+  <text x="990" y="124" font-size="14" font-weight="bold" fill="#b06f00">ajoutée à la fin</text>
+
+  <!-- 2 : le bucket n'existe pas -->
+  <circle cx="14" cy="214" r="12" fill="#00684a"/>
+  <text x="14" y="220" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <rect x="34" y="178" width="230" height="72" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="46" y="204" font-size="16" font-weight="bold" fill="#333">E4 · 11 septembre, 7 h</text>
+  <text x="46" y="233" font-size="16" fill="#333"><tspan font-weight="bold" fill="#b06f00">9</tspan> auditeurs</text>
+  <line x1="268" y1="214" x2="287" y2="214" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+
+  <rect x="296" y="178" width="236" height="72" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="308" y="205" font-family="monospace" font-size="16" font-weight="bold" fill="#333">"E4-2026-09-11"</text>
+  <text x="308" y="234" font-size="15" font-weight="bold" fill="#c0392b">n'existe pas : créé</text>
+  <line x1="536" y1="214" x2="557" y2="214" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
+
+  <rect x="566" y="162" width="592" height="104" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="578" y="187">_id: "E4-2026-09-11", episode: "E4", jour: 2026-09-11</text>
+    <text x="578" y="216">nb: <tspan font-weight="bold" fill="#b06f00">1</tspan>, max: <tspan font-weight="bold" fill="#b06f00">9</tspan></text>
+    <text x="578" y="248">mesures: [</text>
+  </g>
+  <rect x="676" y="230" width="76" height="26" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="714" y="248" font-size="14" font-weight="bold" fill="#333" text-anchor="middle">7 h · 9</text>
+  <text x="758" y="248" font-family="monospace" font-size="15" fill="#333">]</text>
+  <text x="1146" y="248" font-size="14" font-weight="bold" fill="#b06f00" text-anchor="end">tout le document est créé</text>
+
+  <!-- légende -->
+  <text x="2" y="302" font-size="15" fill="#555">Une même écriture, « trouve le bucket ou crée-le » : c'est un <tspan font-weight="bold" fill="#333">upsert</tspan> (TP1).</text>
+</svg>

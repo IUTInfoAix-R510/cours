@@ -66,6 +66,8 @@ Une ligne par passage de texte repris en français sans fichier image. Ces refor
 
 Le support de la séance 3 (`s3-requetes-avancees-agregation-index.md`) ne reprend ni ne reformule aucun contenu de MongoDB for Academia : ses exemples (films, lieux d'Aix-en-Provence) et ses schémas (`assets/schemas/s3-*.svg`) sont faits pour ce cours. Les données du TP2 qu'il décrit (`sample_restaurants`) ont leur propre provenance, détaillée dans `data/PROVENANCE.md` du dépôt TP2.
 
+Le support de la séance 4 (`s4-modelisation-patterns.md`) ne reprend ni ne reformule aucun contenu de MongoDB for Academia : ses exemples (podcasts) et ses schémas (`assets/schemas/s4-*.svg`) sont faits pour ce cours. Il cite des idées publiées, avec leur source sur la diapo des crédits : la démarche en trois étapes et le catalogue des patterns (documentation et blog de MongoDB, D. Coupal et K. W. Alger), les trois tailles de relation (W. Zola), la mise en garde sur CQRS (M. Fowler). Les données du TP3 qu'il décrit (les vélos de Valcerise) sont inventées pour ce cours (`data/PROVENANCE.md` du dépôt TP3).
+
 ## Outils
 
 Les supports sont construits avec [Marp](https://marp.app/) (licence MIT).

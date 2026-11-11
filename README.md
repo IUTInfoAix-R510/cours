@@ -22,7 +22,7 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 | S1 | 23/11 | MongoDB, documents et CRUD | TP1 | [diapositives](https://iutinfoaix-r510.github.io/cours/s1-ressource-et-mongodb.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s1-ressource-et-mongodb.pdf) |
 | S2 | 23/11 | Documents imbriqués, tableaux, initiation à l'agrégation | TP1 (suite) | [diapositives](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s2-imbrication-tableaux-agregation.pdf) |
 | S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | [diapositives](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.pdf) |
-| S4 | 30/11 | Modélisation des données et patterns de conception | TP3 | À venir |
+| S4 | 30/11 | Modéliser à partir des requêtes, patterns de conception | TP3 | [diapositives](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.pdf) |
 | S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | À venir |
 | S6 | 7/12 | Lancement du projet, modèle de données, chargement | Projet | À venir |
 | S7 | 14/12 | Agrégations, API REST, index ; module graphe en bonus | Projet | À venir |
@@ -64,6 +64,7 @@ cours/
 ├── s1-ressource-et-mongodb.md             # S1 : point cours du TP1
 ├── s2-imbrication-tableaux-agregation.md  # S2 : point cours du TP1 (suite)
 ├── s3-requetes-avancees-agregation-index.md  # S3 : point cours du TP2
+├── s4-modelisation-patterns.md               # S4 : point cours du TP3
 ├── themes/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/

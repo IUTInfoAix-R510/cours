@@ -1,0 +1,128 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La page de l'épisode E1 lue par une jointure, en deux cas. En haut, sans index sur commentaires.episode : l'épisode E1 est lu (1 document), puis $lookup parcourt toute la collection commentaires (K1 à K5, 5 documents examinés) pour garder ceux de E1 (K1, K2, K3). En bas, avec un index sur episode : l'index donne directement les trois commentaires de E1 (3 clés, 3 documents examinés). À droite, troisième cas : les commentaires utiles sont embarqués dans l'épisode, la page lit 1 seul document.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+
+  <!-- Cas 1 : sans index -->
+  <text x="2" y="20" font-size="16" font-weight="bold" fill="#333">Sans index sur <tspan font-family="monospace">commentaires.episode</tspan></text>
+  <text x="820" y="20" font-size="16" font-weight="bold" fill="#c0392b" text-anchor="end"><tspan font-family="monospace" fill="#00684a">$lookup</tspan> : 5 documents examinés</text>
+
+  <rect x="2" y="50" width="116" height="56" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="60" y="74" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">épisode E1</text>
+  <text x="60" y="96" font-size="14" fill="#555" text-anchor="middle">1 document</text>
+  <rect x="146" y="62" width="94" height="32" rx="16" fill="#ffffff" stroke="#00684a" stroke-width="2"/>
+  <text x="193" y="84" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">$lookup</text>
+  <rect x="268" y="44" width="184" height="68" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="360" y="72" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">aucun index</text>
+  <text x="360" y="94" font-size="14" fill="#c0392b" text-anchor="middle">parcours complet</text>
+  <g stroke="#555" stroke-width="3" marker-end="url(#fl)">
+    <line x1="122" y1="78" x2="137" y2="78"/>
+    <line x1="244" y1="78" x2="259" y2="78"/>
+    <line x1="456" y1="78" x2="471" y2="78"/>
+  </g>
+
+  <rect x="480" y="30" width="340" height="96" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="492" y="51" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">commentaires</text>
+  <g stroke-width="2">
+    <rect x="492" y="62" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="557" y="62" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="622" y="62" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="687" y="62" width="56" height="54" rx="6" fill="#fdeeee" stroke="#c0392b"/>
+    <rect x="752" y="62" width="56" height="54" rx="6" fill="#fdeeee" stroke="#c0392b"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="520" y="85">K1</text>
+    <text x="585" y="85">K2</text>
+    <text x="650" y="85">K3</text>
+    <text x="715" y="85">K4</text>
+    <text x="780" y="85">K5</text>
+  </g>
+  <g font-family="monospace" font-size="14" fill="#555" text-anchor="middle">
+    <text x="520" y="106">E1</text>
+    <text x="585" y="106">E1</text>
+    <text x="650" y="106">E1</text>
+    <text x="715" y="106">E2</text>
+    <text x="780" y="106">E4</text>
+  </g>
+  <text x="268" y="146" font-size="14" fill="#555"><tspan fill="#13aa52" font-weight="bold">vert</tspan> : les commentaires de E1, gardés · <tspan fill="#c0392b" font-weight="bold">rouge</tspan> : lus pour rien</text>
+
+  <!-- Cas 2 : avec index -->
+  <text x="2" y="170" font-size="16" font-weight="bold" fill="#333">Avec un index sur <tspan font-family="monospace">episode</tspan></text>
+  <text x="820" y="170" font-size="16" font-weight="bold" fill="#333" text-anchor="end"><tspan font-family="monospace" fill="#00684a">$lookup</tspan> : 3 clés, 3 documents examinés</text>
+
+  <rect x="2" y="200" width="116" height="56" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="60" y="224" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">épisode E1</text>
+  <text x="60" y="246" font-size="14" fill="#555" text-anchor="middle">1 document</text>
+  <rect x="146" y="212" width="94" height="32" rx="16" fill="#ffffff" stroke="#00684a" stroke-width="2"/>
+  <text x="193" y="234" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">$lookup</text>
+  <rect x="268" y="194" width="184" height="68" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="360" y="214" font-size="14" font-weight="bold" fill="#8e44ad" text-anchor="middle">index sur <tspan font-family="monospace">episode</tspan></text>
+  <g stroke-width="2" fill="#ffffff">
+    <rect x="277" y="226" width="30" height="26" rx="5" stroke="#8e44ad"/>
+    <rect x="311" y="226" width="30" height="26" rx="5" stroke="#8e44ad"/>
+    <rect x="345" y="226" width="30" height="26" rx="5" stroke="#8e44ad"/>
+    <rect x="379" y="226" width="30" height="26" rx="5" stroke="#b8c4cf"/>
+    <rect x="413" y="226" width="30" height="26" rx="5" stroke="#b8c4cf"/>
+  </g>
+  <g font-family="monospace" font-size="14" text-anchor="middle">
+    <text x="292" y="244" font-weight="bold" fill="#8e44ad">E1</text>
+    <text x="326" y="244" font-weight="bold" fill="#8e44ad">E1</text>
+    <text x="360" y="244" font-weight="bold" fill="#8e44ad">E1</text>
+    <text x="394" y="244" fill="#777">E2</text>
+    <text x="428" y="244" fill="#777">E4</text>
+  </g>
+  <g stroke="#555" stroke-width="3" marker-end="url(#fl)">
+    <line x1="122" y1="228" x2="137" y2="228"/>
+    <line x1="244" y1="228" x2="259" y2="228"/>
+    <line x1="456" y1="228" x2="471" y2="228"/>
+  </g>
+
+  <rect x="480" y="180" width="340" height="96" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="492" y="201" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">commentaires</text>
+  <g stroke-width="2">
+    <rect x="492" y="212" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="557" y="212" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="622" y="212" width="56" height="54" rx="6" fill="#e6f4ee" stroke="#13aa52"/>
+    <rect x="687" y="212" width="56" height="54" rx="6" fill="none" stroke="#b8c4cf" stroke-dasharray="5 4"/>
+    <rect x="752" y="212" width="56" height="54" rx="6" fill="none" stroke="#b8c4cf" stroke-dasharray="5 4"/>
+  </g>
+  <g font-size="15" font-weight="bold" text-anchor="middle">
+    <text x="520" y="235" fill="#333">K1</text>
+    <text x="585" y="235" fill="#333">K2</text>
+    <text x="650" y="235" fill="#333">K3</text>
+    <text x="715" y="235" fill="#777">K4</text>
+    <text x="780" y="235" fill="#777">K5</text>
+  </g>
+  <g font-family="monospace" font-size="14" fill="#777" text-anchor="middle">
+    <text x="520" y="256" fill="#555">E1</text>
+    <text x="585" y="256" fill="#555">E1</text>
+    <text x="650" y="256" fill="#555">E1</text>
+    <text x="715" y="256">E2</text>
+    <text x="780" y="256">E4</text>
+  </g>
+
+  <!-- Cas 3 : embarqués -->
+  <rect x="846" y="2" width="312" height="274" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="862" y="28" font-size="16" font-weight="bold" fill="#333">Embarqués dans l'épisode</text>
+  <rect x="862" y="44" width="280" height="160" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="14" fill="#333">
+    <text x="874" y="68">_id: "E1",</text>
+    <text x="874" y="90">titre: "Les trous noirs",</text>
+  </g>
+  <rect x="872" y="102" width="260" height="92" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="882" y="122" font-family="monospace" font-size="14" fill="#333">commentaires: [</text>
+  <g fill="#e6f4ee" stroke="#13aa52" stroke-width="2">
+    <rect x="884" y="134" width="68" height="44" rx="6"/>
+    <rect x="960" y="134" width="68" height="44" rx="6"/>
+    <rect x="1036" y="134" width="68" height="44" rx="6"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="918" y="161">K1</text>
+    <text x="994" y="161">K2</text>
+    <text x="1070" y="161">K3</text>
+  </g>
+  <text x="1112" y="161" font-family="monospace" font-size="15" fill="#333">]</text>
+  <text x="1002" y="238" font-size="17" font-weight="bold" fill="#00684a" text-anchor="middle">1 seul document lu</text>
+  <text x="1002" y="260" font-size="14" fill="#555" text-anchor="middle">aucune jointure</text>
+</svg>

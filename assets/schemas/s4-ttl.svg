@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 304" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Un index TTL sur une frise. Un brouillon d'épisode est modifié à 10 h (champ modifie). L'index { modifie: 1 } a expireAfterSeconds: 3600 : le document expire à 11 h. Le moniteur TTL, une tâche de fond, passe environ toutes les 60 secondes (traits verticaux) ; au premier passage après 11 h, il supprime le brouillon. Entre 11 h et ce passage, le document existe encore.</title>
+
+  <!-- l'index -->
+  <text x="2" y="22" font-family="monospace" font-size="16" fill="#333">db.brouillons.createIndex({ <tspan font-weight="bold" fill="#4a90d9">modifie</tspan>: 1 }, { <tspan font-weight="bold" fill="#00684a">expireAfterSeconds</tspan>: <tspan font-weight="bold" fill="#b06f00">3600</tspan> })</text>
+
+  <!-- frise générale : de 9 h 50 à 11 h 10, 13 unités par minute -->
+  <text x="580" y="48" font-size="14" fill="#555" text-anchor="middle">le délai : <tspan font-family="monospace" font-weight="bold" fill="#00684a">expireAfterSeconds</tspan> = <tspan font-weight="bold" fill="#b06f00">3600</tspan> secondes, une heure</text>
+  <path d="M190,52 V64 M190,58 H970 M970,52 V64" fill="none" stroke="#555" stroke-width="1.5"/>
+
+  <path d="M69.1,100 V112 M82.1,100 V112 M95.1,100 V112 M108.1,100 V112 M121.1,100 V112 M134.1,100 V112 M147.1,100 V112 M160.1,100 V112 M173.1,100 V112 M186.1,100 V112 M199.1,100 V112 M212.1,100 V112 M225.1,100 V112 M238.1,100 V112 M251.1,100 V112 M264.1,100 V112 M277.1,100 V112 M290.1,100 V112 M303.1,100 V112 M316.1,100 V112 M329.1,100 V112 M342.1,100 V112 M355.1,100 V112 M368.1,100 V112 M381.1,100 V112 M394.1,100 V112 M407.1,100 V112 M420.1,100 V112 M433.1,100 V112 M446.1,100 V112 M459.1,100 V112 M472.1,100 V112 M485.1,100 V112 M498.1,100 V112 M511.1,100 V112 M524.1,100 V112 M537.1,100 V112 M550.1,100 V112 M563.1,100 V112 M576.1,100 V112 M589.1,100 V112 M602.1,100 V112 M615.1,100 V112 M628.1,100 V112 M641.1,100 V112 M654.1,100 V112 M667.1,100 V112 M680.1,100 V112 M693.1,100 V112 M706.1,100 V112 M719.1,100 V112 M732.1,100 V112 M745.1,100 V112 M758.1,100 V112 M771.1,100 V112 M784.1,100 V112 M797.1,100 V112 M810.1,100 V112 M823.1,100 V112 M836.1,100 V112 M849.1,100 V112 M862.1,100 V112 M875.1,100 V112 M888.1,100 V112 M901.1,100 V112 M914.1,100 V112 M927.1,100 V112 M940.1,100 V112 M953.1,100 V112 M966.1,100 V112 M979.1,100 V112 M992.1,100 V112 M1005.1,100 V112 M1018.1,100 V112 M1031.1,100 V112 M1044.1,100 V112 M1057.1,100 V112 M1070.1,100 V112 M1083.1,100 V112 M1096.1,100 V112" fill="none" stroke="#777" stroke-width="1.2"/>
+  <line x1="60" y1="106" x2="1100" y2="106" stroke="#777" stroke-width="2"/>
+
+  <rect x="60" y="70" width="919.1" height="26" rx="5" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="72" y="88" font-size="14" font-weight="bold" fill="#333">le brouillon</text>
+  <text x="204" y="88" font-family="monospace" font-size="14" fill="#333">{ <tspan font-weight="bold" fill="#4a90d9">modifie</tspan>: 10 h, ... }</text>
+
+  <line x1="190" y1="66" x2="190" y2="116" stroke="#e8a838" stroke-width="3"/>
+  <line x1="970" y1="66" x2="970" y2="116" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <text x="190" y="134" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle">10 h : modifié</text>
+  <text x="940" y="134" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="end">11 h : expire</text>
+
+  <!-- zone agrandie -->
+  <rect x="944" y="64" width="65" height="54" fill="none" stroke="#555" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <path d="M944,118 L60,158 M1009,118 L1100,158" fill="none" stroke="#b8c4cf" stroke-width="1.5"/>
+
+  <!-- zoom : de 10 h 58 à 11 h 03, 3,4 unités par seconde -->
+  <rect x="60" y="158" width="1040" height="112" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="72" y="178" font-size="13" fill="#555">agrandi : de 10 h 58 à 11 h 03</text>
+
+  <g stroke="#555" stroke-width="2">
+    <line x1="222.8" y1="188" x2="222.8" y2="246"/>
+    <line x1="426.8" y1="188" x2="426.8" y2="246"/>
+    <line x1="630.8" y1="188" x2="630.8" y2="246"/>
+    <line x1="834.8" y1="188" x2="834.8" y2="246"/>
+    <line x1="1038.8" y1="188" x2="1038.8" y2="246"/>
+  </g>
+  <line x1="80" y1="240" x2="1080" y2="240" stroke="#777" stroke-width="2"/>
+  <g font-size="13" fill="#555" text-anchor="middle">
+    <text x="222.8" y="262">passage</text>
+    <text x="426.8" y="262">passage</text>
+    <text x="630.8" y="262">passage</text>
+    <text x="834.8" y="262">passage</text>
+    <text x="1038.8" y="262">passage</text>
+  </g>
+
+  <rect x="80" y="200" width="408" height="26" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="92" y="218" font-size="14" font-weight="bold" fill="#333">le brouillon</text>
+  <rect x="488" y="200" width="142.8" height="26" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="5 3"/>
+  <text x="559.4" y="218" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle">expiré, encore là</text>
+  <line x1="488" y1="186" x2="488" y2="246" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="5 3"/>
+  <text x="482" y="196" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="end">11 h</text>
+  <text x="640" y="218" font-size="14" font-weight="bold" fill="#c0392b">supprimé à ce passage</text>
+
+  <!-- légende -->
+  <text x="2" y="296" font-size="15" fill="#555">Le <tspan font-weight="bold" fill="#333">moniteur TTL</tspan>, une tâche de fond, passe environ toutes les 60 secondes (traits verticaux) : la suppression n'est pas immédiate.</text>
+</svg>

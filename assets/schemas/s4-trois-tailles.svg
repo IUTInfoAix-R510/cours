@@ -1,0 +1,95 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 332" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Trois tailles de relation un-à-plusieurs, en trois colonnes. Un-à-quelques (un épisode et ses 2 ou 3 intervenants) : on embarque, le tableau reste petit et borné. Un-à-beaucoup (une émission et ses dizaines d'épisodes, que l'on consulte aussi seuls) : on référence, chaque épisode garde l'_id de son émission. Un-à-sans-fin (un épisode et ses écoutes, une par minute) : on référence depuis le côté qui grandit ; aucun tableau dans l'épisode, chaque mesure porte l'_id de l'épisode. En bas, trois questions : faut-il lire l'élément seul ? Combien y en a-t-il, et cela grandit-il sans fin ? Lequel change le plus souvent ?</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
+  </defs>
+
+  <!-- Trois panneaux -->
+  <g fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2">
+    <rect x="2" y="2" width="370" height="288" rx="10"/>
+    <rect x="395" y="2" width="370" height="288" rx="10"/>
+    <rect x="788" y="2" width="370" height="288" rx="10"/>
+  </g>
+  <g font-size="18" font-weight="bold" fill="#333">
+    <text x="18" y="30">Un-à-quelques</text>
+    <text x="411" y="30">Un-à-beaucoup</text>
+    <text x="804" y="30">Un-à-sans-fin</text>
+  </g>
+  <g font-size="14" fill="#555">
+    <text x="18" y="52">un épisode et ses 2 ou 3 intervenants</text>
+    <text x="411" y="52">une émission et ses dizaines d'épisodes,</text>
+    <text x="411" y="69">que l'on consulte aussi seuls</text>
+    <text x="804" y="52">un épisode et ses écoutes,</text>
+    <text x="804" y="69">une mesure par minute</text>
+  </g>
+
+  <!-- 1 : un-à-quelques, embarqué -->
+  <rect x="18" y="82" width="338" height="124" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="30" y="106" font-family="monospace" font-size="14" fill="#333">_id: "E1", titre: "Les trous noirs"</text>
+  <rect x="28" y="116" width="318" height="80" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="38" y="138" font-family="monospace" font-size="15" fill="#333">intervenants: [</text>
+  <g fill="#ffffff" stroke="#e8a838" stroke-width="1.5">
+    <rect x="44" y="150" width="80" height="32" rx="6"/>
+    <rect x="134" y="150" width="80" height="32" rx="6"/>
+    <rect x="224" y="150" width="80" height="32" rx="6"/>
+  </g>
+  <g font-size="15" fill="#333" text-anchor="middle">
+    <text x="84" y="171">Léa</text>
+    <text x="174" y="171">Malik</text>
+    <text x="264" y="171">Inès</text>
+  </g>
+  <text x="314" y="171" font-family="monospace" font-size="15" fill="#333">]</text>
+  <text x="187" y="232" font-size="14" fill="#555" text-anchor="middle">toujours lus avec l'épisode</text>
+
+  <!-- 2 : un-à-beaucoup, référencé -->
+  <rect x="440" y="82" width="280" height="32" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="580" y="104" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">_id: "Sciences en poche"</text>
+  <g fill="#ffffff" stroke="#4a90d9" stroke-width="2">
+    <rect x="413" y="170" width="72" height="40" rx="7"/>
+    <rect x="501" y="170" width="72" height="40" rx="7"/>
+    <rect x="589" y="170" width="72" height="40" rx="7"/>
+  </g>
+  <rect x="677" y="170" width="72" height="40" rx="7" fill="none" stroke="#4a90d9" stroke-width="2" stroke-dasharray="6 4"/>
+  <g font-size="16" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="449" y="196">E1</text>
+    <text x="537" y="196">E2</text>
+    <text x="625" y="196">E3</text>
+    <text x="713" y="196">…</text>
+  </g>
+  <g fill="none" stroke="#999" stroke-width="3" marker-end="url(#fl)">
+    <path d="M449,166 C449,145 540,144 540,123" stroke-dasharray="6 3.93"/>
+    <path d="M537,166 C537,145 566,144 566,123" stroke-dasharray="6 3.63"/>
+    <path d="M625,166 C625,145 594,144 594,123" stroke-dasharray="6 3.89"/>
+    <path d="M713,166 C713,145 620,144 620,123" stroke-dasharray="6 4.11"/>
+  </g>
+  <text x="580" y="232" font-family="monospace" font-size="14" fill="#333" text-anchor="middle">emission: "Sciences en poche"</text>
+
+  <!-- 3 : un-à-sans-fin, référencé depuis le côté qui grandit -->
+  <rect x="806" y="82" width="334" height="32" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="818" y="104" font-family="monospace" font-size="15" fill="#333">_id: "E1"</text>
+  <rect x="922" y="87" width="210" height="22" rx="5" fill="#fdeeee" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3"/>
+  <text x="1027" y="103" font-size="14" font-weight="bold" fill="#c0392b" text-anchor="middle">aucun tableau d'écoutes</text>
+  <g fill="#ffffff" stroke="#777" stroke-width="1.5">
+    <rect x="830" y="162" width="300" height="34" rx="6"/>
+    <rect x="824" y="168" width="300" height="34" rx="6"/>
+    <rect x="818" y="174" width="300" height="34" rx="6"/>
+  </g>
+  <text x="830" y="196" font-family="monospace" font-size="14" fill="#333">{ episode: "E1", t, auditeurs }</text>
+  <line x1="980" y1="159" x2="980" y2="123" fill="none" stroke="#999" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#fl)"/>
+  <text x="973" y="232" font-size="14" fill="#555" text-anchor="middle">une écoute par minute, sans fin</text>
+
+  <!-- Verdicts -->
+  <g font-size="17" font-weight="bold" fill="#00684a">
+    <text x="18" y="262">on embarque</text>
+    <text x="411" y="262">on référence</text>
+    <text x="804" y="262">on référence<tspan font-size="15" font-weight="normal" fill="#333"> depuis le côté qui grandit</tspan></text>
+  </g>
+  <g font-size="14" fill="#555">
+    <text x="18" y="280">le tableau reste petit et borné</text>
+    <text x="411" y="280">chaque épisode garde l'<tspan font-family="monospace">_id</tspan> de son émission</text>
+    <text x="804" y="280">chaque mesure porte l'<tspan font-family="monospace">_id</tspan> de l'épisode</text>
+  </g>
+
+  <!-- Les trois questions -->
+  <text x="2" y="322" font-size="15" fill="#555">Trois questions : <tspan font-weight="bold" fill="#333">faut-il lire l'élément seul ?</tspan>  ·  <tspan font-weight="bold" fill="#333">Combien y en a-t-il, et cela grandit-il sans fin ?</tspan>  ·  <tspan font-weight="bold" fill="#333">Lequel change le plus souvent ?</tspan></text>
+</svg>

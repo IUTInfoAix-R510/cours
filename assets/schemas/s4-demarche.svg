@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Deux démarches de conception, en deux lignes. En relationnel : 1, les données (le MCD, des tables en troisième forme normale) ; 2, le schéma ; 3, l'application écrit ses requêtes, avec des jointures ; 4, on dénormalise après coup si c'est lent. Avec MongoDB : 1, les requêtes de l'application, avec leur fréquence ; 2, les relations entre les données ; 3, les patterns ; 4, le schéma, fait pour ces requêtes. En bas : en relationnel, un bon schéma vaut pour toutes les requêtes ; avec MongoDB, un bon schéma vaut pour une charge de travail.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+
+  <!-- Ligne 1 : en relationnel -->
+  <text x="2" y="20" font-size="17" font-weight="bold" fill="#333">En relationnel</text>
+
+  <rect x="2" y="30" width="266" height="80" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="298" y="30" width="266" height="80" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <rect x="594" y="30" width="266" height="80" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <rect x="890" y="30" width="266" height="80" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <g fill="#00684a">
+    <circle cx="26" cy="56" r="12"/>
+    <circle cx="322" cy="56" r="12"/>
+    <circle cx="618" cy="56" r="12"/>
+    <circle cx="914" cy="56" r="12"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    <text x="26" y="61">1</text>
+    <text x="322" y="61">2</text>
+    <text x="618" y="61">3</text>
+    <text x="914" y="61">4</text>
+  </g>
+  <g font-size="17" font-weight="bold" fill="#333">
+    <text x="46" y="62">les données</text>
+    <text x="342" y="62">le schéma</text>
+    <text x="638" y="62">les requêtes</text>
+    <text x="934" y="62">dénormaliser</text>
+  </g>
+  <g font-size="14" fill="#555">
+    <text x="16" y="86">le MCD, des tables</text>
+    <text x="16" y="103">en troisième forme normale</text>
+    <text x="312" y="86">les tables et leurs clés</text>
+    <text x="608" y="86">l'application les écrit,</text>
+    <text x="608" y="103">avec des jointures</text>
+    <text x="904" y="86">après coup,</text>
+    <text x="904" y="103">si c'est lent</text>
+  </g>
+  <g stroke="#555" stroke-width="3" marker-end="url(#fl)">
+    <line x1="272" y1="70" x2="289" y2="70"/>
+    <line x1="568" y1="70" x2="585" y2="70"/>
+    <line x1="864" y1="70" x2="881" y2="70"/>
+  </g>
+
+  <!-- Ligne 2 : avec MongoDB -->
+  <text x="2" y="146" font-size="17" font-weight="bold" fill="#00684a">Avec MongoDB</text>
+
+  <rect x="2" y="156" width="266" height="80" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <rect x="298" y="156" width="266" height="80" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="594" y="156" width="266" height="80" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <rect x="890" y="156" width="266" height="80" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <g fill="#00684a">
+    <circle cx="26" cy="182" r="12"/>
+    <circle cx="322" cy="182" r="12"/>
+    <circle cx="618" cy="182" r="12"/>
+    <circle cx="914" cy="182" r="12"/>
+  </g>
+  <g font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">
+    <text x="26" y="187">1</text>
+    <text x="322" y="187">2</text>
+    <text x="618" y="187">3</text>
+    <text x="914" y="187">4</text>
+  </g>
+  <g font-size="17" font-weight="bold" fill="#333">
+    <text x="46" y="188">les requêtes</text>
+    <text x="342" y="188">les relations</text>
+    <text x="638" y="188">les patterns</text>
+    <text x="934" y="188">le schéma</text>
+  </g>
+  <g font-size="14" fill="#555">
+    <text x="16" y="212">de l'application,</text>
+    <text x="16" y="229">avec leur fréquence</text>
+    <text x="312" y="212">entre les données</text>
+    <text x="608" y="212">Subset, Computed, Bucket…</text>
+    <text x="904" y="212">fait pour ces requêtes</text>
+  </g>
+  <g stroke="#555" stroke-width="3" marker-end="url(#fl)">
+    <line x1="272" y1="196" x2="289" y2="196"/>
+    <line x1="568" y1="196" x2="585" y2="196"/>
+    <line x1="864" y1="196" x2="881" y2="196"/>
+  </g>
+
+  <!-- Conclusion -->
+  <text x="2" y="270" font-size="16" fill="#555">En relationnel, un bon schéma vaut pour <tspan font-weight="bold" fill="#333">toutes les requêtes</tspan> ; avec MongoDB, un bon schéma vaut pour <tspan font-weight="bold" fill="#00684a">une charge de travail</tspan>.</text>
+</svg>

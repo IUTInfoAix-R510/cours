@@ -1,0 +1,83 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 334" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La fiche d'un épisode, lue par la page à chaque ouverture, assemble trois patterns dans un seul document. Le titre et l'émission viennent de l'épisode. nbCommentaires vient du pattern Computed (compté à l'écriture). derniersCommentaires vient du pattern Subset (les plus récents). derniereJournee (le jour, le maximum d'auditeurs) vient du pattern Bucket (le résumé du dernier bucket). Trois flèches partent des collections episodes, commentaires et ecoutes_par_jour vers la fiche. En bas : une lecture, un document, aucune jointure ; trois sources à tenir à jour.</title>
+  <defs>
+    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+  </defs>
+
+  <!-- en-têtes -->
+  <g font-size="15" font-weight="bold" fill="#333">
+    <text x="2" y="20">trois sources</text>
+    <text x="270" y="20">la fiche de l'épisode E1 : un seul document</text>
+    <text x="990" y="20">la page</text>
+  </g>
+
+  <!-- sources -->
+  <rect x="2" y="44" width="204" height="52" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="68" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">episodes</text>
+  <text x="14" y="88" font-size="13" fill="#555">un document par épisode</text>
+
+  <rect x="2" y="104" width="204" height="110" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="154" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">commentaires</text>
+  <text x="14" y="174" font-size="13" fill="#555">tous les commentaires</text>
+
+  <rect x="2" y="222" width="204" height="64" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="250" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">ecoutes_par_jour</text>
+  <text x="14" y="270" font-size="13" fill="#555">un bucket par épisode et jour</text>
+
+  <!-- flèches d'écriture vers la fiche -->
+  <g stroke="#e8a838" stroke-width="3" marker-end="url(#fla)">
+    <line x1="210" y1="70" x2="261" y2="70"/>
+    <line x1="210" y1="159" x2="261" y2="159"/>
+    <line x1="210" y1="254" x2="261" y2="254"/>
+  </g>
+
+  <!-- la fiche -->
+  <rect x="270" y="34" width="660" height="262" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="284" y="64">_id: "E1", titre: "Les trous noirs",</text>
+    <text x="284" y="86">emission: "Sciences en poche"</text>
+  </g>
+  <text x="918" y="76" font-size="14" fill="#555" text-anchor="end">de l'épisode</text>
+
+  <rect x="278" y="104" width="644" height="110" rx="7" fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5"/>
+  <text x="290" y="130" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold">nbCommentaires</tspan>: 3</text>
+  <text x="290" y="150" font-size="13" fill="#555">compté à l'écriture</text>
+  <text x="290" y="186" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold">derniersCommentaires</tspan>: [</text>
+  <g font-size="14" fill="#333" text-anchor="middle">
+    <rect x="510" y="168" width="70" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="545" y="186">ana · 4</text>
+    <rect x="586" y="168" width="70" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="621" y="186">sam · 3</text>
+  </g>
+  <text x="662" y="186" font-family="monospace" font-size="15" fill="#333">]</text>
+  <text x="290" y="206" font-size="13" fill="#555">les plus récents</text>
+
+  <text x="284" y="248" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold">derniereJournee</tspan>: { jour: 2026-09-08, max: 52 }</text>
+  <text x="284" y="270" font-size="13" fill="#555">le résumé du dernier bucket : le jour, le maximum d'auditeurs</text>
+
+  <!-- patterns -->
+  <g fill="#f3e8f8" stroke="#8e44ad" stroke-width="2">
+    <rect x="806" y="116" width="108" height="26" rx="13"/>
+    <rect x="806" y="172" width="108" height="26" rx="13"/>
+    <rect x="806" y="240" width="108" height="26" rx="13"/>
+  </g>
+  <g font-size="14" font-weight="bold" fill="#8e44ad" text-anchor="middle">
+    <text x="860" y="134">Computed</text>
+    <text x="860" y="190">Subset</text>
+    <text x="860" y="258">Bucket</text>
+  </g>
+
+  <!-- la lecture -->
+  <line x1="934" y1="159" x2="981" y2="159" stroke="#13aa52" stroke-width="3" marker-end="url(#flv)"/>
+  <rect x="990" y="104" width="168" height="110" rx="8" fill="#ffffff" stroke="#13aa52" stroke-width="2"/>
+  <g text-anchor="middle">
+    <text x="1074" y="136" font-size="16" font-weight="bold" fill="#333">la page</text>
+    <text x="1074" y="157" font-size="16" font-weight="bold" fill="#333">de l'épisode</text>
+    <text x="1074" y="180" font-size="13" fill="#555">à chaque ouverture :</text>
+    <text x="1074" y="200" font-size="14" font-weight="bold" fill="#00684a">une lecture</text>
+  </g>
+
+  <!-- légende -->
+  <text x="2" y="324" font-size="15" fill="#555"><tspan font-weight="bold" fill="#00684a">Une lecture, un document, aucune jointure</tspan> ; <tspan font-weight="bold" fill="#b06f00">trois sources à tenir à jour</tspan>.</text>
+</svg>

@@ -1,0 +1,96 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 362" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Les collections de la base tp3, un réseau de vélos en libre-service dans une ville inventée. stations, 24 documents : _id (ST01 à ST24), nom, quartier, capacite, stats (departs, arrivees, minutes). velos, 300 documents : _id, type (mecanique, electrique, cargo), batterie ou caisse selon le type, derniersTrajets (les 5 derniers). avis, 981 documents : station, auteur, note de 1 à 5, texte, date. trajets, 5 556 documents de la semaine du 2 au 8 novembre 2026 : velo, depart { station, t }, arrivee { station, t }, duree. releves, 16 128 documents : station, t, velos, places, un relevé toutes les 15 minutes. occupation, 168 documents : l'historique de la semaine précédente, un document par station et par jour. Les avis, les trajets et les relevés désignent leur station par son _id ; un trajet désigne son vélo par son _id.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
+  </defs>
+
+  <!-- Ligne 1 : velos, stations, occupation -->
+  <rect x="2" y="2" width="360" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="16" y="32" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">velos</text>
+  <text x="348" y="32" font-size="16" fill="#555" text-anchor="end">300 documents</text>
+  <rect x="10" y="115" width="344" height="23" rx="5" fill="#fdf3e0"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="16" y="60">_id</text>
+    <text x="16" y="84">type<tspan font-family="sans-serif" font-size="14" fill="#777">  mecanique, electrique, cargo</tspan></text>
+    <text x="16" y="108">batterie<tspan font-family="sans-serif" fill="#555"> ou </tspan>caisse<tspan font-family="sans-serif" font-size="14" fill="#777">  selon le type</tspan></text>
+    <text x="16" y="132">derniersTrajets: [ … ]<tspan font-family="sans-serif" font-size="14" fill="#777">  les 5 derniers</tspan></text>
+  </g>
+
+  <rect x="392" y="2" width="380" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="406" y="32" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">stations</text>
+  <text x="758" y="32" font-size="16" fill="#555" text-anchor="end">24 documents</text>
+  <rect x="400" y="91" width="364" height="23" rx="5" fill="#e3eefa"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="406" y="60">_id: "ST01" … "ST24"</text>
+    <text x="406" y="84">nom, quartier, capacite</text>
+    <text x="406" y="108">stats: { departs, arrivees, minutes }</text>
+  </g>
+
+  <rect x="802" y="2" width="356" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="816" y="32" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">occupation</text>
+  <text x="1144" y="32" font-size="16" fill="#555" text-anchor="end">168 documents</text>
+  <g font-size="15" fill="#555">
+    <text x="816" y="60">l'historique de la semaine précédente</text>
+    <text x="816" y="84">un document par station et par jour</text>
+  </g>
+  <text x="816" y="120" font-size="14" fill="#777">détaillé en partie 4</text>
+
+  <!-- Ligne 2 : trajets, avis, releves -->
+  <rect x="2" y="192" width="400" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="16" y="222" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">trajets</text>
+  <text x="388" y="222" font-size="16" fill="#555" text-anchor="end">5 556 documents</text>
+  <rect x="10" y="257" width="236" height="23" rx="5" fill="#e3eefa"/>
+  <rect x="10" y="281" width="236" height="23" rx="5" fill="#e3eefa"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="16" y="250">velo</text>
+    <text x="16" y="274">depart: { station, t }</text>
+    <text x="16" y="298">arrivee: { station, t }</text>
+    <text x="16" y="322">duree</text>
+  </g>
+  <text x="388" y="322" font-size="14" fill="#777" text-anchor="end">semaine du 2 au 8 novembre 2026</text>
+
+  <rect x="432" y="192" width="310" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="446" y="222" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">avis</text>
+  <text x="728" y="222" font-size="16" fill="#555" text-anchor="end">981 documents</text>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="446" y="250">station</text>
+    <text x="446" y="274">auteur</text>
+    <text x="446" y="298">note<tspan font-family="sans-serif" font-size="14" fill="#777">  de 1 à 5</tspan></text>
+    <text x="446" y="322">texte, date</text>
+  </g>
+
+  <rect x="772" y="192" width="386" height="140" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="786" y="222" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">releves</text>
+  <text x="1144" y="222" font-size="16" fill="#555" text-anchor="end">16 128 documents</text>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="786" y="250">station</text>
+    <text x="786" y="274">t</text>
+    <text x="786" y="298">velos, places</text>
+  </g>
+  <text x="786" y="322" font-size="14" fill="#777">un relevé toutes les 15 minutes</text>
+
+  <!-- Références par _id -->
+  <g fill="none" stroke="#999" stroke-width="3" marker-end="url(#fl)">
+    <line x1="120" y1="187" x2="120" y2="151" stroke-dasharray="6 4"/>
+    <path d="M340,187 C340,165 470,173 470,151" stroke-dasharray="6 4.32"/>
+    <line x1="600" y1="187" x2="600" y2="151" stroke-dasharray="6 4"/>
+    <path d="M830,187 C830,165 730,173 730,151" stroke-dasharray="6 3.61"/>
+  </g>
+  <g font-family="monospace" font-size="14" fill="#777">
+    <text x="132" y="174">velo</text>
+    <text x="326" y="164" text-anchor="end">depart.station</text>
+    <text x="326" y="182" text-anchor="end">arrivee.station</text>
+    <text x="612" y="174">station</text>
+    <text x="842" y="174">station</text>
+  </g>
+
+  <!-- Légende -->
+  <g font-size="15" fill="#555">
+    <rect x="2" y="342" width="24" height="18" rx="4" fill="#e3eefa"/>
+    <text x="34" y="356">document imbriqué</text>
+    <rect x="200" y="342" width="24" height="18" rx="4" fill="#fdf3e0"/>
+    <text x="232" y="356">tableau</text>
+    <line x1="330" y1="351" x2="366" y2="351" stroke="#999" stroke-width="3" stroke-dasharray="6 4"/>
+    <text x="376" y="356">désigne une station ou un vélo par son <tspan font-family="monospace">_id</tspan></text>
+  </g>
+</svg>

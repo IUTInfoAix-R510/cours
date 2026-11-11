@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 318" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Deux écritures, deux documents. Pour publier un commentaire : 1, insérer K6 dans commentaires ; 2, ajouter 1 à nbCommentaires de l'épisode E1. Si le programme s'arrête entre 1 et 2 (un éclair), K6 existe mais le compteur n'a pas bougé : les deux collections ne sont plus d'accord. Chaque écriture, seule, est atomique : elle se fait entièrement ou pas du tout. Rien ne lie les deux.</title>
+  <defs>
+    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="flg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
+    <marker id="flr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+
+  <text x="2" y="18" font-size="15" fill="#555">Pour publier un commentaire, le programme fait <tspan font-weight="bold" fill="#333">deux écritures</tspan>, l'une après l'autre :</text>
+
+  <!-- écriture 1 : faite -->
+  <rect x="2" y="32" width="398" height="70" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <circle cx="26" cy="56" r="12" fill="#00684a"/>
+  <text x="26" y="62" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="46" y="62" font-size="16" fill="#333">insérer <tspan font-weight="bold">K6</tspan> dans <tspan font-family="monospace" font-weight="bold" fill="#00684a">commentaires</tspan></text>
+  <text x="16" y="90" font-family="monospace" font-size="14" fill="#b06f00">insertOne({ _id: "K6", episode: "E1" })</text>
+
+  <!-- le temps passe, puis la panne -->
+  <line x1="404" y1="67" x2="552" y2="67" stroke="#777" stroke-width="3"/>
+  <text x="478" y="56" font-size="14" fill="#777" text-anchor="middle">puis</text>
+  <path d="M588,34 L566,70 L580,70 L572,102 L598,60 L584,60 L596,34 Z" fill="#c0392b"/>
+  <line x1="602" y1="67" x2="748" y2="67" stroke="#777" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flg)"/>
+  <text x="580" y="126" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">le programme s'arrête</text>
+
+  <!-- écriture 2 : jamais faite -->
+  <rect x="758" y="32" width="400" height="70" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <circle cx="782" cy="56" r="12" fill="#00684a"/>
+  <text x="782" y="62" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="802" y="62" font-size="16" fill="#333">ajouter 1 à <tspan font-family="monospace" font-weight="bold">nbCommentaires</tspan> de E1</text>
+  <text x="772" y="90" font-family="monospace" font-size="14" fill="#777">$inc: { nbCommentaires: 1 }</text>
+
+  <!-- effet de chaque écriture -->
+  <line x1="200" y1="106" x2="200" y2="148" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fla)"/>
+  <text x="216" y="138" font-size="15" font-weight="bold" fill="#00684a">faite entièrement</text>
+  <line x1="958" y1="106" x2="958" y2="152" stroke="#c0392b" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flr)"/>
+  <text x="974" y="138" font-size="15" font-weight="bold" fill="#c0392b">pas faite du tout</text>
+
+  <!-- état après l'arrêt -->
+  <rect x="2" y="160" width="518" height="120" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="16" y="188" font-size="21" font-weight="bold" fill="#00684a">commentaires</text>
+  <rect x="14" y="200" width="494" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="26" y="220" font-size="15" fill="#777"><tspan font-family="monospace">K1</tspan> à <tspan font-family="monospace">K5</tspan> : inchangés</text>
+  <rect x="14" y="238" width="494" height="30" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="26" y="258" font-family="monospace" font-size="15" fill="#333">{ _id: <tspan font-weight="bold">"K6"</tspan>, episode: "E1" }</text>
+  <text x="496" y="258" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">K6 existe</text>
+
+  <text x="580" y="264" font-size="40" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+
+  <rect x="640" y="160" width="518" height="120" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="654" y="188" font-size="21" font-weight="bold" fill="#00684a">episodes</text>
+  <rect x="652" y="200" width="494" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="664" y="220" font-size="15" fill="#777"><tspan font-family="monospace">E2</tspan>, <tspan font-family="monospace">E3</tspan>, <tspan font-family="monospace">E4</tspan> : inchangés</text>
+  <rect x="652" y="238" width="494" height="30" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="664" y="258" font-family="monospace" font-size="15" fill="#333">{ _id: "E1", nbCommentaires: <tspan font-weight="bold">3</tspan> }</text>
+  <text x="1134" y="258" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="end">n'a pas bougé</text>
+
+  <!-- légende -->
+  <text x="2" y="310" font-size="15" fill="#555">Les deux collections <tspan font-weight="bold" fill="#c0392b">ne sont plus d'accord</tspan>. Chaque écriture, seule, est atomique ; <tspan font-weight="bold" fill="#333">rien ne lie les deux</tspan>.</text>
+</svg>

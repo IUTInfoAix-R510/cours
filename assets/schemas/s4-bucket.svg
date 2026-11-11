@@ -1,0 +1,99 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 300" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le pattern Bucket sur les écoutes. À gauche, cinq mesures, une par document : E1 à 23 h 50 le 7 septembre (40 auditeurs), E1 à 0 h 10 le 8 (35), E1 à 7 h 30 le 8 (52), E4 à 19 h le 10 (18), E4 à 19 h 30 le 10 (21). À droite, trois buckets, un par épisode et par jour UTC : E1-2026-09-07 avec 1 mesure, E1-2026-09-08 avec 2 mesures, E4-2026-09-10 avec 2 mesures. Chaque bucket a un _id lisible (épisode et jour), le jour, le nombre de mesures nb, le maximum max, et le tableau mesures trié par heure.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+  </defs>
+
+  <!-- en-têtes -->
+  <text x="2" y="26" font-size="21" font-weight="bold" fill="#00684a">ecoutes</text>
+  <text x="94" y="26" font-size="15" fill="#555">une mesure par document</text>
+  <text x="440" y="26" font-size="21" font-weight="bold" fill="#00684a">ecoutes_par_jour</text>
+  <text x="628" y="26" font-size="15" fill="#555">un document par épisode et par jour UTC</text>
+
+  <!-- les cinq mesures -->
+  <g stroke-width="2">
+    <rect x="2" y="46" width="328" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9"/>
+    <rect x="2" y="88" width="328" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9"/>
+    <rect x="2" y="130" width="328" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9"/>
+    <rect x="2" y="172" width="328" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad"/>
+    <rect x="2" y="214" width="328" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad"/>
+  </g>
+  <g font-family="monospace" font-size="15" font-weight="bold" fill="#333">
+    <text x="14" y="68">E1</text>
+    <text x="14" y="110">E1</text>
+    <text x="14" y="152">E1</text>
+    <text x="14" y="194">E4</text>
+    <text x="14" y="236">E4</text>
+  </g>
+  <g font-size="15" fill="#333">
+    <text x="50" y="68"><tspan font-weight="bold">7 sept.</tspan>, 23 h 50</text>
+    <text x="50" y="110"><tspan font-weight="bold">8 sept.</tspan>, 0 h 10</text>
+    <text x="50" y="152"><tspan font-weight="bold">8 sept.</tspan>, 7 h 30</text>
+    <text x="50" y="194"><tspan font-weight="bold">10 sept.</tspan>, 19 h 00</text>
+    <text x="50" y="236"><tspan font-weight="bold">10 sept.</tspan>, 19 h 30</text>
+  </g>
+  <g font-size="14" fill="#555" text-anchor="end">
+    <text x="318" y="68"><tspan font-size="15" font-weight="bold" fill="#333">40</tspan> auditeurs</text>
+    <text x="318" y="110"><tspan font-size="15" font-weight="bold" fill="#333">35</tspan> auditeurs</text>
+    <text x="318" y="152"><tspan font-size="15" font-weight="bold" fill="#333">52</tspan> auditeurs</text>
+    <text x="318" y="194"><tspan font-size="15" font-weight="bold" fill="#333">18</tspan> auditeurs</text>
+    <text x="318" y="236"><tspan font-size="15" font-weight="bold" fill="#333">21</tspan> auditeurs</text>
+  </g>
+
+  <!-- chaque mesure vers son bucket -->
+  <g fill="none" stroke="#555" stroke-width="2.5" marker-end="url(#fl)">
+    <path d="M334,63 C384,63 384,78 431,78"/>
+    <path d="M334,105 C384,105 384,142 431,142"/>
+    <path d="M334,147 C384,147 384,162 431,162"/>
+    <path d="M334,189 C384,189 384,216 431,216"/>
+    <path d="M334,231 C384,231 384,236 431,236"/>
+  </g>
+
+  <!-- les trois buckets -->
+  <rect x="440" y="46" width="718" height="64" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="440" y="120" width="718" height="64" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="440" y="194" width="718" height="64" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="454" y="70">_id: <tspan font-weight="bold">"E1-2026-09-07"</tspan>,</text>
+    <text x="690" y="70">jour: 2026-09-07,</text>
+    <text x="880" y="70">nb: <tspan font-weight="bold">1</tspan>,</text>
+    <text x="960" y="70">max: <tspan font-weight="bold">40</tspan></text>
+    <text x="454" y="97">mesures: [</text>
+
+    <text x="454" y="144">_id: <tspan font-weight="bold">"E1-2026-09-08"</tspan>,</text>
+    <text x="690" y="144">jour: 2026-09-08,</text>
+    <text x="880" y="144">nb: <tspan font-weight="bold">2</tspan>,</text>
+    <text x="960" y="144">max: <tspan font-weight="bold">52</tspan></text>
+    <text x="454" y="171">mesures: [</text>
+
+    <text x="454" y="218">_id: <tspan font-weight="bold">"E4-2026-09-10"</tspan>,</text>
+    <text x="690" y="218">jour: 2026-09-10,</text>
+    <text x="880" y="218">nb: <tspan font-weight="bold">2</tspan>,</text>
+    <text x="960" y="218">max: <tspan font-weight="bold">21</tspan></text>
+    <text x="454" y="245">mesures: [</text>
+  </g>
+  <g fill="#ffffff" stroke-width="2">
+    <rect x="552" y="78" width="130" height="26" rx="6" stroke="#4a90d9"/>
+    <rect x="552" y="152" width="130" height="26" rx="6" stroke="#4a90d9"/>
+    <rect x="690" y="152" width="130" height="26" rx="6" stroke="#4a90d9"/>
+    <rect x="552" y="226" width="130" height="26" rx="6" stroke="#8e44ad"/>
+    <rect x="690" y="226" width="130" height="26" rx="6" stroke="#8e44ad"/>
+  </g>
+  <g font-size="14" fill="#333" text-anchor="middle">
+    <text x="617" y="96">23 h 50 · <tspan font-weight="bold">40</tspan></text>
+    <text x="617" y="170">0 h 10 · <tspan font-weight="bold">35</tspan></text>
+    <text x="755" y="170">7 h 30 · <tspan font-weight="bold">52</tspan></text>
+    <text x="617" y="244">19 h 00 · <tspan font-weight="bold">18</tspan></text>
+    <text x="755" y="244">19 h 30 · <tspan font-weight="bold">21</tspan></text>
+  </g>
+  <g font-family="monospace" font-size="15" fill="#333">
+    <text x="690" y="97">]</text>
+    <text x="828" y="171">]</text>
+    <text x="828" y="245">]</text>
+  </g>
+  <text x="1144" y="171" font-size="14" fill="#777" text-anchor="end">triées par heure</text>
+  <text x="1144" y="245" font-size="14" fill="#777" text-anchor="end">triées par heure</text>
+
+  <!-- légende -->
+  <text x="2" y="290" font-size="15" fill="#555">Le <tspan font-weight="bold" fill="#333">jour UTC</tspan> de la mesure choisit le bucket : 23 h 50 le 7 et 0 h 10 le 8 ne vont pas dans le même.</text>
+</svg>
