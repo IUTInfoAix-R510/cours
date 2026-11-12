@@ -32,9 +32,9 @@ Séance 3 · TP2 · semaine du 30 novembre 2026
 
 Le point cours se fait en deux temps.
 
-Premier temps, en début de séance : diapos 2 à 37 (données, parties 1 à 4) en 30 minutes environ, puis les deux diapos « À vous » (55 et 56, 2 minutes).
+Premier temps, en début de séance : diapos 2 à 37 (données, parties 1 à 4) en 30 minutes environ, puis les deux diapos « À vous » (50 et 51, 2 minutes).
 
-Second temps, quand la majorité du groupe attaque la partie 5 : diapos 38 à 54 (géospatial, $merge et $jsonSchema, pilote Java et Javalin), 11 minutes environ. Ces diapos servent aussi de référence pour la fin du TP en autonomie (parties 6 et 7).
+Second temps, quand la majorité du groupe attaque la partie 5 : diapos 38 à 49 (géospatial, pilote Java et Javalin), 8 minutes environ. Les diapos Java servent aussi de référence pour la fin du TP en autonomie (partie 6). $merge (bonus 4 du TP2) est enseigné au point cours S4 ; ses diapos sont en annexe, avec celles de $jsonSchema (TP3).
 
 Les exemples portent sur des films (collections inventées « films » et « realisateurs »), pas sur les exercices du TP ; seules les diapos sur les données et sur explain() montrent les vraies collections. Tout a été exécuté sur MongoDB 9.0.4 et les résultats affichés sont ceux obtenus. Le script des films est dans les notes de la diapo « Des films pour les exemples ».
 -->
@@ -47,7 +47,7 @@ Les exemples portent sur des films (collections inventées « films » et « rea
 
 <img src="assets/schemas/s3-donnees.svg" alt="Les trois collections de la base tp2. restaurants, 25 359 documents : _id ; address, document imbriqué avec building, coord (longitude, latitude), street, zipcode ; borough ; cuisine ; grades, tableau de documents date, grade, score, de la plus récente à la plus ancienne ; name ; restaurant_id. neighborhoods, 195 documents : name et geometry, un polygone GeoJSON. boroughs, 5 documents créés pour le TP : code FIPS, nom, comte, population du recensement 2020, superficie. Le champ borough des restaurants correspond au champ nom de boroughs ($lookup, partie 3) ; les coordonnées d'un restaurant tombent dans la geometry d'un quartier ($geoWithin, partie 5)." style="display:block; width:100%; margin:0.2rem auto 0 auto;">
 
-<div class="box" style="margin-top: 0.3rem; font-size: 0.68em;"><b>Au programme</b> : 7 parties, 20 exercices, 100 points. Parties 1 à 5 en séance ; parties 6 et 7 (dont le code Java) à terminer en autonomie. Des <b>données réelles</b> : restaurants de New York et leurs inspections sanitaires.</div>
+<div class="box" style="margin-top: 0.3rem; font-size: 0.68em;"><b>Au programme</b> : 6 parties, 18 exercices, 90 points. Parties 1 à 5 en séance ; partie 6 (le code Java) à terminer en autonomie. Des <b>données réelles</b> : restaurants de New York et leurs inspections sanitaires.</div>
 
 <!--
 (2 min)
@@ -1031,7 +1031,7 @@ Le résultat du `$facet` est **un document**, que les étapes suivantes peuvent 
 
 Résultats obtenus sur MongoDB 9.0.4 : le $facet seul, puis suivi du $project montré à gauche.
 
-En Java (partie 7), le document rendu se lit avec doc.getList("par_annee", Document.class).
+En Java (partie 6), le document rendu se lit avec doc.getList("par_annee", Document.class).
 -->
 
 ---
@@ -1608,19 +1608,451 @@ Exercice 13 : les coordonnées d'un restaurant deviennent les coordinates d'un p
 
 ---
 
-<!-- header: Partie 6 · écrire et contraindre -->
+<!-- header: Partie 6 · coder -->
 
 <!-- _class: lead -->
 <!-- _header: "" -->
 
-# Partie 6 - 🧱 Écrire et contraindre
+# Partie 6 - ☕ Du shell au code
+
+pilote Java de MongoDB et Javalin
+
+<!--
+(10 s)
+
+Même titre que la partie 6 de l'énoncé du TP2. Les exemples de la partie portent sur les films ; seule la route fournie du TP (ApiRestaurants.java) touche aux restaurants.
+-->
+
+---
+
+## Du navigateur à la base, et retour
+
+<img src="assets/schemas/s3-api-aller-retour.svg" alt="L'aller-retour d'une requête dans le projet, sur les films, en six messages entre quatre acteurs : le navigateur, Javalin, Java avec le pilote MongoDB, et MongoDB. Aller : 1, le navigateur demande GET /api/annees/2001/films ; 2, la route Javalin appelle la méthode Java filmsDeLAnnee(2001) ; 3, le pilote envoie à MongoDB la requête find({ annee: 2001 }). Retour : 4, MongoDB renvoie 2 documents, Amélie et Chihiro ; 5, la méthode rend une List de Document de 2 éléments ; 6, Javalin répond avec le statut 200 et un corps JSON. Le navigateur reçoit [{&quot;titre&quot;:&quot;Amélie Poulain&quot;,&quot;duree&quot;:122},{&quot;titre&quot;:&quot;Le Voyage de Chihiro&quot;,&quot;duree&quot;:125}]." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+<p class="legende" style="margin: 0.1rem 0 0;">Exemple du cours : cette route des films n'est pas dans <code>requetes-java/</code> (voir la dernière diapo de la partie).</p>
+
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
+<div class="box" style="margin-top: 0;">
+
+**C'est quoi ?** **Javalin** associe une URL à une méthode Java. Le **pilote** MongoDB envoie depuis Java les requêtes que vous écrivez dans le playground : c'est le JDBC de MongoDB.
+
+</div>
+<div class="box" style="margin-top: 0;">
+
+**Pourquoi faire ?** Le front du projet ne parle jamais à MongoDB : il demande une URL à une **API REST**, qui répond en **JSON**. La partie 6 en écrit un morceau.
+
+</div>
+</div>
+
+<!--
+(40 s)
+
+Dérouler les six messages de haut en bas : trois à l'aller (traits pleins), trois au retour (pointillés). Suivre la valeur 2001 : elle arrive dans l'URL, devient l'argument de la méthode, puis la valeur du filtre.
+
+Vérifié sur MongoDB 9.0.4, avec mongodb-driver-sync 5.14.0 et Javalin 7.2.4 (les versions de requetes-java/pom.xml) : la route des films et la méthode filmsDeLAnnee, écrites pour le cours, renvoient exactement le JSON affiché. Elles n'existent pas dans requetes-java/.
+
+Dans le TP : 3 méthodes à écrire dans RequetesRestaurants.java (exercices 15 à 17) et 1 route dans ApiRestaurants.java (exercice 18), vérifiées par le correcteur automatique (npm run check). Le projet (S6 à S8) part d'un squelette Java, Javalin et MongoDB : cette partie en est la première prise en main.
+-->
+
+---
+
+## Les classes d'aide fabriquent le document
+
+<style scoped>
+.box code { white-space: nowrap; }
+</style>
+
+<img src="assets/schemas/s3-shell-vers-java.svg" alt="Le code Java Filters.and( Filters.gte(&quot;annee&quot;, 2000), Filters.gt(&quot;duree&quot;, 100) ) fabrique, appel par appel, le document { &quot;$and&quot;: [ { &quot;annee&quot;: { &quot;$gte&quot;: 2000 } }, { &quot;duree&quot;: { &quot;$gt&quot;: 100 } } ] }, de même sens que { annee: { $gte: 2000 }, duree: { $gt: 100 } } en mongosh. MongoDB l'applique aux 4 films : Chihiro et Amélie retenus, Glaneurs écarté par la durée (82 ≤ 100), La Haine par l'année (1995 &lt; 2000). Une classe d'aide par rôle : Filters, Projections, Sorts, Aggregates, Accumulators." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
+<div class="box" style="margin-top: 0;">
+
+**C'est quoi ?** Des méthodes **statiques**, une par opérateur : `Filters.eq`, `Filters.gt`, `Filters.and`... Chacune renvoie un morceau de document : celui que vous écririez en mongosh.
+
+</div>
+<div class="box" style="margin-top: 0;">
+
+**Pourquoi faire ?** Java n'a pas d'écriture `{ annee: 2001 }`. Les classes d'aide évitent d'assembler ces documents à la main ; le **compilateur** vérifie le nom de chaque méthode, mais **pas** les noms de champs : `"anee"` compile et ne trouve rien.
+
+</div>
+</div>
+
+<!--
+(45 s)
+
+Lire le schéma ligne à ligne : chaque appel Java fabrique une ligne du document. Le document du milieu est celui qu'affiche toBsonDocument().toJson() avec le pilote 5.14.0 : {"$and": [{"annee": {"$gte": 2000}}, {"duree": {"$gt": 100}}]}. En mongosh, le « et » est implicite ; le pilote écrit $and : même sens. Exécutée sur MongoDB 9.0.4, la requête renvoie Le Voyage de Chihiro et Amélie Poulain.
+
+Comparer avec JDBC : on n'y concatène pas de SQL à la main, on passe par un PreparedStatement ; ici, on ne concatène pas de JSON, on passe par les classes d'aide.
+
+Exercice 15 : Filters, Projections, Sorts ; exercices 16 et 17 : Aggregates, Accumulators. Le tableau de l'énoncé donne d'autres équivalents (Filters.size, Aggregates.lookup).
+-->
+
+---
+
+## Une requête `find`, appel par appel
+
+<style scoped>
+pre { font-size: 0.58em; }
+table { display: table; width: 100%; font-size: 0.64em; }
+td:nth-child(1) code { white-space: nowrap; }
+.petit code { white-space: nowrap; }
+</style>
+
+<div class="cols" style="grid-template-columns: 0.9fr 1.1fr; align-items: start;">
+<div>
+
+```java
+public List<Document> filmsDeLAnnee(int annee) {
+    return films     // MongoCollection<Document>
+        .find(Filters.eq("annee", annee))
+        .projection(Projections.fields(
+            Projections.excludeId(),
+            Projections.include("titre", "duree")))
+        .sort(Sorts.ascending("titre"))
+        .into(new ArrayList<>());
+}
+// filmsDeLAnnee(2001) renvoie :
+// [Document{{titre=Amélie Poulain, duree=122}},
+//  Document{{titre=Le Voyage de Chihiro, duree=125}}]
+```
+
+</div>
+<div>
+
+| Appel | En mongosh | Effet |
+|---|---|---|
+| `find(…)` | `find({ annee: 2001 })` | 2 films sur 4 |
+| `projection(…)` | le 2<sup>e</sup> argument de `find` | 2 champs restent |
+| `sort(…)` | `.sort({ titre: 1 })` | Amélie, puis Chihiro |
+| `into(…)` | rien : le shell affiche le résultat tout seul | la requête part → `List<Document>` |
+
+<p class="petit" style="margin-top: 0.5rem;">Chaque <code>Document</code> est une <code>Map</code> : <code>doc.getString("titre")</code> donne <code>"Amélie Poulain"</code>.</p>
+
+</div>
+</div>
+
+<div class="warn" style="margin-top: 0.6rem;">
+
+**`find(…)` ne lance rien** : il prépare la requête, c'est `into(…)` qui l'envoie. Et le **type** compte : `Filters.eq("annee", "2001")`, avec une chaîne, ne trouve **aucun** film.
+
+</div>
+
+<!--
+(45 s)
+
+Exécuté sur MongoDB 9.0.4 avec le pilote 5.14.0 : filmsDeLAnnee(2001) renvoie la liste affichée. Sans le sort, MongoDB rend Chihiro avant Amélie (ordre d'insertion) : c'est le sort qui met Amélie en premier. find(...) renvoie un FindIterable : rien n'est lu tant qu'on ne le parcourt pas (into, une boucle for). Filters.eq("annee", "2001") renvoie une liste vide : la chaîne "2001" n'est pas le nombre 2001 (partie 1, types BSON). Un org.bson.Document est une Map<String, Object> : sur le premier résultat, getString("titre") donne "Amélie Poulain" et getInteger("duree") 122.
+
+films est un champ MongoCollection<Document>, obtenu par base.getCollection("films"), comme restaurants dans RequetesRestaurants.java. La méthode a la même forme que restaurantsParCuisine, fournie : c'est le point de départ de l'exercice 15.
+-->
+
+---
+
+## Un pipeline : une étape, un appel
+
+<style scoped>
+pre { font-size: 0.62em; }
+.box pre { font-size: 0.82em; margin: 0.3rem 0 0; }
+</style>
+
+<div class="cols" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
+<div>
+
+<p class="etiquette">mongosh</p>
+
+```js
+db.films.aggregate([
+  { $match: { annee: { $gte: 2000 } } },
+  { $group: { _id: "$annee",
+      duree_moy: { $avg: "$duree" } } },
+  { $sort: { _id: 1 } }
+])
+// { _id: 2000, duree_moy: 82 }
+// { _id: 2001, duree_moy: 123.5 }
+```
+
+</div>
+<div>
+
+<p class="etiquette">Java</p>
+
+```java
+films.aggregate(List.of(
+    Aggregates.match(Filters.gte("annee", 2000)),
+    Aggregates.group("$annee",
+        Accumulators.avg("duree_moy", "$duree")),
+    Aggregates.sort(Sorts.ascending("_id"))
+)).into(new ArrayList<>());
+// [Document{{_id=2000, duree_moy=82.0}},
+//  Document{{_id=2001, duree_moy=123.5}}]
+```
+
+</div>
+</div>
+
+<p class="petit" style="margin-top: 0.4rem;">Le tableau <code>[ … ]</code> devient <code>List.of(…)</code>, chaque étape <code>{ &#36;match: … }</code> un appel <code>Aggregates.match(…)</code>.</p>
+
+<div class="cols" style="margin-top: 0.2rem; align-items: stretch;">
+<div class="box" style="margin-top: 0;">
+
+**Pas de classe d'aide** pour une expression (`$toUpper`, `$round`...) ? On écrit le document :
+
+```java
+// mongosh : { $project: { titre_maj: { $toUpper: "$titre" } } }
+Aggregates.project(Projections.computed("titre_maj",
+    new Document("$toUpper", "$titre")))
+```
+
+</div>
+<div class="warn" style="margin-top: 0;">
+
+**Le `$` compte**, comme en mongosh : pour **nommer** un champ (filtre, tri, champ produit), sans `$` : `"annee"` ; pour **lire sa valeur** dans chaque document (`_id` du groupe, expression), avec : `"$annee"`. Oublié : `group("annee", …)` rend un seul groupe `{ _id: "annee" }`, `avg("duree_moy", "duree")` donne `null`.
+
+</div>
+</div>
+
+<!--
+(45 s)
+
+Les deux versions exécutées sur MongoDB 9.0.4 : mêmes documents ; mongosh affiche 82, Java 82.0 (un double dans les deux cas).
+
+Vérifié avec le pilote 5.14.0 : Aggregates.group("annee", Accumulators.avg("duree_moy", "$duree")) renvoie un seul document, { _id: "annee", duree_moy: 106.75 }, sans erreur ; Accumulators.avg("duree_moy", "duree") donne duree_moy null pour chaque année. Projections.computed("nb_notes", new Document("$size", "$notes")) donne 0, 2, 2 et 1 notes, comme en mongosh.
+
+Méthode à conseiller pour les exercices 16 et 17 : écrire le pipeline dans essais.mongodb.js, le vérifier, puis le traduire étape par étape. L'énoncé signale Sorts.orderBy (plusieurs critères de tri) et Projections.computed.
+-->
+
+---
+
+## Une route Javalin : de l'URL aux paramètres
+
+<img src="assets/schemas/s3-javalin-route.svg" alt="Comment une route Javalin lit les paramètres d'une URL. À gauche, un paramètre de chemin, sur la route des films config.routes.get(&quot;/api/annees/{annee}/films&quot;, ctx -> ctx.json(filmsDeLAnnee(Integer.parseInt(ctx.pathParam(&quot;annee&quot;))))) : le motif /api/annees/{annee}/films est comparé à l'URL /api/annees/2001/films, {annee} capte le segment 2001 ; ctx.pathParam(&quot;annee&quot;) renvoie la chaîne &quot;2001&quot;, que Integer.parseInt convertit en l'entier 2001. À droite, un paramètre de requête, sur la route fournie du TP /api/boroughs/{borough}/restaurants, appelée avec /api/boroughs/Bronx/restaurants?cuisine=Pizza : ctx.pathParam(&quot;borough&quot;) renvoie &quot;Bronx&quot;, ctx.queryParam(&quot;cuisine&quot;) renvoie &quot;Pizza&quot;, et null si l'URL n'a pas de ?cuisine=." style="display:block; width:100%; margin:0.2rem auto 0;">
+
+<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
+<div class="box" style="margin-top: 0;">
+
+**C'est quoi ?** Une **route** associe une méthode HTTP (`get`) et un **motif** de chemin à une fonction. Cette fonction reçoit le **contexte** `ctx` : elle y lit la requête et y écrit la réponse.
+
+</div>
+<div class="box" style="margin-top: 0;">
+
+**Pourquoi faire ?** Le **chemin** désigne ce qu'on demande (les films de 2001) ; un paramètre **de requête** précise la demande et **peut manquer**. Les deux arrivent en `String`.
+
+</div>
+</div>
+
+<!--
+(45 s)
+
+À gauche, la route des films de la diapo « Du navigateur à la base » ; à droite, la route fournie dans ApiRestaurants.java, celle que les étudiants vont ouvrir dans le navigateur. Vérifié avec Javalin 7.2.4 sur MongoDB 9.0.4 : pathParam("annee") renvoie la chaîne "2001" ; queryParam("cuisine") renvoie "Pizza", ou null quand l'URL n'a pas de ?cuisine=.
+
+Javalin sait aussi convertir : ctx.pathParamAsClass("annee", Integer.class).get() renvoie directement un entier. L'énoncé de l'exercice 18 indique l'équivalent pour un paramètre de requête, avec une valeur par défaut.
+-->
+
+---
+
+## Ce que renvoie une route : un statut et un corps
+
+<style scoped>
+table { display: table; width: 100%; font-size: 0.66em; }
+td code { white-space: nowrap; }
+</style>
+
+<p class="petit">Les routes <code>/api/annees/…</code> sont l'exemple du cours, pas dans <code>requetes-java/</code> ; <code>/api/boroughs/{borough}/restaurants</code> y est fournie.</p>
+
+| URL demandée | Statut | Corps de la réponse | Pourquoi |
+|---|---|---|---|
+| `/api/annees/2001/films` | **200** | `[{"titre":"Amélie Poulain",…},…]` | 2 films |
+| `/api/annees/1990/films` | **200** | `[]` | aucun film : une liste vide, pas une erreur |
+| `/api/annees/deux-mille/films` | **500** | `Server Error` | `Integer.parseInt` lève une exception |
+| `/api/films` | **404** | `Endpoint GET /api/films not found` | aucune route n'a ce motif |
+| `/api/boroughs/Bronx/restaurants` | **200** | `[]` | sans `?cuisine`, le filtre cherche une cuisine `null` |
+
+<div class="warn" style="margin-top: 0.6rem;">
+
+Pour Javalin, une liste vide est une **réponse normale** (200). Répondre **404** est une décision de la route : `ctx.status(404)` change le statut, `ctx.json(…)` écrit le corps.
+
+</div>
+
+<div class="bandeau" style="margin-top: 0.6rem; font-size: 0.85em;">
+
+Dans `requetes-java/` : `./mvnw -q compile exec:java`, puis l'onglet **Ports** (7070) : `/api/sante`
+
+</div>
+
+<!--
+(40 s)
+
+Les cinq lignes ont été exécutées avec Javalin 7.2.4 et le pilote 5.14.0 sur MongoDB 9.0.4 : les quatre premières avec la route des films, la dernière avec la route fournie (ApiRestaurants.java). Avec ?cuisine=Pizza, cette route renvoie la liste des pizzerias du Bronx ; sans, ctx.queryParam renvoie null et Filters.eq("cuisine", null) ne trouve aucun restaurant. Avec pathParamAsClass au lieu de parseInt, « deux-mille » donne un statut 400 et un corps JSON qui décrit l'erreur de conversion, au lieu de 500.
+
+Lien avec l'exercice 18 : la route doit elle-même décider du 404 quand le borough n'existe pas ; ce n'est pas une liste vide qui le déclenche.
+
+Au premier ./mvnw, Maven télécharge ses dépendances (une à deux minutes) : le lancer dès le début de la séance. Ctrl+C arrête l'API.
+-->
+
+---
+
+<!-- header: "" -->
+
+## À vous : la séance 3
+
+<style scoped>
+.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
+.g2 > div > .orange { margin-top: auto; }
+</style>
+
+<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
+<a href="https://iutinfoaix-r510.github.io/tp2/">iutinfoaix-r510.github.io/tp2</a> : accepter le TP2, puis <code>npm run seed</code>
+</div>
+
+<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
+<div>
+
+1. Mise en place, compilation de <code style="white-space: nowrap">requetes-java/</code> : **15 min**
+2. Parties 1 et 2, filtrer et calculer : **50 min**
+3. Partie 3, joindre et résumer : **35 min**
+4. Partie 4, index : **30 min**
+5. Point cours, puis partie 5 : **30 min**
+6. **Premier rendu** : `r510-rendre`, **10 min**
+
+<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
+
+<div class="carte orange">
+<b class="t">📅 Rendu final du TP2</b>
+dimanche 13 décembre 2026, 23&nbsp;h&nbsp;59. Trois rendus au plus.
+</div>
+
+</div>
+<div>
+
+<div class="carte vert">
+<b class="t">Les points</b>
+18 exercices à 5 points, dont 4 en Java : 90 points, 8 % de la note.
+</div>
+
+<div class="carte vert">
+<b class="t">En autonomie</b>
+Partie 6 (1 h à 1 h 15) : Java et Javalin. Bonus 4 : <code>&#36;merge</code> (annexe).
+</div>
+
+<div class="carte orange">
+<b class="t">Base abîmée ?</b>
+<code>npm run seed</code> vide la base et recharge les données.
+</div>
+
+</div>
+</div>
+
+<!--
+(1 min)
+
+Trois rendus au plus : fin de séance 3, un rendu intermédiaire facultatif, puis le rendu final au plus tard le dimanche 13 décembre 2026 à 23 h 59.
+
+Le minutage suppose le premier temps du point cours (30 min environ) déjà fait : 15 + 50 + 35 + 30 + 30 + 10 = 2 h 50, plus le point cours, soit 3 h 20 ; il reste 40 minutes de marge. La partie 6 se termine en autonomie ; les diapos 43 à 49 servent de référence.
+-->
+
+---
+
+## À vous : essayer et réviser
+
+<style scoped>
+table { font-size: 0.8em; width: 100%; }
+td { padding-top: 0.3em; padding-bottom: 0.3em; }
+</style>
+
+<p class="etiquette">🧪 Essayer sans risque</p>
+
+<div class="box" style="margin-top: 0.3rem;">
+
+Les essais vont dans `essais.mongodb.js`, sur les collections `films` et `realisateurs` (les films de ce cours). **Jamais sous un <code style="white-space: nowrap;">// Votre réponse :</code>.**
+
+</div>
+
+<p class="etiquette" style="margin-top: 0.9rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
+
+| Partie | À demander à l'assistant |
+|---|---|
+| 1 | « Fais-moi un quiz sur `$elemMatch`, `$expr` et les types BSON. » |
+| 2 | « Fais-moi un quiz sur `$addFields` et les fonctions de fenêtre. » |
+| 3 | « Fais-moi un quiz sur `$lookup`, `$bucket` et `$facet`. » |
+| 4 | « Fais-moi un quiz sur les index, `explain()` et la règle ESR. » |
+| 5 | « Fais-moi un quiz sur les requêtes géospatiales. » |
+| 6 | « Fais-moi un quiz sur `$merge` et la validation `$jsonSchema`. » |
+| 7 | « Fais-moi un quiz sur le pilote Java de MongoDB et Javalin. » |
+
+<!--
+(1 min)
+
+Les invites sont celles de l'énoncé, à la fin de chaque partie. Les assistants du codespace sont configurés en tuteurs : ils expliquent et font réviser, mais n'écrivent ni la requête ni le code Java d'un exercice.
+-->
+
+---
+
+<!-- _class: lead -->
+
+# Des questions ?
+
+**Sébastien Nedjar** (GA1) · **Leïla Sakli Miled** (GA2)
+IUT d'Aix-Marseille, département Informatique
+
+<div style="margin-top: 1.2rem; font-size: 0.85em;">
+
+[iutinfoaix-r510.github.io/tp2](https://iutinfoaix-r510.github.io/tp2/)
+sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
+
+</div>
+
+<div class="bandeau" style="margin-top: 1.6rem; text-align: left; font-size: 0.95em;">
+
+🎯 **Dès maintenant** : accepter le TP2, `npm run seed`, `./mvnw -q compile` dans <code style="white-space: nowrap">requetes-java/</code>, puis la partie 1, une requête à la fois.
+
+</div>
+
+<div class="warn" style="margin-top: 1rem;">
+
+**D'ici le dimanche 13 décembre, 23&nbsp;h&nbsp;59** : terminez la partie 6 en autonomie, faites le quiz de chaque partie, puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
+
+</div>
+
+<!--
+(10 s)
+
+Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe ; pour la partie en autonomie, une issue sur le dépôt syllabus.
+-->
+
+---
+
+## Crédits
+
+<div class="petit">
+
+**Ce support** : R5.Real.10, IUT d'Aix-Marseille, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr). Exemples (films, lieux d'Aix-en-Provence) écrits pour ce cours ; tous exécutés sur MongoDB 9.0.4.
+
+**Données du TP** : `sample_restaurants` de MongoDB, issu de *DOHMH New York City Restaurant Inspection Results* (NYC Open Data) ; quartiers *Pediacities NYC Neighborhoods* sous licence [ODC-By 1.0](https://opendatacommons.org/licenses/by/1-0/) ; populations et superficies du US Census Bureau (recensement de 2020). Détail : `data/PROVENANCE.md` du TP2.
+
+**Pour aller plus loin** : [`$expr`](https://www.mongodb.com/docs/manual/reference/operator/query/expr/) · [`$setWindowFields`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/setWindowFields/) · [`$lookup`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/lookup/) · [`$bucket`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucket/) · [`$facet`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/facet/) · [résultats d'`explain()`](https://www.mongodb.com/docs/manual/reference/explain-results/) · [règle ESR](https://www.mongodb.com/docs/manual/tutorial/equality-sort-range-guideline/) · [géospatial](https://www.mongodb.com/docs/manual/geospatial-queries/) · [`$merge`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/) · [validation](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/) · [pilote Java](https://www.mongodb.com/docs/drivers/java/sync/current/fundamentals/builders/) · [Javalin](https://javalin.io/documentation)
+
+</div>
+
+<!--
+(Hors minutage : diapo de référence, laissée en fin de support.)
+
+Ce support ne reprend aucun contenu de MongoDB for Academia. Pour les étudiants qui consultent les présentations officielles (en anglais, pensées pour Atlas et l'ancien shell) : « Querying Data with Operators and Compound Conditions » traite $expr, « The MongoDB Aggregation Framework » $addFields, $out et $merge, « Querying Data with the MongoDB Aggregation Framework » $facet et $bucket. Liens dans le README du dépôt cours.
+-->
+
+---
+
+<!-- header: Annexe · écrire et contraindre -->
+
+<!-- _class: lead -->
+<!-- _header: "" -->
+
+# Annexe - 🧱 Écrire et contraindre
 
 `$merge` et `$jsonSchema`
 
 <!--
 (10 s)
 
-Même titre que la partie 6 de l'énoncé du TP2. Partie à finir en autonomie (environ 20 minutes) : ces quatre diapos servent de référence.
+Annexe, non projetée : $merge sert au bonus 4 du TP2 et sera présenté au point cours S4 (TP3) ; $jsonSchema est traité au TP3. Ces quatre diapos servent de référence.
 -->
 
 ---
@@ -1708,7 +2140,7 @@ Tout exécuté sur MongoDB 9.0.4, cible remise dans le même état avant chaque 
 
 "merge", le défaut, fusionne : les champs de la sortie écrasent ceux de même nom, les autres restent. C'est pratique pour compléter un document, piégeux pour recalculer une vue.
 
-Lien avec l'exercice 15 : le correcteur automatique exécute la réponse sur une base où bilan_boroughs contient déjà un document du Bronx avec un champ en trop (il doit disparaître), puis sur une base où elle contient le document d'un autre borough (il doit rester) : premier cas : la colonne _id: 2001, ligne "replace" ; second cas : la colonne _id: 1980, que $out supprimerait (dernière ligne). Pour compter sous condition, l'énoncé renvoie à $cond.
+Lien avec le bonus 4 du TP2 (non noté) : la vérification proposée par l'énoncé ajoute un document du Bronx avec un champ en trop (il doit disparaître), puis un document dont l'_id n'est pas un borough du résultat (il doit rester) : premier cas : la colonne _id: 2001, ligne "replace" ; second cas : la colonne _id: 1980, que $out supprimerait (dernière ligne). Pour compter sous condition, l'énoncé renvoie à $cond.
 -->
 
 ---
@@ -1784,437 +2216,5 @@ Les cinq insertions ont été exécutées sur MongoDB 9.0.4, une par une, sur la
 
 1895 : la première projection publique des frères Lumière ; « Le Cheval au galop » renvoie aux photographies de Muybridge (1878).
 
-Lien avec l'exercice 16 : le correcteur automatique essaie une douzaine d'insertions dans avis, valides ou non, et compare ce que la règle de l'étudiant accepte à ce qu'accepte la règle attendue. Faire essayer les mêmes familles de cas que ce tableau : champ absent, mauvais type, nombre décimal, nombre en texte, valeur hors bornes.
--->
-
----
-
-<!-- header: Partie 7 · coder -->
-
-<!-- _class: lead -->
-<!-- _header: "" -->
-
-# Partie 7 - ☕ Du shell au code
-
-pilote Java de MongoDB et Javalin
-
-<!--
-(10 s)
-
-Même titre que la partie 7 de l'énoncé du TP2. Les exemples de la partie portent sur les films ; seule la route fournie du TP (ApiRestaurants.java) touche aux restaurants.
--->
-
----
-
-## Du navigateur à la base, et retour
-
-<img src="assets/schemas/s3-api-aller-retour.svg" alt="L'aller-retour d'une requête dans le projet, sur les films, en six messages entre quatre acteurs : le navigateur, Javalin, Java avec le pilote MongoDB, et MongoDB. Aller : 1, le navigateur demande GET /api/annees/2001/films ; 2, la route Javalin appelle la méthode Java filmsDeLAnnee(2001) ; 3, le pilote envoie à MongoDB la requête find({ annee: 2001 }). Retour : 4, MongoDB renvoie 2 documents, Amélie et Chihiro ; 5, la méthode rend une List de Document de 2 éléments ; 6, Javalin répond avec le statut 200 et un corps JSON. Le navigateur reçoit [{&quot;titre&quot;:&quot;Amélie Poulain&quot;,&quot;duree&quot;:122},{&quot;titre&quot;:&quot;Le Voyage de Chihiro&quot;,&quot;duree&quot;:125}]." style="display:block; width:100%; margin:0.2rem auto 0;">
-
-<p class="legende" style="margin: 0.1rem 0 0;">Exemple du cours : cette route des films n'est pas dans <code>requetes-java/</code> (voir la dernière diapo de la partie).</p>
-
-<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box" style="margin-top: 0;">
-
-**C'est quoi ?** **Javalin** associe une URL à une méthode Java. Le **pilote** MongoDB envoie depuis Java les requêtes que vous écrivez dans le playground : c'est le JDBC de MongoDB.
-
-</div>
-<div class="box" style="margin-top: 0;">
-
-**Pourquoi faire ?** Le front du projet ne parle jamais à MongoDB : il demande une URL à une **API REST**, qui répond en **JSON**. La partie 7 en écrit un morceau.
-
-</div>
-</div>
-
-<!--
-(40 s)
-
-Dérouler les six messages de haut en bas : trois à l'aller (traits pleins), trois au retour (pointillés). Suivre la valeur 2001 : elle arrive dans l'URL, devient l'argument de la méthode, puis la valeur du filtre.
-
-Vérifié sur MongoDB 9.0.4, avec mongodb-driver-sync 5.14.0 et Javalin 7.2.4 (les versions de requetes-java/pom.xml) : la route des films et la méthode filmsDeLAnnee, écrites pour le cours, renvoient exactement le JSON affiché. Elles n'existent pas dans requetes-java/.
-
-Dans le TP : 3 méthodes à écrire dans RequetesRestaurants.java (exercices 17 à 19) et 1 route dans ApiRestaurants.java (exercice 20), vérifiées par le correcteur automatique (npm run check). Le projet (S6 à S8) part d'un squelette Java, Javalin et MongoDB : cette partie en est la première prise en main.
--->
-
----
-
-## Les classes d'aide fabriquent le document
-
-<style scoped>
-.box code { white-space: nowrap; }
-</style>
-
-<img src="assets/schemas/s3-shell-vers-java.svg" alt="Le code Java Filters.and( Filters.gte(&quot;annee&quot;, 2000), Filters.gt(&quot;duree&quot;, 100) ) fabrique, appel par appel, le document { &quot;$and&quot;: [ { &quot;annee&quot;: { &quot;$gte&quot;: 2000 } }, { &quot;duree&quot;: { &quot;$gt&quot;: 100 } } ] }, de même sens que { annee: { $gte: 2000 }, duree: { $gt: 100 } } en mongosh. MongoDB l'applique aux 4 films : Chihiro et Amélie retenus, Glaneurs écarté par la durée (82 ≤ 100), La Haine par l'année (1995 &lt; 2000). Une classe d'aide par rôle : Filters, Projections, Sorts, Aggregates, Accumulators." style="display:block; width:100%; margin:0.2rem auto 0;">
-
-<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box" style="margin-top: 0;">
-
-**C'est quoi ?** Des méthodes **statiques**, une par opérateur : `Filters.eq`, `Filters.gt`, `Filters.and`... Chacune renvoie un morceau de document : celui que vous écririez en mongosh.
-
-</div>
-<div class="box" style="margin-top: 0;">
-
-**Pourquoi faire ?** Java n'a pas d'écriture `{ annee: 2001 }`. Les classes d'aide évitent d'assembler ces documents à la main ; le **compilateur** vérifie le nom de chaque méthode, mais **pas** les noms de champs : `"anee"` compile et ne trouve rien.
-
-</div>
-</div>
-
-<!--
-(45 s)
-
-Lire le schéma ligne à ligne : chaque appel Java fabrique une ligne du document. Le document du milieu est celui qu'affiche toBsonDocument().toJson() avec le pilote 5.14.0 : {"$and": [{"annee": {"$gte": 2000}}, {"duree": {"$gt": 100}}]}. En mongosh, le « et » est implicite ; le pilote écrit $and : même sens. Exécutée sur MongoDB 9.0.4, la requête renvoie Le Voyage de Chihiro et Amélie Poulain.
-
-Comparer avec JDBC : on n'y concatène pas de SQL à la main, on passe par un PreparedStatement ; ici, on ne concatène pas de JSON, on passe par les classes d'aide.
-
-Exercice 17 : Filters, Projections, Sorts ; exercices 18 et 19 : Aggregates, Accumulators. Le tableau de l'énoncé donne d'autres équivalents (Filters.size, Aggregates.lookup).
--->
-
----
-
-## Une requête `find`, appel par appel
-
-<style scoped>
-pre { font-size: 0.58em; }
-table { display: table; width: 100%; font-size: 0.64em; }
-td:nth-child(1) code { white-space: nowrap; }
-.petit code { white-space: nowrap; }
-</style>
-
-<div class="cols" style="grid-template-columns: 0.9fr 1.1fr; align-items: start;">
-<div>
-
-```java
-public List<Document> filmsDeLAnnee(int annee) {
-    return films     // MongoCollection<Document>
-        .find(Filters.eq("annee", annee))
-        .projection(Projections.fields(
-            Projections.excludeId(),
-            Projections.include("titre", "duree")))
-        .sort(Sorts.ascending("titre"))
-        .into(new ArrayList<>());
-}
-// filmsDeLAnnee(2001) renvoie :
-// [Document{{titre=Amélie Poulain, duree=122}},
-//  Document{{titre=Le Voyage de Chihiro, duree=125}}]
-```
-
-</div>
-<div>
-
-| Appel | En mongosh | Effet |
-|---|---|---|
-| `find(…)` | `find({ annee: 2001 })` | 2 films sur 4 |
-| `projection(…)` | le 2<sup>e</sup> argument de `find` | 2 champs restent |
-| `sort(…)` | `.sort({ titre: 1 })` | Amélie, puis Chihiro |
-| `into(…)` | rien : le shell affiche le résultat tout seul | la requête part → `List<Document>` |
-
-<p class="petit" style="margin-top: 0.5rem;">Chaque <code>Document</code> est une <code>Map</code> : <code>doc.getString("titre")</code> donne <code>"Amélie Poulain"</code>.</p>
-
-</div>
-</div>
-
-<div class="warn" style="margin-top: 0.6rem;">
-
-**`find(…)` ne lance rien** : il prépare la requête, c'est `into(…)` qui l'envoie. Et le **type** compte : `Filters.eq("annee", "2001")`, avec une chaîne, ne trouve **aucun** film.
-
-</div>
-
-<!--
-(45 s)
-
-Exécuté sur MongoDB 9.0.4 avec le pilote 5.14.0 : filmsDeLAnnee(2001) renvoie la liste affichée. Sans le sort, MongoDB rend Chihiro avant Amélie (ordre d'insertion) : c'est le sort qui met Amélie en premier. find(...) renvoie un FindIterable : rien n'est lu tant qu'on ne le parcourt pas (into, une boucle for). Filters.eq("annee", "2001") renvoie une liste vide : la chaîne "2001" n'est pas le nombre 2001 (partie 1, types BSON). Un org.bson.Document est une Map<String, Object> : sur le premier résultat, getString("titre") donne "Amélie Poulain" et getInteger("duree") 122.
-
-films est un champ MongoCollection<Document>, obtenu par base.getCollection("films"), comme restaurants dans RequetesRestaurants.java. La méthode a la même forme que restaurantsParCuisine, fournie : c'est le point de départ de l'exercice 17.
--->
-
----
-
-## Un pipeline : une étape, un appel
-
-<style scoped>
-pre { font-size: 0.62em; }
-.box pre { font-size: 0.82em; margin: 0.3rem 0 0; }
-</style>
-
-<div class="cols" style="grid-template-columns: 1fr 1fr; align-items: stretch;">
-<div>
-
-<p class="etiquette">mongosh</p>
-
-```js
-db.films.aggregate([
-  { $match: { annee: { $gte: 2000 } } },
-  { $group: { _id: "$annee",
-      duree_moy: { $avg: "$duree" } } },
-  { $sort: { _id: 1 } }
-])
-// { _id: 2000, duree_moy: 82 }
-// { _id: 2001, duree_moy: 123.5 }
-```
-
-</div>
-<div>
-
-<p class="etiquette">Java</p>
-
-```java
-films.aggregate(List.of(
-    Aggregates.match(Filters.gte("annee", 2000)),
-    Aggregates.group("$annee",
-        Accumulators.avg("duree_moy", "$duree")),
-    Aggregates.sort(Sorts.ascending("_id"))
-)).into(new ArrayList<>());
-// [Document{{_id=2000, duree_moy=82.0}},
-//  Document{{_id=2001, duree_moy=123.5}}]
-```
-
-</div>
-</div>
-
-<p class="petit" style="margin-top: 0.4rem;">Le tableau <code>[ … ]</code> devient <code>List.of(…)</code>, chaque étape <code>{ &#36;match: … }</code> un appel <code>Aggregates.match(…)</code>.</p>
-
-<div class="cols" style="margin-top: 0.2rem; align-items: stretch;">
-<div class="box" style="margin-top: 0;">
-
-**Pas de classe d'aide** pour une expression (`$toUpper`, `$round`...) ? On écrit le document :
-
-```java
-// mongosh : { $project: { titre_maj: { $toUpper: "$titre" } } }
-Aggregates.project(Projections.computed("titre_maj",
-    new Document("$toUpper", "$titre")))
-```
-
-</div>
-<div class="warn" style="margin-top: 0;">
-
-**Le `$` compte**, comme en mongosh : pour **nommer** un champ (filtre, tri, champ produit), sans `$` : `"annee"` ; pour **lire sa valeur** dans chaque document (`_id` du groupe, expression), avec : `"$annee"`. Oublié : `group("annee", …)` rend un seul groupe `{ _id: "annee" }`, `avg("duree_moy", "duree")` donne `null`.
-
-</div>
-</div>
-
-<!--
-(45 s)
-
-Les deux versions exécutées sur MongoDB 9.0.4 : mêmes documents ; mongosh affiche 82, Java 82.0 (un double dans les deux cas).
-
-Vérifié avec le pilote 5.14.0 : Aggregates.group("annee", Accumulators.avg("duree_moy", "$duree")) renvoie un seul document, { _id: "annee", duree_moy: 106.75 }, sans erreur ; Accumulators.avg("duree_moy", "duree") donne duree_moy null pour chaque année. Projections.computed("nb_notes", new Document("$size", "$notes")) donne 0, 2, 2 et 1 notes, comme en mongosh.
-
-Méthode à conseiller pour les exercices 18 et 19 : écrire le pipeline dans essais.mongodb.js, le vérifier, puis le traduire étape par étape. L'énoncé signale Sorts.orderBy (plusieurs critères de tri) et Projections.computed.
--->
-
----
-
-## Une route Javalin : de l'URL aux paramètres
-
-<img src="assets/schemas/s3-javalin-route.svg" alt="Comment une route Javalin lit les paramètres d'une URL. À gauche, un paramètre de chemin, sur la route des films config.routes.get(&quot;/api/annees/{annee}/films&quot;, ctx -> ctx.json(filmsDeLAnnee(Integer.parseInt(ctx.pathParam(&quot;annee&quot;))))) : le motif /api/annees/{annee}/films est comparé à l'URL /api/annees/2001/films, {annee} capte le segment 2001 ; ctx.pathParam(&quot;annee&quot;) renvoie la chaîne &quot;2001&quot;, que Integer.parseInt convertit en l'entier 2001. À droite, un paramètre de requête, sur la route fournie du TP /api/boroughs/{borough}/restaurants, appelée avec /api/boroughs/Bronx/restaurants?cuisine=Pizza : ctx.pathParam(&quot;borough&quot;) renvoie &quot;Bronx&quot;, ctx.queryParam(&quot;cuisine&quot;) renvoie &quot;Pizza&quot;, et null si l'URL n'a pas de ?cuisine=." style="display:block; width:100%; margin:0.2rem auto 0;">
-
-<div class="cols" style="margin-top: 0.4rem; align-items: stretch;">
-<div class="box" style="margin-top: 0;">
-
-**C'est quoi ?** Une **route** associe une méthode HTTP (`get`) et un **motif** de chemin à une fonction. Cette fonction reçoit le **contexte** `ctx` : elle y lit la requête et y écrit la réponse.
-
-</div>
-<div class="box" style="margin-top: 0;">
-
-**Pourquoi faire ?** Le **chemin** désigne ce qu'on demande (les films de 2001) ; un paramètre **de requête** précise la demande et **peut manquer**. Les deux arrivent en `String`.
-
-</div>
-</div>
-
-<!--
-(45 s)
-
-À gauche, la route des films de la diapo « Du navigateur à la base » ; à droite, la route fournie dans ApiRestaurants.java, celle que les étudiants vont ouvrir dans le navigateur. Vérifié avec Javalin 7.2.4 sur MongoDB 9.0.4 : pathParam("annee") renvoie la chaîne "2001" ; queryParam("cuisine") renvoie "Pizza", ou null quand l'URL n'a pas de ?cuisine=.
-
-Javalin sait aussi convertir : ctx.pathParamAsClass("annee", Integer.class).get() renvoie directement un entier. L'énoncé de l'exercice 20 indique l'équivalent pour un paramètre de requête, avec une valeur par défaut.
--->
-
----
-
-## Ce que renvoie une route : un statut et un corps
-
-<style scoped>
-table { display: table; width: 100%; font-size: 0.66em; }
-td code { white-space: nowrap; }
-</style>
-
-<p class="petit">Les routes <code>/api/annees/…</code> sont l'exemple du cours, pas dans <code>requetes-java/</code> ; <code>/api/boroughs/{borough}/restaurants</code> y est fournie.</p>
-
-| URL demandée | Statut | Corps de la réponse | Pourquoi |
-|---|---|---|---|
-| `/api/annees/2001/films` | **200** | `[{"titre":"Amélie Poulain",…},…]` | 2 films |
-| `/api/annees/1990/films` | **200** | `[]` | aucun film : une liste vide, pas une erreur |
-| `/api/annees/deux-mille/films` | **500** | `Server Error` | `Integer.parseInt` lève une exception |
-| `/api/films` | **404** | `Endpoint GET /api/films not found` | aucune route n'a ce motif |
-| `/api/boroughs/Bronx/restaurants` | **200** | `[]` | sans `?cuisine`, le filtre cherche une cuisine `null` |
-
-<div class="warn" style="margin-top: 0.6rem;">
-
-Pour Javalin, une liste vide est une **réponse normale** (200). Répondre **404** est une décision de la route : `ctx.status(404)` change le statut, `ctx.json(…)` écrit le corps.
-
-</div>
-
-<div class="bandeau" style="margin-top: 0.6rem; font-size: 0.85em;">
-
-Dans `requetes-java/` : `./mvnw -q compile exec:java`, puis l'onglet **Ports** (7070) : `/api/sante`
-
-</div>
-
-<!--
-(40 s)
-
-Les cinq lignes ont été exécutées avec Javalin 7.2.4 et le pilote 5.14.0 sur MongoDB 9.0.4 : les quatre premières avec la route des films, la dernière avec la route fournie (ApiRestaurants.java). Avec ?cuisine=Pizza, cette route renvoie la liste des pizzerias du Bronx ; sans, ctx.queryParam renvoie null et Filters.eq("cuisine", null) ne trouve aucun restaurant. Avec pathParamAsClass au lieu de parseInt, « deux-mille » donne un statut 400 et un corps JSON qui décrit l'erreur de conversion, au lieu de 500.
-
-Lien avec l'exercice 20 : la route doit elle-même décider du 404 quand le borough n'existe pas ; ce n'est pas une liste vide qui le déclenche.
-
-Au premier ./mvnw, Maven télécharge ses dépendances (une à deux minutes) : le lancer dès le début de la séance. Ctrl+C arrête l'API.
--->
-
----
-
-<!-- header: "" -->
-
-## À vous : la séance 3
-
-<style scoped>
-.g2 > div { display: flex; flex-direction: column; gap: 0.6rem; }
-.g2 > div > .orange { margin-top: auto; }
-</style>
-
-<div class="bandeau" style="font-size: 1em; padding: 0.45rem 1.2rem;">
-<a href="https://iutinfoaix-r510.github.io/tp2/">iutinfoaix-r510.github.io/tp2</a> : accepter le TP2, puis <code>npm run seed</code>
-</div>
-
-<div class="g2" style="margin-top: 0.9rem; font-size: 0.8em; grid-template-columns: 1.1fr 1fr; align-items: stretch;">
-<div>
-
-1. Mise en place, compilation de <code style="white-space: nowrap">requetes-java/</code> : **15 min**
-2. Parties 1 et 2, filtrer et calculer : **50 min**
-3. Partie 3, joindre et résumer : **35 min**
-4. Partie 4, index : **30 min**
-5. Point cours, puis partie 5 : **30 min**
-6. **Premier rendu** : `r510-rendre`, **10 min**
-
-<p style="font-size: 0.85em; margin: 0;">Minutage indicatif, sur une séance de 4 h.</p>
-
-<div class="carte orange">
-<b class="t">📅 Rendu final du TP2</b>
-dimanche 13 décembre 2026, 23&nbsp;h&nbsp;59. Trois rendus au plus.
-</div>
-
-</div>
-<div>
-
-<div class="carte vert">
-<b class="t">Les points</b>
-20 exercices à 5 points, dont 4 en Java : 100 points, 8 % de la note.
-</div>
-
-<div class="carte vert">
-<b class="t">En autonomie</b>
-Parties 6 et 7 (environ 1 h 30) : <code>&#36;merge</code>, <code>&#36;jsonSchema</code>, Java et Javalin.
-</div>
-
-<div class="carte orange">
-<b class="t">Base abîmée ?</b>
-<code>npm run seed</code> vide la base et recharge les données.
-</div>
-
-</div>
-</div>
-
-<!--
-(1 min)
-
-Trois rendus au plus : fin de séance 3, un rendu intermédiaire facultatif, puis le rendu final au plus tard le dimanche 13 décembre 2026 à 23 h 59.
-
-Le minutage suppose le premier temps du point cours (30 min environ) déjà fait : 15 + 50 + 35 + 30 + 30 + 10 = 2 h 50, plus le point cours, soit 3 h 20 ; il reste 40 minutes de marge. Les parties 6 et 7 se terminent en autonomie ; les diapos 43 à 54 servent de référence.
--->
-
----
-
-## À vous : essayer et réviser
-
-<style scoped>
-table { font-size: 0.8em; width: 100%; }
-td { padding-top: 0.3em; padding-bottom: 0.3em; }
-</style>
-
-<p class="etiquette">🧪 Essayer sans risque</p>
-
-<div class="box" style="margin-top: 0.3rem;">
-
-Les essais vont dans `essais.mongodb.js`, sur les collections `films` et `realisateurs` (les films de ce cours). **Jamais sous un <code style="white-space: nowrap;">// Votre réponse :</code>.**
-
-</div>
-
-<p class="etiquette" style="margin-top: 0.9rem;">🧠 Réviser : un quiz à la fin de chaque partie, dans Copilot Chat, Claude Code ou Codex</p>
-
-| Partie | À demander à l'assistant |
-|---|---|
-| 1 | « Fais-moi un quiz sur `$elemMatch`, `$expr` et les types BSON. » |
-| 2 | « Fais-moi un quiz sur `$addFields` et les fonctions de fenêtre. » |
-| 3 | « Fais-moi un quiz sur `$lookup`, `$bucket` et `$facet`. » |
-| 4 | « Fais-moi un quiz sur les index, `explain()` et la règle ESR. » |
-| 5 | « Fais-moi un quiz sur les requêtes géospatiales. » |
-| 6 | « Fais-moi un quiz sur `$merge` et la validation `$jsonSchema`. » |
-| 7 | « Fais-moi un quiz sur le pilote Java de MongoDB et Javalin. » |
-
-<!--
-(1 min)
-
-Les invites sont celles de l'énoncé, à la fin de chaque partie. Les assistants du codespace sont configurés en tuteurs : ils expliquent et font réviser, mais n'écrivent ni la requête ni le code Java d'un exercice.
--->
-
----
-
-<!-- _class: lead -->
-
-# Des questions ?
-
-**Sébastien Nedjar** (GA1) · **Leïla Sakli Miled** (GA2)
-IUT d'Aix-Marseille, département Informatique
-
-<div style="margin-top: 1.2rem; font-size: 0.85em;">
-
-[iutinfoaix-r510.github.io/tp2](https://iutinfoaix-r510.github.io/tp2/)
-sebastien.nedjar@univ-amu.fr · leila.SAKLI@univ-amu.fr
-
-</div>
-
-<div class="bandeau" style="margin-top: 1.6rem; text-align: left; font-size: 0.95em;">
-
-🎯 **Dès maintenant** : accepter le TP2, `npm run seed`, `./mvnw -q compile` dans <code style="white-space: nowrap">requetes-java/</code>, puis la partie 1, une requête à la fois.
-
-</div>
-
-<div class="warn" style="margin-top: 1rem;">
-
-**D'ici le dimanche 13 décembre, 23&nbsp;h&nbsp;59** : terminez les parties 6 et 7 en autonomie, faites le quiz de chaque partie, puis le rendu final avec <code style="white-space: nowrap;">r510-rendre</code>.
-
-</div>
-
-<!--
-(10 s)
-
-Questions sur le cours : en séance, ou par courriel à l'enseignant de son groupe ; pour la partie en autonomie, une issue sur le dépôt syllabus.
--->
-
----
-
-## Crédits
-
-<div class="petit">
-
-**Ce support** : R5.Real.10, IUT d'Aix-Marseille, sous licence [CC BY-NC-SA 4.0](https://creativecommons.org/licenses/by-nc-sa/4.0/deed.fr). Exemples (films, lieux d'Aix-en-Provence) écrits pour ce cours ; tous exécutés sur MongoDB 9.0.4.
-
-**Données du TP** : `sample_restaurants` de MongoDB, issu de *DOHMH New York City Restaurant Inspection Results* (NYC Open Data) ; quartiers *Pediacities NYC Neighborhoods* sous licence [ODC-By 1.0](https://opendatacommons.org/licenses/by/1-0/) ; populations et superficies du US Census Bureau (recensement de 2020). Détail : `data/PROVENANCE.md` du TP2.
-
-**Pour aller plus loin** : [`$expr`](https://www.mongodb.com/docs/manual/reference/operator/query/expr/) · [`$setWindowFields`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/setWindowFields/) · [`$lookup`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/lookup/) · [`$bucket`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/bucket/) · [`$facet`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/facet/) · [résultats d'`explain()`](https://www.mongodb.com/docs/manual/reference/explain-results/) · [règle ESR](https://www.mongodb.com/docs/manual/tutorial/equality-sort-range-guideline/) · [géospatial](https://www.mongodb.com/docs/manual/geospatial-queries/) · [`$merge`](https://www.mongodb.com/docs/manual/reference/operator/aggregation/merge/) · [validation](https://www.mongodb.com/docs/manual/core/schema-validation/specify-json-schema/) · [pilote Java](https://www.mongodb.com/docs/drivers/java/sync/current/fundamentals/builders/) · [Javalin](https://javalin.io/documentation)
-
-</div>
-
-<!--
-(Hors minutage : diapo de référence, laissée en fin de support.)
-
-Ce support ne reprend aucun contenu de MongoDB for Academia. Pour les étudiants qui consultent les présentations officielles (en anglais, pensées pour Atlas et l'ancien shell) : « Querying Data with Operators and Compound Conditions » traite $expr, « The MongoDB Aggregation Framework » $addFields, $out et $merge, « Querying Data with the MongoDB Aggregation Framework » $facet et $bucket. Liens dans le README du dépôt cours.
+La validation de schéma est traitée au TP3 (point cours S4). Les familles de cas de ce tableau restent celles à essayer : champ absent, mauvais type, nombre décimal, nombre en texte, valeur hors bornes.
 -->
