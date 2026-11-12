@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Trois sortes de relations, dont la 1-N en deux cas, et le choix le plus courant : 1-1, une personne et son adresse postale, embarquer le document ; 1-N avec peu d'éléments, un client et ses adresses de livraison, embarquer un tableau ; 1-N sans limite, un capteur et ses mesures, référencer avec l'_id du capteur dans chaque mesure ; N-N, des étudiants et des cours, un tableau d'_id d'un côté ou des deux.</title>
+  <title id="t">Trois sortes de relations, dont la 1-N en deux cas, et le choix le plus courant : 1-1, une personne et son adresse postale, embarquer le document ; 1-N avec peu d'éléments, un client et ses adresses de livraison, embarquer un tableau ; 1-N sans limite, un capteur et ses mesures, référencer avec l'_id du capteur dans chaque mesure ; N-N, des étudiants et des cours C1, C2 et C3, un tableau d'_id de cours d'un côté ou des deux.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
@@ -7,10 +7,10 @@
   </defs>
   <style>
     .rel { font-size: 21px; font-weight: bold; fill: #ffffff; }
-    .ex { font-size: 17px; fill: #555; }
-    .b { font-size: 17px; fill: #333; }
-    .bb { font-size: 17px; fill: #333; font-weight: bold; }
-    .ch { font-size: 18px; font-weight: bold; }
+    .ex { font-size: 20px; fill: #555; }
+    .b { font-size: 20px; fill: #333; }
+    .bb { font-size: 20px; fill: #333; font-weight: bold; }
+    .ch { font-size: 20px; font-weight: bold; }
     .doc { fill: #ffffff; stroke: #00684a; stroke-width: 2; }
   </style>
 
@@ -25,8 +25,8 @@
     <text class="bb" x="48" y="138">personne</text>
     <rect x="52" y="156" width="174" height="66" rx="6" fill="#e8f1fb" stroke="#4a90d9" stroke-width="2"/>
     <text class="b" x="139" y="195" text-anchor="middle">adresse</text>
-    <rect x="16" y="254" width="246" height="62" rx="8" fill="#e6f4ee"/>
-    <text class="ch" x="139" y="292" text-anchor="middle" fill="#00684a">embarquer le document</text>
+    <rect x="10" y="250" width="258" height="72" rx="8" fill="#e6f4ee"/>
+    <text class="ch" x="139" y="293" text-anchor="middle" fill="#00684a">embarquer le document</text>
   </g>
 
   <!-- ===== 1-N borné ===== -->
@@ -42,8 +42,8 @@
     <rect x="62" y="160" width="154" height="18" rx="4" fill="#ffffff" stroke="#e8a838"/>
     <rect x="62" y="183" width="154" height="18" rx="4" fill="#ffffff" stroke="#e8a838"/>
     <rect x="62" y="206" width="154" height="18" rx="4" fill="#ffffff" stroke="#e8a838"/>
-    <rect x="16" y="254" width="246" height="62" rx="8" fill="#e6f4ee"/>
-    <text class="ch" x="139" y="292" text-anchor="middle" fill="#00684a">embarquer un tableau</text>
+    <rect x="10" y="250" width="258" height="72" rx="8" fill="#e6f4ee"/>
+    <text class="ch" x="139" y="293" text-anchor="middle" fill="#00684a">embarquer un tableau</text>
   </g>
 
   <!-- ===== 1-N sans limite ===== -->
@@ -65,9 +65,10 @@
     <line x1="151" y1="124" x2="116.73" y2="154.67" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <line x1="151" y1="167" x2="118" y2="167" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
     <line x1="151" y1="210" x2="116.73" y2="179.33" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
-    <rect x="16" y="254" width="246" height="62" rx="8" fill="#f3eaf8"/>
-    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">référencer : l'<tspan font-family="monospace">_id</tspan> du</text>
-    <text class="ch" x="139" y="304" text-anchor="middle" fill="#8e44ad">capteur dans chaque mesure</text>
+    <rect x="10" y="250" width="258" height="72" rx="8" fill="#f3eaf8"/>
+    <text class="ch" x="139" y="270" text-anchor="middle" fill="#8e44ad">référencer :</text>
+    <text class="ch" x="139" y="292" text-anchor="middle" fill="#8e44ad">l'<tspan font-family="monospace">_id</tspan> du capteur</text>
+    <text class="ch" x="139" y="314" text-anchor="middle" fill="#8e44ad">dans chaque mesure</text>
   </g>
 
   <!-- ===== N-N ===== -->
@@ -77,23 +78,23 @@
     <text class="rel" x="139" y="30" text-anchor="middle">N-N</text>
     <text class="ex" x="139" y="68" text-anchor="middle">des étudiants</text>
     <text class="ex" x="139" y="90" text-anchor="middle">et des cours</text>
-    <rect class="doc" x="8" y="106" width="144" height="58" rx="8"/>
-    <text class="bb" x="20" y="129">étudiant</text>
-    <text class="b" x="20" y="153" font-family="monospace" style="font-size: 14px">cours: [C1, C2]</text>
-    <rect class="doc" x="8" y="180" width="144" height="58" rx="8"/>
-    <text class="bb" x="20" y="203">étudiant</text>
-    <text class="b" x="20" y="227" font-family="monospace" style="font-size: 14px">cours: [C2]</text>
-    <rect class="doc" x="184" y="104" width="84" height="36" rx="6"/>
-    <text class="b" x="226" y="128" text-anchor="middle">cours C1</text>
-    <rect class="doc" x="184" y="154" width="84" height="36" rx="6"/>
-    <text class="b" x="226" y="178" text-anchor="middle">cours C2</text>
-    <rect class="doc" x="184" y="204" width="84" height="36" rx="6"/>
-    <text class="b" x="226" y="228" text-anchor="middle">cours C3</text>
-    <line x1="157" y1="132" x2="174.3" y2="125.71" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
-    <line x1="157" y1="146" x2="175.3" y2="162.64" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
-    <line x1="157" y1="216" x2="176.49" y2="182.33" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
-    <rect x="16" y="254" width="246" height="62" rx="8" fill="#f3eaf8"/>
-    <text class="ch" x="139" y="279" text-anchor="middle" fill="#8e44ad">un tableau d'<tspan font-family="monospace">_id</tspan></text>
-    <text class="ch" x="139" y="304" text-anchor="middle" fill="#8e44ad">d'un côté, ou des deux</text>
+    <rect class="doc" x="6" y="106" width="180" height="60" rx="8"/>
+    <text class="bb" x="16" y="130">étudiant</text>
+    <text class="b" x="14" y="156" font-family="monospace">cours: [C1,C2]</text>
+    <rect class="doc" x="6" y="178" width="180" height="60" rx="8"/>
+    <text class="bb" x="16" y="202">étudiant</text>
+    <text class="b" x="14" y="228" font-family="monospace">cours: [C2]</text>
+    <rect class="doc" x="206" y="104" width="62" height="36" rx="6"/>
+    <text class="b" x="237" y="129" text-anchor="middle">C1</text>
+    <rect class="doc" x="206" y="154" width="62" height="36" rx="6"/>
+    <text class="b" x="237" y="179" text-anchor="middle">C2</text>
+    <rect class="doc" x="206" y="204" width="62" height="36" rx="6"/>
+    <text class="b" x="237" y="229" text-anchor="middle">C3</text>
+    <line x1="188" y1="128" x2="198" y2="124" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
+    <line x1="188" y1="148" x2="198" y2="162" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
+    <line x1="188" y1="214" x2="198" y2="184" stroke="#555" stroke-width="1.8" marker-end="url(#fl)"/>
+    <rect x="10" y="250" width="258" height="72" rx="8" fill="#f3eaf8"/>
+    <text class="ch" x="139" y="281" text-anchor="middle" fill="#8e44ad">un tableau d'<tspan font-family="monospace">_id</tspan></text>
+    <text class="ch" x="139" y="305" text-anchor="middle" fill="#8e44ad">d'un côté, ou des deux</text>
   </g>
 </svg>

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 200" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">À gauche, une seule écriture sur la recette R1 applique les deux modifications, auteur.ville et l'ajout du sel, ou aucune. À droite, l'écriture 1 passe publiee à true sur R1, puis une panne survient : l'écriture 2 sur l'auteur lea13 n'a pas lieu, nb_publiees reste à 0. Recette publiée, compteur faux.</title>
+  <title id="t">À gauche, une seule écriture sur le film F01 applique les deux modifications de la séance, la nouvelle salle et le retrait du ciné-débat, ou aucune. À droite, un emprunt de la médiathèque : l'écriture 1 rend l'exemplaire indisponible dans livres, puis une panne survient : l'écriture 2, qui ajoute l'emprunt dans membres, n'a pas lieu. L'exemplaire est sorti, mais l'emprunt est introuvable chez le membre.</title>
   <defs>
     <path id="ok" d="M0,9 L7,16 L20,0" fill="none" stroke="#13aa52" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
     <path id="ko" d="M0,0 L16,16 M16,0 L0,16" fill="none" stroke="#c0392b" stroke-width="4" stroke-linecap="round"/>
@@ -8,29 +8,29 @@
   <!-- gauche : un document, une écriture -->
   <text x="285" y="20" font-size="19" text-anchor="middle" fill="#555">une seule écriture</text>
   <rect x="10" y="32" width="550" height="118" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-  <text x="28" y="62" font-size="20" font-weight="bold" fill="#00684a">recettes · R1</text>
+  <text x="28" y="62" font-size="20" font-weight="bold" fill="#00684a">films · F01</text>
   <use href="#ok" x="30" y="80"/>
-  <text x="62" y="97" font-family="monospace" font-size="19" fill="#333">"auteur.ville": "Marseille"</text>
+  <text x="62" y="97" font-family="monospace" font-size="19" fill="#333">"seances.$.salle": 2</text>
   <use href="#ok" x="30" y="116"/>
-  <text x="62" y="133" font-family="monospace" font-size="19" fill="#333">ingredients: <tspan font-family="sans-serif">+ sel</tspan></text>
+  <text x="62" y="133" font-family="monospace" font-size="19" fill="#333">"seances.$.evenement" <tspan font-family="sans-serif">retiré</tspan></text>
   <text x="285" y="186" font-size="20" text-anchor="middle" fill="#00684a">les deux modifications, ou <tspan font-weight="bold">aucune</tspan></text>
 
   <!-- droite : deux documents, deux écritures -->
-  <text x="710" y="20" font-size="19" text-anchor="middle" fill="#555">écriture 1</text>
-  <rect x="600" y="32" width="220" height="118" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-  <text x="616" y="62" font-size="20" font-weight="bold" fill="#00684a">recettes · R1</text>
-  <use href="#ok" x="618" y="98"/>
-  <text x="648" y="115" font-family="monospace" font-size="19" fill="#333">publiee: true</text>
+  <text x="718" y="20" font-size="19" text-anchor="middle" fill="#555">écriture 1</text>
+  <rect x="590" y="32" width="256" height="118" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
+  <text x="606" y="62" font-size="20" font-weight="bold" fill="#00684a">livres</text>
+  <use href="#ok" x="604" y="98"/>
+  <text x="630" y="115" font-family="monospace" font-size="19" fill="#333">disponible: false</text>
 
   <!-- panne -->
-  <path d="M868,38 L846,94 L862,94 L848,144 L882,80 L866,80 L880,38 z" fill="#e8a838" stroke="#555" stroke-width="1.5"/>
-  <text x="864" y="20" font-size="19" text-anchor="middle" font-weight="bold" fill="#c0392b">panne</text>
+  <path d="M878,38 L856,94 L872,94 L858,144 L892,80 L876,80 L890,38 z" fill="#e8a838" stroke="#555" stroke-width="1.5"/>
+  <text x="874" y="20" font-size="19" text-anchor="middle" font-weight="bold" fill="#c0392b">panne</text>
 
   <text x="1030" y="20" font-size="19" text-anchor="middle" fill="#555">écriture 2</text>
   <rect x="902" y="32" width="256" height="118" rx="10" fill="#fdeeee" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8 6"/>
-  <text x="918" y="62" font-size="20" font-weight="bold" fill="#00684a">auteurs · lea13</text>
+  <text x="918" y="62" font-size="20" font-weight="bold" fill="#00684a">membres</text>
   <use href="#ko" x="920" y="99"/>
-  <text x="948" y="115" font-family="monospace" font-size="19" fill="#333">nb_publiees: 0</text>
-  <text x="918" y="141" font-size="18" fill="#c0392b">pas incrémenté</text>
-  <text x="880" y="186" font-size="20" text-anchor="middle" fill="#c0392b">recette publiée, <tspan font-weight="bold">compteur faux</tspan></text>
+  <text x="948" y="115" font-family="monospace" font-size="19" fill="#333">emprunts: <tspan font-family="sans-serif">+ …</tspan></text>
+  <text x="918" y="141" font-size="18" fill="#c0392b">pas ajouté</text>
+  <text x="880" y="186" font-size="20" text-anchor="middle" fill="#c0392b">exemplaire sorti, <tspan font-weight="bold">emprunt introuvable</tspan></text>
 </svg>

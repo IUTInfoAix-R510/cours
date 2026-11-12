@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 280" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le tableau ingredients de la recette : au départ farine 250, lait 500, oeufs 3. Après $push : sucre 30 est ajouté à la fin. Après $pull avec qte inférieure à 100 : oeufs et sucre sont retirés tous les deux, il reste farine et lait.</title>
+  <title id="t">Le tableau seances du Voyage de Chihiro : au départ, les séances du 27/11 en salle 1, du 28/11 en salle 2 et du 29/11 en salle 1. Après $push : la séance du 30/11 en salle 3 est ajoutée à la fin. Après $pull avec une date antérieure au 29 novembre : les séances du 27 et du 28 sont retirées toutes les deux, il reste celles du 29 et du 30.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
@@ -9,53 +9,53 @@
   <!-- étiquettes des lignes -->
   <g font-size="20" fill="#555" text-anchor="end">
     <text x="215" y="40">départ</text>
-    <text x="215" y="148">après <tspan font-family="monospace" fill="#4a90d9" font-weight="bold">$push</tspan></text>
+    <text x="215" y="148">après <tspan font-family="monospace" fill="#2f6db0" font-weight="bold">$push</tspan></text>
     <text x="215" y="256">après <tspan font-family="monospace" fill="#c0392b" font-weight="bold">$pull</tspan></text>
   </g>
 
   <!-- ligne 1 : départ -->
   <g font-family="monospace" font-size="19" fill="#333" text-anchor="middle">
     <rect x="240" y="10" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="340" y="40">farine  qte: 250</text>
+    <text x="340" y="40">27/11 · salle 1</text>
     <rect x="460" y="10" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="560" y="40">lait  qte: 500</text>
+    <text x="560" y="40">28/11 · salle 2</text>
     <rect x="680" y="10" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="780" y="40">oeufs  qte: 3</text>
+    <text x="780" y="40">29/11 · salle 1</text>
   </g>
 
   <!-- transition $push -->
   <line x1="250" y1="61" x2="250" y2="107.5" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
-  <text x="268" y="93" font-size="19" fill="#4a90d9"><tspan font-family="monospace" font-weight="bold">$push</tspan> ajoute l'élément à la fin du tableau</text>
+  <text x="268" y="93" font-size="19" fill="#2f6db0"><tspan font-family="monospace" font-weight="bold">$push</tspan> ajoute le document à la fin du tableau</text>
 
   <!-- ligne 2 : après $push -->
   <g font-family="monospace" font-size="19" fill="#333" text-anchor="middle">
     <rect x="240" y="118" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="340" y="148">farine  qte: 250</text>
+    <text x="340" y="148">27/11 · salle 1</text>
     <rect x="460" y="118" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="560" y="148">lait  qte: 500</text>
+    <text x="560" y="148">28/11 · salle 2</text>
     <rect x="680" y="118" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="780" y="148">oeufs  qte: 3</text>
+    <text x="780" y="148">29/11 · salle 1</text>
     <rect x="900" y="118" width="200" height="46" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-    <text x="1000" y="148" fill="#00684a" font-weight="bold">sucre  qte: 30</text>
+    <text x="1000" y="148" fill="#00684a" font-weight="bold">30/11 · salle 3</text>
   </g>
 
   <!-- transition $pull -->
   <line x1="250" y1="169" x2="250" y2="215.5" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
-  <text x="268" y="201" font-size="19" fill="#c0392b"><tspan font-family="monospace" font-weight="bold">$pull</tspan> <tspan font-family="monospace">{ qte: { $lt: 100 } }</tspan> retire <tspan font-weight="bold">tous</tspan> les éléments qui la vérifient</text>
+  <text x="268" y="201" font-size="19" fill="#c0392b"><tspan font-family="monospace" font-weight="bold">$pull</tspan> <tspan font-family="monospace">{ date: { $lt: … 29/11 } }</tspan> retire <tspan font-weight="bold">tous</tspan> les éléments qui la vérifient</text>
 
   <!-- ligne 3 : après $pull -->
   <g font-family="monospace" font-size="19" fill="#333" text-anchor="middle">
-    <rect x="240" y="226" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="340" y="256">farine  qte: 250</text>
-    <rect x="460" y="226" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="560" y="256">lait  qte: 500</text>
     <g opacity="0.8" fill="#c0392b">
-      <rect x="680" y="226" width="200" height="46" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/>
-      <text x="780" y="256">oeufs  qte: 3</text>
-      <line x1="695" y1="249" x2="865" y2="249" stroke="#c0392b" stroke-width="2.5"/>
-      <rect x="900" y="226" width="200" height="46" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/>
-      <text x="1000" y="256">sucre  qte: 30</text>
-      <line x1="915" y1="249" x2="1085" y2="249" stroke="#c0392b" stroke-width="2.5"/>
+      <rect x="240" y="226" width="200" height="46" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="340" y="256">27/11 · salle 1</text>
+      <line x1="255" y1="249" x2="425" y2="249" stroke="#c0392b" stroke-width="2.5"/>
+      <rect x="460" y="226" width="200" height="46" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="7 5"/>
+      <text x="560" y="256">28/11 · salle 2</text>
+      <line x1="475" y1="249" x2="645" y2="249" stroke="#c0392b" stroke-width="2.5"/>
     </g>
+    <rect x="680" y="226" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
+    <text x="780" y="256">29/11 · salle 1</text>
+    <rect x="900" y="226" width="200" height="46" rx="8" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
+    <text x="1000" y="256">30/11 · salle 3</text>
   </g>
 </svg>

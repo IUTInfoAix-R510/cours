@@ -1,11 +1,11 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Lignes 1 à 3 : le filtre { realisation: { ... } } compare le document imbriqué entier d'Alien, nom: Scott puis pays: Royaume-Uni. Ligne 1, pays absent : pas de résultat. Ligne 2, identique : résultat. Ligne 3, ordre inversé : pas de résultat. Ligne 4 : realisation.nom ne teste que nom et ignore pays : un seul champ testé, presque toujours le bon choix.</title>
+  <title id="t">Lignes 1 à 3 : le filtre { realisation: { ... } } compare le document imbriqué entier du Voyage de Chihiro, nom: Miyazaki puis pays: Japon. Ligne 1, pays absent : pas de résultat. Ligne 2, identique : résultat. Ligne 3, ordre inversé : pas de résultat. Ligne 4 : realisation.nom ne teste que nom et ignore pays : un seul champ testé, presque toujours le bon choix.</title>
   <style>
-    .c { font-size: 16px; fill: #333; font-family: monospace; }
-    .l { font-size: 18px; fill: #555; }
+    .c { font-size: 20px; fill: #333; font-family: monospace; }
+    .l { font-size: 20px; fill: #555; }
     .t { font-size: 20px; font-weight: bold; }
-    .ok { font-size: 18px; font-weight: bold; fill: #00684a; }
-    .ko { font-size: 18px; font-weight: bold; fill: #c0392b; }
+    .ok { font-size: 20px; font-weight: bold; fill: #00684a; }
+    .ko { font-size: 20px; font-weight: bold; fill: #c0392b; }
     .regle { font-size: 19px; font-weight: bold; }
     .cel { fill: #ffffff; stroke: #8a98a6; stroke-width: 1.5; }
     .stock { fill: #f0f4f8; stroke: #00684a; stroke-width: 2; }
@@ -15,34 +15,34 @@
   <rect x="1" y="1" width="728" height="328" rx="10" fill="#fff8ec" stroke="#e8a838" stroke-width="2"/>
   <text class="t" x="18" y="32" fill="#b06f00">Lignes 1 à 3 : <tspan font-family="monospace">{ realisation: { … } }</tspan></text>
 
-  <text class="l" x="18" y="76" font-weight="bold">Alien</text>
-  <rect class="stock" x="132" y="52" width="210" height="36" rx="6"/>
-  <text class="c" x="146" y="76">nom: "Scott"</text>
-  <rect class="stock" x="352" y="52" width="210" height="36" rx="6"/>
-  <text class="c" x="366" y="76">pays: "Royaume-Uni"</text>
+  <text class="l" x="18" y="76" font-weight="bold">Chihiro</text>
+  <rect class="stock" x="132" y="52" width="200" height="36" rx="6"/>
+  <text class="c" x="146" y="76">nom: "Miyazaki"</text>
+  <rect class="stock" x="342" y="52" width="200" height="36" rx="6"/>
+  <text class="c" x="356" y="76">pays: "Japon"</text>
 
   <line x1="18" y1="104" x2="712" y2="104" stroke="#e8a838" stroke-dasharray="5 5"/>
 
   <text class="l" x="18" y="140">ligne 1</text>
-  <rect class="cel" x="132" y="116" width="210" height="36" rx="6"/>
-  <text class="c" x="146" y="140">nom: "Scott"</text>
-  <rect x="352" y="116" width="210" height="36" rx="6" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
-  <text class="l" x="457" y="140" text-anchor="middle">—</text>
-  <text class="ko" x="578" y="140">✗ pays absent</text>
+  <rect class="cel" x="132" y="116" width="200" height="36" rx="6"/>
+  <text class="c" x="146" y="140">nom: "Miyazaki"</text>
+  <rect x="342" y="116" width="200" height="36" rx="6" fill="none" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text class="l" x="442" y="140" text-anchor="middle">—</text>
+  <text class="ko" x="556" y="140">✗ pays absent</text>
 
   <text class="l" x="18" y="190">ligne 2</text>
-  <rect class="cel" x="132" y="166" width="210" height="36" rx="6"/>
-  <text class="c" x="146" y="190">nom: "Scott"</text>
-  <rect class="cel" x="352" y="166" width="210" height="36" rx="6"/>
-  <text class="c" x="366" y="190">pays: "Royaume-Uni"</text>
-  <text class="ok" x="578" y="190">✓ identique</text>
+  <rect class="cel" x="132" y="166" width="200" height="36" rx="6"/>
+  <text class="c" x="146" y="190">nom: "Miyazaki"</text>
+  <rect class="cel" x="342" y="166" width="200" height="36" rx="6"/>
+  <text class="c" x="356" y="190">pays: "Japon"</text>
+  <text class="ok" x="556" y="190">✓ identique</text>
 
   <text class="l" x="18" y="240">ligne 3</text>
-  <rect x="132" y="216" width="210" height="36" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
-  <text class="c" x="146" y="240">pays: "Royaume-Uni"</text>
-  <rect x="352" y="216" width="210" height="36" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
-  <text class="c" x="366" y="240">nom: "Scott"</text>
-  <text class="ko" x="578" y="240">✗ ordre inversé</text>
+  <rect x="132" y="216" width="200" height="36" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+  <text class="c" x="146" y="240">pays: "Japon"</text>
+  <rect x="342" y="216" width="200" height="36" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2"/>
+  <text class="c" x="356" y="240">nom: "Miyazaki"</text>
+  <text class="ko" x="556" y="240">✗ ordre inversé</text>
 
   <text class="regle" x="18" y="300" fill="#b06f00">Document entier : mêmes champs, mêmes valeurs, même ordre</text>
 
@@ -50,13 +50,13 @@
   <rect x="749" y="1" width="410" height="328" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
   <text class="t" x="766" y="32" fill="#00684a">Ligne 4 : <tspan font-family="monospace">"realisation.nom"</tspan></text>
 
-  <rect x="766" y="52" width="148" height="36" rx="6" fill="#ffffff" stroke="#13aa52" stroke-width="3"/>
-  <text class="c" x="778" y="76">nom: "Scott"</text>
-  <rect x="924" y="52" width="218" height="36" rx="6" fill="none" stroke="#b8c4cf" stroke-width="1.5" stroke-dasharray="6 4"/>
-  <text class="c" x="938" y="76" fill="#9aa5b0">pays: "Royaume-Uni"</text>
+  <rect x="766" y="52" width="196" height="36" rx="6" fill="#ffffff" stroke="#13aa52" stroke-width="3"/>
+  <text class="c" x="778" y="76">nom: "Miyazaki"</text>
+  <rect x="970" y="52" width="176" height="36" rx="6" fill="none" stroke="#b8c4cf" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <text class="c" x="982" y="76" fill="#9aa5b0">pays: "Japon"</text>
 
-  <text class="ok" x="840" y="116" text-anchor="middle">✓ <tspan font-family="monospace">"Scott"</tspan></text>
-  <text class="l" x="1033" y="116" text-anchor="middle">ignoré</text>
+  <text class="ok" x="864" y="116" text-anchor="middle">✓ <tspan font-family="monospace">"Miyazaki"</tspan></text>
+  <text class="l" x="1058" y="116" text-anchor="middle">ignoré</text>
 
   <text class="regle" x="954" y="196" fill="#00684a" style="font-size: 21px" text-anchor="middle">Un seul champ testé :</text>
   <text class="regle" x="954" y="226" fill="#00684a" style="font-size: 21px" text-anchor="middle">presque toujours le bon choix</text>

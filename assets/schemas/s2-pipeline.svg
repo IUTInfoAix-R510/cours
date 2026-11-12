@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 420" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine moyenne 20.5, max 23, nb 2 ; Salon moyenne 20.75, max 22.5, nb 4 ; Chambre moyenne 17.5, max 18, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre.</title>
+  <title id="t">Pipeline d'agrégation de gauche à droite. La collection capteurs contient 5 documents : C1 Salon, C2 Salon, C3 Cuisine, C4 Salon et C5 Chambre ; C2, encadré en rouge, est un capteur d'humidité, les autres mesurent la température. L'étape $match filtre sur le type (WHERE) : C2 est écarté, il reste 4 documents. L'étape $unwind crée un document par mesure (JOIN) : 3 pour C1, 2 pour C3, 1 pour C4 et 3 pour C5, soit 9 documents. L'étape $group crée un document par pièce (GROUP BY), 3 documents dans un ordre quelconque : Cuisine étage 0, moyenne 20.5, nb 2 ; Salon étage 0, moyenne 20.75, nb 4 ; Chambre étage 1, moyenne 17.5, nb 3. L'étape $sort trie par moyenne décroissante (ORDER BY) : le résultat contient toujours 3 documents, dans l'ordre Salon, Cuisine, Chambre.</title>
   <text x="60" y="24" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">5 documents</text>
   <rect x="1" y="40.0" width="118" height="60" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="11.0" y="64.0" font-size="17" fill="#333"><tspan font-weight="bold">C1</tspan> Salon</text>
@@ -78,17 +78,17 @@
   <text x="738.0" y="65.0" font-size="17" fill="#333" font-weight="bold">Cuisine</text>
   <text x="870.0" y="65.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 2</text>
   <text x="738.0" y="92.0" font-size="15" font-family="monospace" fill="#333">moyenne: 20.5</text>
-  <text x="738.0" y="117.0" font-size="15" font-family="monospace" fill="#333">max: 23</text>
+  <text x="738.0" y="117.0" font-size="15" font-family="monospace" fill="#333">etage: 0</text>
   <rect x="728.0" y="166.0" width="152" height="92" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
   <text x="738.0" y="191.0" font-size="17" fill="#333" font-weight="bold">Salon</text>
   <text x="870.0" y="191.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 4</text>
   <text x="738.0" y="218.0" font-size="15" font-family="monospace" fill="#333">moyenne: 20.75</text>
-  <text x="738.0" y="243.0" font-size="15" font-family="monospace" fill="#333">max: 22.5</text>
+  <text x="738.0" y="243.0" font-size="15" font-family="monospace" fill="#333">etage: 0</text>
   <rect x="728.0" y="292.0" width="152" height="92" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="738.0" y="317.0" font-size="17" fill="#333" font-weight="bold">Chambre</text>
   <text x="870.0" y="317.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 3</text>
   <text x="738.0" y="344.0" font-size="15" font-family="monospace" fill="#333">moyenne: 17.5</text>
-  <text x="738.0" y="369.0" font-size="15" font-family="monospace" fill="#333">max: 18</text>
+  <text x="738.0" y="369.0" font-size="15" font-family="monospace" fill="#333">etage: 1</text>
   <rect x="895.5" y="40" width="96" height="344" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <text x="943.5" y="76" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">$sort</text>
   <text x="943.5" y="206" font-size="16" fill="#333" text-anchor="middle">trie par</text>
@@ -102,17 +102,17 @@
   <text x="1017.0" y="65.0" font-size="17" fill="#333" font-weight="bold">Salon</text>
   <text x="1149.0" y="65.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 4</text>
   <text x="1017.0" y="92.0" font-size="15" font-family="monospace" font-weight="bold" fill="#00684a">moyenne: 20.75</text>
-  <text x="1017.0" y="117.0" font-size="15" font-family="monospace" fill="#333">max: 22.5</text>
+  <text x="1017.0" y="117.0" font-size="15" font-family="monospace" fill="#333">etage: 0</text>
   <rect x="1007.0" y="166.0" width="152" height="92" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
   <text x="1017.0" y="191.0" font-size="17" fill="#333" font-weight="bold">Cuisine</text>
   <text x="1149.0" y="191.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 2</text>
   <text x="1017.0" y="218.0" font-size="15" font-family="monospace" font-weight="bold" fill="#00684a">moyenne: 20.5</text>
-  <text x="1017.0" y="243.0" font-size="15" font-family="monospace" fill="#333">max: 23</text>
+  <text x="1017.0" y="243.0" font-size="15" font-family="monospace" fill="#333">etage: 0</text>
   <rect x="1007.0" y="292.0" width="152" height="92" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
   <text x="1017.0" y="317.0" font-size="17" fill="#333" font-weight="bold">Chambre</text>
   <text x="1149.0" y="317.0" font-family="monospace" font-size="15" fill="#333" text-anchor="end">nb: 3</text>
   <text x="1017.0" y="344.0" font-size="15" font-family="monospace" font-weight="bold" fill="#00684a">moyenne: 17.5</text>
-  <text x="1017.0" y="369.0" font-size="15" font-family="monospace" fill="#333">max: 18</text>
+  <text x="1017.0" y="369.0" font-size="15" font-family="monospace" fill="#333">etage: 1</text>
   <text x="1.0" y="412" font-size="17" fill="#555">collection <tspan font-family="monospace">capteurs</tspan></text>
   <text x="804.0" y="412" font-size="17" fill="#555" text-anchor="middle">ordre quelconque</text>
   <text x="1083.0" y="412" font-size="17" fill="#555" text-anchor="middle">résultat trié</text>

@@ -61,8 +61,8 @@ Une ligne par passage de texte repris en français sans fichier image. Ces refor
 
 | Support | Diapositive | Présentation source | Diapositives d'origine | Reprise |
 |---|---|---|---|---|
-| `s2-imbrication-tableaux-agregation.md` | 5 (« Trois sortes de relations ») | MongoDB 101: Non-Relational for Beginners | 38 à 47 | tableau des relations 1-1, 1-N et N-N et choix courant, reformulé, exemples changés |
-| `s2-imbrication-tableaux-agregation.md` | 5 (ligne « Pour trancher ») | MongoDB 101: Non-Relational for Beginners | 36 (« Link or Embed? Cont. ») | quatre questions pour choisir entre embarquer et référencer, reformulées |
+| `s2-imbrication-tableaux-agregation.md` | 6 (« Embarquer ou référencer : les critères de l'énoncé », cartes 1-1 à N-N) | MongoDB 101: Non-Relational for Beginners | 38 à 47 | tableau des relations 1-1, 1-N et N-N et choix courant, reformulé, exemples changés |
+| `s2-imbrication-tableaux-agregation.md` | 6 (tableau des critères, repris de l'énoncé du TP1) | MongoDB 101: Non-Relational for Beginners | 36 (« Link or Embed? Cont. ») | quatre questions pour choisir entre embarquer et référencer, reformulées |
 
 Le support de la séance 3 (`s3-requetes-avancees-agregation-index.md`) ne reprend ni ne reformule aucun contenu de MongoDB for Academia : ses exemples (films, lieux d'Aix-en-Provence) et ses schémas (`assets/schemas/s3-*.svg`) sont faits pour ce cours. Les données du TP2 qu'il décrit (`sample_restaurants`) ont leur propre provenance, détaillée dans `data/PROVENANCE.md` du dépôt TP2.
 

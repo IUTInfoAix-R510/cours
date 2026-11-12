@@ -4,7 +4,7 @@
   <!-- Collection livres -->
   <rect x="10" y="10" width="690" height="350" rx="14" fill="#f0f4f8" stroke="#00684a" stroke-width="3"/>
   <text x="30" y="46" font-size="26" font-weight="bold" fill="#00684a">livres</text>
-  <text x="120" y="46" font-size="18" fill="#555">26 documents, un par livre</text>
+  <text x="120" y="46" font-size="20" fill="#555">26 documents, un par livre</text>
   <!-- fonds de couleur : tableaux (orange), document imbriqué (bleu), 3e niveau (violet) -->
   <rect x="22" y="103" width="666" height="34" rx="6" fill="#fdf1dc"/>
   <rect x="22" y="141" width="666" height="34" rx="6" fill="#fdf1dc"/>
@@ -12,7 +12,7 @@
   <rect x="22" y="217" width="666" height="98" rx="6" fill="#fdf1dc"/>
   <rect x="58" y="250" width="626" height="62" rx="6" fill="#efe3f5"/>
   <rect x="22" y="319" width="666" height="34" rx="6" fill="#fdf1dc"/>
-  <g font-family="monospace" font-size="18" fill="#222">
+  <g font-family="monospace" font-size="20" fill="#222">
     <text x="34" y="88">_id, titre, annee</text>
     <text x="34" y="126">auteurs: [ { id, prenom, nom, nationalite? } ]</text>
     <text x="34" y="164">categories: [ "Science-Fiction", … ]</text>
@@ -26,9 +26,9 @@
   <!-- Collection membres -->
   <rect x="730" y="10" width="420" height="350" rx="14" fill="#f0f4f8" stroke="#00684a" stroke-width="3"/>
   <text x="750" y="46" font-size="26" font-weight="bold" fill="#00684a">membres</text>
-  <text x="882" y="46" font-size="18" fill="#555">14 documents</text>
+  <text x="872" y="46" font-size="20" fill="#555">14 documents</text>
   <rect x="742" y="179" width="396" height="162" rx="6" fill="#fdf1dc"/>
-  <g font-family="monospace" font-size="18" fill="#222">
+  <g font-family="monospace" font-size="20" fill="#222">
     <text x="754" y="88">_id, prenom, nom,</text>
     <text x="754" y="116">ville, inscription,</text>
     <text x="754" y="160">parrain_id? <tspan fill="#777">→ membres</tspan></text>
@@ -42,19 +42,19 @@
 
   <!-- Un emprunt en cours est écrit deux fois -->
   <path d="M 684 281 C 712 281, 712 245, 742 245" fill="none" stroke="#8e44ad" stroke-width="3" stroke-dasharray="7 5.84"/>
-  <text x="580" y="392" text-anchor="middle" font-size="19" fill="#8e44ad" font-weight="bold">Un emprunt en cours est écrit deux fois : dans le livre (emprunt_actuel) et dans le membre (emprunts).</text>
+  <text x="580" y="392" text-anchor="middle" font-size="20" fill="#8e44ad" font-weight="bold">Un emprunt en cours est écrit deux fois : dans le livre (emprunt_actuel) et dans le membre (emprunts).</text>
 
   <!-- Légende -->
-  <g font-size="17" fill="#333">
-    <rect x="30" y="420" width="26" height="22" rx="4" fill="#e3eefa"/>
-    <text x="64" y="437">document imbriqué</text>
-    <rect x="245" y="420" width="26" height="22" rx="4" fill="#fdf1dc"/>
-    <text x="279" y="437">tableau</text>
-    <rect x="385" y="420" width="26" height="22" rx="4" fill="#efe3f5"/>
-    <text x="419" y="437">document imbriqué dans un tableau (3e niveau)</text>
-    <text x="830" y="437" font-family="monospace" font-weight="bold">?</text>
-    <text x="848" y="437">facultatif</text>
-    <text x="960" y="437" fill="#777">→</text>
-    <text x="984" y="437">référence (_id)</text>
+  <g font-size="20" fill="#333">
+    <rect x="22" y="420" width="26" height="22" rx="4" fill="#e3eefa"/>
+    <text x="56" y="438">document imbriqué</text>
+    <rect x="240" y="420" width="26" height="22" rx="4" fill="#fdf1dc"/>
+    <text x="274" y="438">tableau</text>
+    <rect x="365" y="420" width="26" height="22" rx="4" fill="#efe3f5"/>
+    <text x="399" y="438">document dans un tableau (3e niveau)</text>
+    <text x="780" y="438" font-family="monospace" font-weight="bold">?</text>
+    <text x="800" y="438">facultatif</text>
+    <text x="920" y="438" fill="#777">→</text>
+    <text x="946" y="438">référence (_id)</text>
   </g>
 </svg>
