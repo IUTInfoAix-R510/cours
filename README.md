@@ -84,19 +84,48 @@ Un élément repris de MongoDB for Academia irait dans `assets/mongodb-academia/
 
 ### Structure d'un support
 
-Les supports suivent le même plan :
+Un support est une **construction**, pas un catalogue : chaque notion naît d'un besoin que les notions déjà vues ne satisfont pas.
 
-- une diapo d'intercalaire `_class: lead` « Partie N - … » pour chaque partie de l'énoncé, avec un émoji repère et une phrase d'accroche ;
-- le principe d'abord (le quoi et le pourquoi), l'exemple ensuite (le comment) ;
-- pour un processus (un pipeline, par exemple) : une diapo pour les données, puis une diapo par étape ;
-- une idée par diapo, sans diapo vide ni surchargée, avec des cartes de même hauteur ;
-- « À vous » en deux diapos : la séance (lien de l'énoncé, minutage, rendu, date du rendu final), puis « essayer et réviser » (quiz) ;
-- « Des questions ? » (enseignants, liens, bandeau « Dès maintenant » et appel à l'action en remarque), puis les crédits ;
-- la durée de chaque diapo dans ses notes, le total de la séance dans les notes de « À vous » ;
-- le résultat d'une requête en commentaire `// …` sous la requête, dans le même bloc de code ; le détail document par document, s'il en faut un, dans un tableau ; une erreur dans un bloc `err` (fond rouge), jamais dans un bloc vert ;
-- les données d'exemple présentées sur une diapo, et le script qui les recharge dans les notes.
+**Le fil**
+- Une **question directrice** par support, posée dès l'ouverture, reprise en sous-titre de chaque intercalaire et conclue dans « À retenir ».
+- En ouverture, après la page de titre : les **objectifs** (3 ou 4 verbes, ceux de l'énoncé), un encadré **« Déjà vu »** (ce que la séance réutilise, avec la séance d'origine), puis les données (celles du TP, celles des exemples).
+- Une diapo d'intercalaire `_class: lead` « Partie N - … » par partie de l'énoncé : un émoji repère et, en sous-titre, la question de la partie (pas une liste d'opérateurs).
 
-Les émojis servent de repères sur les étiquettes et les remarques (🎯, 📅, 🧪, 🧠, ❓, 🤖), pas sur chaque titre.
+**Une partie**
+1. Le **besoin** : une question sur les données d'exemple, tentée avec ce qu'on sait déjà ; l'échec ou le coût se voit (résultat faux, erreur, `explain`).
+2. La **notion** qui y répond, nommée seulement maintenant.
+3. L'**exemple déroulé**, avec la forme du document (ou des lignes) entre les étapes.
+4. Le **piège**, et le pont avec SQL ou une séance précédente : ce qui se transpose, et où l'analogie casse.
+5. Le **renvoi** au TP (numéros d'exercices), sans en donner la réponse.
+
+Une **prédiction** par partie : une diapo « question » (« combien de documents ? », « que renvoie cette étape ? »), puis une diapo « réponse ». Le titre d'une diapo est une question ou un constat, pas « C'est quoi ? ».
+
+**Ce qui ne va pas à l'écran**
+- Les réponses aux questions ✍️ de l'énoncé (elles restent dans les notes, pour la mise en commun).
+- Ce qui ne sert qu'aux bonus, à la culture ou à la complétude : il va en **annexe**.
+- Les exemples ne portent jamais sur les données des exercices, ni sur une question qui reprend un exercice sous un autre nom.
+
+**L'ordre du fichier est l'ordre de projection**
+1. Premier temps, puis « À retenir » du premier temps.
+2. « À vous » : la séance (lien de l'énoncé, minutage, rendu, date du rendu final), puis la carte **« Nouveau dans ce TP »** (les skills propres au TP, par exemple `lire-mon-explain` ou `dessiner-mon-motif`, et `interroge-moi` pour préparer les questions individuelles).
+3. Second temps, s'il y en a un, ouvert par un intercalaire « Reprise : partie N », et fermé par son « À retenir ».
+4. « Des questions ? » (enseignants, liens, bandeau « Dès maintenant » : ce qu'on fait **en sortant** de la séance), puis les Crédits.
+5. **Annexe** : un intercalaire `_class: lead` « Annexe », puis les diapos de référence. Elle n'est pas projetée, mais elle reste dans le PDF : les énoncés y renvoient.
+
+**Facture**
+- Une idée par diapo, sans diapo vide ni surchargée (au plus environ 120 mots à l'écran, code compris), avec des cartes de même hauteur.
+- Pour un processus (un pipeline, par exemple) : une diapo pour les données, puis une diapo par étape.
+- Le code ne descend pas sous 0,62 em (classe `dense`) : en dessous, couper la diapo.
+- Le texte d'un schéma reste lisible une fois projeté (au moins 18 px une fois rendu).
+- La durée de chaque diapo dans ses notes, le total de chaque temps dans les notes de « À vous ».
+- Le résultat d'une requête en commentaire `// …` sous la requête, dans le même bloc de code, recopié de la sortie réelle (apostrophes simples de mongosh). Le détail document par document, s'il en faut un, dans un tableau. Une erreur dans un bloc `err` (fond rouge), jamais dans un bloc vert.
+- Les données d'exemple sont présentées sur une diapo, et le script qui les recharge est dans les notes.
+
+**Repères communs à tous les supports**
+- Les critères « embarquer ou référencer » sont toujours ceux de l'énoncé du TP1 (Modéliser la médiathèque), mot pour mot.
+- Les exemples MongoDB de S1 à S3 portent sur **une même collection `films`**, qui s'enrichit d'une séance à l'autre : plate en S1, avec documents imbriqués et tableaux en S2, référencée vers `realisateurs` en S3. Ce sont aussi les films d'entraînement des skills du tuteur.
+
+Les émojis servent de repères sur les étiquettes et les remarques (🎯, 📅, 🧪, 🧠, ❓, 🤖), pas sur chaque titre. 🧪 marque un exemple sur les données d'essai, et l'émoji des données du TP (🚲, 📦…) marque un renvoi au TP.
 
 ### Thème commun
 
@@ -105,8 +134,10 @@ Tous les supports utilisent `theme: r510` (fichier `themes/r510.css`, déclaré 
 | Classe | Usage |
 |---|---|
 | `cols`, `g2`, `g3`, `cols-62`, `cols-38` | grilles à 2 ou 3 colonnes |
-| `carte` (+ `vert`, `orange`, `violet`, `rouge`) | carte à en-tête coloré : `<div class="carte vert"><b class="t">Titre</b> texte</div>` |
-| `box`, `warn`, `alerte` | remarque à bordure gauche : verte, orange, rouge |
+| `carte` (+ `vert`, `orange`, `violet`, `rouge`) | carte à en-tête coloré : `<div class="carte vert"><b class="t">Titre</b> texte</div>` ; en-têtes foncés, texte blanc lisible au vidéoprojecteur |
+| `recap` | récapitulatif d'opérateurs : cartes empilées, chacune avec un tableau sans bordure |
+| `dense` | code au plus petit corps admis (0,62 em), sur le `pre` ou sur son conteneur |
+| `box`, `warn`, `alerte` | remarque à bordure gauche : verte, orange, rouge (dans une grille, sans marge haute : inutile d'écrire `margin-top: 0`) |
 | `bandeau` | bandeau bleu nuit : lien, appel à l'action, message à retenir |
 | `err` | bloc de code d'erreur (fond rouge) |
 | `res`, `res-titre` | ancien bloc de résultat : ne plus l'utiliser, le résultat va en commentaire `// …` sous la requête |

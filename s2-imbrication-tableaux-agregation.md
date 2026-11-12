@@ -602,16 +602,6 @@ Les deux exemples ont été exécutés : chacun renvoie matchedCount: 1, modifie
 
 ## Les opérateurs sur les tableaux : interroger et projeter
 
-<style scoped>
-.recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
-.recap .carte b.t { padding: 0.25em 1em; margin: 0 -1em 0.3em -1em; }
-.recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
-.recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
-.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent !important; vertical-align: top; }
-.recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
-.recap code { font-size: 0.92em; }
-</style>
-
 <div class="recap">
 <div class="carte"><b class="t">Interroger : filtre de find</b>
 <table>
@@ -645,16 +635,6 @@ $size ne se combine pas avec $gt : pour « au moins 3 éléments », on teste "t
 ---
 
 ## Les opérateurs sur les tableaux : modifier et agréger
-
-<style scoped>
-.recap { display: grid; grid-template-columns: 1fr; gap: 0.6rem; font-size: 0.74em; margin-top: 0.3rem; }
-.recap .carte b.t { padding: 0.25em 1em; margin: 0 -1em 0.3em -1em; }
-.recap table { display: table; width: 100%; font-size: 1em; margin: 0; border: none; border-collapse: collapse; }
-.recap tr, .recap tr:nth-child(2n) { background: transparent !important; }
-.recap td { padding: 0.1rem 0.8rem 0.1rem 0; border: none; background: transparent !important; vertical-align: top; }
-.recap td:first-child, .recap td:first-child code { white-space: nowrap; width: 38%; }
-.recap code { font-size: 0.92em; }
-</style>
 
 <div class="recap">
 <div class="carte orange"><b class="t">Modifier : updateOne, updateMany</b>
