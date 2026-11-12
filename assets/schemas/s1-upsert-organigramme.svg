@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 290" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Upsert : un document correspond-il au filtre { _id: "C42" } ? Non, à la 1re exécution : insertion d'un nouveau document, avec _id: "C42" venu du filtre, temperature: 21.5 venu du $set et les champs du $setOnInsert s'il y en a ; résultat upsertedCount: 1, insertedId: 'C42'. Oui, à la 2e exécution : mise à jour du document trouvé, $set écrase temperature et $setOnInsert est ignoré ; résultat matchedCount: 1, modifiedCount: 0, car 21.5 y était déjà.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1130 290" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Upsert : un document correspond-il au filtre { piece: "Garage", type: "temperature" } ? Non, à la 1re exécution : insertion d'un nouveau document, avec piece et type venus du filtre, derniere: 19.5 venu du $set, installe venu du $setOnInsert ; résultat upsertedCount: 1 et un _id ObjectId créé par MongoDB. Oui, à la 2e exécution : mise à jour du document trouvé, $set écrase derniere et $setOnInsert est ignoré ; résultat matchedCount: 1, modifiedCount: 0, car 19.5 y était déjà.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
@@ -13,7 +13,7 @@
     <text x="150" y="135">correspond</text>
     <text x="150" y="160">au filtre ?</text>
   </g>
-  <text x="150" y="192" font-family="monospace" font-size="17" fill="#555" text-anchor="middle">{ _id: "C42" }</text>
+  <text x="150" y="192" font-family="monospace" font-size="19" fill="#555" text-anchor="middle">{ piece, type }</text>
 
   <!-- branches -->
   <g stroke="#555" stroke-width="2.5" fill="none" marker-end="url(#fl)">
@@ -24,46 +24,46 @@
   <text x="262" y="244" font-size="20" font-weight="bold" fill="#4a90d9">oui</text>
 
   <!-- non : insertion -->
-  <rect x="340" y="8" width="532" height="120" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <rect x="340" y="8" width="550" height="120" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <text x="356" y="36" font-size="19" font-weight="bold" fill="#333">insertion d'un nouveau document</text>
-  <g font-family="monospace" font-size="17" fill="#333">
-    <rect x="356" y="50" width="118" height="32" rx="6" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
-    <text x="364" y="72">_id: "C42"</text>
-    <rect x="500" y="50" width="190" height="32" rx="6" fill="#ffffff" stroke="#13aa52" stroke-width="2"/>
-    <text x="508" y="72">temperature: 21.5</text>
-    <rect x="716" y="50" width="140" height="32" rx="6" fill="#ffffff" stroke="#8e44ad" stroke-width="2" stroke-dasharray="5 4"/>
-    <text x="724" y="72">$setOnInsert</text>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <rect x="352" y="50" width="142" height="32" rx="6" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
+    <text x="360" y="72">piece, type</text>
+    <rect x="518" y="50" width="190" height="32" rx="6" fill="#ffffff" stroke="#13aa52" stroke-width="2"/>
+    <text x="526" y="72">derniere: 19.5</text>
+    <rect x="732" y="50" width="118" height="32" rx="6" fill="#ffffff" stroke="#8e44ad" stroke-width="2" stroke-dasharray="5 4"/>
+    <text x="743" y="72">installe</text>
   </g>
   <g font-size="22" font-weight="bold" fill="#555" text-anchor="middle">
-    <text x="487" y="73">+</text>
-    <text x="703" y="73">+</text>
+    <text x="506" y="73">+</text>
+    <text x="720" y="73">+</text>
   </g>
-  <g font-size="17" fill="#555" text-anchor="middle">
-    <text x="415" y="108">du filtre</text>
-    <text x="595" y="108">du <tspan font-family="monospace">$set</tspan></text>
-    <text x="786" y="108">s'il y en a</text>
+  <g font-size="19" fill="#555" text-anchor="middle">
+    <text x="423" y="108">du filtre</text>
+    <text x="613" y="108">du <tspan font-family="monospace">$set</tspan></text>
+    <text x="791" y="108">du <tspan font-family="monospace">$setOnInsert</tspan></text>
   </g>
 
   <!-- oui : mise à jour -->
-  <rect x="340" y="160" width="532" height="120" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
+  <rect x="340" y="160" width="550" height="120" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
   <text x="356" y="189" font-size="19" font-weight="bold" fill="#333">mise à jour du document trouvé</text>
-  <text x="356" y="225" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold">$set</tspan> : écrase <tspan font-family="monospace">temperature</tspan></text>
-  <text x="356" y="259" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold">$setOnInsert</tspan> : ignoré</text>
+  <text x="356" y="225" font-size="19" fill="#333"><tspan font-family="monospace" font-weight="bold">$set</tspan> : écrase <tspan font-family="monospace">derniere</tspan></text>
+  <text x="356" y="259" font-size="19" fill="#333"><tspan font-family="monospace" font-weight="bold">$setOnInsert</tspan> : ignoré</text>
 
   <!-- résultats -->
   <g stroke="#555" stroke-width="2.5" marker-end="url(#fl)">
-    <line x1="877.5" y1="68" x2="892.6" y2="68"/>
-    <line x1="877.5" y1="220" x2="892.6" y2="220"/>
+    <line x1="895.5" y1="68" x2="910.6" y2="68"/>
+    <line x1="895.5" y1="220" x2="910.6" y2="220"/>
   </g>
-  <text x="902" y="40" font-size="18" font-weight="bold" fill="#00684a">1re exécution</text>
-  <g font-family="monospace" font-size="17" fill="#333">
-    <text x="902" y="72">upsertedCount: 1</text>
-    <text x="902" y="98">insertedId: 'C42'</text>
+  <text x="920" y="40" font-size="19" font-weight="bold" fill="#00684a">1re exécution</text>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="920" y="72">upsertedCount: 1</text>
+    <text x="920" y="98">_id : un ObjectId</text>
   </g>
-  <text x="902" y="192" font-size="18" font-weight="bold" fill="#00684a">2e exécution</text>
-  <g font-family="monospace" font-size="17" fill="#333">
-    <text x="902" y="224">matchedCount: 1</text>
-    <text x="902" y="250">modifiedCount: 0</text>
+  <text x="920" y="192" font-size="19" font-weight="bold" fill="#00684a">2e exécution</text>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="920" y="224">matchedCount: 1</text>
+    <text x="920" y="250">modifiedCount: 0</text>
   </g>
-  <text x="902" y="276" font-size="17" fill="#555">21.5 y était déjà</text>
+  <text x="920" y="276" font-size="19" fill="#555">19.5 y était déjà</text>
 </svg>

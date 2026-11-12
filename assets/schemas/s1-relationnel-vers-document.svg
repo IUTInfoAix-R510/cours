@@ -15,44 +15,44 @@
   <!-- Titres des deux moitiés -->
   <text x="270" y="28" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">SQL : trois tables</text>
   <text x="890" y="28" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">MongoDB : un document</text>
-  <line x1="560" y1="15" x2="560" y2="415" stroke="#ccc" stroke-width="2"/>
+  <line x1="590" y1="15" x2="590" y2="415" stroke="#ccc" stroke-width="2"/>
 
   <!-- Table films -->
   <text x="40" y="66" font-size="19" font-weight="bold" font-family="monospace">films</text>
-  <rect x="40" y="74" width="500" height="70" rx="6" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
-  <line x1="40" y1="106" x2="540" y2="106" stroke="#4a6b8a" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="17">
+  <rect x="40" y="74" width="540" height="70" rx="6" fill="#f0f4f8" stroke="#4a6b8a" stroke-width="2"/>
+  <line x1="40" y1="106" x2="580" y2="106" stroke="#4a6b8a" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="19">
     <text x="50" y="97" font-weight="bold">id</text>
-    <text x="95" y="97" font-weight="bold">titre</text>
-    <text x="318" y="97" font-weight="bold">annee</text>
-    <text x="385" y="97" font-weight="bold">realisateur_id</text>
+    <text x="98" y="97" font-weight="bold">titre</text>
+    <text x="340" y="97" font-weight="bold">annee</text>
+    <text x="410" y="97" font-weight="bold">realisateur_id</text>
     <text x="50" y="131">F01</text>
-    <text x="95" y="131">Le Voyage de Chihiro</text>
-    <text x="318" y="131">2001</text>
-    <text x="385" y="131" fill="#4a90d9" font-weight="bold">R1</text>
+    <text x="98" y="131">Le Voyage de Chihiro</text>
+    <text x="340" y="131">2001</text>
+    <text x="410" y="131" fill="#4a90d9" font-weight="bold">R1</text>
   </g>
 
   <!-- Table realisateurs -->
   <text x="40" y="196" font-size="19" font-weight="bold" font-family="monospace">realisateurs</text>
   <rect x="40" y="204" width="300" height="70" rx="6" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
   <line x1="40" y1="236" x2="340" y2="236" stroke="#4a90d9" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="17">
+  <g font-family="monospace" font-size="19">
     <text x="50" y="227" font-weight="bold">id</text>
     <text x="110" y="227" font-weight="bold">nom</text>
-    <text x="240" y="227" font-weight="bold">pays</text>
+    <text x="236" y="227" font-weight="bold">pays</text>
     <text x="50" y="261" fill="#4a90d9" font-weight="bold">R1</text>
     <text x="110" y="261">Miyazaki</text>
-    <text x="240" y="261">Japon</text>
+    <text x="236" y="261">Japon</text>
   </g>
   <!-- Clé étrangère films.realisateur_id -> realisateurs (R1) -->
-  <path d="M 395 149 C 395 195, 385 216, 349.5 216" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4.34" marker-end="url(#fk)"/>
-  <text x="410" y="190" font-size="15" fill="#555">clé étrangère</text>
+  <path d="M 425 149 C 425 195, 395 216, 349.5 216" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4.34" marker-end="url(#fk)"/>
+  <text x="442" y="192" font-size="19" fill="#555">clé étrangère</text>
 
   <!-- Table films_genres -->
   <text x="40" y="316" font-size="19" font-weight="bold" font-family="monospace">films_genres</text>
   <rect x="40" y="324" width="300" height="94" rx="6" fill="#f0f4f8" stroke="#e8a838" stroke-width="2.5"/>
   <line x1="40" y1="356" x2="340" y2="356" stroke="#e8a838" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="17">
+  <g font-family="monospace" font-size="19">
     <text x="50" y="347" font-weight="bold">film_id</text>
     <text x="160" y="347" font-weight="bold">genre</text>
     <text x="50" y="381">F01</text>
@@ -62,30 +62,30 @@
   </g>
   <!-- Clé étrangère films_genres.film_id -> films (F01), par la marge gauche -->
   <path d="M 34 376 C 2 376, 2 126, 31 126" fill="none" stroke="#555" stroke-width="2" stroke-dasharray="6 4.04" marker-end="url(#fk)"/>
-  <text x="29" y="250" font-size="15" fill="#555" text-anchor="middle" transform="rotate(-90 29 250)">clé étrangère</text>
+  <text x="31" y="250" font-size="19" fill="#555" text-anchor="middle" transform="rotate(-90 31 250)">clé étrangère</text>
 
   <!-- Document MongoDB -->
   <rect x="600" y="60" width="550" height="300" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
-  <g font-family="monospace" font-size="18">
+  <g font-family="monospace" font-size="19">
     <text x="620" y="96">{</text>
     <text x="640" y="128">_id: "F01",</text>
     <text x="640" y="160">titre: "Le Voyage de Chihiro",</text>
     <text x="640" y="192">annee: 2001,</text>
     <rect x="632" y="207" width="505" height="58" rx="6" fill="#ffffff" stroke="#4a90d9" stroke-width="2.5"/>
     <text x="640" y="230">realisation: { nom: "Miyazaki",</text>
-    <text x="777" y="256">pays: "Japon" },</text>
+    <text x="811" y="256">pays: "Japon" },</text>
     <rect x="632" y="276" width="505" height="34" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
     <text x="640" y="299">genres: ["animation", "fantastique"]</text>
     <text x="620" y="340">}</text>
   </g>
-  <text x="1140" y="200" text-anchor="end" font-size="15" font-weight="bold" fill="#4a90d9">document imbriqué</text>
-  <text x="1140" y="328" text-anchor="end" font-size="15" font-weight="bold" fill="#c27c0e">tableau</text>
+  <text x="1140" y="200" text-anchor="end" font-size="19" font-weight="bold" fill="#4a90d9">document imbriqué</text>
+  <text x="1140" y="334" text-anchor="end" font-size="19" font-weight="bold" fill="#c27c0e">tableau</text>
 
   <!-- Flèches des tables vers le document -->
   <path d="M 345 262 C 480 262, 500 236, 621.2 236" fill="none" stroke="#4a90d9" stroke-width="3" marker-end="url(#bleu)"/>
   <path d="M 345 395 C 480 395, 520 293, 621.2 293" fill="none" stroke="#e8a838" stroke-width="3" marker-end="url(#orange)"/>
 
   <!-- Conclusions -->
-  <text x="875" y="395" text-anchor="middle" font-size="19" fill="#00684a" font-weight="bold">lu en une fois, sans jointure</text>
-  <text x="875" y="420" text-anchor="middle" font-size="16" fill="#555">en SQL : SELECT … JOIN realisateurs … JOIN films_genres …</text>
+  <text x="875" y="392" text-anchor="middle" font-size="19" fill="#00684a" font-weight="bold">lu en une fois, sans jointure</text>
+  <text x="875" y="422" text-anchor="middle" font-size="19" fill="#555">en SQL : trois tables, deux jointures</text>
 </svg>

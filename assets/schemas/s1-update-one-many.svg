@@ -1,30 +1,30 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 540 246" font-family="sans-serif" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 560 246" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Le même filtre, annee inférieure à 2000, trouve trois films : Mon voisin Totoro (1988), La Haine (1995) et Le Dîner de cons (1998). updateOne modifie le premier trouvé, Totoro, qui reçoit classique: true, et ignore les deux autres : matchedCount 1, modifiedCount 1. updateMany modifie les trois : matchedCount 3, modifiedCount 3.</title>
-  <line x1="270" y1="6" x2="270" y2="240" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"/>
-  <text x="130" y="24" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">updateOne</text>
-  <text x="130" y="49" font-size="17" fill="#555" text-anchor="middle">le premier trouvé</text>
-  <rect x="4" y="62" width="252" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="14" y="87" font-size="17" fill="#333">Totoro <tspan fill="#555">(1988)</tspan></text>
-  <text x="246" y="87" font-size="17" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
-  <rect x="4" y="106" width="252" height="37" rx="7" fill="#ffffff" stroke="#999" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="14" y="131" font-size="17" fill="#333">La Haine <tspan fill="#555">(1995)</tspan></text>
-  <text x="246" y="131" font-size="17" font-style="italic" fill="#777" text-anchor="end">ignoré</text>
-  <rect x="4" y="150" width="252" height="37" rx="7" fill="#ffffff" stroke="#999" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="14" y="175" font-size="17" fill="#333">Dîner de cons <tspan fill="#555">(1998)</tspan></text>
-  <text x="246" y="175" font-size="17" font-style="italic" fill="#777" text-anchor="end">ignoré</text>
-  <text x="130" y="214" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">matchedCount: 1</text>
-  <text x="130" y="239" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">modifiedCount: 1</text>
-  <text x="410" y="24" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">updateMany</text>
-  <text x="410" y="49" font-size="17" fill="#555" text-anchor="middle">tous ceux trouvés</text>
-  <rect x="284" y="62" width="252" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="294" y="87" font-size="17" fill="#333">Totoro <tspan fill="#555">(1988)</tspan></text>
-  <text x="526" y="87" font-size="17" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
-  <rect x="284" y="106" width="252" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="294" y="131" font-size="17" fill="#333">La Haine <tspan fill="#555">(1995)</tspan></text>
-  <text x="526" y="131" font-size="17" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
-  <rect x="284" y="150" width="252" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="294" y="175" font-size="17" fill="#333">Dîner de cons <tspan fill="#555">(1998)</tspan></text>
-  <text x="526" y="175" font-size="17" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
-  <text x="410" y="214" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">matchedCount: 3</text>
-  <text x="410" y="239" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">modifiedCount: 3</text>
+  <line x1="280" y1="6" x2="280" y2="240" stroke="#bbb" stroke-width="1.5" stroke-dasharray="6 5"/>
+  <text x="135" y="24" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">updateOne</text>
+  <text x="135" y="49" font-size="18" fill="#555" text-anchor="middle">le premier trouvé</text>
+  <rect x="4" y="62" width="262" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="14" y="87" font-size="18" fill="#333">Totoro <tspan fill="#555">(1988)</tspan></text>
+  <text x="256" y="87" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
+  <rect x="4" y="106" width="262" height="37" rx="7" fill="#ffffff" stroke="#999" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="14" y="131" font-size="18" fill="#333">La Haine <tspan fill="#555">(1995)</tspan></text>
+  <text x="256" y="131" font-size="18" font-style="italic" fill="#777" text-anchor="end">ignoré</text>
+  <rect x="4" y="150" width="262" height="37" rx="7" fill="#ffffff" stroke="#999" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="14" y="175" font-size="18" fill="#333">Dîner de cons <tspan fill="#555">(1998)</tspan></text>
+  <text x="256" y="175" font-size="18" font-style="italic" fill="#777" text-anchor="end">ignoré</text>
+  <text x="135" y="214" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">matchedCount: 1</text>
+  <text x="135" y="239" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">modifiedCount: 1</text>
+  <text x="425" y="24" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">updateMany</text>
+  <text x="425" y="49" font-size="18" fill="#555" text-anchor="middle">tous ceux trouvés</text>
+  <rect x="294" y="62" width="262" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="304" y="87" font-size="18" fill="#333">Totoro <tspan fill="#555">(1988)</tspan></text>
+  <text x="546" y="87" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
+  <rect x="294" y="106" width="262" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="304" y="131" font-size="18" fill="#333">La Haine <tspan fill="#555">(1995)</tspan></text>
+  <text x="546" y="131" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
+  <rect x="294" y="150" width="262" height="37" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="304" y="175" font-size="18" fill="#333">Dîner de cons <tspan fill="#555">(1998)</tspan></text>
+  <text x="546" y="175" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">modifié</text>
+  <text x="425" y="214" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">matchedCount: 3</text>
+  <text x="425" y="239" font-family="monospace" font-size="18" fill="#333" text-anchor="middle">modifiedCount: 3</text>
 </svg>

@@ -1,30 +1,32 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 224" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Trois suppressions sur la collection films. deleteMany avec le filtre { annee: { $lt: 1990 } } supprime un document, Totoro ; les cinq autres films restent. deleteMany({}) vide la collection, qui existe toujours. drop() supprime la collection, qui n'existe plus.</title>
+  <title id="t">Trois suppressions sur la collection films. deleteMany avec le filtre { annee: { $lt: 2000 } } supprime trois documents, Totoro, La Haine et Le Dîner de cons ; les trois autres films restent. deleteMany({}) vide la collection, qui existe toujours. drop() supprime la collection, qui n'existe plus.</title>
   <text x="180" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">deleteMany({ annee: … })</text>
   <rect x="10" y="38" width="340" height="150" rx="12" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="24" y="62" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">films</text>
+  <text x="24" y="62" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">films</text>
   <rect x="22" y="74" width="150" height="30" rx="6" fill="#ffffff" stroke="#aab4bf" stroke-width="1.5"/>
-  <text x="97" y="95" font-size="17" fill="#333" text-anchor="middle">Chihiro</text>
+  <text x="97" y="95" font-size="18" fill="#333" text-anchor="middle">Chihiro</text>
   <rect x="188" y="74" width="150" height="30" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="263" y="95" font-size="17" fill="#c0392b" text-anchor="middle">Totoro</text>
+  <text x="263" y="95" font-size="18" fill="#c0392b" text-anchor="middle">Totoro</text>
   <line x1="231" y1="89" x2="295" y2="89" stroke="#c0392b" stroke-width="1.6"/>
-  <rect x="22" y="110" width="150" height="30" rx="6" fill="#ffffff" stroke="#aab4bf" stroke-width="1.5"/>
-  <text x="97" y="131" font-size="17" fill="#333" text-anchor="middle">La Haine</text>
+  <rect x="22" y="110" width="150" height="30" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="97" y="131" font-size="18" fill="#c0392b" text-anchor="middle">La Haine</text>
+  <line x1="60" y1="125" x2="134" y2="125" stroke="#c0392b" stroke-width="1.6"/>
   <rect x="188" y="110" width="150" height="30" rx="6" fill="#ffffff" stroke="#aab4bf" stroke-width="1.5"/>
-  <text x="263" y="131" font-size="17" fill="#333" text-anchor="middle">Parasite</text>
+  <text x="263" y="131" font-size="18" fill="#333" text-anchor="middle">Glaneurs</text>
   <rect x="22" y="146" width="150" height="30" rx="6" fill="#ffffff" stroke="#aab4bf" stroke-width="1.5"/>
-  <text x="97" y="167" font-size="17" fill="#333" text-anchor="middle">Amélie</text>
-  <rect x="188" y="146" width="150" height="30" rx="6" fill="#ffffff" stroke="#aab4bf" stroke-width="1.5"/>
-  <text x="263" y="167" font-size="17" fill="#333" text-anchor="middle">Le Dîner de cons</text>
-  <text x="180" y="218" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">un document supprimé</text>
+  <text x="97" y="167" font-size="18" fill="#333" text-anchor="middle">Amélie</text>
+  <rect x="188" y="146" width="150" height="30" rx="6" fill="#ffffff" stroke="#c0392b" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="263" y="167" font-size="18" fill="#c0392b" text-anchor="middle">Le Dîner de cons</text>
+  <line x1="197" y1="161" x2="329" y2="161" stroke="#c0392b" stroke-width="1.6"/>
+  <text x="180" y="218" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">trois documents supprimés</text>
   <text x="560" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">deleteMany({})</text>
   <rect x="390" y="38" width="340" height="150" rx="12" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="404" y="62" font-family="monospace" font-size="17" font-weight="bold" fill="#00684a">films</text>
+  <text x="404" y="62" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">films</text>
   <text x="560" y="130" font-size="18" font-style="italic" fill="#777" text-anchor="middle">aucun document</text>
   <text x="560" y="218" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">collection vide, mais toujours là</text>
   <text x="940" y="22" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">drop()</text>
   <rect x="770" y="38" width="340" height="150" rx="12" fill="none" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="8 6"/>
-  <text x="784" y="62" font-family="monospace" font-size="17" font-weight="bold" fill="#999">films</text>
+  <text x="784" y="62" font-family="monospace" font-size="18" font-weight="bold" fill="#999">films</text>
   <g stroke="#c0392b" stroke-width="6" stroke-linecap="round"><line x1="895" y1="78" x2="985" y2="168"/><line x1="985" y1="78" x2="895" y2="168"/></g>
   <text x="940" y="218" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">la collection n'existe plus</text>
 </svg>

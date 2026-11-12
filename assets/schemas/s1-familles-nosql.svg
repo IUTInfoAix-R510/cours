@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 480" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Six familles NoSQL. Clé-valeur : une clé donne une valeur opaque, pour le cache et les sessions (Redis). Document : des documents structurés, interrogés champ par champ (MongoDB, CouchDB ; TP1 à TP3, projet). Colonnes (wide-column) : des lignes aux colonnes variables, regroupées en familles, sur de nombreuses machines (Cassandra, HBase). Graphe : des nœuds et des relations, pour parcourir des chemins (Neo4j ; TP4). Vectoriel : des embeddings et la recherche des plus proches voisins, pour l'IA (Qdrant, Milvus, pgvector pour PostgreSQL). Multi-modèle : document, graphe et clé-valeur dans un même moteur (ArangoDB).</title>
+  <title id="t">Six familles NoSQL. Clé-valeur : une clé donne une valeur opaque, pour le cache et les sessions (Redis). Document : des documents structurés, interrogés champ par champ (MongoDB ; TP1 à TP3 et projet ; carte encadrée : premier modèle étudié). Colonnes (wide-column) : des lignes aux colonnes variables, regroupées en familles, sur de nombreuses machines (Cassandra, HBase). Graphe : des nœuds et des relations, pour parcourir des chemins (Neo4j ; TP4 ; carte encadrée : second modèle étudié, en S5). Vectoriel : des embeddings et la recherche des plus proches voisins, pour l'IA (Qdrant, Milvus, pgvector). Multi-modèle : document, graphe et clé-valeur dans un même moteur (ArangoDB).</title>
   <defs>
     <marker id="fb" viewBox="0 0 10 10" refX="7" refY="5" markerUnits="userSpaceOnUse" markerWidth="12" markerHeight="12" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
@@ -11,33 +11,33 @@
     <rect width="350" height="230" rx="12" fill="#f0f4f8"/>
     <rect width="7" height="230" fill="#4a90d9"/>
     <rect x="70" y="18" width="90" height="30" rx="5" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-    <text x="115" y="39" text-anchor="middle" font-size="17" fill="#4a90d9" font-weight="bold">clé</text>
+    <text x="115" y="39" text-anchor="middle" font-size="19" fill="#4a90d9" font-weight="bold">clé</text>
     <line x1="166" y1="33" x2="195.4" y2="33" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
     <rect x="204" y="18" width="80" height="30" rx="5" fill="#8a96a3"/>
     <rect x="70" y="58" width="90" height="30" rx="5" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-    <text x="115" y="79" text-anchor="middle" font-size="17" fill="#4a90d9" font-weight="bold">clé</text>
+    <text x="115" y="79" text-anchor="middle" font-size="19" fill="#4a90d9" font-weight="bold">clé</text>
     <line x1="166" y1="73" x2="195.4" y2="73" stroke="#4a90d9" stroke-width="3" marker-end="url(#fb)"/>
     <rect x="204" y="58" width="80" height="30" rx="5" fill="#8a96a3"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Clé-valeur</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">valeur opaque :</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">cache, sessions</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">Redis</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">valeur opaque :</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">cache, sessions</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">Redis</text>
   </g>
 
   <!-- ===== 2. Document ===== -->
   <g transform="translate(375,0)">
-    <rect width="350" height="230" rx="12" fill="#e6f4ee"/>
+    <rect x="2" y="2" width="346" height="226" rx="12" fill="#e6f4ee" stroke="#00684a" stroke-width="4"/>
     <rect width="7" height="230" fill="#13aa52"/>
     <path d="M125,12 h80 l20,20 v74 h-100 z" fill="#ffffff" stroke="#13aa52" stroke-width="3"/>
-    <text x="135" y="36" font-size="18" font-weight="bold" fill="#13aa52">{</text>
+    <text x="135" y="36" font-size="19" font-weight="bold" fill="#13aa52">{</text>
     <line x1="140" y1="48" x2="200" y2="48" stroke="#13aa52" stroke-width="3"/>
     <rect x="140" y="58" width="68" height="26" rx="3" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
     <line x1="148" y1="71" x2="198" y2="71" stroke="#13aa52" stroke-width="2"/>
-    <text x="135" y="101" font-size="18" font-weight="bold" fill="#13aa52">}</text>
+    <text x="135" y="101" font-size="19" font-weight="bold" fill="#13aa52">}</text>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Document</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">documents structurés,</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">interrogés champ par champ</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">MongoDB, CouchDB · TP1 à TP3, projet</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">documents structurés,</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">interrogés champ par champ</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">MongoDB · TP1 à TP3, projet</text>
   </g>
 
   <!-- ===== 3. Colonnes ===== -->
@@ -57,14 +57,14 @@
     <rect x="194" y="70" width="40" height="24" fill="#f6e2bf" stroke="#b9771a" stroke-width="2"/>
     <rect x="237" y="70" width="43" height="24" fill="#f6e2bf" stroke="#b9771a" stroke-width="2"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Colonnes (wide-column)</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">colonnes variables, en familles,</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">sur de nombreuses machines</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">Cassandra, HBase</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">colonnes variables, en familles,</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">sur de nombreuses machines</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">Cassandra, HBase</text>
   </g>
 
   <!-- ===== 4. Graphe ===== -->
   <g transform="translate(0,250)">
-    <rect width="350" height="230" rx="12" fill="#f0f4f8"/>
+    <rect x="2" y="2" width="346" height="226" rx="12" fill="#ede5f7" stroke="#8e44ad" stroke-width="4"/>
     <rect width="7" height="230" fill="#8e44ad"/>
     <line x1="95" y1="70" x2="150" y2="30" stroke="#8e44ad" stroke-width="4"/>
     <line x1="150" y1="30" x2="215" y2="55" stroke="#8e44ad" stroke-width="4"/>
@@ -79,9 +79,9 @@
     <circle cx="175" cy="92" r="11" fill="#c9a6db"/>
     <circle cx="255" cy="90" r="11" fill="#c9a6db"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Graphe</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">nœuds et relations,</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">pour parcourir des chemins</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">Neo4j · TP4</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">nœuds et relations,</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">pour parcourir des chemins</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">Neo4j · TP4, S5</text>
   </g>
 
   <!-- ===== 5. Vectoriel ===== -->
@@ -101,9 +101,9 @@
     <circle cx="182" cy="72" r="6" fill="#4a90d9"/>
     <circle cx="190" cy="52" r="8" fill="#c0392b"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Vectoriel</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">embeddings : les plus</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">proches voisins, pour l'IA</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">Qdrant, Milvus, pgvector (PostgreSQL)</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">embeddings : les plus</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">proches voisins, pour l'IA</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">Qdrant, Milvus, pgvector</text>
   </g>
 
   <!-- ===== 6. Multi-modèle ===== -->
@@ -127,8 +127,8 @@
     <rect x="224" y="62" width="16" height="16" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
     <rect x="244" y="62" width="22" height="16" fill="#8a96a3"/>
     <text x="175" y="136" text-anchor="middle" font-size="24" font-weight="bold" fill="#00684a">Multi-modèle</text>
-    <text x="175" y="164" text-anchor="middle" font-size="18">plusieurs modèles</text>
-    <text x="175" y="187" text-anchor="middle" font-size="18">dans un même moteur</text>
-    <text x="175" y="215" text-anchor="middle" font-size="17" fill="#555">ArangoDB</text>
+    <text x="175" y="164" text-anchor="middle" font-size="19">plusieurs modèles</text>
+    <text x="175" y="188" text-anchor="middle" font-size="19">dans un même moteur</text>
+    <text x="175" y="217" text-anchor="middle" font-size="19" fill="#555">ArangoDB</text>
   </g>
 </svg>

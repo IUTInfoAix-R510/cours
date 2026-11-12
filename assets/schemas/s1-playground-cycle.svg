@@ -9,12 +9,12 @@
   <!-- connexion -->
   <rect x="10" y="4" width="500" height="58" rx="10" fill="#f0f4f8" stroke="#888" stroke-width="2" stroke-dasharray="7 5"/>
   <text x="260" y="29" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Connect : « MongoDB du Codespace »</text>
-  <text x="260" y="53" font-size="17" fill="#555" text-anchor="middle">à refaire à chaque réouverture</text>
+  <text x="260" y="53" font-size="18" fill="#555" text-anchor="middle">à refaire à chaque réouverture</text>
 
   <!-- boucle -->
   <rect x="10" y="92" width="230" height="70" rx="10" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
   <text x="125" y="120" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Écrire la réponse</text>
-  <text x="125" y="148" font-size="17" fill="#555" text-anchor="middle"><tspan font-family="monospace">use('tp1')</tspan> compris</text>
+  <text x="125" y="148" font-size="18" fill="#555" text-anchor="middle"><tspan font-family="monospace">use('tp1')</tspan> compris</text>
 
   <rect x="280" y="92" width="230" height="70" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
   <text x="395" y="120" font-size="18" fill="#333" text-anchor="middle">Sélectionner, puis</text>
@@ -22,11 +22,11 @@
 
   <rect x="280" y="202" width="230" height="70" rx="10" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2.5"/>
   <text x="395" y="230" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Lire le panneau</text>
-  <text x="395" y="257" font-size="17" fill="#555" text-anchor="middle">dernière instruction</text>
+  <text x="395" y="257" font-size="18" fill="#555" text-anchor="middle">dernière instruction</text>
 
   <rect x="10" y="202" width="230" height="70" rx="10" fill="#f0f4f8" stroke="#e8a838" stroke-width="2.5"/>
   <text x="125" y="230" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Corriger</text>
-  <text x="125" y="257" font-size="17" fill="#555" text-anchor="middle">puis relancer</text>
+  <text x="125" y="257" font-size="18" fill="#555" text-anchor="middle">puis relancer</text>
 
   <g stroke="#555" stroke-width="2.5" marker-end="url(#fl)">
     <line x1="125" y1="67" x2="125" y2="83.5"/>
@@ -37,14 +37,14 @@
     <line x1="395" y1="277" x2="395" y2="307.5"/>
     <line x1="260" y1="379" x2="260" y2="395.5"/>
   </g>
-  <text x="407" y="299" font-size="17" font-weight="bold" fill="#00684a">résultat juste</text>
+  <text x="407" y="299" font-size="18" font-weight="bold" fill="#00684a">résultat juste</text>
 
   <!-- vérifier, puis sauver -->
   <rect x="10" y="316" width="500" height="58" rx="10" fill="#f0f4f8" stroke="#8e44ad" stroke-width="2.5"/>
   <text x="260" y="341" font-size="19" fill="#333" text-anchor="middle"><tspan font-family="monospace" font-weight="bold">npm run check</tspan> : score indicatif</text>
-  <text x="260" y="365" font-size="17" fill="#555" text-anchor="middle">la base tp1 n'est pas touchée</text>
+  <text x="260" y="365" font-size="18" fill="#555" text-anchor="middle">la base tp1 n'est pas touchée</text>
 
   <rect x="10" y="404" width="500" height="58" rx="10" fill="#e6f4ee" stroke="#00684a" stroke-width="2.5"/>
   <text x="260" y="429" font-size="18" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">r510-sauver "feat(partieN): …"</text>
-  <text x="260" y="453" font-size="17" fill="#555" text-anchor="middle">en fin de partie</text>
+  <text x="260" y="453" font-size="18" fill="#555" text-anchor="middle">en fin de partie</text>
 </svg>
