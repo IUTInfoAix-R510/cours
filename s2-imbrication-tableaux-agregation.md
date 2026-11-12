@@ -511,7 +511,7 @@ Exécutées sur MongoDB 9.0.4, l'une après l'autre, sur la recette de départ. 
 
 Le $pull avec une condition surprend : il ne retire pas « le » premier élément trouvé, mais tous ceux qui la vérifient. Ici les œufs (3) et le sucre (30), deux quantités inférieures à 100.
 
-Rappel de la séance 1 : $push et $inc ne sont pas idempotents. Exécuter deux fois le même $push ajoute deux fois l'élément. Encore une raison d'éviter Ctrl+Alt+R sur tout le playground.
+$push et $inc ne sont pas idempotents : exécuter deux fois le même $push ajoute deux fois l'élément (à l'inverse d'un $set, qui donne le même document à la deuxième exécution). Encore une raison d'éviter Ctrl+Alt+R sur tout le playground.
 -->
 
 ---
@@ -1130,7 +1130,7 @@ db.capteurs.aggregate([
 <div class="petit">
 
 - `$limit: n` garde les **n premiers** documents et laisse tomber les autres : c'est le `LIMIT` du SQL.
-- Il ne trie pas : il coupe le flux **dans l'ordre où il le reçoit**.
+- Il ne trie pas : il coupe le flux **dans l'ordre où il le reçoit**. Avec `find`, `.sort().limit()` trie toujours avant de limiter (séance 1) ; dans un pipeline, c'est l'ordre des étapes qui décide.
 
 </div>
 </div>
@@ -1161,7 +1161,7 @@ db.capteurs.aggregate([
 
 Sur nos 3 pièces, $limit: 5 (diapo « Le pipeline d'agrégation ») ne retire rien.
 
-Pour la pagination d'une API (TP2, projet), $skip: n saute les n premiers documents : $sort, puis $skip, puis $limit.
+Pour la pagination d'une API (projet), $skip: n saute les n premiers documents : $sort, puis $skip, puis $limit.
 -->
 
 ---

@@ -335,7 +335,7 @@ Rappel du TP1 : les quatre questions (lus ensemble ? combien ? sans limite ? mod
 </div>
 <div class="box" style="margin-top: 0;">
 
-**Avec un index**, il ne lit que les documents liés. Mais il lit **toujours plus** qu'un document embarqué.
+**Avec un index**, il ne lit que les documents liés. Mais il lit **toujours plus** que si les commentaires étaient imbriqués dans l'épisode.
 
 </div>
 </div>
@@ -1472,7 +1472,7 @@ db.runCommand({ find: "ecoutes_ts", rawData: true,
 | Bucket interne | Pattern Bucket (partie 4) |
 |---|---|
 | `meta` | `episode` |
-| `control.min.t` | `jour` (arrondi) |
+| `control.min.t` | `jour` (arrondi au jour avec `hours`) |
 | `control.count` | `nb` |
 | `control.max.auditeurs` | `max` |
 | `data` (colonnes compressées) | `mesures` |
@@ -1772,7 +1772,7 @@ Document episode = episodes.find(Filters.eq("titre", "Les volcans")).first();   
 if (episode == null) {
     System.out.println("aucun épisode de ce titre");
 } else {
-    for (Document c : episode.getList("derniersCommentaires", Document.class)) {
+    for (Document c : episode.getList("derniersCommentaires", Document.class, List.of())) {
         System.out.println(c.getString("auteur") + " : " + c.getInteger("note"));
     }
 }
@@ -1786,7 +1786,7 @@ if (episode == null) {
 </div>
 <div class="box" style="margin-top: 0;">
 
-**`getList`** lit un tableau de documents imbriqués : une `List<Document>`. Avec un modèle fait pour la page, une lecture suffit.
+**`getList`** lit un tableau de documents imbriqués : une `List<Document>`. Sans le 3ᵉ argument, un champ **absent** donne `null`, et la boucle lève une `NullPointerException` ; `List.of()` donne une liste vide.
 
 </div>
 </div>

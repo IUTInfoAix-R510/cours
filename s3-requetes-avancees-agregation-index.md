@@ -1081,7 +1081,7 @@ db.films.aggregate([
 
 <div class="warn" style="margin-top: 0.4rem;">
 
-Un `$match` placé **dans** chaque facette relirait tous les films, une fois par facette ; placé **avant** `$facet`, il est fait une fois et peut profiter d'un index (partie 4). Une facette qui ne reçoit rien rend `[]`.
+Un `$match` placé **dans** chaque facette filtrerait tous les films dans chaque facette, sans pouvoir utiliser d'index ; placé **avant** `$facet`, il est fait une fois et peut profiter d'un index (partie 4). Une facette qui ne reçoit rien rend `[]`.
 
 </div>
 
@@ -1138,7 +1138,7 @@ Même titre que la partie 4 de l'énoncé du TP2.
 <!--
 (1 min)
 
-Le contexte d'abord : jusqu'ici, on a écrit des requêtes sans se demander comment MongoDB les exécute. Sur 4 films, peu importe ; sur 25 359 restaurants, ou sur les mesures des capteurs du projet, c'est la différence entre tout lire et lire le nécessaire.
+Le contexte d'abord : jusqu'ici, on a écrit des requêtes sans se demander comment MongoDB les exécute. Sur 4 films, peu importe ; sur 25 359 restaurants, ou sur les données du projet, c'est la différence entre tout lire et lire le nécessaire.
 
 Lire le schéma de gauche à droite. COLLSCAN (collection scan) : chaque film est lu puis testé. IXSCAN (index scan) : MongoDB parcourt les clés de l'index, déjà triées, et saute directement aux clés 2001 ; FETCH lit ensuite les documents pointés par ces clés.
 
@@ -1861,7 +1861,7 @@ Dans le TP : 3 méthodes à écrire dans RequetesRestaurants.java (exercices 17 
 <!--
 (45 s)
 
-Lire le schéma ligne à ligne : chaque appel Java fabrique une ligne du document. Le document du milieu est celui qu'affiche toBsonDocument().toJson() avec le pilote 5.14.0 : {"$and": [{"annee": 2001}, {"duree": {"$gt": 100}}]}. En mongosh, le « et » est implicite ; le pilote écrit $and : même sens. Exécutée sur MongoDB 9.0.4, la requête renvoie Le Voyage de Chihiro et Amélie Poulain.
+Lire le schéma ligne à ligne : chaque appel Java fabrique une ligne du document. Le document du milieu est celui qu'affiche toBsonDocument().toJson() avec le pilote 5.14.0 : {"$and": [{"annee": {"$gte": 2000}}, {"duree": {"$gt": 100}}]}. En mongosh, le « et » est implicite ; le pilote écrit $and : même sens. Exécutée sur MongoDB 9.0.4, la requête renvoie Le Voyage de Chihiro et Amélie Poulain.
 
 Comparer avec JDBC : on n'y concatène pas de SQL à la main, on passe par un PreparedStatement ; ici, on ne concatène pas de JSON, on passe par les classes d'aide.
 

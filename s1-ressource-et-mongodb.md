@@ -284,7 +284,7 @@ Cassandra, côté AP : chaque nœud accepte lectures et écritures, les copies s
 
 Côté CA : un SGBD relationnel classique, sur un seul serveur, n'a pas de partition à gérer : il est cohérent et disponible tant que ce serveur tourne (et s'il tombe, tout tombe). Dès qu'on le réplique, il doit choisir lui aussi. Notre TP est dans ce cas : un seul serveur MongoDB, donc pas de choix à faire.
 
-Ce point n'est dans aucune des présentations MongoDB for Academia ; le syllabus l'annonce. Il servira à justifier un choix de base dans le projet ou en entreprise.
+Ce point n'est dans aucune des présentations MongoDB for Academia. Il servira à justifier un choix de base dans le projet ou en entreprise.
 -->
 
 ---
@@ -400,9 +400,9 @@ Pas de `CREATE TABLE` : une collection naît à la première insertion.
 
 Le schéma le montre avec E01 : un champ absent n'est pas un champ à null.
 
-Schéma flexible ne veut pas dire absence de schéma : c'est l'application qui le porte. MongoDB sait aussi valider un schéma ($jsonSchema, à la création de la collection) ; ce n'est pas au programme des TP.
+Schéma flexible ne veut pas dire absence de schéma : c'est l'application qui le porte. MongoDB sait aussi valider un schéma ($jsonSchema) : un TP suivant le montre.
 
-Faire évoluer un schéma reste du travail, même sans ALTER TABLE : le TP3 le montre avec le pattern Versioning.
+Faire évoluer un schéma reste du travail, même sans ALTER TABLE : le TP3 le montre avec le pattern Schema Versioning (en bonus).
 
 _id est unique dans sa collection : deux documents d'une même collection ne peuvent pas avoir le même.
 
@@ -730,7 +730,7 @@ Les présentations MongoDB for Academia, en anglais, sont listées dans le dép�
 
 Pour l'enseignant, les erreurs relevées dans ces présentations, si un étudiant les cite :
 - MongoDB 101, diapo 14 : confond les bases wide-column (Cassandra, HBase) et les bases en colonnes analytiques ;
-- MongoDB 101, diapos 18 et 33 : « pas de migration » ; faire évoluer un schéma reste du travail (pattern Versioning, TP3) ;
+- MongoDB 101, diapos 18 et 33 : « pas de migration » ; faire évoluer un schéma reste du travail (pattern Schema Versioning, TP3) ;
 - MongoDB 101, diapo 22 : « MongoDB uses JSON » ; il stocke du BSON ;
 - MongoDB 101, diapo 24 : clés entre guillemets obligatoires ; faux dans mongosh et le playground ;
 - MongoDB 101, diapo 28 : deux documents de la même collection avec le même _id ; impossible ;

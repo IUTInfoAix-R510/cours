@@ -138,7 +138,7 @@ Deux requêtes (les lecteurs, puis leurs livres), ou une seule parce que le **ti
 </div>
 </div>
 
-<div class="bandeau" style="margin-top: 0.7rem; font-size: 0.9em;">Des questions qui <b>suivent des liens</b>, sur une longueur qu'on ne connaît pas à l'avance</div>
+<div class="bandeau" style="margin-top: 0.7rem; font-size: 0.9em;">Des questions qui <b>suivent des liens</b> ; pour la première, sur une longueur qu'on ne connaît pas à l'avance</div>
 
 <!--
 (1 min)
@@ -152,7 +152,7 @@ Rappeler le modèle du TP1 : les exemplaires embarqués dans le livre, les empru
 
 <img src="assets/schemas/s5-adjacence.svg" alt="Suivre un lien, en relationnel et dans un graphe. À gauche, en relationnel : la table suit(source, cible) avec les lignes (1, 2), (1, 3), (2, 4), (3, 4), (4, 5), (5, 6), et la table personne(id, nom) avec 1 Ana, 2 Bilal, 3 Camille, 4 Dario, 5 Elif, 6 Farah, chacune avec son index en arbre B. Étape 1 : chercher Ana (1) dans l'index de suit, qui donne les lignes (1, 2) et (1, 3), Ana vers Bilal et Ana vers Camille. Étape 2 : chercher 2 (Bilal) puis 3 (Camille) dans l'index de personne. Chaque saut repasse par un index. À droite, dans un graphe : le nœud Ana a deux relations SUIT qui pointent directement vers Bilal et Camille ; un index ne sert qu'à trouver Ana, le départ. Un saut = suivre une relation." style="display:block; width:100%; margin:0.2rem auto 0;">
 
-<div class="box" style="margin-top: 0.3rem; font-size: 0.72em;">L'<b>adjacence sans index</b> : le coût d'un parcours dépend de la partie du graphe <b>visitée</b>, pas de la taille de la base. L'index sert toujours, mais seulement à trouver le point de départ.</div>
+<div class="box" style="margin-top: 0.3rem; font-size: 0.72em;">L'<b>adjacence sans index</b> : le coût d'un parcours dépend de la partie du graphe <b>visitée</b>, pas de la taille de la base. L'index sert toujours, mais seulement à trouver le point de départ. Sur un ou deux sauts, une base relationnelle bien indexée fait aussi bien (partie 5).</div>
 
 <!--
 (1 min 30)
@@ -515,7 +515,7 @@ ORDER BY jeu;
 </div>
 </div>
 
-<div class="bandeau" style="margin-top: 0.4rem; font-size: 0.86em;"><code>WITH</code> = une étape de pipeline : <code>WITH … WHERE</code> après une agrégation, c'est <code>&#36;group</code> puis <code>&#36;match</code> (TP2), ou <code>HAVING</code></div>
+<div class="bandeau" style="margin-top: 0.4rem; font-size: 0.86em;"><code>WITH</code> = une étape de pipeline : <code>WITH … WHERE</code> après une agrégation, c'est <code>&#36;group</code> puis <code>&#36;match</code> (TP1), ou <code>HAVING</code></div>
 
 <!--
 (1 min 30)
@@ -1051,7 +1051,7 @@ RETURN autre.titre AS jeu, count(p) AS score ORDER BY score DESC, jeu;
 ```
 
 <div class="g3" style="margin-top: 0.4rem; font-size: 0.74em; align-items: stretch;">
-<div class="carte vert"><b class="t">Archipel exclu</b> Dans un même motif, Neo4j ne réutilise pas une relation : on ne revient pas sur Archipel.</div>
+<div class="carte vert"><b class="t">Archipel exclu… ici</b> Dans un même motif, Neo4j ne réutilise pas une relation : on ne revient pas sur Archipel <b>par la même relation</b>. Par un autre chemin, il reviendrait : en cas de doute, l'exclure explicitement.</div>
 <div class="carte orange"><b class="t">Déjà aimé ?</b> Pour recommander à quelqu'un, retirer ce qu'il aime déjà : <code>NOT EXISTS { … }</code>.</div>
 <div class="carte rouge"><b class="t">Popularité</b> Un jeu que tout le monde aime ressort partout : le score ne tient compte ni des notes ni de la popularité.</div>
 </div>
