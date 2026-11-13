@@ -1,116 +1,86 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 424" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le regroupement implicite, pour RETURN j.titre AS jeu, count(p) AS fans, round(avg(a.note), 1) AS moyenne. 1, les 11 lignes du MATCH (p, j, note) : Ana Archipel 5, Ana Comète 3, Bilal Archipel 4, Bilal Marée haute 5, Camille Comète 4, Camille Sortilège 5, Dario Marée haute 4, Dario Sortilège 2, Elif Archipel 3, Elif Marée haute 4, Farah Comète 5. 2, les lignes rangées par jeu, la colonne non agrégée : Archipel (Ana 5, Bilal 4, Elif 3), Comète (Ana 3, Camille 4, Farah 5), Marée haute (Bilal 5, Dario 4, Elif 4), Sortilège (Camille 5, Dario 2). 3, une ligne par jeu : Archipel, 3 fans, moyenne 4.0 ; Comète, 3, 4.0 ; Marée haute, 3, 4.3 ; Sortilège, 2, 3.5.</title>
-  <defs>
-    <marker id="fk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#777"/></marker>
-  </defs>
-  <text x="10" y="26" font-size="17" font-weight="bold" font-family="monospace" fill="#333">RETURN <tspan fill="#2a6db5">j.titre</tspan> AS jeu, <tspan fill="#b06f00">count(p)</tspan> AS fans, <tspan fill="#b06f00">round(avg(a.note), 1)</tspan> AS moyenne</text>
-  <circle cx="22" cy="54" r="12" fill="#00684a"/><text x="22" y="59" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-  <text x="42" y="60" font-size="17" font-weight="bold" fill="#333">les lignes du MATCH</text>
-  <rect x="10" y="76" width="330" height="296" rx="8" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="24" y="96" font-size="15" font-weight="bold" font-family="monospace" fill="#777">p</text>
-  <text x="130" y="96" font-size="15" font-weight="bold" font-family="monospace" fill="#777">j</text>
-  <text x="272" y="96" font-size="15" font-weight="bold" font-family="monospace" fill="#777">note</text>
-  <rect x="122" y="106" width="130" height="20" rx="4" fill="#eaf2fb"/>
-  <text x="24" y="121" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="130" y="121" font-size="15" font-family="monospace" fill="#333">Archipel</text>
-  <text x="272" y="121" font-size="15" font-family="monospace" fill="#333">5</text>
-  <rect x="122" y="130" width="130" height="20" rx="4" fill="#ede5f7"/>
-  <text x="24" y="145" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="130" y="145" font-size="15" font-family="monospace" fill="#333">Comète</text>
-  <text x="272" y="145" font-size="15" font-family="monospace" fill="#333">3</text>
-  <rect x="122" y="154" width="130" height="20" rx="4" fill="#eaf2fb"/>
-  <text x="24" y="169" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="130" y="169" font-size="15" font-family="monospace" fill="#333">Archipel</text>
-  <text x="272" y="169" font-size="15" font-family="monospace" fill="#333">4</text>
-  <rect x="122" y="178" width="130" height="20" rx="4" fill="#e8f6ec"/>
-  <text x="24" y="193" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="130" y="193" font-size="15" font-family="monospace" fill="#333">Marée haute</text>
-  <text x="272" y="193" font-size="15" font-family="monospace" fill="#333">5</text>
-  <rect x="122" y="202" width="130" height="20" rx="4" fill="#ede5f7"/>
-  <text x="24" y="217" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="130" y="217" font-size="15" font-family="monospace" fill="#333">Comète</text>
-  <text x="272" y="217" font-size="15" font-family="monospace" fill="#333">4</text>
-  <rect x="122" y="226" width="130" height="20" rx="4" fill="#fdf3e0"/>
-  <text x="24" y="241" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="130" y="241" font-size="15" font-family="monospace" fill="#333">Sortilège</text>
-  <text x="272" y="241" font-size="15" font-family="monospace" fill="#333">5</text>
-  <rect x="122" y="250" width="130" height="20" rx="4" fill="#e8f6ec"/>
-  <text x="24" y="265" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="130" y="265" font-size="15" font-family="monospace" fill="#333">Marée haute</text>
-  <text x="272" y="265" font-size="15" font-family="monospace" fill="#333">4</text>
-  <rect x="122" y="274" width="130" height="20" rx="4" fill="#fdf3e0"/>
-  <text x="24" y="289" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="130" y="289" font-size="15" font-family="monospace" fill="#333">Sortilège</text>
-  <text x="272" y="289" font-size="15" font-family="monospace" fill="#333">2</text>
-  <rect x="122" y="298" width="130" height="20" rx="4" fill="#eaf2fb"/>
-  <text x="24" y="313" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="130" y="313" font-size="15" font-family="monospace" fill="#333">Archipel</text>
-  <text x="272" y="313" font-size="15" font-family="monospace" fill="#333">3</text>
-  <rect x="122" y="322" width="130" height="20" rx="4" fill="#e8f6ec"/>
-  <text x="24" y="337" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="130" y="337" font-size="15" font-family="monospace" fill="#333">Marée haute</text>
-  <text x="272" y="337" font-size="15" font-family="monospace" fill="#333">4</text>
-  <rect x="122" y="346" width="130" height="20" rx="4" fill="#ede5f7"/>
-  <text x="24" y="361" font-size="15" font-family="monospace" fill="#333">Farah</text>
-  <text x="130" y="361" font-size="15" font-family="monospace" fill="#333">Comète</text>
-  <text x="272" y="361" font-size="15" font-family="monospace" fill="#333">5</text>
-  <circle cx="432" cy="54" r="12" fill="#00684a"/><text x="432" y="59" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-  <text x="452" y="60" font-size="17" font-weight="bold" fill="#333">rangées par jeu</text>
-  <text x="592" y="60" font-size="15" fill="#777">(la colonne non agrégée)</text>
-  <rect x="420" y="76" width="320" height="80" rx="8" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2"/>
-  <text x="434" y="121" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Archipel</text>
-  <text x="570" y="97" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="710" y="97" font-size="15" font-family="monospace" fill="#333">5</text>
-  <text x="570" y="121" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="710" y="121" font-size="15" font-family="monospace" fill="#333">4</text>
-  <text x="570" y="145" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="710" y="145" font-size="15" font-family="monospace" fill="#333">3</text>
-  <rect x="420" y="168" width="320" height="80" rx="8" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
-  <text x="434" y="213" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Comète</text>
-  <text x="570" y="189" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="710" y="189" font-size="15" font-family="monospace" fill="#333">3</text>
-  <text x="570" y="213" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="710" y="213" font-size="15" font-family="monospace" fill="#333">4</text>
-  <text x="570" y="237" font-size="15" font-family="monospace" fill="#333">Farah</text>
-  <text x="710" y="237" font-size="15" font-family="monospace" fill="#333">5</text>
-  <rect x="420" y="260" width="320" height="80" rx="8" fill="#e8f6ec" stroke="#27ae60" stroke-width="2"/>
-  <text x="434" y="305" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Marée haute</text>
-  <text x="570" y="281" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="710" y="281" font-size="15" font-family="monospace" fill="#333">5</text>
-  <text x="570" y="305" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="710" y="305" font-size="15" font-family="monospace" fill="#333">4</text>
-  <text x="570" y="329" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="710" y="329" font-size="15" font-family="monospace" fill="#333">4</text>
-  <rect x="420" y="352" width="320" height="56" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="434" y="385" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Sortilège</text>
-  <text x="570" y="373" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="710" y="373" font-size="15" font-family="monospace" fill="#333">5</text>
-  <text x="570" y="397" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="710" y="397" font-size="15" font-family="monospace" fill="#333">2</text>
-  <circle cx="842" cy="54" r="12" fill="#00684a"/><text x="842" y="59" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
-  <text x="862" y="60" font-size="17" font-weight="bold" fill="#333">une ligne par jeu</text>
-  <text x="844" y="88" font-size="15" font-weight="bold" font-family="monospace" fill="#777">jeu</text>
-  <text x="1020" y="88" font-size="15" font-weight="bold" font-family="monospace" fill="#777">fans</text>
-  <text x="1098" y="88" font-size="15" font-weight="bold" font-family="monospace" fill="#777">moyenne</text>
-  <rect x="830" y="99" width="360" height="34" rx="8" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2"/>
-  <text x="844" y="122" font-size="16" font-weight="bold" font-family="monospace" fill="#333">Archipel</text>
-  <text x="1036" y="122" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">3</text>
-  <text x="1130" y="122" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">4.0</text>
-  <line x1="746" y1="116" x2="820" y2="116" stroke="#999" stroke-width="2.5" marker-end="url(#fk)"/>
-  <rect x="830" y="191" width="360" height="34" rx="8" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
-  <text x="844" y="214" font-size="16" font-weight="bold" font-family="monospace" fill="#333">Comète</text>
-  <text x="1036" y="214" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">3</text>
-  <text x="1130" y="214" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">4.0</text>
-  <line x1="746" y1="208" x2="820" y2="208" stroke="#999" stroke-width="2.5" marker-end="url(#fk)"/>
-  <rect x="830" y="283" width="360" height="34" rx="8" fill="#e8f6ec" stroke="#27ae60" stroke-width="2"/>
-  <text x="844" y="306" font-size="16" font-weight="bold" font-family="monospace" fill="#333">Marée haute</text>
-  <text x="1036" y="306" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">3</text>
-  <text x="1130" y="306" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">4.3</text>
-  <line x1="746" y1="300" x2="820" y2="300" stroke="#999" stroke-width="2.5" marker-end="url(#fk)"/>
-  <rect x="830" y="363" width="360" height="34" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="844" y="386" font-size="16" font-weight="bold" font-family="monospace" fill="#333">Sortilège</text>
-  <text x="1036" y="386" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">2</text>
-  <text x="1130" y="386" font-size="16" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">3.5</text>
-  <line x1="746" y1="380" x2="820" y2="380" stroke="#999" stroke-width="2.5" marker-end="url(#fk)"/>
-  <line x1="348" y1="224" x2="405" y2="224" stroke="#999" stroke-width="3.5" marker-end="url(#fk)"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 350" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le regroupement implicite, pour RETURN j.titre AS jeu, count(p) AS fans, round(avg(a.note), 1) AS moyenne. 1, les 11 lignes du MATCH (p, j, note) : Ana Archipel 5, Ana Comète 3, Bilal Archipel 4, Bilal Marée haute 5, Camille Comète 4, Camille Sortilège 5, Dario Marée haute 4, Dario Sortilège 2, Elif Archipel 3, Elif Marée haute 4, Farah Comète 5. 2, les lignes rangées par jeu, la colonne qui n'est pas agrégée : Archipel (Ana 5, Bilal 4, Elif 3), Comète (Ana 3, Camille 4, Farah 5), Marée haute (Bilal 5, Dario 4, Elif 4), Sortilège (Camille 5, Dario 2). 3, une ligne par jeu : Archipel, 3 fans, moyenne 4.0 ; Comète, 3, 4.0 ; Marée haute, 3, 4.3 ; Sortilège, 2, 3.5.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="0" y="22" font-size="19" font-weight="bold" fill="#333">1. les 11 lignes du MATCH</text>
+  <rect x="0" y="34" width="330" height="25" rx="4" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="10" y="53" font-size="18" fill="#333">Ana</text>
+  <text x="110" y="53" font-size="18" fill="#333">Archipel</text>
+  <text x="310" y="53" font-size="18" font-weight="bold" fill="#333" text-anchor="end">5</text>
+  <rect x="0" y="62" width="330" height="25" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="10" y="81" font-size="18" fill="#333">Ana</text>
+  <text x="110" y="81" font-size="18" fill="#333">Comète</text>
+  <text x="310" y="81" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3</text>
+  <rect x="0" y="90" width="330" height="25" rx="4" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="10" y="109" font-size="18" fill="#333">Bilal</text>
+  <text x="110" y="109" font-size="18" fill="#333">Archipel</text>
+  <text x="310" y="109" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4</text>
+  <rect x="0" y="118" width="330" height="25" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="10" y="137" font-size="18" fill="#333">Bilal</text>
+  <text x="110" y="137" font-size="18" fill="#333">Marée haute</text>
+  <text x="310" y="137" font-size="18" font-weight="bold" fill="#333" text-anchor="end">5</text>
+  <rect x="0" y="146" width="330" height="25" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="10" y="165" font-size="18" fill="#333">Camille</text>
+  <text x="110" y="165" font-size="18" fill="#333">Comète</text>
+  <text x="310" y="165" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4</text>
+  <rect x="0" y="174" width="330" height="25" rx="4" fill="#f3e8f8" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="10" y="193" font-size="18" fill="#333">Camille</text>
+  <text x="110" y="193" font-size="18" fill="#333">Sortilège</text>
+  <text x="310" y="193" font-size="18" font-weight="bold" fill="#333" text-anchor="end">5</text>
+  <rect x="0" y="202" width="330" height="25" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="10" y="221" font-size="18" fill="#333">Dario</text>
+  <text x="110" y="221" font-size="18" fill="#333">Marée haute</text>
+  <text x="310" y="221" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4</text>
+  <rect x="0" y="230" width="330" height="25" rx="4" fill="#f3e8f8" stroke="#8e44ad" stroke-width="1.5"/>
+  <text x="10" y="249" font-size="18" fill="#333">Dario</text>
+  <text x="110" y="249" font-size="18" fill="#333">Sortilège</text>
+  <text x="310" y="249" font-size="18" font-weight="bold" fill="#333" text-anchor="end">2</text>
+  <rect x="0" y="258" width="330" height="25" rx="4" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="10" y="277" font-size="18" fill="#333">Elif</text>
+  <text x="110" y="277" font-size="18" fill="#333">Archipel</text>
+  <text x="310" y="277" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3</text>
+  <rect x="0" y="286" width="330" height="25" rx="4" fill="#e6f4ee" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="10" y="305" font-size="18" fill="#333">Elif</text>
+  <text x="110" y="305" font-size="18" fill="#333">Marée haute</text>
+  <text x="310" y="305" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4</text>
+  <rect x="0" y="314" width="330" height="25" rx="4" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="10" y="333" font-size="18" fill="#333">Farah</text>
+  <text x="110" y="333" font-size="18" fill="#333">Comète</text>
+  <text x="310" y="333" font-size="18" font-weight="bold" fill="#333" text-anchor="end">5</text>
+  <line x1="338" y1="180" x2="372" y2="180" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="390" y="22" font-size="19" font-weight="bold" fill="#333">2. rangées par jeu</text>
+  <rect x="390" y="40" width="370" height="64" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="402" y="66" font-size="18" font-weight="bold" fill="#333">Archipel</text>
+  <text x="402" y="92" font-size="18" fill="#555">Ana 5 · Bilal 4 · Elif 3</text>
+  <rect x="390" y="114" width="370" height="64" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="402" y="140" font-size="18" font-weight="bold" fill="#333">Comète</text>
+  <text x="402" y="166" font-size="18" fill="#555">Ana 3 · Camille 4 · Farah 5</text>
+  <rect x="390" y="188" width="370" height="64" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="402" y="214" font-size="18" font-weight="bold" fill="#333">Marée haute</text>
+  <text x="402" y="240" font-size="18" fill="#555">Bilal 5 · Dario 4 · Elif 4</text>
+  <rect x="390" y="262" width="370" height="64" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="402" y="288" font-size="18" font-weight="bold" fill="#333">Sortilège</text>
+  <text x="402" y="314" font-size="18" fill="#555">Camille 5 · Dario 2</text>
+  <line x1="768" y1="180" x2="802" y2="180" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="820" y="22" font-size="19" font-weight="bold" fill="#333">3. une ligne par jeu</text>
+  <text x="830" y="62" font-size="18" font-weight="bold" font-family="monospace" fill="#333">jeu</text>
+  <text x="1010" y="62" font-size="18" font-weight="bold" font-family="monospace" fill="#333" text-anchor="end">fans</text>
+  <text x="1150" y="62" font-size="18" font-weight="bold" font-family="monospace" fill="#333" text-anchor="end">moyenne</text>
+  <rect x="820" y="76" width="340" height="36" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="830" y="101" font-size="18" fill="#333">Archipel</text>
+  <text x="1010" y="101" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3</text>
+  <text x="1150" y="101" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4.0</text>
+  <rect x="820" y="120" width="340" height="36" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="830" y="145" font-size="18" fill="#333">Comète</text>
+  <text x="1010" y="145" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3</text>
+  <text x="1150" y="145" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4.0</text>
+  <rect x="820" y="164" width="340" height="36" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="830" y="189" font-size="18" fill="#333">Marée haute</text>
+  <text x="1010" y="189" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3</text>
+  <text x="1150" y="189" font-size="18" font-weight="bold" fill="#333" text-anchor="end">4.3</text>
+  <rect x="820" y="208" width="340" height="36" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="830" y="233" font-size="18" fill="#333">Sortilège</text>
+  <text x="1010" y="233" font-size="18" font-weight="bold" fill="#333" text-anchor="end">2</text>
+  <text x="1150" y="233" font-size="18" font-weight="bold" fill="#333" text-anchor="end">3.5</text>
+  <text x="820" y="290" font-size="18" font-weight="bold" fill="#00684a">clé de groupe : jeu,</text>
+  <text x="820" y="316" font-size="18" font-weight="bold" fill="#00684a">la seule colonne non agrégée</text>
 </svg>

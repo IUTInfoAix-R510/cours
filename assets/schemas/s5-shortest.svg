@@ -1,65 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 506" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Les plus courts chemins de Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana→Bilal→Dario→Elif→Farah ; en violet, Ana→Camille→Dario→Elif→Farah ; les relations Dario→Elif et Elif→Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j : Ana → Camille → Dario → Elif → Farah. ALL SHORTEST renvoie les deux : Ana → Bilal → Dario → Elif → Farah et Ana → Camille → Dario → Elif → Farah. « Plus court » compte les relations, pas une distance ou une durée.</title>
-  <defs>
-    <marker id="fb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
-    <marker id="fp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker>
-  </defs>
-  <text x="20" y="34" font-size="21" font-weight="bold" fill="#00684a">🧪 Les plus courts chemins de Ana à Farah</text>
-  <path d="M146.7,174.1 L257.8,126.2" fill="none" stroke="#4a90d9" stroke-width="3.5" marker-end="url(#fb)"/>
-  <path d="M336.7,123.9 L447.8,171.8" fill="none" stroke="#4a90d9" stroke-width="3.5" marker-end="url(#fb)"/>
-  <path d="M146.7,205.9 L257.8,253.8" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <path d="M336.7,256.1 L447.8,208.2" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <path d="M530,183 L634,183" fill="none" stroke="#4a90d9" stroke-width="3.5" marker-end="url(#fb)"/>
-  <path d="M530,197 L634,197" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <path d="M720,183 L824,183" fill="none" stroke="#4a90d9" stroke-width="3.5" marker-end="url(#fb)"/>
-  <path d="M720,197 L824,197" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <g>
-  <circle cx="110" cy="190" r="36" fill="#eaf2fb" stroke="#2c3e50" stroke-width="3.5"/>
-  <text x="110" y="195.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
-  </g>
-  <g>
-  <circle cx="300" cy="108" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="300" y="113.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Bilal</text>
-  </g>
-  <g>
-  <circle cx="300" cy="272" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="300" y="277.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Camille</text>
-  </g>
-  <g>
-  <circle cx="490" cy="190" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="490" y="195.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Dario</text>
-  </g>
-  <g>
-  <circle cx="680" cy="190" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="680" y="195.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Elif</text>
-  </g>
-  <g>
-  <circle cx="870" cy="190" r="36" fill="#eaf2fb" stroke="#2c3e50" stroke-width="3.5"/>
-  <text x="870" y="195.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Farah</text>
-  </g>
-  <text x="110" y="250" font-size="15" font-weight="bold" fill="#2c3e50" text-anchor="middle">départ</text>
-  <text x="870" y="250" font-size="15" font-weight="bold" fill="#2c3e50" text-anchor="middle">arrivée</text>
-  <text x="205" y="126" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">1</text>
-  <text x="395" y="126" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">2</text>
-  <text x="585" y="160" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">3</text>
-  <text x="775" y="160" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">4</text>
-  <text x="205" y="268" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">1</text>
-  <text x="395" y="268" font-size="15" font-weight="bold" fill="#777" text-anchor="middle">2</text>
-  <line x1="950" y1="150" x2="990" y2="150" stroke="#4a90d9" stroke-width="3.5"/>
-  <text x="1002" y="155" font-size="16" font-weight="bold" fill="#4a90d9">par Bilal</text>
-  <line x1="950" y1="182" x2="990" y2="182" stroke="#8e44ad" stroke-width="3.5"/>
-  <text x="1002" y="187" font-size="16" font-weight="bold" fill="#8e44ad">par Camille</text>
-  <text x="950" y="222" font-size="15" fill="#555">4 relations chacun :</text>
-  <text x="950" y="242" font-size="15" fill="#555">deux plus courts</text>
-  <text x="950" y="262" font-size="15" fill="#555">chemins à égalité</text>
-  <rect x="20" y="330" width="545" height="130" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
-  <text x="36" y="362" font-size="18" font-weight="bold" font-family="monospace" fill="#00684a">SHORTEST 1</text>
-  <text x="549" y="362" font-size="15" fill="#555" text-anchor="end">un seul, choisi par Neo4j</text>
-  <text x="36" y="398" font-size="16" font-weight="bold" font-family="monospace" fill="#8e44ad">Ana → Camille → Dario → Elif → Farah</text>
-  <rect x="595" y="330" width="545" height="130" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
-  <text x="611" y="362" font-size="18" font-weight="bold" font-family="monospace" fill="#00684a">ALL SHORTEST</text>
-  <text x="1124" y="362" font-size="15" fill="#555" text-anchor="end">tous les plus courts</text>
-  <text x="611" y="398" font-size="16" font-weight="bold" font-family="monospace" fill="#4a90d9">Ana → Bilal → Dario → Elif → Farah</text>
-  <text x="611" y="426" font-size="16" font-weight="bold" font-family="monospace" fill="#8e44ad">Ana → Camille → Dario → Elif → Farah</text>
-  <text x="20" y="490" font-size="15" fill="#555">« Plus court » compte les relations, pas une distance ou une durée.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 236" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Les plus courts chemins d'Ana à Farah sur le graphe SUIT de l'exemple d'essai. Deux chemins de 4 relations chacun, à égalité : en bleu, Ana, Bilal, Dario, Elif, Farah ; en violet, Ana, Camille, Dario, Elif, Farah ; les relations de Dario à Elif et d'Elif à Farah sont communes aux deux. SHORTEST 1 en renvoie un seul, choisi par Neo4j ; ALL SHORTEST renvoie les deux. Plus court compte les relations, pas une distance ou une durée.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="6" y="98" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="60" y="126.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
+  <rect x="236" y="48" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="290" y="76.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Bilal</text>
+  <rect x="236" y="148" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="290" y="176.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Camille</text>
+  <rect x="466" y="98" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="520" y="126.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Dario</text>
+  <rect x="696" y="98" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="750" y="126.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Elif</text>
+  <rect x="926" y="98" width="108" height="44" rx="22.0" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="980" y="126.65" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Farah</text>
+  <line x1="118" y1="107.391" x2="229" y2="83.2609" stroke="#2f6db0" stroke-width="4" marker-end="url(#fl-bleu)"/>
+  <line x1="348" y1="82.6087" x2="459" y2="106.739" stroke="#2f6db0" stroke-width="4" marker-end="url(#fl-bleu)"/>
+  <line x1="118" y1="132.609" x2="229" y2="156.739" stroke="#8e44ad" stroke-width="4" marker-end="url(#fl-violet)"/>
+  <line x1="348" y1="157.391" x2="459" y2="133.261" stroke="#8e44ad" stroke-width="4" marker-end="url(#fl-violet)"/>
+  <line x1="578" y1="115" x2="689" y2="115" stroke="#2f6db0" stroke-width="4" marker-end="url(#fl-bleu)"/>
+  <line x1="578" y1="125" x2="689" y2="125" stroke="#8e44ad" stroke-width="4" marker-end="url(#fl-violet)"/>
+  <line x1="808" y1="115" x2="919" y2="115" stroke="#2f6db0" stroke-width="4" marker-end="url(#fl-bleu)"/>
+  <line x1="808" y1="125" x2="919" y2="125" stroke="#8e44ad" stroke-width="4" marker-end="url(#fl-violet)"/>
+  <text x="0" y="22" font-size="19" font-weight="bold" fill="#2f6db0">par Bilal : 4 relations</text>
+  <text x="0" y="228" font-size="19" font-weight="bold" fill="#8e44ad">par Camille : 4 relations</text>
+  <text x="1160" y="22" font-size="19" font-weight="bold" fill="#333" text-anchor="end">SHORTEST 1 : l'un des deux</text>
+  <text x="1160" y="228" font-size="19" font-weight="bold" fill="#333" text-anchor="end">ALL SHORTEST : les deux</text>
 </svg>

@@ -1,69 +1,43 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Les deux jeux de données du TP4. À gauche, le registre de paquets Ruche, parties 1 à 5 : 25 nœuds :Developpeur reliés par MAINTIENT {depuis} à 79 nœuds :Paquet, dont 8 portent aussi le label :Application ; une boucle DEPEND_DE {contrainte} relie un paquet à un autre ; 6 nœuds :Faille reliés par TOUCHE à un paquet. À droite, la médiathèque du TP1, partie 6 : 14 nœuds :Membre reliés par EMPRUNTE {date_emprunt, date_retour_prevue, date_retour} à 43 nœuds :Exemplaire, eux-mêmes reliés par DE à 26 nœuds :Livre ; une boucle PARRAINE relie un membre à un autre.</title>
-  <defs>
-    <marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#27ae60"/></marker>
-    <marker id="fb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
-    <marker id="fr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e74c3c"/></marker>
-    <marker id="fp" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker>
-    <marker id="fn" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2c3e50"/></marker>
-  </defs>
-  <rect x="2" y="2" width="590" height="416" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
-  <text x="20" y="32" font-size="18" font-weight="bold" fill="#333">📦 Registre Ruche (parties 1 à 5)</text>
-  <path d="M134,200 L264,200" fill="none" stroke="#27ae60" stroke-width="3.5" marker-end="url(#fv)"/>
-  <text x="203" y="182" font-size="15" font-weight="bold" font-family="monospace" fill="#1e8449" text-anchor="middle">MAINTIENT</text>
-  <text x="203" y="226" font-size="15" font-family="monospace" fill="#333" text-anchor="middle">{depuis}</text>
-  <path d="M478,200 L372,200" fill="none" stroke="#e74c3c" stroke-width="3.5" marker-end="url(#fr)"/>
-  <text x="422" y="182" font-size="15" font-weight="bold" font-family="monospace" fill="#c0392b" text-anchor="middle">TOUCHE</text>
-  <path d="M290.5,239.3 C223.4,335.2 412.6,335.2 349,244.2" fill="none" stroke="#4a90d9" stroke-width="3.5" marker-end="url(#fb)"/>
-  <text x="372" y="318" font-size="15" font-weight="bold" font-family="monospace" fill="#2a6db5">DEPEND_DE</text>
-  <text x="372" y="338" font-size="15" font-family="monospace" fill="#333">{contrainte}</text>
-  <g>
-  <circle cx="88" cy="200" r="42" fill="#e8f6ec" stroke="#27ae60" stroke-width="2.5"/>
-  <text x="88" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">25</text>
-  <text x="88" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  <text x="88" y="148" font-size="15" font-weight="bold" fill="#1e8449" text-anchor="middle" letter-spacing="0.5">:Developpeur</text>
-  </g>
-  <g>
-  <circle cx="318" cy="200" r="44" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="318" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">79</text>
-  <text x="318" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  </g>
-  <g>
-  <circle cx="522" cy="200" r="40" fill="#fdecea" stroke="#e74c3c" stroke-width="2.5"/>
-  <text x="522" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">6</text>
-  <text x="522" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  <text x="522" y="150" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle" letter-spacing="0.5">:Faille</text>
-  </g>
-  <text x="306" y="142" font-size="15" font-weight="bold" fill="#4a90d9" text-anchor="end" letter-spacing="0.5">:Paquet</text>
-  <rect x="314" y="125" width="150" height="24" rx="12" fill="#ede5f7" stroke="#8e44ad" stroke-width="2"/>
-  <text x="389" y="142" font-size="14" font-weight="bold" fill="#8e44ad" text-anchor="middle">:Application · 8</text>
-  <text x="20" y="396" font-size="14" fill="#777">dont 8 paquets portent aussi le label :Application</text>
-  <rect x="608" y="2" width="590" height="416" rx="10" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
-  <text x="626" y="32" font-size="18" font-weight="bold" fill="#333">📚 Médiathèque du TP1 (partie 6)</text>
-  <path d="M746,200 L856,200" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <text x="805" y="182" font-size="15" font-weight="bold" font-family="monospace" fill="#8e44ad" text-anchor="middle">EMPRUNTE</text>
-  <text x="805" y="226" font-size="15" font-family="monospace" fill="#333" text-anchor="middle">{dates}</text>
-  <path d="M962,200 L1068,200" fill="none" stroke="#2c3e50" stroke-width="3.5" marker-end="url(#fn)"/>
-  <text x="1015" y="182" font-size="15" font-weight="bold" font-family="monospace" fill="#2c3e50" text-anchor="middle">DE</text>
-  <path d="M673.6,237.7 C605.4,335.2 794.6,335.2 729.8,242.6" fill="none" stroke="#8e44ad" stroke-width="3.5" marker-end="url(#fp)"/>
-  <text x="754" y="318" font-size="15" font-weight="bold" font-family="monospace" fill="#8e44ad">PARRAINE</text>
-  <g>
-  <circle cx="700" cy="200" r="42" fill="#ede5f7" stroke="#8e44ad" stroke-width="2.5"/>
-  <text x="700" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">14</text>
-  <text x="700" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  <text x="700" y="148" font-size="15" font-weight="bold" fill="#8e44ad" text-anchor="middle" letter-spacing="0.5">:Membre</text>
-  </g>
-  <g>
-  <circle cx="912" cy="200" r="46" fill="#eaf2fb" stroke="#2c3e50" stroke-width="2.5"/>
-  <text x="912" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">43</text>
-  <text x="912" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  <text x="912" y="144" font-size="15" font-weight="bold" fill="#2c3e50" text-anchor="middle" letter-spacing="0.5">:Exemplaire</text>
-  </g>
-  <g>
-  <circle cx="1120" cy="200" r="42" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="1120" y="199.3" font-size="22" font-weight="bold" fill="#333" text-anchor="middle">26</text>
-  <text x="1120" y="218.1" font-size="14" fill="#555" text-anchor="middle">nœuds</text>
-  <text x="1120" y="148" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle" letter-spacing="0.5">:Livre</text>
-  </g>
-  <text x="626" y="396" font-size="14" fill="#777">{dates} : date_emprunt, date_retour_prevue, date_retour</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Les deux jeux de données du TP4. À gauche, les paquets du registre Ruche, parties 1 à 5 : 25 nœuds :Developpeur reliés par MAINTIENT {depuis} à 79 nœuds :Paquet, dont 8 portent aussi le label :Application ; une boucle DEPEND_DE {contrainte} relie un paquet à un autre ; 6 nœuds :Faille reliés par TOUCHE à un paquet. À droite, la médiathèque du TP1, partie 6 : 14 nœuds :Membre reliés par EMPRUNTE {date_emprunt, date_retour_prevue, date_retour} à 43 nœuds :Exemplaire, eux-mêmes reliés par DE à 26 nœuds :Livre ; une boucle PARRAINE relie un membre à un autre ; s'y ajoutent les auteurs, les catégories et les avis (A_NOTE).</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="0" y="0" width="570" height="328" rx="8" fill="#f7fafd" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="16" y="30" font-size="20" font-weight="bold" fill="#00684a">Les paquets de Ruche · parties 1 à 5</text>
+  <rect x="16" y="84" width="168" height="62" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="100" y="112" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Developpeur</text>
+  <text x="100" y="135" font-size="18" fill="#555" text-anchor="middle">25</text>
+  <rect x="185" y="197" width="230" height="66" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="300" y="227" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Paquet</text>
+  <text x="300" y="250" font-size="18" fill="#555" text-anchor="middle">79, dont 8 :Application</text>
+  <rect x="420" y="84" width="120" height="62" rx="14" fill="#fdeeee" stroke="#c0392b" stroke-width="2.5"/>
+  <text x="480" y="112" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Faille</text>
+  <text x="480" y="135" font-size="18" fill="#555" text-anchor="middle">6</text>
+  <line x1="160.87" y1="150" x2="230.435" y2="190" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="232" y="150" font-size="18" font-weight="bold" fill="#333">MAINTIENT</text>
+  <text x="232" y="174" font-size="18" font-family="monospace" fill="#555">{depuis}</text>
+  <line x1="425.217" y1="150" x2="362.609" y2="190" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="440" y="190" font-size="18" font-weight="bold" fill="#333">TOUCHE</text>
+  <path d="M 186 215 C 136 190, 136 270, 186 247" fill="none" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="16" y="224" font-size="18" font-weight="bold" fill="#333">DEPEND_DE</text>
+  <text x="16" y="248" font-size="18" font-family="monospace" fill="#555">{contrainte}</text>
+  <text x="16" y="314" font-size="18" fill="#555">148 DEPEND_DE · 93 MAINTIENT · 9 TOUCHE</text>
+  <rect x="590" y="0" width="570" height="328" rx="8" fill="#fffaf2" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="606" y="30" font-size="20" font-weight="bold" fill="#00684a">La médiathèque du TP1 · partie 6</text>
+  <rect x="620" y="94" width="140" height="62" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="690" y="122" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Membre</text>
+  <text x="690" y="145" font-size="18" fill="#555" text-anchor="middle">14</text>
+  <rect x="800" y="204" width="160" height="62" rx="14" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="880" y="232" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Exemplaire</text>
+  <text x="880" y="255" font-size="18" fill="#555" text-anchor="middle">43</text>
+  <rect x="1010" y="94" width="120" height="62" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="1070" y="122" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">:Livre</text>
+  <text x="1070" y="145" font-size="18" fill="#555" text-anchor="middle">26</text>
+  <line x1="750.455" y1="160" x2="814.364" y2="197" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="606" y="205" font-size="18" font-weight="bold" fill="#333">EMPRUNTE</text>
+  <text x="606" y="229" font-size="18" font-family="monospace" fill="#555">{dates}</text>
+  <line x1="940.455" y1="200" x2="1004.36" y2="163" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="1010" y="205" font-size="18" font-weight="bold" fill="#333">DE</text>
+  <path d="M 660 92 C 640 44, 740 44, 720 90" fill="none" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <text x="750" y="62" font-size="18" font-weight="bold" fill="#333">PARRAINE</text>
+  <text x="606" y="314" font-size="18" fill="#555">+ :Auteur, :Categorie, les avis (A_NOTE)</text>
 </svg>

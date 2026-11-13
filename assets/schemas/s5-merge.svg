@@ -1,82 +1,40 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 470" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le piège de MERGE, sur l'exemple d'essai, en trois colonnes. Avant : le nœud Gaspard :Personne {ville: 'Nice'}, sans aucune relation, et le nœud Comète :Jeu, qui a déjà 3 fans, Ana, Camille et Farah. Au milieu, en rouge, à éviter : MERGE (p:Personne {nom: 'Gaspard'})-[:AIME {note: 4}]-&gt;(j:Jeu {titre: 'Comète'}). Gaspard n'aime pas encore Comète, le motif entier n'existe pas : MERGE crée un nouveau Gaspard et un nouveau Comète, en pointillés rouges, reliés par AIME {note: 4}. Tout le motif est créé : 2 Gaspard, 2 Comète. À droite, en vert, à suivre : MATCH (g:Personne {nom: 'Gaspard'}) MATCH (j:Jeu {titre: 'Comète'}) MERGE (g)-[:AIME]-&gt;(j). Les deux nœuds existants sont retrouvés, et une seule relation AIME est créée entre le Gaspard et le Comète existants ; relancée, la requête ne change rien.</title>
-  <defs>
-    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
-    <marker id="fr" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e74c3c"/></marker>
-    <marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#27ae60"/></marker>
-  </defs>
-  <rect x="4" y="2" width="390" height="466" rx="12" fill="#f6f8fa" stroke="#cfd8e0" stroke-width="2"/>
-  <text x="20" y="32" font-size="18" font-weight="bold" fill="#333">Avant</text>
-  <g>
-  <circle cx="114" cy="120" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="114" y="125.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
-  <text x="114" y="74" font-size="15" font-weight="bold" fill="#4a90d9" text-anchor="middle" letter-spacing="0.5">:Personne</text>
-  </g>
-  <text x="114" y="180" font-size="15" font-family="monospace" fill="#555" text-anchor="middle">{ville: 'Nice'}</text>
-  <text x="204" y="114" font-size="15" fill="#777">aucune relation</text>
-  <path d="M273.6,280.9 L175.4,322.5" fill="none" stroke="#e8a838" stroke-width="2.5" opacity="0.55" marker-end="url(#fo)"/>
-  <g opacity="0.55">
-  <circle cx="304" cy="268" r="29" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2"/>
-  <text x="304" y="273.2" font-size="15" fill="#333" text-anchor="middle">Ana</text>
-  </g>
-  <path d="M305,340 L179,340" fill="none" stroke="#e8a838" stroke-width="2.5" opacity="0.55" marker-end="url(#fo)"/>
-  <g opacity="0.55">
-  <circle cx="338" cy="340" r="29" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2"/>
-  <text x="338" y="345.2" font-size="15" fill="#333" text-anchor="middle">Camille</text>
-  </g>
-  <path d="M273.6,399.1 L175.4,357.5" fill="none" stroke="#e8a838" stroke-width="2.5" opacity="0.55" marker-end="url(#fo)"/>
-  <g opacity="0.55">
-  <circle cx="304" cy="412" r="29" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2"/>
-  <text x="304" y="417.2" font-size="15" fill="#333" text-anchor="middle">Farah</text>
-  </g>
-  <g>
-  <circle cx="134" cy="340" r="36" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="134" y="345.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
-  <text x="134" y="294" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle" letter-spacing="0.5">:Jeu</text>
-  </g>
-  <text x="20" y="452" font-size="15" fill="#777">Comète a déjà 3 fans</text>
-  <rect x="405" y="2" width="390" height="466" rx="12" fill="#fff8f7" stroke="#e74c3c" stroke-width="2"/>
-  <text x="421" y="32" font-size="18" font-weight="bold" fill="#c0392b">✗ MERGE du motif entier</text>
-  <rect x="419" y="50" width="362" height="85" rx="8" fill="#ffffff" stroke="#e74c3c" stroke-width="2"/>
-  <text x="431" y="77" font-size="15" font-family="monospace" fill="#333">MERGE (p:Personne {nom: 'Gaspard'})</text>
-  <text x="431" y="100" font-size="15" font-family="monospace" fill="#333">&#160;&#160;&#160;&#160;&#160;&#160;-[:AIME {note: 4}]-&gt;</text>
-  <text x="431" y="123" font-size="15" font-family="monospace" fill="#333">&#160;&#160;&#160;&#160;&#160;&#160;(j:Jeu {titre: 'Comète'})</text>
-  <text x="421" y="160" font-size="15" fill="#333">Gaspard n'aime pas encore Comète :</text>
-  <text x="421" y="180" font-size="15" fill="#333">le motif entier n'existe pas.</text>
-  <path d="M525,290 L668,290" fill="none" stroke="#e74c3c" stroke-width="4" marker-end="url(#fr)"/>
-  <text x="600" y="276" font-size="16" font-weight="bold" font-family="monospace" fill="#e74c3c" text-anchor="middle">AIME</text>
-  <text x="600" y="316" font-size="15" font-family="monospace" fill="#333" text-anchor="middle">{note: 4}</text>
-  <g>
-  <circle cx="485" cy="290" r="36" fill="#eaf2fb" stroke="#e74c3c" stroke-width="3" stroke-dasharray="7 5"/>
-  <text x="485" y="295.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
-  </g>
-  <g>
-  <circle cx="715" cy="290" r="36" fill="#fdf3e0" stroke="#e74c3c" stroke-width="3" stroke-dasharray="7 5"/>
-  <text x="715" y="295.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
-  </g>
-  <text x="485" y="350" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">doublon</text>
-  <text x="715" y="350" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">doublon</text>
-  <text x="421" y="428" font-size="17" font-weight="bold" fill="#c0392b">tout le motif est créé :</text>
-  <text x="421" y="452" font-size="17" font-weight="bold" fill="#c0392b">2 Gaspard, 2 Comète</text>
-  <rect x="806" y="2" width="390" height="466" rx="12" fill="#f4fbf6" stroke="#27ae60" stroke-width="2"/>
-  <text x="822" y="32" font-size="18" font-weight="bold" fill="#1e8449">✓ MATCH des nœuds, puis MERGE</text>
-  <rect x="820" y="50" width="362" height="108" rx="8" fill="#ffffff" stroke="#27ae60" stroke-width="2"/>
-  <text x="832" y="77" font-size="15" font-family="monospace" fill="#333">MATCH (g:Personne {nom: 'Gaspard'})</text>
-  <text x="832" y="100" font-size="15" font-family="monospace" fill="#333">MATCH (j:Jeu {titre: 'Comète'})</text>
-  <text x="832" y="123" font-size="15" font-family="monospace" fill="#333">MERGE (g)-[:AIME]-&gt;(j)</text>
-  <text x="822" y="180" font-size="15" fill="#333">les deux nœuds existants sont retrouvés</text>
-  <path d="M926,290 L1069,290" fill="none" stroke="#27ae60" stroke-width="4" marker-end="url(#fv)"/>
-  <text x="1001" y="276" font-size="16" font-weight="bold" font-family="monospace" fill="#1e8449" text-anchor="middle">AIME</text>
-  <g>
-  <circle cx="886" cy="290" r="36" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="886" y="295.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
-  </g>
-  <g>
-  <circle cx="1116" cy="290" r="36" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="1116" y="295.2" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
-  </g>
-  <text x="886" y="350" font-size="15" font-family="monospace" fill="#555" text-anchor="middle">{ville: 'Nice'}</text>
-  <text x="1116" y="350" font-size="15" fill="#777" text-anchor="middle">+ ses 3 fans</text>
-  <text x="822" y="428" font-size="17" font-weight="bold" fill="#1e8449">seule la relation est créée ; relancée,</text>
-  <text x="822" y="452" font-size="17" font-weight="bold" fill="#1e8449">la requête ne change rien</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 330" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le piège de MERGE, sur l'exemple d'essai, en trois colonnes. Avant : le nœud Gaspard, à Nice, sans aucune relation, et le nœud Comète, qui a déjà trois fans. Au milieu, en rouge, à éviter : MERGE (:Personne {nom: 'Gaspard'})-[:AIME]-&gt;(:Jeu {titre: 'Comète'}). Gaspard n'aime pas encore Comète, le motif entier n'existe pas : MERGE crée un nouveau Gaspard et un nouveau Comète, reliés par AIME : 2 Gaspard, 2 Comète. À droite, en vert, à suivre : MATCH (g:Personne {nom: 'Gaspard'}), MATCH (j:Jeu {titre: 'Comète'}), puis MERGE (g)-[:AIME]-&gt;(j) : les deux nœuds existants sont retrouvés, une seule relation AIME est créée entre eux ; relancée, la requête ne change rien.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="0" y="0" width="260" height="328" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="30" font-size="20" font-weight="bold" fill="#333">Avant</text>
+  <rect x="270" y="0" width="440" height="328" rx="8" fill="#fdeeee" stroke="#c0392b" stroke-width="2"/>
+  <text x="284" y="30" font-size="20" font-weight="bold" fill="#c0392b">À éviter</text>
+  <rect x="720" y="0" width="440" height="328" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="734" y="30" font-size="20" font-weight="bold" fill="#00684a">À suivre</text>
+  <rect x="20" y="92" width="140" height="56" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="90" y="117" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
+  <text x="90" y="140" font-size="18" fill="#555" text-anchor="middle">Nice</text>
+  <rect x="110" y="202" width="130" height="56" rx="14" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="175" y="227" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  <text x="175" y="250" font-size="18" fill="#555" text-anchor="middle">3 fans</text>
+  <text x="14" y="310" font-size="18" fill="#555">Gaspard n'aime rien.</text>
+  <text x="282" y="64" font-size="18" font-family="monospace" fill="#333">MERGE (:Personne {nom: 'Gaspard'})</text>
+  <text x="282" y="88" font-size="18" font-family="monospace" fill="#333">  -[:AIME]-&gt;(:Jeu {titre: 'Comète'})</text>
+  <rect x="295" y="134" width="130" height="52" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="360" y="166.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
+  <rect x="295" y="229" width="130" height="52" rx="14" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="360" y="261.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  <rect x="525" y="134" width="130" height="52" rx="14" fill="#fdeeee" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="590" y="166.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
+  <rect x="525" y="229" width="130" height="52" rx="14" fill="#fdeeee" stroke="#c0392b" stroke-width="2.5" stroke-dasharray="6 4"/>
+  <text x="590" y="261.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  <line x1="590" y1="190" x2="590" y2="222" stroke="#c0392b" stroke-width="3" marker-end="url(#fl-rouge)"/>
+  <text x="550" y="212" font-size="18" font-weight="bold" fill="#c0392b" text-anchor="middle">AIME</text>
+  <text x="282" y="312" font-size="18" font-weight="bold" fill="#c0392b">tout est créé : 2 Gaspard, 2 Comète</text>
+  <text x="732" y="64" font-size="18" font-family="monospace" fill="#333">MATCH (g:Personne {nom: 'Gaspard'})</text>
+  <text x="732" y="88" font-size="18" font-family="monospace" fill="#333">MATCH (j:Jeu {titre: 'Comète'})</text>
+  <text x="732" y="112" font-size="18" font-family="monospace" fill="#333">MERGE (g)-[:AIME]-&gt;(j)</text>
+  <rect x="765" y="174" width="130" height="52" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="830" y="206.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Gaspard</text>
+  <rect x="995" y="229" width="130" height="52" rx="14" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="1060" y="261.3" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  <line x1="899" y1="216.5" x2="988" y2="237.783" stroke="#00684a" stroke-width="4" marker-end="url(#fl-vert)"/>
+  <text x="943.5" y="213.141" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">AIME</text>
+  <text x="732" y="312" font-size="18" font-weight="bold" fill="#00684a">une relation ; relancée, rien</text>
 </svg>

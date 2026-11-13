@@ -1,32 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 314" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le principe de MERGE, en organigramme. MERGE motif mène à la question : tout le motif existe ? Si oui, le motif trouvé est renvoyé, et ON MATCH SET s'applique. Si non, tout le motif est créé, et ON CREATE SET s'applique. Note : jamais de cas intermédiaire, une partie trouvée n'est pas réutilisée.</title>
-  <defs>
-    <marker id="fk" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
-    <marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#27ae60"/></marker>
-    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
-  </defs>
-  <rect x="10" y="118" width="200" height="64" rx="10" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="110" y="156" font-size="18" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">MERGE <tspan font-style="italic" font-family="sans-serif" font-weight="normal">motif</tspan></text>
-  <line x1="214" y1="150" x2="275" y2="150" stroke="#555" stroke-width="3" marker-end="url(#fk)"/>
-  <path d="M280,150 L420,86 L560,150 L420,214 z" fill="#fff8e1" stroke="#c77d0a" stroke-width="2.5"/>
-  <text x="420" y="146" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">tout le motif</text>
-  <text x="420" y="168" font-size="17" font-weight="bold" fill="#333" text-anchor="middle">existe ?</text>
-  <path d="M420,82 V54 Q420,42 432,42 H630" fill="none" stroke="#27ae60" stroke-width="3" marker-end="url(#fv)"/>
-  <path d="M420,218 V246 Q420,258 432,258 H630" fill="none" stroke="#e8a838" stroke-width="3" marker-end="url(#fo)"/>
-  <text x="530" y="32" font-size="17" font-weight="bold" fill="#1e8449" text-anchor="middle">oui</text>
-  <text x="530" y="284" font-size="17" font-weight="bold" fill="#b06f00" text-anchor="middle">non</text>
-  <rect x="640" y="10" width="400" height="64" rx="10" fill="#e8f6ec" stroke="#27ae60" stroke-width="2.5"/>
-  <text x="660" y="36" font-size="18" font-weight="bold" fill="#333">le renvoyer</text>
-  <text x="660" y="62" font-size="16" font-weight="bold" font-family="monospace" fill="#1e8449">ON MATCH SET</text>
-  <text x="824" y="62" font-size="15" fill="#555">s'applique</text>
-  <rect x="640" y="226" width="400" height="64" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="660" y="252" font-size="18" font-weight="bold" fill="#333">créer TOUT le motif</text>
-  <text x="660" y="278" font-size="16" font-weight="bold" font-family="monospace" fill="#b06f00">ON CREATE SET</text>
-  <text x="824" y="278" font-size="15" fill="#555">s'applique</text>
-  <rect x="1056" y="88" width="140" height="124" rx="10" fill="#fdecea" stroke="#e74c3c" stroke-width="2"/>
-  <text x="1126" y="114" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">jamais de cas</text>
-  <text x="1126" y="135" font-size="15" font-weight="bold" fill="#c0392b" text-anchor="middle">intermédiaire :</text>
-  <text x="1126" y="156" font-size="15" fill="#c0392b" text-anchor="middle">une partie</text>
-  <text x="1126" y="177" font-size="15" fill="#c0392b" text-anchor="middle">trouvée n'est pas</text>
-  <text x="1126" y="198" font-size="15" fill="#c0392b" text-anchor="middle">réutilisée</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 150" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le principe de MERGE, en organigramme. MERGE motif mène à la question : tout le motif existe-t-il ? Si oui, le motif trouvé est renvoyé, rien n'est créé, et ON MATCH SET s'applique. Si non, tout le motif est créé, et ON CREATE SET s'applique. Jamais de cas intermédiaire : une partie trouvée n'est pas réutilisée.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="0" y="50" width="190" height="50" rx="25" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="95" y="82" font-size="19" font-weight="bold" font-family="monospace" fill="#333" text-anchor="middle">MERGE motif</text>
+  <line x1="194" y1="75" x2="238" y2="75" stroke="#555" stroke-width="3" marker-end="url(#fl-noir)"/>
+  <rect x="244" y="42" width="290" height="66" rx="8" fill="#fff" stroke="#555" stroke-width="2.5"/>
+  <text x="389" y="70" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">tout le motif</text>
+  <text x="389" y="95" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">existe-t-il ?</text>
+  <path d="M 538 60 L 570 30 L 600 30" fill="none" stroke="#00684a" stroke-width="3" marker-end="url(#fl-vert)"/>
+  <path d="M 538 92 L 570 120 L 600 120" fill="none" stroke="#9a6400" stroke-width="3" marker-end="url(#fl-orange)"/>
+  <text x="552" y="22" font-size="18" font-weight="bold" fill="#00684a">oui</text>
+  <text x="552" y="146" font-size="18" font-weight="bold" fill="#9a6400">non</text>
+  <rect x="608" y="4" width="552" height="52" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="622" y="37" font-size="18" fill="#333">il est renvoyé, rien n'est créé ;</text>
+  <text x="1146" y="37" font-size="18" font-weight="bold" font-family="monospace" fill="#00684a" text-anchor="end">ON MATCH SET</text>
+  <rect x="608" y="94" width="552" height="52" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="622" y="127" font-size="18" fill="#333">il est créé en entier ;</text>
+  <text x="1146" y="127" font-size="18" font-weight="bold" font-family="monospace" fill="#9a6400" text-anchor="end">ON CREATE SET</text>
 </svg>

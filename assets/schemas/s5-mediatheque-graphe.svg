@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 340" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">La médiathèque du TP1 en graphe, dans la base du TP4. Trois chaînes en couleur : (:Membre)-[:PARRAINE]-&gt;(:Membre), une boucle, du parrain vers son filleul, 7 parrainages ; (:Membre)-[:EMPRUNTE {date_emprunt, date_retour_prevue, date_retour}]-&gt;(:Exemplaire), 48 emprunts ; (:Exemplaire)-[:DE]-&gt;(:Livre), 43 exemplaires. En gris, le reste : (:Membre)-[:A_NOTE {note}]-&gt;(:Livre), (:Livre)-[:ECRIT_PAR]-&gt;(:Auteur), (:Livre)-[:DANS]-&gt;(:Categorie), (:Categorie)-[:SOUS_CATEGORIE_DE]-&gt;(:Categorie) et (:Livre)-[:SUITE_DE]-&gt;(:Livre). Le titre n'est écrit que dans le livre.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="55" y="119" width="150" height="62" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="130" y="147" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">:Membre</text>
+  <text x="130" y="170" font-size="18" fill="#555" text-anchor="middle">14</text>
+  <rect x="435" y="119" width="170" height="62" rx="14" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="520" y="147" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">:Exemplaire</text>
+  <text x="520" y="170" font-size="18" fill="#555" text-anchor="middle">43</text>
+  <rect x="820" y="119" width="120" height="62" rx="14" fill="#e6f4ee" stroke="#13aa52" stroke-width="2.5"/>
+  <text x="880" y="147" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">:Livre</text>
+  <text x="880" y="170" font-size="18" fill="#555" text-anchor="middle">26</text>
+  <rect x="1025" y="31" width="130" height="50" rx="25.0" fill="#f4f6f8" stroke="#b8c4cf" stroke-width="2.5"/>
+  <text x="1090" y="62.3" font-size="18" fill="#333" text-anchor="middle">:Auteur</text>
+  <rect x="1020" y="225" width="140" height="50" rx="25.0" fill="#f4f6f8" stroke="#b8c4cf" stroke-width="2.5"/>
+  <text x="1090" y="256.3" font-size="18" fill="#333" text-anchor="middle">:Categorie</text>
+  <line x1="209" y1="150" x2="428" y2="150" stroke="#2f6db0" stroke-width="4" marker-end="url(#fl-bleu)"/>
+  <text x="318.5" y="138" font-size="18" font-weight="bold" fill="#2f6db0" text-anchor="middle">EMPRUNTE</text>
+  <text x="325" y="196" font-size="18" font-family="monospace" fill="#555" text-anchor="middle">{date_emprunt,</text>
+  <text x="325" y="220" font-size="18" font-family="monospace" fill="#555" text-anchor="middle">date_retour_prevue,</text>
+  <text x="325" y="244" font-size="18" font-family="monospace" fill="#555" text-anchor="middle">date_retour}</text>
+  <line x1="609" y1="150" x2="813" y2="150" stroke="#9a6400" stroke-width="4" marker-end="url(#fl-orange)"/>
+  <text x="711" y="138" font-size="18" font-weight="bold" fill="#9a6400" text-anchor="middle">DE</text>
+  <path d="M 95 117 C 70 40, 190 40, 165 115" fill="none" stroke="#8e44ad" stroke-width="4" marker-end="url(#fl-violet)"/>
+  <text x="200" y="52" font-size="19" font-weight="bold" fill="#8e44ad">PARRAINE</text>
+  <text x="200" y="76" font-size="18" fill="#555">parrain → filleul</text>
+  <path d="M 130 184 C 160 320, 840 320, 875 186" fill="none" stroke="#9aa5b1" stroke-width="2.5" marker-end="url(#fl-gris)"/>
+  <text x="600" y="300" font-size="18" fill="#888" text-anchor="middle">A_NOTE {note}</text>
+  <line x1="944" y1="121.352" x2="1018.51" y2="88" stroke="#9aa5b1" stroke-width="2.5" marker-end="url(#fl-gris)"/>
+  <text x="1010" y="120" font-size="18" fill="#888">ECRIT_PAR</text>
+  <line x1="944" y1="180.476" x2="1022.8" y2="218" stroke="#9aa5b1" stroke-width="2.5" marker-end="url(#fl-gris)"/>
+  <text x="1000" y="196" font-size="18" fill="#888">DANS</text>
+  <path d="M 850 118 C 830 60, 930 60, 910 116" fill="none" stroke="#9aa5b1" stroke-width="2.5" marker-end="url(#fl-gris)"/>
+  <text x="880" y="52" font-size="18" fill="#888" text-anchor="middle">SUITE_DE</text>
+  <path d="M 1050 276 C 1030 318, 1130 318, 1110 278" fill="none" stroke="#9aa5b1" stroke-width="2.5" marker-end="url(#fl-gris)"/>
+  <text x="1160" y="334" font-size="18" fill="#888" text-anchor="end">SOUS_CATEGORIE_DE</text>
+</svg>

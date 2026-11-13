@@ -1,96 +1,85 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 830" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">L'exemple d'essai : 10 nœuds, 17 relations. Six nœuds :Personne {nom, ville} : Ana (Aix), Bilal (Marseille), Camille (Aix), Dario (Toulon), Elif (Marseille), Farah (Aix). Quatre nœuds :Jeu {titre, joueurs} : Archipel (4 joueurs), Comète (2), Marée haute (5), Sortilège (3). Six relations SUIT, en bleu : Ana suit Bilal et Camille, Bilal et Camille suivent Dario, Dario suit Elif, Elif suit Farah. Onze relations AIME, en orange, avec une note : Ana aime Archipel (5) et Comète (3) ; Bilal aime Archipel (4) et Marée haute (5) ; Camille aime Comète (4) et Sortilège (5) ; Dario aime Marée haute (4) et Sortilège (2) ; Elif aime Archipel (3) et Marée haute (4) ; Farah aime Comète (5).</title>
-  <defs>
-    <marker id="fb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="14" markerHeight="14" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/></marker>
-    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
-  </defs>
-  <text x="20" y="34" font-size="21" font-weight="bold" fill="#00684a">🧪 L'exemple d'essai : des personnes et des jeux</text>
-  <text x="1180" y="34" font-size="16" fill="#555" text-anchor="end">exemple d'essai : 10 nœuds, 17 relations</text>
-  <line x1="690" y1="69" x2="738" y2="69" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <text x="752" y="74" font-size="15" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#2a6db5">SUIT</tspan></text>
-  <line x1="820" y1="69" x2="868" y2="69" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <text x="882" y="74" font-size="15" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#b06f00">AIME {note}</tspan>, la note près de la pointe</text>
-  <path d="M249.9,292.8 L374,363.7" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M249.9,247.2 L374,176.3" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M460.4,368 L593.5,295.4" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M460.4,172 L593.5,244.6" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M686,270 L807,270" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M906,270 L1027,270" fill="none" stroke="#4a90d9" stroke-width="4" marker-end="url(#fb)"/>
-  <path d="M236.7,307.4 L426.9,573.6" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M210,316 L210,563" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M427.9,435.3 L450.2,563.8" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M462.3,408 L907.6,597.7" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M444.2,189.1 L680.1,571.5" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M671,303.9 L921.5,577.9" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M649,315.1 L698.8,564.1" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M872.6,314.2 L944.3,565.2" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M374.9,141 C70,80 20,470 165.3,584.7" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M898.3,295.5 C950,330 1040,440 1040,600 C1040,760 460,790 460,677" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <path d="M1112.5,302.5 C1140,330 1150,460 1150,620 C1150,850 210,860 210,677" fill="none" stroke="#e8a838" stroke-width="2.5" marker-end="url(#fo)"/>
-  <text x="386" y="540.3" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">5</text>
-  <text x="221" y="533" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">3</text>
-  <text x="456.1" y="538.4" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">4</text>
-  <text x="852.1" y="567.1" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">5</text>
-  <text x="652.3" y="552.5" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">5</text>
-  <text x="906" y="549.7" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">4</text>
-  <text x="702.7" y="532.6" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">2</text>
-  <text x="947" y="539.3" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">4</text>
-  <text x="142" y="585.3" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">4</text>
-  <text x="472" y="701" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">3</text>
-  <text x="222" y="701" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">5</text>
-  <g>
-  <circle cx="210" cy="270" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="210" y="267.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
-  <text x="210" y="284.5" font-size="14" fill="#555" text-anchor="middle">Aix</text>
-  </g>
-  <g>
-  <circle cx="420" cy="150" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="420" y="147.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Camille</text>
-  <text x="420" y="164.5" font-size="14" fill="#555" text-anchor="middle">Aix</text>
-  </g>
-  <g>
-  <circle cx="420" cy="390" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="420" y="387.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Bilal</text>
-  <text x="420" y="404.5" font-size="14" fill="#555" text-anchor="middle">Marseille</text>
-  </g>
-  <g>
-  <circle cx="640" cy="270" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="640" y="267.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Dario</text>
-  <text x="640" y="284.5" font-size="14" fill="#555" text-anchor="middle">Toulon</text>
-  </g>
-  <g>
-  <circle cx="860" cy="270" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="860" y="267.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Elif</text>
-  <text x="860" y="284.5" font-size="14" fill="#555" text-anchor="middle">Marseille</text>
-  </g>
-  <g>
-  <circle cx="1080" cy="270" r="42" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
-  <text x="1080" y="267.2" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">Farah</text>
-  <text x="1080" y="284.5" font-size="14" fill="#555" text-anchor="middle">Aix</text>
-  </g>
-  <g>
-  <circle cx="210" cy="620" r="48" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="210" y="616.9" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
-  <text x="210" y="633.9" font-size="14" fill="#555" text-anchor="middle">2 joueurs</text>
-  </g>
-  <g>
-  <circle cx="460" cy="620" r="48" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="460" y="616.9" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Archipel</text>
-  <text x="460" y="633.9" font-size="14" fill="#555" text-anchor="middle">4 joueurs</text>
-  </g>
-  <g>
-  <circle cx="710" cy="620" r="48" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="710" y="616.9" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Sortilège</text>
-  <text x="710" y="633.9" font-size="14" fill="#555" text-anchor="middle">3 joueurs</text>
-  </g>
-  <g>
-  <circle cx="960" cy="620" r="48" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="960" y="616.9" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">Marée haute</text>
-  <text x="960" y="633.9" font-size="14" fill="#555" text-anchor="middle">5 joueurs</text>
-  </g>
-  <text x="20" y="130" font-size="16" font-weight="bold" fill="#4a90d9" letter-spacing="0.5">:Personne</text>
-  <text x="20" y="150" font-size="15" font-family="monospace" fill="#555">{nom, ville}</text>
-  <text x="20" y="612" font-size="16" font-weight="bold" fill="#b06f00" letter-spacing="0.5">:Jeu</text>
-  <text x="20" y="632" font-size="15" font-family="monospace" fill="#555">{titre,</text>
-  <text x="20" y="650" font-size="15" font-family="monospace" fill="#555">&#160;joueurs}</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 360" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">L'exemple d'essai : 10 nœuds, 17 relations. À gauche, les six nœuds :Personne {nom, ville} et les six relations SUIT : Ana (Aix) suit Bilal (Marseille) et Camille (Aix) ; Bilal et Camille suivent Dario (Toulon) ; Dario suit Elif (Marseille) ; Elif suit Farah (Aix). À droite, les quatre nœuds :Jeu {titre, joueurs} et les onze relations AIME {note}, en tableau : Archipel (4 joueurs) est aimé par Ana (note 5), Bilal (4) et Elif (3) ; Comète (2 joueurs) par Ana (3), Camille (4) et Farah (5) ; Marée haute (5 joueurs) par Bilal (5), Dario (4) et Elif (4) ; Sortilège (3 joueurs) par Camille (5) et Dario (2).</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="0" y="0" width="560" height="358" rx="8" fill="#f7fafd" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="16" y="32" font-size="19" font-weight="bold" font-family="monospace" fill="#2f6db0">(:Personne)-[:SUIT]-&gt;(:Personne)</text>
+  <rect x="20" y="120" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="82" y="147" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Ana</text>
+  <text x="82" y="170" font-size="18" fill="#555" text-anchor="middle">Aix</text>
+  <rect x="170" y="52" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="232" y="79" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Bilal</text>
+  <text x="232" y="102" font-size="18" fill="#555" text-anchor="middle">Marseille</text>
+  <rect x="170" y="192" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="232" y="219" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Camille</text>
+  <text x="232" y="242" font-size="18" fill="#555" text-anchor="middle">Aix</text>
+  <rect x="320" y="120" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="382" y="147" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Dario</text>
+  <text x="382" y="170" font-size="18" fill="#555" text-anchor="middle">Toulon</text>
+  <rect x="412" y="210" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="474" y="237" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Elif</text>
+  <text x="474" y="260" font-size="18" fill="#555" text-anchor="middle">Marseille</text>
+  <rect x="238" y="282" width="124" height="60" rx="14" fill="#e3eefa" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="300" y="309" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Farah</text>
+  <text x="300" y="332" font-size="18" fill="#555" text-anchor="middle">Aix</text>
+  <line x1="148" y1="120.08" x2="163" y2="113.28" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <line x1="148" y1="181.68" x2="163" y2="188.88" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <line x1="298" y1="111.92" x2="313" y2="118.72" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <line x1="298" y1="190.32" x2="313" y2="183.12" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <line x1="416.756" y1="184" x2="436.178" y2="203" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <line x1="408" y1="267.31" x2="369" y2="283.448" stroke="#2f6db0" stroke-width="3" marker-end="url(#fl-bleu)"/>
+  <rect x="590" y="0" width="570" height="358" rx="8" fill="#fffaf2" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="606" y="32" font-size="19" font-weight="bold" font-family="monospace" fill="#9a6400">(:Personne)-[:AIME {note}]-&gt;(:Jeu)</text>
+  <rect x="706" y="48" width="104" height="58" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="758" y="72" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Archipel</text>
+  <text x="758" y="96" font-size="18" fill="#555" text-anchor="middle">4 joueurs</text>
+  <rect x="818" y="48" width="104" height="58" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="870" y="72" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Comète</text>
+  <text x="870" y="96" font-size="18" fill="#555" text-anchor="middle">2 joueurs</text>
+  <rect x="930" y="48" width="104" height="58" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="982" y="72" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Marée haute</text>
+  <text x="982" y="96" font-size="18" fill="#555" text-anchor="middle">5 joueurs</text>
+  <rect x="1042" y="48" width="104" height="58" rx="10" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="1094" y="72" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Sortilège</text>
+  <text x="1094" y="96" font-size="18" fill="#555" text-anchor="middle">3 joueurs</text>
+  <text x="606" y="142" font-size="19" font-weight="bold" fill="#2f6db0">Ana</text>
+  <circle cx="758" cy="136" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="758" y="143" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">5</text>
+  <circle cx="870" cy="136" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="870" y="143" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">3</text>
+  <text x="982" y="142" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="1094" y="142" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="606" y="180" font-size="19" font-weight="bold" fill="#2f6db0">Bilal</text>
+  <circle cx="758" cy="174" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="758" y="181" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">4</text>
+  <text x="870" y="180" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="982" cy="174" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="982" y="181" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">5</text>
+  <text x="1094" y="180" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="606" y="218" font-size="19" font-weight="bold" fill="#2f6db0">Camille</text>
+  <text x="758" y="218" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="870" cy="212" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="870" y="219" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">4</text>
+  <text x="982" y="218" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="1094" cy="212" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="1094" y="219" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">5</text>
+  <text x="606" y="256" font-size="19" font-weight="bold" fill="#2f6db0">Dario</text>
+  <text x="758" y="256" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="870" y="256" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="982" cy="250" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="982" y="257" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">4</text>
+  <circle cx="1094" cy="250" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="1094" y="257" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">2</text>
+  <text x="606" y="294" font-size="19" font-weight="bold" fill="#2f6db0">Elif</text>
+  <circle cx="758" cy="288" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="758" y="295" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">3</text>
+  <text x="870" y="294" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="982" cy="288" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="982" y="295" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">4</text>
+  <text x="1094" y="294" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="606" y="332" font-size="19" font-weight="bold" fill="#2f6db0">Farah</text>
+  <text x="758" y="332" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <circle cx="870" cy="326" r="17" fill="#ffffff" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="870" y="333" font-size="19" font-weight="bold" fill="#9a6400" text-anchor="middle">5</text>
+  <text x="982" y="332" font-size="22" fill="#bbb" text-anchor="middle">·</text>
+  <text x="1094" y="332" font-size="22" fill="#bbb" text-anchor="middle">·</text>
 </svg>

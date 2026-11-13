@@ -1,61 +1,37 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 335" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">MATCH et OPTIONAL MATCH sur le graphe SUIT de l'exemple d'essai. À gauche, MATCH (p)&lt;-[:SUIT]-(a), comme un JOIN : six lignes (p, a), Bilal Ana, Camille Ana, Dario Bilal, Dario Camille, Elif Dario, Farah Elif ; Ana, que personne ne suit, disparaît. À droite, OPTIONAL MATCH (p)&lt;-[:SUIT]-(a), comme un LEFT JOIN : les mêmes six lignes, plus la ligne Ana, null, surlignée : Ana est gardée et a vaut null. En dessous : count(a) donne 0 pour Ana, en vert, car null n'est pas compté ; count(*) donne 1, en rouge, car il compte la ligne.</title>
-  <defs>
-    
-  </defs>
-  <text x="140" y="32" font-size="17" font-weight="bold" font-family="monospace" fill="#333">MATCH (p)&lt;-[:SUIT]-(a)</text>
-  <rect x="140" y="50" width="360" height="182" rx="8" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="141" y="51" width="358" height="27" rx="7" fill="#f0f4f8"/>
-  <text x="156" y="70" font-size="15" font-weight="bold" font-family="monospace" fill="#777">p</text>
-  <text x="340" y="70" font-size="15" font-weight="bold" font-family="monospace" fill="#777">a</text>
-  <text x="156" y="97" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="340" y="97" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="156" y="122" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="340" y="122" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="156" y="147" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="340" y="147" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="156" y="172" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="340" y="172" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="156" y="197" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="340" y="197" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="156" y="222" font-size="15" font-family="monospace" fill="#333">Farah</text>
-  <text x="340" y="222" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="140" y="258" font-size="15" font-weight="bold" fill="#777">comme un JOIN en SQL</text>
-  <text x="20" y="96" font-size="17" font-weight="bold" font-family="monospace" fill="#c0392b">Ana</text>
-  <line x1="16" y1="90" x2="56" y2="90" stroke="#c0392b" stroke-width="2.5"/>
-  <text x="20" y="120" font-size="15" font-weight="bold" fill="#c0392b">Ana</text>
-  <text x="20" y="140" font-size="15" font-weight="bold" fill="#c0392b">disparaît</text>
-  <text x="20" y="166" font-size="14" fill="#777">personne</text>
-  <text x="20" y="184" font-size="14" fill="#777">ne la suit</text>
-  <text x="600" y="32" font-size="17" font-weight="bold" font-family="monospace" fill="#333">OPTIONAL MATCH (p)&lt;-[:SUIT]-(a)</text>
-  <rect x="600" y="50" width="400" height="207" rx="8" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="601" y="51" width="398" height="27" rx="7" fill="#f0f4f8"/>
-  <text x="616" y="70" font-size="15" font-weight="bold" font-family="monospace" fill="#777">p</text>
-  <text x="800" y="70" font-size="15" font-weight="bold" font-family="monospace" fill="#777">a</text>
-  <rect x="604" y="80" width="392" height="23" rx="5" fill="#fff3c4" stroke="#e8a838" stroke-width="2"/>
-  <text x="616" y="97" font-size="15" font-weight="bold" font-family="monospace" fill="#333">Ana</text>
-  <text x="800" y="97" font-size="15" font-weight="bold" font-family="monospace" fill="#999" font-style="italic">null</text>
-  <text x="616" y="122" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="800" y="122" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="616" y="147" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="800" y="147" font-size="15" font-family="monospace" fill="#333">Ana</text>
-  <text x="616" y="172" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="800" y="172" font-size="15" font-family="monospace" fill="#333">Bilal</text>
-  <text x="616" y="197" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="800" y="197" font-size="15" font-family="monospace" fill="#333">Camille</text>
-  <text x="616" y="222" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="800" y="222" font-size="15" font-family="monospace" fill="#333">Dario</text>
-  <text x="616" y="247" font-size="15" font-family="monospace" fill="#333">Farah</text>
-  <text x="800" y="247" font-size="15" font-family="monospace" fill="#333">Elif</text>
-  <text x="1012" y="180" font-size="15" font-weight="bold" fill="#777">comme un LEFT</text>
-  <text x="1012" y="199" font-size="15" font-weight="bold" fill="#777">JOIN en SQL</text>
-  <text x="1012" y="97" font-size="15" font-weight="bold" fill="#b06f00">← Ana gardée,</text>
-  <text x="1012" y="117" font-size="15" font-weight="bold" fill="#b06f00">a vaut null</text>
-  <rect x="600" y="269" width="200" height="34" rx="8" fill="#e8f6ec" stroke="#27ae60" stroke-width="2"/>
-  <text x="700" y="291" font-size="15" font-weight="bold" font-family="monospace" fill="#1e8449" text-anchor="middle">count(a) → Ana : 0</text>
-  <rect x="820" y="269" width="200" height="34" rx="8" fill="#fdecea" stroke="#e74c3c" stroke-width="2"/>
-  <text x="920" y="291" font-size="15" font-weight="bold" font-family="monospace" fill="#c0392b" text-anchor="middle">count(*) → Ana : 1</text>
-  <text x="584" y="291" font-size="15" font-weight="bold" fill="#333" text-anchor="end">compter Ana :</text>
-  <text x="700" y="323" font-size="14" fill="#555" text-anchor="middle">null n'est pas compté</text>
-  <text x="920" y="323" font-size="14" fill="#555" text-anchor="middle">compte la ligne</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 196" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">MATCH et OPTIONAL MATCH sur le graphe SUIT de l'exemple d'essai, pour chaque personne p et ses abonnés a. À gauche, MATCH (p)&lt;-[:SUIT]-(a), comme un JOIN : six lignes (p ← a) : Bilal ← Ana, Camille ← Ana, Dario ← Bilal, Dario ← Camille, Elif ← Dario, Farah ← Elif ; Ana, que personne ne suit, disparaît. À droite, OPTIONAL MATCH (p)&lt;-[:SUIT]-(a), comme un LEFT JOIN : les mêmes six lignes, plus la ligne Ana ← null, surlignée : Ana est gardée, et a vaut null. count(a) ne compte pas null : 0 pour Ana ; count(*) compte la ligne : 1.</title>
+  <defs><marker id="fl-bleu" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#2f6db0"/></marker><marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker><marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker><marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker><marker id="fl-violet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#8e44ad"/></marker><marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9aa5b1"/></marker><marker id="fl-noir" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <rect x="0" y="0" width="570" height="194" rx="8" fill="#f7fafd" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="28" font-size="19" font-weight="bold" fill="#333">MATCH : comme un JOIN</text>
+  <rect x="14" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="101" y="69" font-size="18" fill="#333" text-anchor="middle">Bilal ← Ana</text>
+  <rect x="198" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="285" y="69" font-size="18" fill="#333" text-anchor="middle">Camille ← Ana</text>
+  <rect x="382" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="469" y="69" font-size="18" fill="#333" text-anchor="middle">Dario ← Bilal</text>
+  <rect x="14" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="101" y="115" font-size="18" fill="#333" text-anchor="middle">Dario ← Camille</text>
+  <rect x="198" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="285" y="115" font-size="18" fill="#333" text-anchor="middle">Elif ← Dario</text>
+  <rect x="382" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="469" y="115" font-size="18" fill="#333" text-anchor="middle">Farah ← Elif</text>
+  <text x="14" y="180" font-size="18" font-weight="bold" fill="#c0392b">Ana, que personne ne suit, disparaît.</text>
+  <rect x="590" y="0" width="570" height="194" rx="8" fill="#fffaf2" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="604" y="28" font-size="19" font-weight="bold" fill="#333">OPTIONAL MATCH : comme un LEFT JOIN</text>
+  <rect x="604" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="691" y="69" font-size="18" fill="#333" text-anchor="middle">Bilal ← Ana</text>
+  <rect x="788" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="875" y="69" font-size="18" fill="#333" text-anchor="middle">Camille ← Ana</text>
+  <rect x="972" y="44" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="1059" y="69" font-size="18" fill="#333" text-anchor="middle">Dario ← Bilal</text>
+  <rect x="604" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="691" y="115" font-size="18" fill="#333" text-anchor="middle">Dario ← Camille</text>
+  <rect x="788" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="875" y="115" font-size="18" fill="#333" text-anchor="middle">Elif ← Dario</text>
+  <rect x="972" y="90" width="174" height="36" rx="18" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="1059" y="115" font-size="18" fill="#333" text-anchor="middle">Farah ← Elif</text>
+  <rect x="604" y="136" width="174" height="36" rx="18" fill="#fdf3e0" stroke="#9a6400" stroke-width="2.5"/>
+  <text x="691" y="161" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">Ana ← null</text>
+  <text x="970" y="160" font-size="18" font-weight="bold" font-family="monospace" fill="#00684a">count(a) : 0</text>
+  <text x="970" y="184" font-size="18" font-weight="bold" font-family="monospace" fill="#c0392b">count(*) : 1</text>
 </svg>
