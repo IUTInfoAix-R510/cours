@@ -1,5 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 332" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le pattern Computed sur les podcasts. En haut, le chemin d'écriture : un nouveau commentaire sur E1 est inséré dans commentaires, puis $inc: { nbCommentaires: 1 } augmente de 1 le compteur rangé dans l'épisode E1 (2 devient 3). En bas, le chemin de lecture : la page de l'épisode lit E1, qui contient déjà nbCommentaires: 3 ; aucun commentaire n'est relu. À droite, en pointillés : un recalcul par lot, de temps en temps, recompte les commentaires et compare au compteur.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 336" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le pattern Computed sur les podcasts. En haut, le chemin d'écriture : un nouveau commentaire sur E1, K6, est inséré dans commentaires, puis $inc: { nbCommentaires: 1 } augmente de 1 le compteur rangé dans l'épisode E1 (3 devient 4). En bas, le chemin de lecture : la page de l'épisode lit E1, qui contient déjà nbCommentaires: 4 ; aucun commentaire n'est relu. À droite, en pointillés : un recalcul par lot, de temps en temps, recompte les commentaires et compare au compteur.</title>
   <defs>
     <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
     <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
@@ -7,58 +7,58 @@
   </defs>
 
   <!-- chemin d'écriture -->
-  <text x="2" y="22" font-size="16" font-weight="bold" fill="#b06f00">chemin d'écriture</text>
+  <text x="2" y="22" font-size="19" font-weight="bold" fill="#b06f00">chemin d'écriture</text>
   <rect x="2" y="32" width="248" height="74" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="16" y="62" font-size="16" font-weight="bold" fill="#333">nouveau commentaire</text>
-  <text x="16" y="86" font-size="15" fill="#555">sur l'épisode E1</text>
+  <text x="16" y="62" font-size="19" font-weight="bold" fill="#333">nouveau commentaire</text>
+  <text x="16" y="86" font-size="18" fill="#555">sur l'épisode E1</text>
 
-  <path d="M254,46 H786 Q796,46 796,56 V131 Q796,141 806,141 H839" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fla)"/>
+  <path d="M254,46 H756 Q766,46 766,56 V131 Q766,141 776,141 H789" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fla)"/>
   <circle cx="300" cy="27" r="12" fill="#00684a"/>
-  <text x="300" y="33" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-  <text x="320" y="33" font-family="monospace" font-size="15" font-weight="bold" fill="#b06f00">insertOne</text>
+  <text x="300" y="33" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
+  <text x="320" y="33" font-family="monospace" font-size="18" font-weight="bold" fill="#b06f00">insertOne</text>
 
-  <path d="M254,92 H532 Q542,92 542,102 V112" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fla)"/>
+  <path d="M254,92 H540 Q550,92 550,102 V112" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fla)"/>
   <circle cx="300" cy="69" r="12" fill="#00684a"/>
-  <text x="300" y="75" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-  <text x="320" y="75" font-family="monospace" font-size="15" font-weight="bold" fill="#b06f00">$inc: { nbCommentaires: 1 }</text>
+  <text x="300" y="75" font-size="18" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
+  <text x="320" y="75" font-family="monospace" font-size="18" font-weight="bold" fill="#b06f00">$inc: { nbCommentaires: 1 }</text>
 
   <!-- collection commentaires -->
-  <rect x="850" y="8" width="308" height="160" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="864" y="36" font-size="21" font-weight="bold" fill="#00684a">commentaires</text>
-  <rect x="862" y="50" width="284" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="862" y="88" width="284" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="862" y="126" width="284" height="30" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="874" y="70">{ _id: "K1", episode: "E1" }</text>
-    <text x="874" y="108">{ _id: "K2", episode: "E1" }</text>
-    <text x="874" y="146">{ _id: <tspan font-weight="bold">"K3"</tspan>, episode: "E1" }</text>
+  <rect x="800" y="8" width="358" height="160" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="814" y="36" font-size="23" font-weight="bold" fill="#00684a">commentaires</text>
+  <rect x="812" y="50" width="334" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
+  <rect x="812" y="88" width="334" height="30" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
+  <rect x="812" y="126" width="334" height="30" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="822" y="71">{ _id: "K2", episode: "E1" }</text>
+    <text x="822" y="109">{ _id: "K3", episode: "E1" }</text>
+    <text x="822" y="147">{ _id: <tspan font-weight="bold">"K6"</tspan>, episode: "E1" }</text>
   </g>
 
   <!-- collection episodes -->
-  <rect x="390" y="122" width="310" height="178" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="404" y="150" font-size="21" font-weight="bold" fill="#00684a">episodes</text>
-  <rect x="402" y="162" width="286" height="126" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="414" y="186" font-family="monospace" font-size="15" fill="#333">_id: <tspan font-weight="bold">"E1"</tspan>,</text>
-  <text x="414" y="208" font-family="monospace" font-size="15" fill="#333">titre: "Les trous noirs", …</text>
-  <rect x="410" y="224" width="270" height="46" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
-  <text x="422" y="253" font-family="monospace" font-size="16" fill="#333">nbCommentaires: <tspan fill="#777" text-decoration="line-through">2</tspan><tspan font-family="sans-serif" fill="#555"> → </tspan><tspan font-weight="bold" fill="#b06f00">3</tspan></text>
+  <rect x="380" y="122" width="350" height="178" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="394" y="150" font-size="23" font-weight="bold" fill="#00684a">episodes</text>
+  <rect x="392" y="162" width="326" height="126" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="404" y="187" font-family="monospace" font-size="18" fill="#333">_id: <tspan font-weight="bold">"E1"</tspan>,</text>
+  <text x="404" y="210" font-family="monospace" font-size="18" fill="#333">titre: "Les trous noirs", …</text>
+  <rect x="400" y="224" width="310" height="46" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
+  <text x="412" y="254" font-family="monospace" font-size="19" fill="#333">nbCommentaires: <tspan fill="#777" text-decoration="line-through">3</tspan><tspan font-family="sans-serif" fill="#555"> → </tspan><tspan font-weight="bold" fill="#b06f00">4</tspan></text>
 
   <!-- chemin de lecture -->
-  <text x="2" y="212" font-size="16" font-weight="bold" fill="#00684a">chemin de lecture</text>
+  <text x="2" y="212" font-size="19" font-weight="bold" fill="#00684a">chemin de lecture</text>
   <rect x="2" y="224" width="248" height="68" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="16" y="252" font-size="16" font-weight="bold" fill="#333">page de l'épisode E1</text>
-  <text x="16" y="276" font-size="15" fill="#555">affiche le nombre</text>
-  <line x1="254" y1="258" x2="378" y2="258" stroke="#13aa52" stroke-width="3.5" marker-end="url(#flv)"/>
-  <text x="268" y="244" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a">findOne</text>
+  <text x="16" y="252" font-size="19" font-weight="bold" fill="#333">page de l'épisode E1</text>
+  <text x="16" y="276" font-size="18" fill="#555">affiche le nombre</text>
+  <line x1="254" y1="258" x2="368" y2="258" stroke="#13aa52" stroke-width="3.5" marker-end="url(#flv)"/>
+  <text x="268" y="244" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">findOne</text>
 
   <!-- recalcul par lot -->
-  <rect x="850" y="208" width="308" height="92" rx="8" fill="#ffffff" stroke="#777" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="864" y="234" font-size="16" font-weight="bold" fill="#555">recalcul par lot</text>
-  <text x="864" y="258" font-size="15" fill="#555">de temps en temps : recompte les</text>
-  <text x="864" y="280" font-size="15" fill="#555">commentaires, compare au compteur</text>
-  <line x1="1004" y1="172" x2="1004" y2="198" stroke="#777" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flg)"/>
-  <line x1="704" y1="254" x2="840" y2="254" stroke="#777" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flg)"/>
+  <rect x="800" y="204" width="358" height="100" rx="8" fill="#ffffff" stroke="#777" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="814" y="230" font-size="19" font-weight="bold" fill="#555">recalcul par lot</text>
+  <text x="814" y="256" font-size="18" fill="#555">de temps en temps : recompte les</text>
+  <text x="814" y="282" font-size="18" fill="#555">commentaires, compare au compteur</text>
+  <line x1="979" y1="172" x2="979" y2="194" stroke="#777" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flg)"/>
+  <line x1="734" y1="254" x2="790" y2="254" stroke="#777" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#flg)"/>
 
   <!-- légende -->
-  <text x="2" y="324" font-size="15" fill="#555">La lecture trouve le compteur <tspan font-weight="bold" fill="#333">déjà calculé</tspan> dans E1 : <tspan font-weight="bold" fill="#333">aucun commentaire n'est relu</tspan>.</text>
+  <text x="2" y="328" font-size="18" fill="#555">La lecture trouve le compteur <tspan font-weight="bold" fill="#333">déjà calculé</tspan> dans E1 : <tspan font-weight="bold" fill="#333">aucun commentaire n'est relu</tspan>.</text>
 </svg>

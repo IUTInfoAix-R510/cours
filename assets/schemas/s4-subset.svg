@@ -1,75 +1,79 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 310" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Le pattern Subset sur les podcasts. À gauche, l'épisode E1 embarque un tableau derniersCommentaires de 2 éléments (auteur, note, date), les plus récents. À droite, la collection commentaires garde tous les commentaires (K1, K2, K3...). Chemin de lecture, en vert : la page de l'épisode lit le seul document E1. Chemin de lecture rare, en gris : « tous les commentaires » lit la collection commentaires. Chemin d'écriture, en orange : un nouveau commentaire est inséré dans commentaires ET ajouté au tableau de l'épisode, qui garde les 2 plus récents.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 384" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le pattern Subset sur les podcasts. Au centre gauche, l'épisode E1 dans la collection episodes embarque un tableau derniersCommentaires de 2 éléments, les plus récents : { auteur: ana, note: 4, … } et { auteur: sam, note: 3, … }. Au centre droit, la collection commentaires garde tous les commentaires (K1, K2, K3…). À gauche, en vert, la lecture fréquente : la page de l'épisode lit le seul document E1. À droite, en gris, la lecture rare : la liste complète lit la collection commentaires. En bas, en orange, l'écriture : un nouveau commentaire est inséré dans commentaires et ajouté au tableau de l'épisode, qui garde les 2 plus récents.</title>
   <defs>
-    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
-    <marker id="flg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
-    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="12" markerHeight="12" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
+    <marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
+    <marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#888"/></marker>
+    <marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
   </defs>
 
-  <!-- Lecture fréquente : la page de l'épisode -->
-  <rect x="2" y="40" width="160" height="60" rx="8" fill="#ffffff" stroke="#13aa52" stroke-width="2.5"/>
-  <text x="82" y="75" font-size="15" font-weight="bold" fill="#333" text-anchor="middle">page de l'épisode</text>
-  <text x="2" y="128" font-size="15" font-weight="bold" fill="#13aa52">lecture fréquente</text>
-  <text x="2" y="148" font-size="14" fill="#555">lit le seul document E1</text>
-  <line x1="166" y1="70" x2="186" y2="70" stroke="#13aa52" stroke-width="3.5" marker-end="url(#flv)"/>
+  <!-- Lecture fréquente -->
+  <rect x="2" y="104" width="166" height="76" rx="8" fill="#ffffff" stroke="#13aa52" stroke-width="2.5"/>
+  <g font-size="19" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="85" y="137">page de</text>
+    <text x="85" y="161">l'épisode</text>
+  </g>
+  <text x="2" y="208" font-size="18" font-weight="bold" fill="#00684a">lecture fréquente</text>
+  <text x="2" y="231" font-size="18" fill="#444">1 seul document</text>
+  <line x1="172" y1="142" x2="196" y2="142" stroke="#13aa52" stroke-width="3.5" marker-end="url(#fv)"/>
 
-  <!-- Collection episodes -->
-  <rect x="196" y="2" width="400" height="234" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
-  <text x="210" y="30" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">episodes</text>
-  <text x="584" y="30" font-size="14" fill="#555" text-anchor="end">2 éléments, les plus récents</text>
-  <rect x="208" y="42" width="376" height="184" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="220" y="66">_id: "E1", titre: "Les trous noirs",</text>
-    <text x="220" y="90">emission: "Sciences en poche", …</text>
+  <!-- episodes -->
+  <rect x="202" y="8" width="460" height="290" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="218" y="40" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a">episodes</text>
+  <rect x="216" y="54" width="432" height="232" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="230" y="82">_id: "E1",</text>
+    <text x="230" y="106">titre: "Les trous noirs", …</text>
   </g>
-  <rect x="218" y="102" width="356" height="112" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="228" y="124" font-family="monospace" font-size="15" font-weight="bold" fill="#333">derniersCommentaires: [</text>
-  <g fill="#ffffff" stroke="#e8a838" stroke-width="1.5">
-    <rect x="230" y="134" width="332" height="32" rx="6"/>
-    <rect x="230" y="172" width="332" height="32" rx="6"/>
-  </g>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="242" y="155">{ auteur: "ana", note: 4, date }</text>
-    <text x="242" y="193">{ auteur: "sam", note: 3, date }</text>
+  <rect x="228" y="120" width="408" height="154" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+  <text x="242" y="147" font-family="monospace" font-size="18" font-weight="bold" fill="#333">derniersCommentaires: [</text>
+  <rect x="242" y="160" width="380" height="44" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <rect x="242" y="216" width="380" height="44" rx="6" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="256" y="188">{ auteur: "ana", note: 4, … }</text>
+    <text x="256" y="244">{ auteur: "sam", note: 3, … }</text>
   </g>
 
-  <!-- Collection commentaires -->
-  <rect x="676" y="2" width="290" height="234" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
-  <text x="690" y="30" font-family="monospace" font-size="21" font-weight="bold" fill="#00684a">commentaires</text>
-  <text x="952" y="30" font-size="14" fill="#555" text-anchor="end">tous</text>
-  <g fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5">
-    <rect x="688" y="44" width="266" height="32" rx="6"/>
-    <rect x="688" y="84" width="266" height="32" rx="6"/>
-    <rect x="688" y="124" width="266" height="32" rx="6"/>
+  <!-- commentaires -->
+  <rect x="722" y="8" width="262" height="290" rx="10" fill="#f0f4f8" stroke="#00684a" stroke-width="2.5"/>
+  <text x="738" y="40" font-family="monospace" font-size="22" font-weight="bold" fill="#00684a">commentaires</text>
+  <g fill="#ffffff" stroke="#b7c2cc" stroke-width="1.5">
+    <rect x="736" y="56" width="234" height="40" rx="6"/>
+    <rect x="736" y="106" width="234" height="40" rx="6"/>
+    <rect x="736" y="156" width="234" height="40" rx="6"/>
   </g>
-  <rect x="688" y="164" width="266" height="32" rx="6" fill="none" stroke="#b8c4cf" stroke-width="1.5" stroke-dasharray="5 4"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="700" y="65">_id: "K1", episode: "E1", …</text>
-    <text x="700" y="105">_id: "K2", episode: "E1", …</text>
-    <text x="700" y="145">_id: "K3", episode: "E1", …</text>
+  <rect x="736" y="206" width="234" height="40" rx="6" fill="none" stroke="#b7c2cc" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="750" y="82">_id: "K1", …</text>
+    <text x="750" y="132">_id: "K2", …</text>
+    <text x="750" y="182">_id: "K3", …</text>
   </g>
-  <text x="821" y="185" font-size="15" fill="#777" text-anchor="middle">…</text>
+  <text x="853" y="232" font-size="18" fill="#888" text-anchor="middle">…</text>
+  <text x="738" y="280" font-size="18" fill="#444">tous, sans limite</text>
 
-  <!-- Lecture rare : tous les commentaires -->
-  <rect x="1000" y="40" width="158" height="60" rx="8" fill="#ffffff" stroke="#999" stroke-width="2.5"/>
-  <g font-size="15" font-weight="bold" fill="#333" text-anchor="middle">
-    <text x="1079" y="66">tous les</text>
-    <text x="1079" y="86">commentaires</text>
+  <!-- Lecture rare -->
+  <rect x="1004" y="104" width="154" height="76" rx="8" fill="#ffffff" stroke="#888" stroke-width="2.5"/>
+  <g font-size="19" font-weight="bold" fill="#333" text-anchor="middle">
+    <text x="1081" y="137">liste</text>
+    <text x="1081" y="161">complète</text>
   </g>
-  <text x="1000" y="128" font-size="15" font-weight="bold" fill="#777">lecture rare</text>
-  <text x="1000" y="148" font-size="14" fill="#555">lit la collection</text>
-  <line x1="996" y1="70" x2="976" y2="70" stroke="#999" stroke-width="3.5" marker-end="url(#flg)"/>
+  <text x="1004" y="208" font-size="18" font-weight="bold" fill="#666">lecture rare</text>
+  <text x="1004" y="231" font-size="18" fill="#444">la collection</text>
+  <line x1="1000" y1="142" x2="992" y2="142" stroke="#888" stroke-width="3.5" marker-end="url(#fg)"/>
 
-  <!-- Écriture : un nouveau commentaire -->
-  <rect x="546" y="258" width="180" height="48" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
-  <text x="636" y="279" font-size="15" font-weight="bold" fill="#b06f00" text-anchor="middle">nouveau commentaire</text>
-  <text x="636" y="298" font-size="14" fill="#555" text-anchor="middle">écrit à deux endroits</text>
-  <g fill="none" stroke="#e8a838" stroke-width="3.5">
-    <path d="M542,281 H472 Q452,281 452,261 V246" marker-end="url(#fla)"/>
-    <path d="M730,281 H800 Q820,281 820,261 V246" marker-end="url(#fla)"/>
+  <!-- Écriture -->
+  <rect x="456" y="320" width="248" height="60" rx="8" fill="#fdf3e0" stroke="#e8a838" stroke-width="2.5"/>
+  <g text-anchor="middle">
+    <text x="580" y="344" font-size="18" font-weight="bold" fill="#9a6400">nouveau commentaire</text>
+    <text x="580" y="368" font-size="18" fill="#444">écrit deux fois</text>
   </g>
-  <text x="440" y="266" font-size="14" font-weight="bold" fill="#b06f00" text-anchor="end">ajouté au tableau,</text>
-  <text x="440" y="284" font-size="14" fill="#555" text-anchor="end">qui garde les 2 plus récents</text>
-  <text x="832" y="266" font-size="14" font-weight="bold" fill="#b06f00">inséré</text>
-  <text x="832" y="284" font-size="14" fill="#555">dans la collection</text>
+  <path d="M456,350 L432,350 L432,310" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <path d="M704,350 L852,350 L852,310" fill="none" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <g font-size="18" text-anchor="end">
+    <text x="418" y="334" font-weight="bold" fill="#9a6400">ajouté au tableau,</text>
+    <text x="418" y="357" fill="#444">qui garde les 2 plus récents</text>
+  </g>
+  <g font-size="18">
+    <text x="866" y="334" font-weight="bold" fill="#9a6400">inséré</text>
+    <text x="866" y="357" fill="#444">dans la collection</text>
+  </g>
 </svg>

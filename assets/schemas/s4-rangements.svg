@@ -1,114 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 286" font-family="sans-serif" role="img" aria-labelledby="t">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 324" font-family="sans-serif" role="img" aria-labelledby="t">
   <title id="t">Cinq façons de ranger une relation, chacune avec la forme de document qu'elle produit, sur les podcasts. Embarquer : l'épisode contient un document imbriqué (ses intervenants). Référencer : le commentaire contient episode: "E1", l'_id de l'épisode, rangé ailleurs. Sous-ensemble : l'épisode contient ses 2 derniers commentaires, et tous les commentaires restent dans leur collection. Calcul : l'épisode contient nbCommentaires: 3, calculé à chaque écriture. Bucket : un document par épisode et par jour contient le tableau des mesures d'écoute de ce jour.</title>
   <defs>
     <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#999"/></marker>
   </defs>
-
-  <!-- En-têtes : deux rangements du TP1, trois patterns -->
-  <g stroke-width="2">
-    <rect x="2" y="2" width="216" height="56" rx="8" fill="#f0f4f8" stroke="#b8c4cf"/>
-    <rect x="237" y="2" width="216" height="56" rx="8" fill="#f0f4f8" stroke="#b8c4cf"/>
-    <rect x="472" y="2" width="216" height="56" rx="8" fill="#e6f4ee" stroke="#13aa52"/>
-    <rect x="707" y="2" width="216" height="56" rx="8" fill="#e6f4ee" stroke="#13aa52"/>
-    <rect x="942" y="2" width="216" height="56" rx="8" fill="#e6f4ee" stroke="#13aa52"/>
-  </g>
-  <g font-size="18" font-weight="bold" fill="#333">
-    <text x="16" y="28">Embarquer</text>
-    <text x="251" y="28">Référencer</text>
-    <text x="486" y="28">Sous-ensemble</text>
-    <text x="721" y="28">Calcul</text>
-    <text x="956" y="28">Bucket</text>
-  </g>
-  <g font-size="14">
-    <text x="16" y="48" fill="#555">vu au TP1</text>
-    <text x="251" y="48" fill="#555">vu au TP1</text>
-    <text x="486" y="48" fill="#00684a" font-weight="bold">pattern Subset</text>
-    <text x="721" y="48" fill="#00684a" font-weight="bold">pattern Computed</text>
-    <text x="956" y="48" fill="#00684a" font-weight="bold">pattern Bucket</text>
-  </g>
-
-  <!-- Collections -->
-  <g font-family="monospace" font-size="15" font-weight="bold" fill="#00684a">
-    <text x="4" y="82">episodes</text>
-    <text x="239" y="82">commentaires</text>
-    <text x="474" y="82">episodes</text>
-    <text x="709" y="82">episodes</text>
-    <text x="944" y="82">ecoutes_par_jour</text>
-  </g>
-
-  <!-- 1 : embarquer -->
-  <rect x="2" y="92" width="216" height="144" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="10" y="148" width="200" height="80" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="14" y="116">_id: "E1",</text>
-    <text x="14" y="138">titre: "…",</text>
-    <text x="20" y="168">intervenants: [</text>
-    <text x="37" y="190">{ nom, role },</text>
-    <text x="37" y="212">{ nom, role } ]</text>
-  </g>
-
-  <!-- 2 : référencer -->
-  <rect x="237" y="92" width="216" height="74" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="244" y="120" width="146" height="22" rx="5" fill="#f0f4f8" stroke="#999" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="249" y="114">_id: "K1",</text>
-    <text x="249" y="136" font-weight="bold">episode: "E1",</text>
-    <text x="249" y="158">auteur, note, date</text>
-  </g>
-  <line x1="317" y1="170" x2="317" y2="197" stroke="#999" stroke-width="3" stroke-dasharray="6 4.5" marker-end="url(#fl)"/>
-  <rect x="257" y="206" width="176" height="32" rx="7" fill="none" stroke="#b8c4cf" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="345" y="227" font-size="14" fill="#555" text-anchor="middle">E1, dans <tspan font-family="monospace">episodes</tspan></text>
-
-  <!-- 3 : sous-ensemble -->
-  <rect x="472" y="92" width="216" height="104" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="480" y="124" width="200" height="64" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="484" y="116">_id: "E1",</text>
-    <text x="488" y="142">derniersCommentaires:</text>
-  </g>
-  <g fill="#ffffff" stroke="#e8a838" stroke-width="1.5">
-    <rect x="510" y="150" width="70" height="28" rx="5"/>
-    <rect x="590" y="150" width="70" height="28" rx="5"/>
-  </g>
-  <g font-size="14" font-weight="bold" fill="#333" text-anchor="middle">
-    <text x="545" y="169">K3</text>
-    <text x="625" y="169">K2</text>
-  </g>
-  <rect x="490" y="206" width="180" height="32" rx="7" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="580" y="227" font-size="14" fill="#555" text-anchor="middle">tous dans <tspan font-family="monospace" fill="#00684a" font-weight="bold">commentaires</tspan></text>
-
-  <!-- 4 : calcul -->
-  <rect x="707" y="92" width="216" height="84" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="714" y="144" width="202" height="24" rx="5" fill="#e6f4ee" stroke="#13aa52" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="719" y="116">_id: "E1",</text>
-    <text x="719" y="138">titre: "…",</text>
-    <text x="719" y="161" font-weight="bold">nbCommentaires: 3</text>
-  </g>
-
-  <!-- 5 : bucket -->
-  <rect x="942" y="92" width="216" height="144" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="950" y="166" width="200" height="62" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="954" y="114">_id: "E1-2026-09-08",</text>
-    <text x="954" y="135">episode: "E1", jour,</text>
-    <text x="954" y="156">nb: 2, max: 52,</text>
-    <text x="958" y="184">mesures: [</text>
-    <text x="975" y="203">{ t, auditeurs },</text>
-    <text x="975" y="222">{ t, auditeurs } ]</text>
-  </g>
-
-  <!-- Légendes -->
-  <g font-size="14" fill="#555">
-    <text x="2" y="260">l'épisode contient</text>
-    <text x="2" y="278">un document imbriqué</text>
-    <text x="237" y="260">le commentaire garde l'<tspan font-family="monospace">_id</tspan></text>
-    <text x="237" y="278">de l'épisode, rangé ailleurs</text>
-    <text x="472" y="260">les 2 derniers dans l'épisode,</text>
-    <text x="472" y="278">tous dans leur collection</text>
-    <text x="707" y="260">un compteur dans l'épisode,</text>
-    <text x="707" y="278">calculé à chaque écriture</text>
-    <text x="942" y="260">un document par épisode</text>
-    <text x="942" y="278">et par jour, avec ses mesures</text>
-  </g>
+  <rect x="2" y="2" width="222" height="60" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="14" y="28" font-size="20" font-weight="bold" fill="#333">Embarquer</text>
+  <text x="14" y="52" font-size="18" fill="#555">vu en S2</text>
+  <rect x="236" y="2" width="222" height="60" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="248" y="28" font-size="20" font-weight="bold" fill="#333">Référencer</text>
+  <text x="248" y="52" font-size="18" fill="#555">vu en S2</text>
+  <rect x="470" y="2" width="222" height="60" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="482" y="28" font-size="20" font-weight="bold" fill="#333">Sous-ensemble</text>
+  <text x="482" y="52" font-size="18" font-weight="bold" fill="#00684a">pattern Subset</text>
+  <rect x="704" y="2" width="222" height="60" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="716" y="28" font-size="20" font-weight="bold" fill="#333">Calcul</text>
+  <text x="716" y="52" font-size="18" font-weight="bold" fill="#00684a">pattern Computed</text>
+  <rect x="938" y="2" width="222" height="60" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="950" y="28" font-size="20" font-weight="bold" fill="#333">Bucket</text>
+  <text x="950" y="52" font-size="18" font-weight="bold" fill="#00684a">pattern Bucket</text>
+  <text x="4" y="88" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">episodes</text>
+  <text x="238" y="88" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">commentaires</text>
+  <text x="472" y="88" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">episodes</text>
+  <text x="706" y="88" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">episodes</text>
+  <text x="940" y="88" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">ecoutes_par_jour</text>
+  <rect x="2" y="98" width="222" height="162" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="10" y="158" width="206" height="94" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="1.5"/>
+  <text x="14" y="124" font-family="monospace" font-size="18" fill="#333">_id: "E1",</text>
+  <text x="14" y="148" font-family="monospace" font-size="18" fill="#333">titre: "…",</text>
+  <text x="18" y="180" font-family="monospace" font-size="18" fill="#333">intervenants: [</text>
+  <text x="32" y="204" font-family="monospace" font-size="18" fill="#333">{ nom, role },</text>
+  <text x="32" y="228" font-family="monospace" font-size="18" fill="#333">{ nom, role } ]</text>
+  <rect x="236" y="98" width="222" height="84" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="244" y="130" width="168" height="24" rx="5" fill="#f0f4f8" stroke="#999" stroke-width="1.5"/>
+  <text x="248" y="122" font-family="monospace" font-size="18" fill="#333">_id: "K1",</text>
+  <text x="248" y="148" font-family="monospace" font-size="18" fill="#333" font-weight="bold">episode: "E1",</text>
+  <text x="248" y="174" font-family="monospace" font-size="18" fill="#333">auteur, note…</text>
+  <line x1="328" y1="186" x2="328" y2="206" stroke="#999" stroke-width="3" stroke-dasharray="6 4" marker-end="url(#fl)"/>
+  <rect x="252" y="214" width="190" height="38" rx="7" fill="none" stroke="#b8c4cf" stroke-width="2" stroke-dasharray="6 4"/>
+  <text x="347" y="239" font-size="18" fill="#555" text-anchor="middle">E1, dans <tspan font-family="monospace">episodes</tspan></text>
+  <rect x="470" y="98" width="222" height="116" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="478" y="132" width="206" height="74" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="482" y="124" font-family="monospace" font-size="18" fill="#333">_id: "E1",</text>
+  <text x="482" y="154" font-family="monospace" font-size="18" fill="#333" letter-spacing="-1">derniersCommentaires</text>
+  <rect x="500" y="164" width="76" height="32" rx="5" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="538" y="187" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">K3</text>
+  <rect x="586" y="164" width="76" height="32" rx="5" fill="#ffffff" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="624" y="187" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">K2</text>
+  <rect x="486" y="222" width="190" height="38" rx="7" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="581" y="247" font-size="18" fill="#555" text-anchor="middle">tous à part</text>
+  <rect x="704" y="98" width="222" height="94" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="710" y="156" width="210" height="28" rx="5" fill="#e6f4ee" stroke="#13aa52" stroke-width="1.5"/>
+  <text x="716" y="124" font-family="monospace" font-size="18" fill="#333">_id: "E1",</text>
+  <text x="716" y="148" font-family="monospace" font-size="18" fill="#333">titre: "…",</text>
+  <text x="716" y="177" font-family="monospace" font-size="18" fill="#333" font-weight="bold">nbCommentaires: 3</text>
+  <rect x="938" y="98" width="222" height="164" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
+  <rect x="946" y="182" width="206" height="72" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="1.5"/>
+  <text x="946" y="122" font-family="monospace" font-size="18" fill="#333" letter-spacing="-1.6">_id: "E1-2026-09-08"</text>
+  <text x="950" y="146" font-family="monospace" font-size="18" fill="#333">episode: "E1",</text>
+  <text x="950" y="170" font-family="monospace" font-size="18" fill="#333">nb: 2, max: 52,</text>
+  <text x="950" y="202" font-family="monospace" font-size="18" fill="#333">mesures: [</text>
+  <text x="954" y="224" font-family="monospace" font-size="18" fill="#333">{ t, auditeurs },</text>
+  <text x="954" y="246" font-family="monospace" font-size="18" fill="#333">{ t, auditeurs } ]</text>
+  <text x="2" y="290" font-size="18" fill="#555">un document imbriqué</text>
+  <text x="2" y="314" font-size="18" fill="#555">dans l'épisode</text>
+  <text x="236" y="290" font-size="18" fill="#555">l'<tspan font-family="monospace">_id</tspan> de l'épisode,</text>
+  <text x="236" y="314" font-size="18" fill="#555">rangé ailleurs</text>
+  <text x="470" y="290" font-size="18" fill="#555">les 2 derniers ici,</text>
+  <text x="470" y="314" font-size="18" fill="#555">tous à part</text>
+  <text x="704" y="290" font-size="18" fill="#555">un compteur, calculé</text>
+  <text x="704" y="314" font-size="18" fill="#555">à chaque écriture</text>
+  <text x="938" y="290" font-size="18" fill="#555">un document par jour,</text>
+  <text x="938" y="314" font-size="18" fill="#555">avec ses mesures</text>
 </svg>

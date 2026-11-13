@@ -1,92 +1,48 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 332" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Une collection time series. À gauche, ce que l'on écrit et ce que l'on lit : une mesure par document, { t, episode, auditeurs }, comme une collection ordinaire. À droite, ce que MongoDB range en interne : des buckets, un par valeur du metaField (episode) et par tranche de temps ; chaque bucket garde le minimum et le maximum de chaque champ (control), la valeur du metaField (meta) et les mesures rangées par colonne et compressées (data). Au milieu, deux flèches : MongoDB regroupe seul, à l'écriture ; il découpe à la lecture.</title>
-  <defs>
-    <marker id="fla" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker>
-    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
-  </defs>
-
-  <!-- en-têtes -->
-  <text x="2" y="20" font-size="16" font-weight="bold" fill="#333">ce que l'on écrit et ce que l'on lit</text>
-  <text x="2" y="40" font-size="14" fill="#555">une mesure par document, comme une collection ordinaire</text>
-  <text x="560" y="20" font-size="16" font-weight="bold" fill="#333">ce que MongoDB range en interne : des buckets</text>
-  <text x="560" y="40" font-size="14" fill="#555">un par valeur du metaField (<tspan font-family="monospace">episode</tspan>) et par tranche de temps</text>
-
-  <!-- les mesures -->
-  <g font-family="monospace" font-size="13" fill="#333">
-    <rect x="2" y="64" width="394" height="28" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="12" y="83">{ t: 07/09 23:50, episode: <tspan font-weight="bold" fill="#8e44ad">"E1"</tspan>, auditeurs: 40 }</text>
-    <rect x="2" y="98" width="394" height="28" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="12" y="117">{ t: 08/09 00:10, episode: <tspan font-weight="bold" fill="#8e44ad">"E1"</tspan>, auditeurs: 35 }</text>
-    <rect x="2" y="132" width="394" height="28" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="12" y="151">{ t: 08/09 07:30, episode: <tspan font-weight="bold" fill="#8e44ad">"E1"</tspan>, auditeurs: 52 }</text>
-    <rect x="2" y="206" width="394" height="28" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="12" y="225">{ t: 10/09 19:00, episode: <tspan font-weight="bold" fill="#8e44ad">"E4"</tspan>, auditeurs: 18 }</text>
-    <rect x="2" y="240" width="394" height="28" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="12" y="259">{ t: 10/09 19:30, episode: <tspan font-weight="bold" fill="#8e44ad">"E4"</tspan>, auditeurs: 21 }</text>
-  </g>
-
-  <!-- au milieu : écriture puis lecture -->
-  <g font-size="14" text-anchor="middle">
-    <text x="478" y="80" font-weight="bold" fill="#b06f00">MongoDB regroupe</text>
-    <text x="478" y="98" fill="#b06f00">seul, à l'écriture</text>
-    <text x="478" y="264" font-weight="bold" fill="#00684a">il découpe</text>
-    <text x="478" y="282" fill="#00684a">à la lecture</text>
-  </g>
-  <line x1="400" y1="112" x2="550" y2="112" stroke="#e8a838" stroke-width="3" marker-end="url(#fla)"/>
-  <line x1="554" y1="238" x2="405" y2="238" stroke="#13aa52" stroke-width="3" marker-end="url(#flv)"/>
-
-  <!-- bucket E1 -->
-  <rect x="560" y="54" width="598" height="114" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="572" y="75" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold" fill="#00684a">meta</tspan>: <tspan font-weight="bold" fill="#8e44ad">"E1"</tspan></text>
-  <text x="1146" y="75" font-size="13" fill="#777" text-anchor="end">un bucket interne, 3 mesures</text>
-  <rect x="570" y="82" width="328" height="78" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="13" fill="#333">
-    <text x="580" y="99" font-weight="bold" fill="#00684a">control</text>
-    <text x="580" y="117">min: { t: 07/09 00:00, auditeurs: 35 }</text>
-    <text x="580" y="135">max: { t: 08/09 07:30, auditeurs: 52 }</text>
-    <text x="580" y="153">count: 3</text>
-  </g>
-  <rect x="906" y="82" width="242" height="78" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5"/>
-  <text x="916" y="99" font-family="monospace" font-size="13" font-weight="bold" fill="#00684a">data <tspan font-family="sans-serif" font-weight="normal" fill="#555">colonnes compressées</tspan></text>
-  <g font-size="13" fill="#333">
-    <text x="916" y="126" font-family="monospace">t</text>
-    <text x="916" y="150" font-family="monospace">auditeurs</text>
-  </g>
-  <g fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5">
-    <rect x="994" y="108" width="48" height="24"/><rect x="1042" y="108" width="48" height="24"/><rect x="1090" y="108" width="48" height="24"/>
-    <rect x="994" y="132" width="48" height="24"/><rect x="1042" y="132" width="48" height="24"/><rect x="1090" y="132" width="48" height="24"/>
-  </g>
-  <g font-family="monospace" font-size="13" fill="#333" text-anchor="middle">
-    <text x="1018" y="125">23:50</text><text x="1066" y="125">00:10</text><text x="1114" y="125">07:30</text>
-    <text x="1018" y="149">40</text><text x="1066" y="149">35</text><text x="1114" y="149">52</text>
-  </g>
-
-  <!-- bucket E4 -->
-  <rect x="560" y="180" width="598" height="114" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="572" y="201" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold" fill="#00684a">meta</tspan>: <tspan font-weight="bold" fill="#8e44ad">"E4"</tspan></text>
-  <text x="1146" y="201" font-size="13" fill="#777" text-anchor="end">un bucket interne, 2 mesures</text>
-  <rect x="570" y="208" width="328" height="78" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5"/>
-  <g font-family="monospace" font-size="13" fill="#333">
-    <text x="580" y="225" font-weight="bold" fill="#00684a">control</text>
-    <text x="580" y="243">min: { t: 10/09 00:00, auditeurs: 18 }</text>
-    <text x="580" y="261">max: { t: 10/09 19:30, auditeurs: 21 }</text>
-    <text x="580" y="279">count: 2</text>
-  </g>
-  <rect x="906" y="208" width="242" height="78" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="1.5"/>
-  <text x="916" y="225" font-family="monospace" font-size="13" font-weight="bold" fill="#00684a">data <tspan font-family="sans-serif" font-weight="normal" fill="#555">colonnes compressées</tspan></text>
-  <g font-size="13" fill="#333">
-    <text x="916" y="252" font-family="monospace">t</text>
-    <text x="916" y="276" font-family="monospace">auditeurs</text>
-  </g>
-  <g fill="#f0f4f8" stroke="#b8c4cf" stroke-width="1.5">
-    <rect x="994" y="234" width="48" height="24"/><rect x="1042" y="234" width="48" height="24"/>
-    <rect x="994" y="258" width="48" height="24"/><rect x="1042" y="258" width="48" height="24"/>
-  </g>
-  <g font-family="monospace" font-size="13" fill="#333" text-anchor="middle">
-    <text x="1018" y="251">19:00</text><text x="1066" y="251">19:30</text>
-    <text x="1018" y="275">18</text><text x="1066" y="275">21</text>
-  </g>
-
-  <!-- légende -->
-  <text x="2" y="322" font-size="15" fill="#555">Collection <tspan font-family="monospace" fill="#333">ecoutes_ts</tspan>, <tspan font-family="monospace" fill="#333">granularity: "hours"</tspan> : <tspan font-weight="bold" fill="#333">5 mesures</tspan> écrites, <tspan font-weight="bold" fill="#333">2 buckets</tspan> internes, dates en UTC.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 380" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Une collection time series. À gauche, ce que l'on écrit et ce que l'on lit : une mesure par document, comme dans une collection ordinaire (E1 le 7 septembre à 23 h 50, 40 auditeurs ; E1 le 8 à 0 h 10, 35 ; E1 le 8 à 7 h 30, 52 ; E4 le 10 à 19 h, 18 ; E4 le 10 à 19 h 30, 21). À droite, ce que MongoDB range en interne : des buckets, un par valeur du metaField (l'épisode) et par tranche de temps, avec la granularité hours. Le bucket de E1 garde ses 3 mesures : control.min { t: 7 septembre 0 h, auditeurs: 35 }, control.max { t: 8 septembre 7 h 30, auditeurs: 52 }, count: 3, et data, les mesures rangées par colonne et compressées. Le bucket de E4 garde 2 mesures : min { t: 10 septembre 0 h, auditeurs: 18 }, max { t: 10 septembre 19 h 30, auditeurs: 21 }, count: 2. Au milieu : MongoDB regroupe seul, à l'écriture ; il découpe à la lecture.</title>
+  <defs><marker id="fo" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#e8a838"/></marker><marker id="fv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker></defs>
+  <text x="2" y="22" font-size="19" font-weight="bold" fill="#333">ce que l'on écrit et lit</text>
+  <text x="2" y="46" font-size="18" fill="#444">une mesure par document</text>
+  <text x="568" y="22" font-size="19" font-weight="bold" fill="#333">ce que MongoDB range : des buckets internes</text>
+  <text x="568" y="46" font-size="18" fill="#444">par épisode (metaField) et par tranche de temps</text>
+  <rect x="2" y="64" width="350" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="16" y="92" font-size="19" font-weight="bold" fill="#333">E1</text>
+  <text x="62" y="92" font-size="18" fill="#333"><tspan font-weight="bold">7 sept.</tspan>, 23 h 50</text>
+  <text x="338" y="92" font-size="18" fill="#333" text-anchor="end"><tspan font-weight="bold">40</tspan> auditeurs</text>
+  <rect x="2" y="114" width="350" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="16" y="142" font-size="19" font-weight="bold" fill="#333">E1</text>
+  <text x="62" y="142" font-size="18" fill="#333"><tspan font-weight="bold">8 sept.</tspan>, 0 h 10</text>
+  <text x="338" y="142" font-size="18" fill="#333" text-anchor="end"><tspan font-weight="bold">35</tspan> auditeurs</text>
+  <rect x="2" y="164" width="350" height="42" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="16" y="192" font-size="19" font-weight="bold" fill="#333">E1</text>
+  <text x="62" y="192" font-size="18" fill="#333"><tspan font-weight="bold">8 sept.</tspan>, 7 h 30</text>
+  <text x="338" y="192" font-size="18" fill="#333" text-anchor="end"><tspan font-weight="bold">52</tspan> auditeurs</text>
+  <rect x="2" y="264" width="350" height="42" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="16" y="292" font-size="19" font-weight="bold" fill="#333">E4</text>
+  <text x="62" y="292" font-size="18" fill="#333"><tspan font-weight="bold">10 sept.</tspan>, 19 h 00</text>
+  <text x="338" y="292" font-size="18" fill="#333" text-anchor="end"><tspan font-weight="bold">18</tspan> auditeurs</text>
+  <rect x="2" y="314" width="350" height="42" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="16" y="342" font-size="19" font-weight="bold" fill="#333">E4</text>
+  <text x="62" y="342" font-size="18" fill="#333"><tspan font-weight="bold">10 sept.</tspan>, 19 h 30</text>
+  <text x="338" y="342" font-size="18" fill="#333" text-anchor="end"><tspan font-weight="bold">21</tspan> auditeurs</text>
+  <line x1="360" y1="134" x2="552" y2="134" stroke="#e8a838" stroke-width="3.5" marker-end="url(#fo)"/>
+  <text x="458" y="112" font-size="18" font-weight="bold" fill="#9a6400" text-anchor="middle">MongoDB regroupe</text>
+  <text x="458" y="162" font-size="18" fill="#9a6400" text-anchor="middle">à l'écriture</text>
+  <line x1="552" y1="310" x2="360" y2="310" stroke="#13aa52" stroke-width="3.5" marker-end="url(#fv)"/>
+  <text x="458" y="288" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">il découpe</text>
+  <text x="458" y="338" font-size="18" fill="#00684a" text-anchor="middle">à la lecture</text>
+  <rect x="566" y="58" width="592" height="140" rx="9" fill="#f0f4f8" stroke="#4a90d9" stroke-width="2"/>
+  <text x="582" y="86" font-family="monospace" font-size="19" font-weight="bold" fill="#00684a">meta: <tspan fill="#8e44ad">"E1"</tspan></text>
+  <text x="1144" y="86" font-size="18" fill="#666" text-anchor="end">un bucket interne, 3 mesures</text>
+  <rect x="580" y="98" width="564" height="62" rx="6" fill="#ffffff" stroke="#b7c2cc" stroke-width="1.5"/>
+  <text x="594" y="122" font-family="monospace" font-size="18" fill="#333"><tspan font-weight="bold" fill="#00684a">control</tspan>.min: { t: 07/09 00:00, auditeurs: 35 }</text>
+  <text x="594" y="148" font-family="monospace" font-size="18" fill="#333"><tspan font-weight="bold" fill="#00684a">control</tspan>.max: { t: 08/09 07:30, auditeurs: 52 }</text>
+  <text x="594" y="186" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">control</tspan><tspan font-family="monospace">.count: 3</tspan>   ·   <tspan font-family="monospace" font-weight="bold" fill="#00684a">data</tspan> : en colonnes compressées</text>
+  <rect x="566" y="236" width="592" height="140" rx="9" fill="#f0f4f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="582" y="264" font-family="monospace" font-size="19" font-weight="bold" fill="#00684a">meta: <tspan fill="#8e44ad">"E4"</tspan></text>
+  <text x="1144" y="264" font-size="18" fill="#666" text-anchor="end">un bucket interne, 2 mesures</text>
+  <rect x="580" y="276" width="564" height="62" rx="6" fill="#ffffff" stroke="#b7c2cc" stroke-width="1.5"/>
+  <text x="594" y="300" font-family="monospace" font-size="18" fill="#333"><tspan font-weight="bold" fill="#00684a">control</tspan>.min: { t: 10/09 00:00, auditeurs: 18 }</text>
+  <text x="594" y="326" font-family="monospace" font-size="18" fill="#333"><tspan font-weight="bold" fill="#00684a">control</tspan>.max: { t: 10/09 19:30, auditeurs: 21 }</text>
+  <text x="594" y="364" font-size="18" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">control</tspan><tspan font-family="monospace">.count: 2</tspan>   ·   <tspan font-family="monospace" font-weight="bold" fill="#00684a">data</tspan> : en colonnes compressées</text>
 </svg>
