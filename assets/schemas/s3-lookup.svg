@@ -1,90 +1,56 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 344" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Mécanisme de $lookup: { from: "realisateurs", localField: "realisateur", foreignField: "nom", as: "r" }, montré sur deux films. Pour chaque film : 1, on prend la valeur de son champ realisateur (localField) ; 2, on compare cette valeur au champ nom (foreignField) de chaque document de la collection realisateurs (from) ; 3, les documents égaux sont rangés dans un tableau r (as), ajouté au film, qui garde ses autres champs. Le Voyage de Chihiro, réalisateur "Miyazaki" : parmi Miyazaki, Varda et Jeunet, seul Miyazaki est égal, r contient { nom: "Miyazaki", pays: "Japon" }. La Haine, réalisateur "Kassovitz" : aucun nom n'est égal, r est un tableau vide. Le même travail est fait pour chaque film : r reçoit 0, 1 ou plusieurs documents, toujours dans un tableau.</title>
-  <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
-    <marker id="flv" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#13aa52"/></marker>
-    <marker id="flg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#b8c4cf"/></marker>
-  </defs>
-
-  <!-- le code -->
-  <text x="2" y="24" font-family="monospace" font-size="17" fill="#333">{ <tspan fill="#00684a" font-weight="bold">$lookup</tspan>: { from: "realisateurs", localField: "<tspan fill="#4a90d9" font-weight="bold">realisateur</tspan>", foreignField: "<tspan font-weight="bold">nom</tspan>", as: "<tspan fill="#00684a" font-weight="bold">r</tspan>" } }</text>
-
-  <!-- en-têtes des étapes -->
-  <text x="120" y="62" font-size="15" fill="#555" text-anchor="middle">chaque film</text>
-  <circle cx="262" cy="56" r="12" fill="#00684a"/>
-  <text x="262" y="62" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-  <text x="280" y="62" font-size="15" font-weight="bold" fill="#00684a">sa valeur</text>
-  <circle cx="420" cy="56" r="12" fill="#00684a"/>
-  <text x="420" y="62" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-  <text x="438" y="62" font-size="14" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">foreignField</tspan> : dans <tspan font-family="monospace">realisateurs</tspan>, <tspan font-family="monospace" font-weight="bold">nom</tspan> égal ?</text>
-  <circle cx="806" cy="56" r="12" fill="#00684a"/>
-  <text x="806" y="62" font-size="15" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
-  <text x="824" y="62" font-size="15" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">r</tspan> : les documents égaux, ajoutés au film</text>
-
-  <!-- ligne 1 : Le Voyage de Chihiro (2001, bleu) -->
-  <rect x="2" y="80" width="236" height="94" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="14" y="104" font-size="16" font-weight="bold" fill="#333">Le Voyage de Chihiro</text>
-  <text x="14" y="128" font-family="monospace" font-size="14" fill="#333">annee: 2001, …</text>
-  <rect x="8" y="136" width="224" height="28" rx="6" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="14" y="155" font-family="monospace" font-size="14" fill="#333">realisateur: <tspan fill="#4a90d9" font-weight="bold">"Miyazaki"</tspan></text>
-  <line x1="242" y1="150" x2="253" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="262" y="135" width="120" height="30" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="322" y="156" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">"Miyazaki"</text>
-  <line x1="386" y1="150" x2="397" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-
-  <rect x="406" y="74" width="360" height="106" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="416" y="82" width="292" height="28" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="426" y="101" font-family="monospace" font-size="15" fill="#333">nom: <tspan font-weight="bold" fill="#00684a">"Miyazaki"</tspan>, pays: "Japon"</text>
-  <text x="738" y="103" font-size="22" font-weight="bold" fill="#00684a" text-anchor="middle">=</text>
-  <rect x="416" y="114" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="426" y="133" font-family="monospace" font-size="15" fill="#777">nom: "Varda", pays: "France"</text>
-  <text x="738" y="135" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
-  <rect x="416" y="146" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="426" y="165" font-family="monospace" font-size="15" fill="#777">nom: "Jeunet", pays: "France"</text>
-  <text x="738" y="167" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
-
-  <path d="M752,96 H763 Q772,96 772,105 V141 Q772,150 781,150 L782,150" fill="none" stroke="#13aa52" stroke-width="2.4" marker-end="url(#flv)"/>
-
-  <rect x="792" y="80" width="366" height="94" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="804" y="104" font-size="16" font-weight="bold" fill="#333">Le Voyage de Chihiro</text>
-  <text x="804" y="128" font-size="14" fill="#555">ses autres champs, inchangés</text>
-  <text x="804" y="155" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold" fill="#00684a">r</tspan>: [</text>
-  <rect x="846" y="136" width="270" height="28" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="856" y="155" font-family="monospace" font-size="14" fill="#333">nom: "Miyazaki", pays: "Japon"</text>
-  <text x="1124" y="155" font-family="monospace" font-size="15" fill="#333">]</text>
-
-  <!-- ligne 2 : La Haine (1995, violet) -->
-  <rect x="2" y="204" width="236" height="94" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="14" y="228" font-size="16" font-weight="bold" fill="#333">La Haine</text>
-  <text x="14" y="252" font-family="monospace" font-size="14" fill="#333">annee: 1995, …</text>
-  <rect x="8" y="260" width="224" height="28" rx="6" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="14" y="279" font-family="monospace" font-size="14" fill="#333">realisateur: <tspan fill="#8e44ad" font-weight="bold">"Kassovitz"</tspan></text>
-  <line x1="242" y1="274" x2="253" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <rect x="262" y="259" width="120" height="30" rx="7" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="322" y="280" font-family="monospace" font-size="16" font-weight="bold" fill="#8e44ad" text-anchor="middle">"Kassovitz"</text>
-  <line x1="386" y1="274" x2="397" y2="274" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-
-  <rect x="406" y="198" width="360" height="106" rx="8" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="416" y="206" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="426" y="225" font-family="monospace" font-size="15" fill="#777">nom: "Miyazaki", pays: "Japon"</text>
-  <text x="738" y="227" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
-  <rect x="416" y="238" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="426" y="257" font-family="monospace" font-size="15" fill="#777">nom: "Varda", pays: "France"</text>
-  <text x="738" y="259" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
-  <rect x="416" y="270" width="292" height="28" rx="6" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="426" y="289" font-family="monospace" font-size="15" fill="#777">nom: "Jeunet", pays: "France"</text>
-  <text x="738" y="291" font-size="22" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
-
-  <line x1="770" y1="274" x2="783" y2="274" stroke="#b8c4cf" stroke-width="2.2" stroke-dasharray="3 2" marker-end="url(#flg)"/>
-
-  <rect x="792" y="204" width="366" height="94" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="804" y="228" font-size="16" font-weight="bold" fill="#333">La Haine</text>
-  <text x="804" y="252" font-size="14" fill="#555">ses autres champs, inchangés</text>
-  <text x="804" y="279" font-family="monospace" font-size="15" fill="#333"><tspan font-weight="bold" fill="#00684a">r</tspan>: [</text>
-  <rect x="846" y="260" width="28" height="28" rx="6" fill="#fdeeee" stroke="#c0392b" stroke-width="2" stroke-dasharray="4 3"/>
-  <text x="882" y="279" font-family="monospace" font-size="15" fill="#333">]</text>
-  <text x="904" y="279" font-size="14" font-weight="bold" fill="#c0392b">vide : aucun nom égal</text>
-
-  <!-- légende -->
-  <text x="2" y="334" font-size="15" fill="#555">Même travail pour chaque film : <tspan font-family="monospace" fill="#00684a" font-weight="bold">r</tspan> reçoit 0, 1 ou plusieurs documents, <tspan font-weight="bold" fill="#333">toujours dans un tableau</tspan>.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 340" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Mécanisme de $lookup: { from: "realisateurs", localField: "realisateur", foreignField: "nom", as: "r" }, sur deux films. 1, la valeur du champ realisateur du film est comparée au champ nom de chaque document de realisateurs ; 2, les documents égaux sont rangés dans le tableau r, ajouté au film. Le Voyage de Chihiro, "Miyazaki" : seul Miyazaki est égal, r contient { nom: "Miyazaki", pays: "Japon" }. La Haine, "Kassovitz" : aucun nom égal, r est vide. r reçoit 0, 1 ou plusieurs documents, toujours dans un tableau.</title>
+  <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <text x="4" y="22" font-family="monospace" font-size="18" fill="#333">{ <tspan font-weight="bold" fill="#00684a">$lookup</tspan>: { from: "realisateurs", localField: <tspan font-weight="bold" fill="#2f6db0">"realisateur"</tspan>, foreignField: <tspan font-weight="bold" fill="#b06f00">"nom"</tspan>, as: <tspan font-weight="bold" fill="#00684a">"r"</tspan> } }</text>
+  <g font-size="18" fill="#555">
+    <text x="4" y="56">chaque film</text>
+    <circle cx="330" cy="50" r="14" fill="#00684a"/><text x="330" y="56" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+    <text x="350" y="56">égal à <tspan font-family="monospace" font-weight="bold" fill="#b06f00">nom</tspan> ?</text>
+    <circle cx="700" cy="50" r="14" fill="#00684a"/><text x="700" y="56" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+    <text x="720" y="56"><tspan font-family="monospace" font-weight="bold" fill="#00684a">r</tspan> : les documents égaux, ajoutés au film</text>
+  </g>
+  <rect x="2" y="72" width="280" height="110" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="14" y="102" font-size="19" font-weight="bold" fill="#333">Le Voyage de Chihiro</text>
+  <text x="14" y="132" font-family="monospace" font-size="18" fill="#333">annee, duree…</text>
+  <rect x="10" y="144" width="264" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="18" y="165" font-family="monospace" font-size="18" fill="#2f6db0" font-weight="bold">"Miyazaki"</text>
+  <line x1="276" y1="159" x2="314" y2="124" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="322" y="72" width="330" height="110" rx="8" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <rect x="330" y="80" width="268" height="28" rx="5" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="338" y="101" font-family="monospace" font-size="18" fill="#333"><tspan font-weight="bold" fill="#b06f00">"Miyazaki"</tspan>, Japon</text>
+  <text x="626" y="102" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">=</text>
+  <rect x="330" y="114" width="268" height="28" rx="5" fill="#f7f9fb" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="338" y="135" font-family="monospace" font-size="18" fill="#888"><tspan font-weight="bold" fill="#888">"Varda"</tspan>, France</text>
+  <text x="626" y="136" font-size="20" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+  <rect x="330" y="148" width="268" height="28" rx="5" fill="#f7f9fb" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="338" y="169" font-family="monospace" font-size="18" fill="#888"><tspan font-weight="bold" fill="#888">"Jeunet"</tspan>, France</text>
+  <text x="626" y="170" font-size="20" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+  <line x1="654" y1="127" x2="684" y2="127" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="692" y="72" width="466" height="110" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="704" y="102" font-size="19" font-weight="bold" fill="#333">Le Voyage de Chihiro</text>
+  <text x="704" y="128" font-size="18" fill="#555">ses champs, inchangés, et :</text>
+  <text x="704" y="164" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">r: [ { nom: &quot;Miyazaki&quot;, pays: &quot;Japon&quot; } ]</text>
+  <rect x="2" y="202" width="280" height="110" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="14" y="232" font-size="19" font-weight="bold" fill="#333">La Haine</text>
+  <text x="14" y="262" font-family="monospace" font-size="18" fill="#333">annee, duree…</text>
+  <rect x="10" y="274" width="264" height="30" rx="6" fill="#fff" stroke="#4a90d9" stroke-width="1.8"/>
+  <text x="18" y="295" font-family="monospace" font-size="18" fill="#2f6db0" font-weight="bold">"Kassovitz"</text>
+  <line x1="276" y1="289" x2="314" y2="254" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="322" y="202" width="330" height="110" rx="8" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+  <rect x="330" y="210" width="268" height="28" rx="5" fill="#f7f9fb" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="338" y="231" font-family="monospace" font-size="18" fill="#888"><tspan font-weight="bold" fill="#888">"Miyazaki"</tspan>, Japon</text>
+  <text x="626" y="232" font-size="20" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+  <rect x="330" y="244" width="268" height="28" rx="5" fill="#f7f9fb" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="338" y="265" font-family="monospace" font-size="18" fill="#888"><tspan font-weight="bold" fill="#888">"Varda"</tspan>, France</text>
+  <text x="626" y="266" font-size="20" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+  <rect x="330" y="278" width="268" height="28" rx="5" fill="#f7f9fb" stroke="#d0d7de" stroke-width="1.5"/>
+  <text x="338" y="299" font-family="monospace" font-size="18" fill="#888"><tspan font-weight="bold" fill="#888">"Jeunet"</tspan>, France</text>
+  <text x="626" y="300" font-size="20" font-weight="bold" fill="#c0392b" text-anchor="middle">≠</text>
+  <line x1="654" y1="257" x2="684" y2="257" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <rect x="692" y="202" width="466" height="110" rx="8" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+  <text x="704" y="232" font-size="19" font-weight="bold" fill="#333">La Haine</text>
+  <text x="704" y="258" font-size="18" fill="#555">ses champs, inchangés, et :</text>
+  <text x="704" y="294" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">r: [ ]</text>
+  <text x="790" y="294" font-size="18" fill="#c0392b">aucun <tspan font-family="monospace">nom</tspan> égal : un tableau vide</text>
+  <text x="4" y="332" font-size="18" fill="#555"><tspan font-family="monospace" font-weight="bold" fill="#00684a">r</tspan> reçoit 0, 1 ou plusieurs documents, <tspan font-weight="bold" fill="#333">toujours dans un tableau</tspan>.</text>
 </svg>

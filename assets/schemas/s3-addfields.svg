@@ -1,61 +1,46 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 222" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$addFields: { nb_notes: { $size: "$notes" } } sur le film Chihiro. Avant : titre, annee, duree, realisateur, genres et notes, un tableau de deux notes (presse 5, public 4). L'expression "$notes" donne la valeur du champ notes, un tableau de 2 documents ; $size donne sa taille, 2. Après : les six champs sont toujours là, et nb_notes: 2 est ajouté à la fin.</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 190" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Le film Chihiro avant et après $addFields: { nb_notes: { $size: "$notes" } }. L'expression "$notes" donne la valeur du champ notes, un tableau de 2 documents ; $size donne sa taille, 2. Après l'étape, les champs du film sont toujours là, et nb_notes: 2 est ajouté à la fin.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
-    <marker id="flb" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#4a90d9"/>
     </marker>
   </defs>
 
-  <!-- Avant -->
-  <text x="2" y="20" font-size="17" font-weight="bold" fill="#333">avant</text>
-  <rect x="2" y="30" width="330" height="186" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="16" y="56">titre: "Le Voyage de Chihiro",</text>
-    <text x="16" y="80">annee: 2001, duree: 125,</text>
-    <text x="16" y="104">realisateur: "Miyazaki",</text>
-    <text x="16" y="128">genres: [ … ],</text>
-    <text x="16" y="153"><tspan fill="#4a90d9" font-weight="bold">notes</tspan>: [</text>
-    <text x="30" y="178">{ source: "presse", note: 5 },</text>
-    <text x="30" y="202">{ source: "public", note: 4 } ]</text>
+  <text x="4" y="22" font-size="19" font-weight="bold" fill="#333">avant</text>
+  <rect x="2" y="34" width="300" height="134" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="16" y="66">titre: "Chihiro",</text>
+    <text x="16" y="96">annee: 2001, …,</text>
+    <text x="16" y="126"><tspan fill="#2f6db0" font-weight="bold">notes</tspan>: [ {…}, {…} ]</text>
   </g>
-  <rect x="10" y="137" width="80" height="23" rx="5" fill="none" stroke="#4a90d9" stroke-width="2"/>
-  <line x1="95" y1="148" x2="346" y2="148" stroke="#4a90d9" stroke-width="2" stroke-dasharray="5 3.1" marker-end="url(#flb)"/>
 
-  <!-- L'expression, évaluée pour ce film -->
-  <text x="560" y="104" font-family="monospace" font-size="18" font-weight="bold" fill="#333" text-anchor="middle">{ <tspan fill="#00684a">$size</tspan>: <tspan fill="#4a90d9">"$notes"</tspan> }</text>
-  <text x="560" y="66" font-size="15" fill="#555" text-anchor="middle">l'expression, calculée pour ce film :</text>
-
-  <rect x="356" y="131" width="120" height="34" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="416" y="154" font-family="monospace" font-size="16" font-weight="bold" fill="#4a90d9" text-anchor="middle">"$notes"</text>
-  <text x="416" y="188" font-size="14" fill="#555" text-anchor="middle">la valeur du champ</text>
-  <line x1="480" y1="148" x2="490" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-
-  <rect x="500" y="131" width="120" height="34" rx="7" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="560" y="153" font-family="monospace" font-size="15" fill="#333" text-anchor="middle">[ {…}, {…} ]</text>
-  <text x="560" y="188" font-size="14" fill="#555" text-anchor="middle">2 documents</text>
-  <line x1="624" y1="148" x2="634" y2="148" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-
-  <rect x="644" y="131" width="120" height="34" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="704" y="154" font-family="monospace" font-size="16" fill="#333" text-anchor="middle"><tspan font-weight="bold" fill="#00684a">$size</tspan> → <tspan font-weight="bold">2</tspan></text>
-  <text x="704" y="188" font-size="14" fill="#555" text-anchor="middle">sa taille</text>
-
-  <!-- Après -->
-  <text x="828" y="20" font-size="17" font-weight="bold" fill="#333">après</text>
-  <rect x="828" y="30" width="330" height="186" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <g font-family="monospace" font-size="14" fill="#333">
-    <text x="842" y="56">titre: "Le Voyage de Chihiro",</text>
-    <text x="842" y="80">annee: 2001, duree: 125,</text>
-    <text x="842" y="104">realisateur: "Miyazaki",</text>
-    <text x="842" y="128">genres: [ … ],</text>
-    <text x="842" y="152">notes: [ … ],</text>
+  <text x="560" y="22" font-family="monospace" font-size="19" fill="#333" text-anchor="middle">{ <tspan fill="#00684a" font-weight="bold">$addFields</tspan>: { nb_notes: { <tspan fill="#00684a" font-weight="bold">$size</tspan>: <tspan fill="#2f6db0" font-weight="bold">"$notes"</tspan> } } }</text>
+  <line x1="306" y1="119" x2="336" y2="119" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <g font-family="monospace" font-size="19" text-anchor="middle">
+    <rect x="344" y="96" width="110" height="44" rx="7" fill="#fff" stroke="#4a90d9" stroke-width="2"/>
+    <text x="399" y="125" fill="#2f6db0" font-weight="bold">"$notes"</text>
+    <rect x="484" y="96" width="140" height="44" rx="7" fill="#fff" stroke="#b8c4cf" stroke-width="2"/>
+    <text x="554" y="125" fill="#333">[ {…}, {…} ]</text>
+    <rect x="654" y="96" width="120" height="44" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="714" y="125" fill="#00684a" font-weight="bold">$size → 2</text>
   </g>
-  <rect x="836" y="164" width="140" height="28" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-  <text x="846" y="183" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a">nb_notes: 2</text>
-  <text x="988" y="183" font-size="14" fill="#555">ajouté à la fin</text>
+  <line x1="456" y1="118" x2="476" y2="118" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <line x1="626" y1="118" x2="646" y2="118" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <g font-size="18" fill="#555" text-anchor="middle">
+    <text x="399" y="168">la valeur</text>
+    <text x="554" y="168">2 documents</text>
+    <text x="714" y="168">sa taille</text>
+  </g>
+  <line x1="776" y1="118" x2="806" y2="118" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
 
-  <!-- flèche $size → nb_notes, tracée après le cadre « après » pour que la tête reste visible -->
-  <path d="M769,148 C793,148 789,178 818,178" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="1154" y="22" font-size="19" font-weight="bold" fill="#333" text-anchor="end">après</text>
+  <rect x="814" y="34" width="344" height="154" rx="10" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <g font-family="monospace" font-size="19" fill="#333">
+    <text x="828" y="66">titre: "Chihiro",</text>
+    <text x="828" y="96">annee: 2001, …,</text>
+    <text x="828" y="126">notes: [ {…}, {…} ],</text>
+  </g>
+  <rect x="824" y="138" width="150" height="38" rx="6" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+  <text x="836" y="164" font-family="monospace" font-size="19" font-weight="bold" fill="#00684a">nb_notes: 2</text>
+  <text x="984" y="164" font-size="18" fill="#555">ajouté</text>
 </svg>

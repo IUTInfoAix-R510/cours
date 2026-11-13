@@ -1,50 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 296" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Extraits de db.restaurants.find({ borough: "Bronx" }).explain("executionStats"), sans index et avec l'index { borough: 1 }. Sans index, queryPlanner.winningPlan n'a qu'une étape, stage: 'COLLSCAN', qui parcourt toute la collection ; executionStats donne nReturned: 2338, totalKeysExamined: 0, totalDocsExamined: 25359, soit 23 021 documents lus pour rien. Avec l'index, winningPlan a pour étape FETCH, qui lit les documents, et pour entrée (inputStage) l'étape IXSCAN sur l'index borough_1, qui parcourt l'index et s'exécute en premier : le plan se lit de l'intérieur vers l'extérieur. executionStats donne nReturned: 2338, totalKeysExamined: 2338, totalDocsExamined: 2338 : aucun document lu pour rien.</title>
-  <defs><marker id="fg" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 286" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Extraits de db.restaurants.find({ borough: "Bronx" }).explain("executionStats"). Sans index, winningPlan n'a qu'une étape, COLLSCAN, qui parcourt toute la collection ; nReturned 2338, totalKeysExamined 0, totalDocsExamined 25359 : 23 021 documents lus pour rien. Avec l'index { borough: 1 }, winningPlan a pour étape FETCH, qui lit les documents pointés, et pour entrée (inputStage) IXSCAN sur l'index borough_1, exécutée en premier : le plan se lit de l'intérieur vers l'extérieur. nReturned 2338, totalKeysExamined 2338, totalDocsExamined 2338 : aucun document lu pour rien.</title>
 
-  <!-- Sans index -->
-  <rect x="2" y="2" width="440" height="292" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="18" y="30" font-size="18" font-weight="bold" fill="#333">Sans index <tspan font-size="15" font-weight="normal" fill="#777">(extrait)</tspan></text>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="18" y="56">queryPlanner.winningPlan: {</text>
-    <text x="36" y="76">stage: '<tspan font-weight="bold" fill="#c0392b">COLLSCAN</tspan>', …</text>
-    <text x="18" y="96">}</text>
-    <text x="18" y="200">executionStats: {</text>
-    <text x="36" y="220">nReturned: <tspan font-weight="bold">2338</tspan>, …</text>
-    <text x="36" y="240">totalKeysExamined: <tspan font-weight="bold">0</tspan>,</text>
-    <text x="36" y="260">totalDocsExamined: <tspan font-weight="bold" fill="#c0392b">25359</tspan>, …</text>
-    <text x="18" y="280">}</text>
+  <!-- sans index -->
+  <rect x="2" y="2" width="440" height="282" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="16" y="32" font-size="20" font-weight="bold" fill="#c0392b">Sans index</text>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="16" y="70">winningPlan: {</text>
+    <text x="36" y="96">stage: <tspan font-weight="bold" fill="#c0392b">'COLLSCAN'</tspan> }</text>
+    <text x="16" y="168">nReturned: 2338</text>
+    <text x="16" y="194">totalKeysExamined: 0</text>
+    <text x="16" y="220">totalDocsExamined: <tspan font-weight="bold" fill="#c0392b">25359</tspan></text>
   </g>
-  <text x="236" y="76" font-size="14" fill="#555">toute la collection</text>
-  <text x="18" y="136" font-size="15" fill="#777">une seule étape, aucun index</text>
-  <text x="314" y="220" font-size="14" fill="#555">renvoyés</text>
-  <text x="314" y="240" font-size="14" fill="#555">clés d'index lues</text>
-  <text x="314" y="260" font-size="14" font-weight="bold" fill="#c0392b">documents lus</text>
-  <text x="314" y="280" font-size="14" fill="#c0392b">23 021 pour rien</text>
+  <g font-size="18" fill="#555">
+    <text x="36" y="124">toute la collection</text>
+    <text x="16" y="260"><tspan font-weight="bold" fill="#c0392b">23 021</tspan> documents lus pour rien</text>
+  </g>
 
-  <!-- Avec index -->
-  <rect x="458" y="2" width="700" height="292" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="474" y="30" font-size="18" font-weight="bold" fill="#333">Avec l'index <tspan font-family="monospace">{ borough: 1 }</tspan> <tspan font-size="15" font-weight="normal" fill="#777">(extrait)</tspan></text>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="474" y="56">queryPlanner.winningPlan: {</text>
-    <text x="492" y="76">stage: '<tspan font-weight="bold" fill="#00684a">FETCH</tspan>', …</text>
-    <text x="492" y="96">inputStage: {</text>
-    <text x="510" y="116">stage: '<tspan font-weight="bold" fill="#00684a">IXSCAN</tspan>', …</text>
-    <text x="510" y="136">indexName: 'borough_1', …</text>
-    <text x="492" y="156">}</text>
-    <text x="474" y="176">}</text>
-    <text x="474" y="200">executionStats: {</text>
-    <text x="492" y="220">nReturned: <tspan font-weight="bold">2338</tspan>, …</text>
-    <text x="492" y="240">totalKeysExamined: <tspan font-weight="bold" fill="#00684a">2338</tspan>,</text>
-    <text x="492" y="260">totalDocsExamined: <tspan font-weight="bold" fill="#00684a">2338</tspan>, …</text>
-    <text x="474" y="280">}</text>
+  <!-- avec index -->
+  <rect x="460" y="2" width="698" height="282" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="474" y="32" font-size="20" font-weight="bold" fill="#00684a">Avec l'index <tspan font-family="monospace">{ borough: 1 }</tspan></text>
+  <g font-family="monospace" font-size="18" fill="#333">
+    <text x="474" y="70">winningPlan: {</text>
+    <text x="494" y="96">stage: <tspan font-weight="bold" fill="#00684a">'FETCH'</tspan>,</text>
+    <text x="494" y="122">inputStage: {</text>
+    <text x="514" y="148">stage: <tspan font-weight="bold" fill="#00684a">'IXSCAN'</tspan>,</text>
+    <text x="514" y="174">indexName: 'borough_1' } }</text>
+    <text x="474" y="210">nReturned: 2338</text>
+    <text x="474" y="236">totalKeysExamined: 2338</text>
+    <text x="474" y="262">totalDocsExamined: <tspan font-weight="bold" fill="#00684a">2338</tspan></text>
   </g>
-  <line x1="766" y1="112" x2="766" y2="85" stroke="#555" stroke-width="2" marker-end="url(#fg)"/>
-  <text x="782" y="76" font-size="14" fill="#333"><tspan font-weight="bold" fill="#00684a">2.</tspan> étape finale : lit les documents pointés</text>
-  <text x="782" y="116" font-size="14" fill="#333"><tspan font-weight="bold" fill="#00684a">1.</tspan> son entrée, exécutée d'abord : parcourt l'index</text>
-  <text x="782" y="96" font-size="14" fill="#777">se lit de l'intérieur vers l'extérieur</text>
-  <text x="782" y="220" font-size="14" fill="#555">renvoyés</text>
-  <text x="782" y="240" font-size="14" fill="#555">clés d'index lues</text>
-  <text x="782" y="260" font-size="14" font-weight="bold" fill="#00684a">documents lus = renvoyés</text>
-  <text x="782" y="280" font-size="14" fill="#00684a">aucun lu pour rien</text>
+  <g font-size="18" fill="#555">
+    <text x="780" y="96"><tspan font-weight="bold" fill="#00684a">2.</tspan> lit les documents pointés</text>
+    <text x="780" y="148"><tspan font-weight="bold" fill="#00684a">1.</tspan> parcourt l'index, en premier</text>
+    <text x="780" y="262"><tspan font-weight="bold" fill="#00684a">aucun</tspan> document lu pour rien</text>
+  </g>
+  <path d="M770,142 V102" fill="none" stroke="#00684a" stroke-width="2"/>
+  <path d="M764,110 L770,100 L776,110" fill="none" stroke="#00684a" stroke-width="2"/>
 </svg>

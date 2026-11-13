@@ -1,92 +1,39 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 362" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Deux questions à poser à une étape. À gauche, quels champs restent : le film Chihiro (titre, annee, duree, realisateur, genres, notes) passe dans $project, qui ne garde que les champs cités, titre et nb_notes, ou dans $addFields, qui garde ses six champs et ajoute nb_notes. À droite, combien de documents restent : les 4 films (La Haine 1995, Glaneurs 2000, Amélie et Chihiro 2001) passent dans $group par année, qui donne 3 documents (1995, nb 1 ; 2000, nb 1 ; 2001, nb 2), ou dans $setWindowFields partitionné par année, qui garde les 4 films et ajoute à chacun nb_annee, le nombre de films de son année (1, 1, 2, 2).</title>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 232" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Deux questions à se poser à chaque étape. À gauche, quels champs restent : le film Chihiro, avec ses 6 champs, passe dans $project, qui ne garde que les champs cités (titre et nb_notes), ou dans $addFields, qui garde les 6 champs et ajoute nb_notes. À droite, combien de documents restent : les 4 films passent dans $group par année, qui rend 3 documents, un par année, ou dans $setWindowFields partitionné par année, qui rend les 4 films, chacun avec un champ calculé sur son année.</title>
   <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
+    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
       <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
     </marker>
   </defs>
 
-  <!-- Quels champs restent ? -->
-  <rect x="2" y="2" width="570" height="358" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <!-- Quels champs -->
+  <rect x="2" y="2" width="566" height="228" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
   <text x="18" y="32" font-size="21" font-weight="bold" fill="#333">Quels champs restent ?</text>
-  <text x="18" y="56" font-size="16" fill="#555">un film, deux étapes</text>
+  <rect x="18" y="104" width="150" height="64" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="93" y="132" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">Chihiro</text>
+  <text x="93" y="157" font-size="18" fill="#555" text-anchor="middle">6 champs</text>
+  <path d="M170,124 C210,124 210,84 250,84" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <path d="M170,150 C210,150 210,190 250,190" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="18" y="90" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$project</text>
+  <text x="18" y="206" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$addFields</text>
+  <rect x="258" y="58" width="296" height="52" rx="8" fill="#fff" stroke="#e8a838" stroke-width="2"/>
+  <text x="272" y="91" font-size="19" fill="#333"><tspan font-family="monospace">titre, nb_notes</tspan> : <tspan font-weight="bold">2</tspan></text>
+  <rect x="258" y="164" width="296" height="52" rx="8" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <text x="272" y="197" font-size="19" fill="#333">les 6 + <tspan font-family="monospace" font-weight="bold" fill="#00684a">nb_notes</tspan> : <tspan font-weight="bold">7</tspan></text>
+  
 
-  <rect x="18" y="142" width="200" height="106" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="30" y="166" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="206" y="166" font-size="14" fill="#555" text-anchor="end">6 champs</text>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="30" y="190">titre</text><text x="112" y="190">realisateur</text>
-    <text x="30" y="212">annee</text><text x="112" y="212">genres</text>
-    <text x="30" y="234">duree</text><text x="112" y="234">notes</text>
-  </g>
-
-  <line x1="222" y1="176" x2="335.6" y2="116.3" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <text x="268" y="128" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">$project</text>
-  <line x1="222" y1="216" x2="335.3" y2="260.2" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <text x="270" y="270" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a" text-anchor="middle">$addFields</text>
-
-  <rect x="344" y="78" width="216" height="76" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="356" y="100" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="548" y="100" font-size="15" fill="#555" text-anchor="end">2 champs</text>
-  <g font-family="monospace" font-size="15">
-    <text x="356" y="122" fill="#333">titre</text>
-    <text x="356" y="144" fill="#00684a" font-weight="bold">nb_notes</text>
-  </g>
-
-  <rect x="344" y="190" width="216" height="128" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="356" y="212" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="548" y="212" font-size="15" fill="#555" text-anchor="end">7 champs</text>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <text x="356" y="236">titre</text><text x="438" y="236">realisateur</text>
-    <text x="356" y="258">annee</text><text x="438" y="258">genres</text>
-    <text x="356" y="280">duree</text><text x="438" y="280">notes</text>
-    <text x="356" y="306" fill="#00684a" font-weight="bold">nb_notes</text>
-  </g>
-
-  <text x="18" y="340" font-size="16" fill="#333"><tspan font-family="monospace" fill="#00684a">$project</tspan> ne garde que les champs cités ; <tspan font-family="monospace" fill="#00684a">$addFields</tspan> ajoute sans retirer.</text>
-  <text x="18" y="356" font-size="13" fill="#777">(<tspan font-family="monospace">_id</tspan>, gardé par défaut, n'est pas compté)</text>
-
-  <!-- Combien de documents restent ? -->
-  <rect x="588" y="2" width="570" height="358" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <text x="604" y="32" font-size="21" font-weight="bold" fill="#333">Combien de documents restent ?</text>
-  <text x="604" y="56" font-size="16" fill="#555">les 4 films comptés par année ; <tspan font-family="monospace">nb_annee</tspan> : films de son année</text>
-
-  <g font-size="15">
-    <rect x="604" y="134" width="152" height="32" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-    <text x="614" y="155" font-weight="bold" fill="#333">La Haine</text><text x="746" y="155" font-family="monospace" fill="#555" text-anchor="end">1995</text>
-    <rect x="604" y="172" width="152" height="32" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-    <text x="614" y="193" font-weight="bold" fill="#333">Glaneurs</text><text x="746" y="193" font-family="monospace" fill="#555" text-anchor="end">2000</text>
-    <rect x="604" y="210" width="152" height="32" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="614" y="231" font-weight="bold" fill="#333">Amélie</text><text x="746" y="231" font-family="monospace" fill="#555" text-anchor="end">2001</text>
-    <rect x="604" y="248" width="152" height="32" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="614" y="269" font-weight="bold" fill="#333">Chihiro</text><text x="746" y="269" font-family="monospace" fill="#555" text-anchor="end">2001</text>
-  </g>
-
-  <path d="M762,134 Q772,134 772,144 L772,270 Q772,280 762,280" fill="none" stroke="#555" stroke-width="2.2"/>
-  <line x1="772" y1="200" x2="863.9" y2="134.9" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <line x1="772" y1="214" x2="863.5" y2="259.8" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-
-  <text x="872" y="84" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">$group</tspan> : 4 → <tspan font-weight="bold">3</tspan></text>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <rect x="872" y="94" width="270" height="26" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-    <text x="882" y="112"><tspan font-weight="bold">_id: 1995</tspan>   nb: 1</text>
-    <rect x="872" y="124" width="270" height="26" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-    <text x="882" y="142"><tspan font-weight="bold">_id: 2000</tspan>   nb: 1</text>
-    <rect x="872" y="154" width="270" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="882" y="172"><tspan font-weight="bold">_id: 2001</tspan>   nb: 2</text>
-  </g>
-
-  <text x="872" y="210" font-size="16" fill="#333"><tspan font-family="monospace" font-weight="bold" fill="#00684a">$setWindowFields</tspan> : 4 → <tspan font-weight="bold">4</tspan></text>
-  <g font-size="15" fill="#333">
-    <rect x="872" y="220" width="270" height="26" rx="6" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-    <text x="882" y="238" font-weight="bold">La Haine</text><text x="1132" y="238" font-family="monospace" font-weight="bold" fill="#00684a" text-anchor="end">nb_annee: 1</text>
-    <rect x="872" y="250" width="270" height="26" rx="6" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-    <text x="882" y="268" font-weight="bold">Glaneurs</text><text x="1132" y="268" font-family="monospace" font-weight="bold" fill="#00684a" text-anchor="end">nb_annee: 1</text>
-    <rect x="872" y="280" width="270" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="882" y="298" font-weight="bold">Amélie</text><text x="1132" y="298" font-family="monospace" font-weight="bold" fill="#00684a" text-anchor="end">nb_annee: 2</text>
-    <rect x="872" y="310" width="270" height="26" rx="6" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-    <text x="882" y="328" font-weight="bold">Chihiro</text><text x="1132" y="328" font-family="monospace" font-weight="bold" fill="#00684a" text-anchor="end">nb_annee: 2</text>
-  </g>
-
-  <text x="604" y="352" font-size="16" fill="#333"><tspan font-family="monospace" fill="#00684a">$group</tspan> fond les films ; <tspan font-family="monospace" fill="#00684a">$setWindowFields</tspan> garde chaque film.</text>
+  <!-- Combien de documents -->
+  <rect x="590" y="2" width="568" height="228" rx="10" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
+  <text x="606" y="32" font-size="21" font-weight="bold" fill="#333">Combien de documents restent ?</text>
+  <rect x="606" y="104" width="120" height="64" rx="8" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+  <text x="666" y="132" font-size="19" font-weight="bold" fill="#333" text-anchor="middle">4 films</text>
+  <text x="666" y="157" font-size="18" fill="#555" text-anchor="middle">par année</text>
+  <path d="M728,124 C768,124 768,84 808,84" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <path d="M728,150 C768,150 768,190 808,190" fill="none" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <text x="606" y="90" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$group</text>
+  <text x="606" y="206" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">$setWindowFields</text>
+  <rect x="816" y="58" width="330" height="52" rx="8" fill="#fff" stroke="#e8a838" stroke-width="2"/>
+  <text x="830" y="91" font-size="19" fill="#333"><tspan font-weight="bold">3</tspan> documents, un par année</text>
+  <rect x="816" y="164" width="330" height="52" rx="8" fill="#fff" stroke="#13aa52" stroke-width="2"/>
+  <text x="830" y="197" font-size="19" fill="#333"><tspan font-weight="bold">4</tspan> films, chacun + un calcul</text>
 </svg>

@@ -1,77 +1,74 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 306" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">$setWindowFields en trois temps sur les 4 films. 1, partitionBy: "$annee" : trois groupes, 1995 (La Haine, 98 min), 2000 (Glaneurs, 82 min), 2001 (Amélie, 122 min, et Chihiro, 125 min, dans un ordre quelconque). 2, sortBy: { duree: -1 } : dans chaque groupe, durée décroissante ; en 2001, Chihiro passe avant Amélie. 3, output: { rang: { $rank: {} } } : chaque film reçoit son rang dans son groupe, La Haine 1, Glaneurs 1, Chihiro 1, Amélie 2. En SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC).</title>
-  <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
-  <circle cx="16" cy="24" r="13" fill="#00684a"/>
-  <text x="16" y="30" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">1</text>
-  <text x="36" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">partitionBy: "$annee"</text>
-  <text x="2" y="56" font-size="15" fill="#555">un groupe par année</text>
-  <rect x="2" y="68" width="360" height="46" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="12" y="97" font-family="monospace" font-size="15" font-weight="bold" fill="#8e44ad">1995</text>
-  <rect x="62" y="74" width="292" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="74" y="96" font-size="16" font-weight="bold" fill="#333">La Haine</text>
-  <text x="344" y="96" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 98</text>
-  <rect x="2" y="122" width="360" height="46" rx="8" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
-  <text x="12" y="151" font-family="monospace" font-size="15" font-weight="bold" fill="#e8a838">2000</text>
-  <rect x="62" y="128" width="292" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="74" y="150" font-size="16" font-weight="bold" fill="#333">Glaneurs</text>
-  <text x="344" y="150" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 82</text>
-  <rect x="2" y="176" width="360" height="86" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="12" y="225" font-family="monospace" font-size="15" font-weight="bold" fill="#4a90d9">2001</text>
-  <rect x="62" y="182" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="74" y="204" font-size="16" font-weight="bold" fill="#333">Amélie</text>
-  <text x="344" y="204" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 122</text>
-  <rect x="62" y="222" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="74" y="244" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="344" y="244" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 125</text>
-  <circle cx="414" cy="24" r="13" fill="#00684a"/>
-  <text x="414" y="30" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">2</text>
-  <text x="434" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">sortBy: { duree: -1 }</text>
-  <text x="400" y="56" font-size="15" fill="#555">dans chaque groupe, durée décroissante</text>
-  <rect x="400" y="68" width="360" height="46" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="410" y="97" font-family="monospace" font-size="15" font-weight="bold" fill="#8e44ad">1995</text>
-  <rect x="460" y="74" width="292" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="472" y="96" font-size="16" font-weight="bold" fill="#333">La Haine</text>
-  <text x="742" y="96" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 98</text>
-  <rect x="400" y="122" width="360" height="46" rx="8" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
-  <text x="410" y="151" font-family="monospace" font-size="15" font-weight="bold" fill="#e8a838">2000</text>
-  <rect x="460" y="128" width="292" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="472" y="150" font-size="16" font-weight="bold" fill="#333">Glaneurs</text>
-  <text x="742" y="150" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 82</text>
-  <rect x="400" y="176" width="360" height="86" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="410" y="225" font-family="monospace" font-size="15" font-weight="bold" fill="#4a90d9">2001</text>
-  <rect x="460" y="182" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="472" y="204" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="742" y="204" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 125</text>
-  <rect x="460" y="222" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="472" y="244" font-size="16" font-weight="bold" fill="#333">Amélie</text>
-  <text x="742" y="244" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 122</text>
-  <circle cx="812" cy="24" r="13" fill="#00684a"/>
-  <text x="812" y="30" font-size="16" font-weight="bold" fill="#ffffff" text-anchor="middle">3</text>
-  <text x="832" y="30" font-family="monospace" font-size="16" font-weight="bold" fill="#00684a">output: { rang: { $rank: {} } }</text>
-  <text x="798" y="56" font-size="15" fill="#555">un rang dans son groupe, ajouté au film</text>
-  <rect x="798" y="68" width="360" height="46" rx="8" fill="#ffffff" stroke="#8e44ad" stroke-width="2"/>
-  <text x="808" y="97" font-family="monospace" font-size="15" font-weight="bold" fill="#8e44ad">1995</text>
-  <rect x="858" y="74" width="292" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="870" y="96" font-size="16" font-weight="bold" fill="#333">La Haine</text>
-  <text x="1042" y="96" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 98</text>
-  <text x="1140" y="96" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
-  <rect x="798" y="122" width="360" height="46" rx="8" fill="#ffffff" stroke="#e8a838" stroke-width="2"/>
-  <text x="808" y="151" font-family="monospace" font-size="15" font-weight="bold" fill="#e8a838">2000</text>
-  <rect x="858" y="128" width="292" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="870" y="150" font-size="16" font-weight="bold" fill="#333">Glaneurs</text>
-  <text x="1042" y="150" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 82</text>
-  <text x="1140" y="150" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
-  <rect x="798" y="176" width="360" height="86" rx="8" fill="#ffffff" stroke="#4a90d9" stroke-width="2"/>
-  <text x="808" y="225" font-family="monospace" font-size="15" font-weight="bold" fill="#4a90d9">2001</text>
-  <rect x="858" y="182" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="870" y="204" font-size="16" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="1042" y="204" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 125</text>
-  <text x="1140" y="204" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
-  <rect x="858" y="222" width="292" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="870" y="244" font-size="16" font-weight="bold" fill="#333">Amélie</text>
-  <text x="1042" y="244" font-family="monospace" font-size="15" fill="#555" text-anchor="end">duree: 122</text>
-  <text x="1140" y="244" font-family="monospace" font-size="15" font-weight="bold" fill="#00684a" text-anchor="end">rang: 2</text>
-  <line x1="367" y1="166" x2="390" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <line x1="765" y1="166" x2="788" y2="166" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
-  <text x="580" y="294" font-size="16" fill="#555" text-anchor="middle">En SQL : <tspan font-family="monospace">RANK() OVER (PARTITION BY annee ORDER BY duree DESC)</tspan></text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 276" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">$setWindowFields en trois temps sur les 4 films. 1, partitionBy: "$annee" : trois groupes, 1995 (La Haine), 2000 (Glaneurs), 2001 (Amélie et Chihiro, dans un ordre quelconque). 2, sortBy: { duree: -1 } : en 2001, Chihiro (125 min) passe avant Amélie (122 min). 3, output: { rang: { $rank: {} } } : chaque film reçoit son rang dans son groupe, La Haine 1, Glaneurs 1, Chihiro 1, Amélie 2. En SQL : RANK() OVER (PARTITION BY annee ORDER BY duree DESC).</title>
+  <defs><marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker></defs>
+  <circle cx="14" cy="20" r="15" fill="#00684a"/><text x="14" y="26" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">1</text>
+  <text x="34" y="26" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">partitionBy: "$annee"</text>
+  <text x="34" y="52" font-size="18" fill="#555">un groupe par année</text>
+  <rect x="0" y="66" width="366" height="40" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="10" y="92" font-family="monospace" font-size="18" font-weight="bold" fill="#8e44ad">1995</text>
+  <rect x="66" y="70" width="294" height="32" rx="6" fill="#f3e8f8"/>
+  <text x="76" y="93" font-size="18" font-weight="bold" fill="#333">La Haine</text>
+  <text x="220" y="93" font-family="monospace" font-size="18" fill="#555" text-anchor="end">98</text>
+  <rect x="0" y="114" width="366" height="40" rx="8" fill="#fff" stroke="#b06f00" stroke-width="2"/>
+  <text x="10" y="140" font-family="monospace" font-size="18" font-weight="bold" fill="#b06f00">2000</text>
+  <rect x="66" y="118" width="294" height="32" rx="6" fill="#fdf3e0"/>
+  <text x="76" y="141" font-size="18" font-weight="bold" fill="#333">Glaneurs</text>
+  <text x="220" y="141" font-family="monospace" font-size="18" fill="#555" text-anchor="end">82</text>
+  <rect x="0" y="162" width="366" height="76" rx="8" fill="#fff" stroke="#2f6db0" stroke-width="2"/>
+  <text x="10" y="206" font-family="monospace" font-size="18" font-weight="bold" fill="#2f6db0">2001</text>
+  <rect x="66" y="166" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="76" y="189" font-size="18" font-weight="bold" fill="#333">Amélie</text>
+  <text x="220" y="189" font-family="monospace" font-size="18" fill="#555" text-anchor="end">122</text>
+  <rect x="66" y="202" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="76" y="225" font-size="18" font-weight="bold" fill="#333">Chihiro</text>
+  <text x="220" y="225" font-family="monospace" font-size="18" fill="#555" text-anchor="end">125</text>
+  <line x1="368" y1="150" x2="388" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <circle cx="406" cy="20" r="15" fill="#00684a"/><text x="406" y="26" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">2</text>
+  <text x="426" y="26" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">sortBy: { duree: -1 }</text>
+  <text x="426" y="52" font-size="18" fill="#555">durée décroissante</text>
+  <rect x="392" y="66" width="366" height="40" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="402" y="92" font-family="monospace" font-size="18" font-weight="bold" fill="#8e44ad">1995</text>
+  <rect x="458" y="70" width="294" height="32" rx="6" fill="#f3e8f8"/>
+  <text x="468" y="93" font-size="18" font-weight="bold" fill="#333">La Haine</text>
+  <text x="612" y="93" font-family="monospace" font-size="18" fill="#555" text-anchor="end">98</text>
+  <rect x="392" y="114" width="366" height="40" rx="8" fill="#fff" stroke="#b06f00" stroke-width="2"/>
+  <text x="402" y="140" font-family="monospace" font-size="18" font-weight="bold" fill="#b06f00">2000</text>
+  <rect x="458" y="118" width="294" height="32" rx="6" fill="#fdf3e0"/>
+  <text x="468" y="141" font-size="18" font-weight="bold" fill="#333">Glaneurs</text>
+  <text x="612" y="141" font-family="monospace" font-size="18" fill="#555" text-anchor="end">82</text>
+  <rect x="392" y="162" width="366" height="76" rx="8" fill="#fff" stroke="#2f6db0" stroke-width="2"/>
+  <text x="402" y="206" font-family="monospace" font-size="18" font-weight="bold" fill="#2f6db0">2001</text>
+  <rect x="458" y="166" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="468" y="189" font-size="18" font-weight="bold" fill="#333">Chihiro</text>
+  <text x="612" y="189" font-family="monospace" font-size="18" fill="#555" text-anchor="end">125</text>
+  <rect x="458" y="202" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="468" y="225" font-size="18" font-weight="bold" fill="#333">Amélie</text>
+  <text x="612" y="225" font-family="monospace" font-size="18" fill="#555" text-anchor="end">122</text>
+  <line x1="760" y1="150" x2="780" y2="150" stroke="#555" stroke-width="2.2" marker-end="url(#fl)"/>
+  <circle cx="798" cy="20" r="15" fill="#00684a"/><text x="798" y="26" font-size="18" font-weight="bold" fill="#fff" text-anchor="middle">3</text>
+  <text x="818" y="26" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a">output: { rang: … }</text>
+  <text x="818" y="52" font-size="18" fill="#555">$rank : le rang dans le groupe</text>
+  <rect x="784" y="66" width="366" height="40" rx="8" fill="#fff" stroke="#8e44ad" stroke-width="2"/>
+  <text x="794" y="92" font-family="monospace" font-size="18" font-weight="bold" fill="#8e44ad">1995</text>
+  <rect x="850" y="70" width="294" height="32" rx="6" fill="#f3e8f8"/>
+  <text x="860" y="93" font-size="18" font-weight="bold" fill="#333">La Haine</text>
+  <text x="1004" y="93" font-family="monospace" font-size="18" fill="#555" text-anchor="end">98</text>
+  <text x="1134" y="93" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
+  <rect x="784" y="114" width="366" height="40" rx="8" fill="#fff" stroke="#b06f00" stroke-width="2"/>
+  <text x="794" y="140" font-family="monospace" font-size="18" font-weight="bold" fill="#b06f00">2000</text>
+  <rect x="850" y="118" width="294" height="32" rx="6" fill="#fdf3e0"/>
+  <text x="860" y="141" font-size="18" font-weight="bold" fill="#333">Glaneurs</text>
+  <text x="1004" y="141" font-family="monospace" font-size="18" fill="#555" text-anchor="end">82</text>
+  <text x="1134" y="141" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
+  <rect x="784" y="162" width="366" height="76" rx="8" fill="#fff" stroke="#2f6db0" stroke-width="2"/>
+  <text x="794" y="206" font-family="monospace" font-size="18" font-weight="bold" fill="#2f6db0">2001</text>
+  <rect x="850" y="166" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="860" y="189" font-size="18" font-weight="bold" fill="#333">Chihiro</text>
+  <text x="1004" y="189" font-family="monospace" font-size="18" fill="#555" text-anchor="end">125</text>
+  <text x="1134" y="189" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">rang: 1</text>
+  <rect x="850" y="202" width="294" height="32" rx="6" fill="#e3eefa"/>
+  <text x="860" y="225" font-size="18" font-weight="bold" fill="#333">Amélie</text>
+  <text x="1004" y="225" font-family="monospace" font-size="18" fill="#555" text-anchor="end">122</text>
+  <text x="1134" y="225" font-family="monospace" font-size="18" font-weight="bold" fill="#00684a" text-anchor="end">rang: 2</text>
+  <text x="580" y="268" font-size="18" fill="#555" text-anchor="middle">En SQL : <tspan font-family="monospace" fill="#333">RANK() OVER (PARTITION BY annee ORDER BY duree DESC)</tspan></text>
 </svg>

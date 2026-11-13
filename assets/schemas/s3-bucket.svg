@@ -1,91 +1,54 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 320" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Mécanisme de $bucket: { groupBy: "$duree", boundaries: [0, 90, 120], default: "long", output: { nb: { $sum: 1 } } }. Les bornes 0, 90 et 120 découpent l'axe des durées en deux tranches, de 0 inclus à 90 exclu et de 90 inclus à 120 exclu ; default reçoit tout le reste, ici les durées de 120 et plus. Chaque film tombe dans la tranche qui contient sa durée : Les Glaneurs et la Glaneuse, 82 minutes, dans la tranche de 0 à 90 ; La Haine, 98 minutes, dans la tranche de 90 à 120 ; Amélie Poulain, 122 minutes, et Le Voyage de Chihiro, 125 minutes, dans default. En sortie, un document par tranche, dont l'_id est la borne basse ou la valeur de default : { _id: 0, nb: 1 }, { _id: 90, nb: 1 }, { _id: "long", nb: 2 }.</title>
-  <defs>
-    <marker id="fl" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="10" markerHeight="10" markerUnits="userSpaceOnUse" orient="auto-start-reverse">
-      <path d="M0,0 L10,5 L0,10 z" fill="#555"/>
-    </marker>
-  </defs>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 252" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Mécanisme de $bucket: { groupBy: "$duree", boundaries: [0, 90, 120], default: "long", output: { nb: { $sum: 1 } } }. Les bornes découpent l'axe des durées en deux tranches, de 0 inclus à 90 exclu et de 90 inclus à 120 exclu ; default reçoit le reste. Les Glaneurs, 82 minutes, tombent dans la tranche de 0 à 90 ; La Haine, 98, dans celle de 90 à 120 ; Amélie, 122, et Chihiro, 125, dans default. En sortie, un document par tranche : { _id: 0, nb: 1 }, { _id: 90, nb: 1 }, { _id: "long", nb: 2 } ; l'_id est la borne basse, ou la valeur de default.</title>
 
-  <!-- le code -->
-  <text x="2" y="22" font-family="monospace" font-size="16" fill="#333">{ <tspan fill="#00684a" font-weight="bold">$bucket</tspan>: { groupBy: <tspan fill="#4a90d9" font-weight="bold">"$duree"</tspan>, boundaries: [<tspan fill="#b06f00" font-weight="bold">0</tspan>, <tspan fill="#b06f00" font-weight="bold">90</tspan>, <tspan fill="#b06f00" font-weight="bold">120</tspan>], default: <tspan fill="#b06f00" font-weight="bold">"long"</tspan>, output: { nb: { $sum: 1 } } } }</text>
-
-  <!-- étiquettes des lignes -->
-  <text x="2" y="84" font-size="16" font-weight="bold" fill="#333">films</text>
-  <text x="2" y="106" font-size="14" fill="#555">placés selon</text>
-  <text x="2" y="124" font-family="monospace" font-size="14" font-weight="bold" fill="#4a90d9">"$duree"</text>
-  <text x="2" y="166" font-size="16" font-weight="bold" fill="#333">tranches</text>
-  <text x="2" y="186" font-size="14" fill="#555">entre les bornes</text>
-  <text x="2" y="260" font-size="16" font-weight="bold" fill="#333">en sortie</text>
-  <text x="2" y="280" font-size="14" fill="#555">un document par tranche</text>
+  <!-- films -->
+  <g font-size="18">
+    <rect x="680" y="4" width="132" height="34" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
+    <text x="692" y="28" font-weight="bold" fill="#333">La Haine <tspan font-family="monospace" font-weight="normal" fill="#555">98</tspan></text>
+    <rect x="870" y="4" width="146" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="882" y="28" font-weight="bold" fill="#333">Chihiro <tspan font-family="monospace" font-weight="normal" fill="#555">125</tspan></text>
+    <rect x="554" y="48" width="150" height="34" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
+    <text x="566" y="72" font-weight="bold" fill="#333">Glaneurs <tspan font-family="monospace" font-weight="normal" fill="#555">82</tspan></text>
+    <rect x="770" y="48" width="140" height="34" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
+    <text x="782" y="72" font-weight="bold" fill="#333">Amélie <tspan font-family="monospace" font-weight="normal" fill="#555">122</tspan></text>
+  </g>
+  <g stroke-width="2">
+    <line x1="746" y1="38" x2="746" y2="114" stroke="#8e44ad"/>
+    <line x1="935" y1="38" x2="935" y2="114" stroke="#4a90d9"/>
+    <line x1="634" y1="82" x2="634" y2="114" stroke="#e8a838"/>
+    <line x1="914" y1="82" x2="914" y2="114" stroke="#4a90d9"/>
+  </g>
+  <g>
+    <circle cx="746" cy="118" r="6" fill="#8e44ad"/>
+    <circle cx="935" cy="118" r="6" fill="#4a90d9"/>
+    <circle cx="634" cy="118" r="6" fill="#e8a838"/>
+    <circle cx="914" cy="118" r="6" fill="#4a90d9"/>
+  </g>
 
   <!-- tranches -->
-  <rect x="180" y="150" width="562.5" height="40" fill="#f0f4f8" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="742.5" y="150" width="187.5" height="40" fill="#ffffff" stroke="#b8c4cf" stroke-width="2"/>
-  <rect x="930" y="150" width="226" height="40" fill="#ffffff" stroke="#777" stroke-width="2" stroke-dasharray="6 4"/>
-  <text x="461" y="176" font-family="monospace" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">[0, 90[</text>
-  <text x="836" y="176" font-family="monospace" font-size="16" font-weight="bold" fill="#333" text-anchor="middle">[90, 120[</text>
-  <text x="1043" y="176" font-family="monospace" font-size="16" fill="#333" text-anchor="middle">default : <tspan font-weight="bold">le reste</tspan></text>
-
-  <!-- graduations -->
-  <g stroke="#13aa52" stroke-width="3">
-    <line x1="180" y1="142" x2="180" y2="198"/>
-    <line x1="742.5" y1="142" x2="742.5" y2="198"/>
-    <line x1="930" y1="142" x2="930" y2="198"/>
+  <rect x="60" y="126" width="630" height="38" fill="#eef3f7" stroke="#13aa52" stroke-width="2"/>
+  <rect x="690" y="126" width="210" height="38" fill="#eef3f7" stroke="#13aa52" stroke-width="2"/>
+  <rect x="900" y="126" width="256" height="38" fill="#fff" stroke="#888" stroke-width="2" stroke-dasharray="7 5"/>
+  <g font-family="monospace" font-size="19" fill="#333" text-anchor="middle">
+    <text x="375" y="152">[0, 90[</text>
+    <text x="795" y="152">[90, 120[</text>
+    <text x="1028" y="152"><tspan fill="#b06f00" font-weight="bold">default</tspan> : le reste</text>
   </g>
-  <g stroke="#777" stroke-width="1.5">
-    <line x1="367.5" y1="190" x2="367.5" y2="197"/>
-    <line x1="555" y1="190" x2="555" y2="197"/>
+  <g font-family="monospace" font-size="19" font-weight="bold" fill="#b06f00" text-anchor="middle">
+    <text x="60" y="188">0</text>
+    <text x="690" y="188">90</text>
+    <text x="900" y="188">120</text>
   </g>
-  <g font-family="monospace" font-size="16" font-weight="bold" fill="#b06f00" text-anchor="middle">
-    <text x="180" y="217">0</text>
-    <text x="742.5" y="217">90</text>
-    <text x="930" y="217">120</text>
+  <text x="4" y="152" font-size="18" fill="#555">min</text>
+
+  <!-- sortie -->
+  <g font-family="monospace" font-size="19" fill="#333" text-anchor="middle">
+    <rect x="270" y="206" width="210" height="40" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="375" y="232">{ _id: <tspan font-weight="bold" fill="#b06f00">0</tspan>, nb: 1 }</text>
+    <rect x="670" y="206" width="210" height="40" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="775" y="232">{ _id: <tspan font-weight="bold" fill="#b06f00">90</tspan>, nb: 1 }</text>
+    <rect x="898" y="206" width="258" height="40" rx="8" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
+    <text x="1027" y="232">{ _id: <tspan font-weight="bold" fill="#b06f00">"long"</tspan>, nb: 2 }</text>
   </g>
-  <g font-size="13" fill="#777" text-anchor="middle">
-    <text x="367.5" y="215">30</text>
-    <text x="555" y="215">60</text>
-  </g>
-  <text x="1156" y="215" font-size="13" fill="#777" text-anchor="end">durée en minutes</text>
-
-  <!-- films : couleur de l'année -->
-  <line x1="692.5" y1="124" x2="692.5" y2="150" stroke="#e8a838" stroke-width="2"/>
-  <rect x="627" y="96" width="130" height="28" rx="7" fill="#fdf3e0" stroke="#e8a838" stroke-width="2"/>
-  <text x="637" y="116" font-size="15" font-weight="bold" fill="#333">Glaneurs</text>
-  <text x="747" y="116" font-family="monospace" font-size="15" fill="#555" text-anchor="end">82</text>
-  <circle cx="692.5" cy="150" r="5.5" fill="#e8a838"/>
-
-  <line x1="792.5" y1="82" x2="792.5" y2="150" stroke="#8e44ad" stroke-width="2"/>
-  <rect x="727" y="54" width="130" height="28" rx="7" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2"/>
-  <text x="737" y="74" font-size="15" font-weight="bold" fill="#333">La Haine</text>
-  <text x="847" y="74" font-family="monospace" font-size="15" fill="#555" text-anchor="end">98</text>
-  <circle cx="792.5" cy="150" r="5.5" fill="#8e44ad"/>
-
-  <line x1="942.5" y1="124" x2="942.5" y2="150" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="818" y="96" width="130" height="28" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="828" y="116" font-size="15" font-weight="bold" fill="#333">Amélie</text>
-  <text x="938" y="116" font-family="monospace" font-size="15" fill="#555" text-anchor="end">122</text>
-  <circle cx="942.5" cy="150" r="5.5" fill="#4a90d9"/>
-
-  <line x1="961" y1="82" x2="961" y2="150" stroke="#4a90d9" stroke-width="2"/>
-  <rect x="896" y="54" width="130" height="28" rx="7" fill="#e3eefa" stroke="#4a90d9" stroke-width="2"/>
-  <text x="906" y="74" font-size="15" font-weight="bold" fill="#333">Chihiro</text>
-  <text x="1016" y="74" font-family="monospace" font-size="15" fill="#555" text-anchor="end">125</text>
-  <circle cx="961" cy="150" r="5.5" fill="#4a90d9"/>
-
-  <!-- sorties -->
-  <g stroke="#555" stroke-width="2.2" marker-end="url(#fl)">
-    <line x1="461" y1="195" x2="461" y2="230"/>
-    <line x1="836" y1="195" x2="836" y2="230"/>
-    <line x1="1050" y1="195" x2="1050" y2="230"/>
-  </g>
-  <g font-family="monospace" font-size="15" fill="#333">
-    <rect x="371" y="240" width="180" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-    <text x="461" y="261" text-anchor="middle">{ _id: <tspan fill="#b06f00" font-weight="bold">0</tspan>, nb: 1 }</text>
-    <rect x="744" y="240" width="184" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-    <text x="836" y="261" text-anchor="middle">{ _id: <tspan fill="#b06f00" font-weight="bold">90</tspan>, nb: 1 }</text>
-    <rect x="942" y="240" width="216" height="32" rx="7" fill="#e6f4ee" stroke="#13aa52" stroke-width="2"/>
-    <text x="1050" y="261" text-anchor="middle">{ _id: <tspan fill="#b06f00" font-weight="bold">"long"</tspan>, nb: 2 }</text>
-  </g>
-
-  <text x="2" y="314" font-size="15" fill="#555">Borne basse <tspan font-weight="bold" fill="#333">incluse</tspan>, borne haute <tspan font-weight="bold" fill="#333">exclue</tspan>. L'<tspan font-family="monospace">_id</tspan> d'une tranche est sa <tspan fill="#b06f00" font-weight="bold">borne basse</tspan> ; celui de <tspan font-family="monospace">default</tspan>, sa valeur, <tspan font-family="monospace" fill="#b06f00" font-weight="bold">"long"</tspan>.</text>
+  <text x="4" y="232" font-size="18" fill="#555">en sortie</text>
 </svg>
