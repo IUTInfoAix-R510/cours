@@ -83,7 +83,7 @@ Prérequis : SQL (R1.05, R2.06, R3.07, R4.03), Java, Git.
 </div>
 <div style="font-size: 0.78em; display: grid; gap: 0.7rem;">
 <div class="carte vert"><b class="t">TP : le correcteur automatique</b>À chaque rendu, il exécute vos requêtes et affiche le score dans la Release. La note retenue vient du dernier rendu dans les délais.</div>
-<div class="carte"><b class="t">Projet, en équipe, S6 à S8</b>Une note d'équipe, pondérée pour chacun par les questions individuelles de S8, les contributions et un détecteur d'IA. Le détail en S6.</div>
+<div class="carte"><b class="t">Projet, en équipe, S6 à S8</b>Une note d'équipe, multipliée pour chacun par un coefficient tiré des questions individuelles de S8 et des contributions. Le détecteur d'IA peut mener à un entretien, jamais à une pénalité. Le détail en S6.</div>
 </div>
 </div>
 
@@ -98,7 +98,7 @@ Le score s'affiche dans la Release du rendu et dans Classroom 50 : on voit quels
 
 Pour le TP1, la note définitive est recalculée après la clôture sur un second jeu de données, secret, aux valeurs différentes. On garde le plus petit des deux scores. Une requête qui calcule son résultat obtient les mêmes points sur les deux jeux ; une réponse recopiée, ou qui vise des identifiants, perd ses points.
 
-Projet, à ne pas détailler aujourd'hui : pile imposée (Java 25, Javalin, pilote Java MongoDB, front web léger), squelette fourni, équipes constituées à l'intérieur de chaque groupe avant S6. Barème indicatif du syllabus : données 50, API et tests 25, front 10, documentation 15, bonus graphe jusqu'à +10, note plafonnée à 100. Questions individuelles : environ 6 minutes en S8, sans jury ni assistant : expliquer une partie de son code, puis la modifier. Contributions : au moins une pull request significative et la revue de celle d'un coéquipier. Le détecteur d'IA : si une équipe ne montre pas qu'elle comprend son code pendant les questions individuelles, sa note est coefficientée par le taux de contribution que le détecteur lui attribue.
+Projet, à ne pas détailler aujourd'hui : pile imposée (Java 25, Javalin, pilote Java MongoDB, front web léger, serveur MCP), squelette fourni, équipes constituées à l'intérieur de chaque groupe avant S6. Barème de l'issue 00 du projet (« Comment le projet est noté ») : les 7 sceaux de la quête principale, 40 points ; les quêtes secondaires, jusqu'à 25 points, multipliés par la cohérence de l'application ; la note technique et artistique, 35 points ; le trésor Neo4j, jusqu'à +10 ; note d'équipe plafonnée à 100. Note individuelle = min(100, note d'équipe × (0,6 + 0,5 × q)) : le score q (de 0 à 1) vient pour 70 % des questions individuelles (6 minutes en S8, sans assistant IA ni autre aide : expliquer, puis modifier son code ; tout ce qu'on a écrit ou relu peut être demandé, d'après l'historique arrêté le mercredi 16 décembre au soir) et pour 30 % des contributions (historique git, PR écrites et relues). Le détecteur d'IA ne modifie pas q : il peut déclencher un entretien, jamais une pénalité automatique.
 -->
 
 ---
