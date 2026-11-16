@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 304" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Du rouge au vert, avec un test d'acceptation. Une fois : 1, retirer @Disabled du test de la mission ; 2, construire le jar avec ./mvnw -q package -DskipTests ; 3, charger les données et construire les collections avec java -jar target/app.jar seed. Puis la boucle : 4, jouer le test avec ./mvnw test -Dgroups=P1 ; s'il est rouge, 5, lire le message et corriger le service, puis rejouer 4 si seul le service a changé. Si c'est un pipeline de construction qui a changé, repartir de 2 puis 3 avant de rejouer le test. Quand le test est vert : 6, une Pull Request relue, qui référence l'issue (Refs #N). En marge : le correcteur automatique rejoue sa propre copie des tests, sur le jeu public E et sur le jeu privé E′ : une valeur écrite en dur échoue.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+    <marker id="fl-orange" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#9a6400"/></marker>
+    <marker id="fl-vert" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#00684a"/></marker>
+  </defs>
+
+  <!-- une fois -->
+  <g text-anchor="middle">
+    <rect x="6" y="6" width="360" height="80" rx="10" fill="#f0f4f8" stroke="#5c6c75" stroke-width="2.5"/>
+    <text x="186" y="38" font-size="20" font-weight="bold" fill="#2c3e50">① retirer @Disabled</text>
+    <text x="186" y="68" font-size="19" fill="#444">du test de la mission</text>
+
+    <rect x="6" y="112" width="360" height="80" rx="10" fill="#eaf2fb" stroke="#2f6db0" stroke-width="2.5"/>
+    <text x="186" y="144" font-size="20" font-weight="bold" fill="#2f6db0">② construire le jar</text>
+    <text x="186" y="174" font-size="18" font-family="monospace" fill="#333">./mvnw -q package -DskipTests</text>
+
+    <rect x="6" y="218" width="360" height="80" rx="10" fill="#eaf2fb" stroke="#2f6db0" stroke-width="2.5"/>
+    <text x="186" y="250" font-size="20" font-weight="bold" fill="#2f6db0">③ charger, construire</text>
+    <text x="186" y="280" font-size="18" font-family="monospace" fill="#333">java -jar target/app.jar seed</text>
+  </g>
+  <g stroke="#555" stroke-width="2.5">
+    <line x1="186" y1="86" x2="186" y2="108" marker-end="url(#fl)"/>
+    <line x1="186" y1="192" x2="186" y2="214" marker-end="url(#fl)"/>
+    <line x1="366" y1="258" x2="516" y2="258" marker-end="url(#fl)"/>
+  </g>
+
+  <!-- la boucle -->
+  <g text-anchor="middle">
+    <rect x="520" y="218" width="360" height="80" rx="10" fill="#eaf2fb" stroke="#2f6db0" stroke-width="2.5"/>
+    <text x="700" y="250" font-size="20" font-weight="bold" fill="#2f6db0">④ jouer le test</text>
+    <text x="700" y="280" font-size="18" font-family="monospace" fill="#333">./mvnw test -Dgroups=P1</text>
+
+    <rect x="520" y="6" width="360" height="110" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2.5"/>
+    <text x="700" y="40" font-size="20" font-weight="bold" fill="#c0392b">⑤ lire le message,</text>
+    <text x="700" y="68" font-size="20" font-weight="bold" fill="#c0392b">corriger le service</text>
+    <text x="700" y="98" font-size="18" fill="#444">au départ, tout répond 501</text>
+  </g>
+  <line x1="610" y1="218" x2="610" y2="120" stroke="#c0392b" stroke-width="2.5" marker-end="url(#fl-rouge)"/>
+  <text x="622" y="174" font-size="19" font-weight="bold" fill="#c0392b">rouge</text>
+  <line x1="790" y1="116" x2="790" y2="214" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <text x="778" y="160" font-size="18" fill="#333" text-anchor="end">service</text>
+  <text x="778" y="184" font-size="18" fill="#333" text-anchor="end">modifié</text>
+
+  <!-- pipeline de construction modifié -->
+  <path d="M520,92 C470,100 420,140 370,150" fill="none" stroke="#9a6400" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl-orange)"/>
+  <g font-size="18" fill="#9a6400" text-anchor="middle" font-weight="bold">
+    <text x="443" y="26">pipeline de</text>
+    <text x="443" y="48">construction</text>
+    <text x="443" y="70">modifié</text>
+  </g>
+
+  <!-- vert -->
+  <line x1="880" y1="258" x2="926" y2="258" stroke="#00684a" stroke-width="2.5" marker-end="url(#fl-vert)"/>
+  <text x="903" y="244" font-size="18" font-weight="bold" fill="#00684a" text-anchor="middle">vert</text>
+  <rect x="930" y="218" width="224" height="80" rx="10" fill="#00684a" stroke="#00684a" stroke-width="2.5"/>
+  <text x="1042" y="250" font-size="20" font-weight="bold" fill="#ffffff" text-anchor="middle">⑥ une PR relue</text>
+  <text x="1042" y="280" font-size="19" fill="#ffffff" text-anchor="middle">Refs #N</text>
+
+  <!-- correcteur automatique -->
+  <rect x="930" y="6" width="224" height="186" rx="10" fill="#f0f4f8" stroke="#5c6c75" stroke-width="1.5" stroke-dasharray="6 4"/>
+  <g font-size="18" fill="#333" text-anchor="middle">
+    <text x="1042" y="38">Le correcteur</text>
+    <text x="1042" y="64">automatique rejoue</text>
+    <text x="1042" y="90">sa copie des tests,</text>
+    <text x="1042" y="116">sur E et sur E′ :</text>
+    <text x="1042" y="150" font-weight="bold" fill="#c0392b">rien en dur</text>
+  </g>
+</svg>

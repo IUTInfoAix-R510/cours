@@ -24,7 +24,7 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 | S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | [diapositives](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.pdf) |
 | S4 | 30/11 | Modéliser à partir des requêtes, patterns de conception | TP3 | [diapositives](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.pdf) |
 | S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | [diapositives](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.pdf) |
-| S6 | 7/12 | Lancement du projet : architecture, contrats d'API, pilote en lecture, tests d'acceptation (missions P1 à P3) | Projet | À venir |
+| S6 | 7/12 | Lancement du projet : architecture, contrats d'API, pilote en lecture, tests d'acceptation (missions P1 à P3) | Projet | [diapositives](https://iutinfoaix-r510.github.io/cours/s6-lancement-projet.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s6-lancement-projet.pdf) |
 | S7 | 14/12 | Point d'étape (5 à 10 min) ; missions P4 à P7 ; écritures, MCP, index et statistiques dans les guides du projet | Projet | — |
 | S8 | 14/12 | Consignes des questions individuelles (5 min) | Projet | — |
 
@@ -68,6 +68,7 @@ cours/
 ├── s3-requetes-avancees-agregation-index.md  # S3 : point cours du TP2
 ├── s4-modelisation-patterns.md               # S4 : point cours du TP3
 ├── s5-graphe-neo4j-cypher.md                 # S5 : point cours du TP4 (Neo4j)
+├── s6-lancement-projet.md                    # S6 : lancement du projet (15 min)
 ├── themes/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/

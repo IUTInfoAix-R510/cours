@@ -59,9 +59,9 @@ ROWS=$(
   seance_row 3 "30/11" "Requêtes avancées, pipeline d'agrégation, index"             "TP2"
   seance_row 4 "30/11" "Modéliser à partir des requêtes, patterns de conception"      "TP3"
   seance_row 5 "7/12"  "Du relationnel au graphe : Neo4j et Cypher"                  "TP4 (Neo4j)"
-  seance_row 6 "7/12"  "Lancement du projet, modèle de données, chargement"          "Projet"
-  seance_row 7 "14/12" "Agrégations, API REST, index ; module graphe en bonus"       "Projet"
-  seance_row 8 "14/12" "Finalisation et questions individuelles"            "Projet"
+  seance_row 6 "7/12"  "Lancement du projet : une vérité, un contrat, un test (missions P1 à P3)" "Projet"
+  seance_row 7 "14/12" "Point d'étape ; missions P4 à P7, agent IA"                   "Projet"
+  seance_row 8 "14/12" "Consignes des questions individuelles"                       "Projet"
 )
 
 cat > _site/index.html <<HTMLEOF

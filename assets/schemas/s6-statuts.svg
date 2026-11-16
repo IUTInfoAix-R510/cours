@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 416" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Qui produit chaque statut d'une réponse, dans l'ordre des contrôles du Codex (D17). Le service lève une ErreurMetier, dans cet ordre : 1, le contrat accepte-t-il la valeur (un entier de 1 à 10 pour limite) ? sinon 400, par exemple limite=0 ; 2, les données la couvrent-elles (le catalogue va de 1895 à 2026) ? sinon 422, par exemple annee=1850 ; 3, les paramètres sont-ils cohérents entre eux (debut avant fin) ? sinon 400 ; 4, la ressource existe-t-elle (le film est-il connu) ? sinon 404, par exemple Titanic. Enfin le service rend le calcul, un Document : 200, même pour une liste vide ; 201 et 204 sont posés par la route, fournie. En bas, ce que le gabarit répond sans que vous l'écriviez : 404 avec routeAbsente pour une route non déclarée, 501 quand le service n'est pas encore écrit (Sceau.aFaire), 500 pour une exception non prévue, 503 quand MongoDB refuse la requête.</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fl-rouge" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c0392b"/></marker>
+  </defs>
+
+  <!-- qui contrôle -->
+  <path d="M2,46 L2,32 L924,32 L924,46" fill="none" stroke="#00684a" stroke-width="2.5"/>
+  <rect x="268" y="14" width="390" height="30" fill="#ffffff"/>
+  <text x="463" y="37" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">le service lève une ErreurMetier</text>
+  <text x="1052" y="37" font-size="19" fill="#00684a" text-anchor="middle">le service rend</text>
+
+  <!-- contrôles -->
+  <g font-size="20" text-anchor="middle">
+    <rect x="0" y="56" width="216" height="110" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="2.5"/>
+    <text x="108" y="88" font-weight="bold" fill="#00684a">① le contrat</text>
+    <text x="108" y="114" font-weight="bold" fill="#00684a">l'accepte ?</text>
+    <text x="108" y="146" font-size="19" fill="#444">entier de 1 à 10 ?</text>
+
+    <rect x="236" y="56" width="216" height="110" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="2.5"/>
+    <text x="344" y="88" font-weight="bold" fill="#00684a">② les données</text>
+    <text x="344" y="114" font-weight="bold" fill="#00684a">le couvrent ?</text>
+    <text x="344" y="146" font-size="19" fill="#444">[1895, 2026] ?</text>
+
+    <rect x="472" y="56" width="216" height="110" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="2.5"/>
+    <text x="580" y="88" font-weight="bold" fill="#00684a">③ cohérents</text>
+    <text x="580" y="114" font-weight="bold" fill="#00684a">entre eux ?</text>
+    <text x="580" y="146" font-size="19" fill="#444">debut ≤ fin ?</text>
+
+    <rect x="708" y="56" width="216" height="110" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="2.5"/>
+    <text x="816" y="88" font-weight="bold" fill="#00684a">④ la ressource</text>
+    <text x="816" y="114" font-weight="bold" fill="#00684a">existe ?</text>
+    <text x="816" y="146" font-size="19" fill="#444">film connu ?</text>
+
+    <rect x="944" y="56" width="216" height="110" rx="10" fill="#00684a" stroke="#00684a" stroke-width="2.5"/>
+    <text x="1052" y="100" font-weight="bold" fill="#ffffff">le calcul</text>
+    <text x="1052" y="132" font-size="19" fill="#ffffff">un Document</text>
+  </g>
+
+  <!-- oui -->
+  <g stroke="#555" stroke-width="2.5">
+    <line x1="216" y1="111" x2="232" y2="111" marker-end="url(#fl)"/>
+    <line x1="452" y1="111" x2="468" y2="111" marker-end="url(#fl)"/>
+    <line x1="688" y1="111" x2="704" y2="111" marker-end="url(#fl)"/>
+    <line x1="924" y1="111" x2="940" y2="111" marker-end="url(#fl)"/>
+  </g>
+
+  <!-- non -->
+  <g stroke="#c0392b" stroke-width="2.5">
+    <line x1="108" y1="166" x2="108" y2="210" marker-end="url(#fl-rouge)"/>
+    <line x1="344" y1="166" x2="344" y2="210" marker-end="url(#fl-rouge)"/>
+    <line x1="580" y1="166" x2="580" y2="210" marker-end="url(#fl-rouge)"/>
+    <line x1="816" y1="166" x2="816" y2="210" marker-end="url(#fl-rouge)"/>
+  </g>
+  <g font-size="18" fill="#c0392b" font-style="italic">
+    <text x="118" y="195">non</text>
+    <text x="354" y="195">non</text>
+    <text x="590" y="195">non</text>
+    <text x="826" y="195">non</text>
+  </g>
+  <line x1="1052" y1="166" x2="1052" y2="210" stroke="#00684a" stroke-width="2.5" marker-end="url(#fl)"/>
+
+  <!-- statuts -->
+  <g text-anchor="middle">
+    <rect x="0" y="214" width="216" height="96" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="108" y="250" font-size="28" font-weight="bold" fill="#c0392b">400</text>
+    <text x="108" y="284" font-size="18" font-family="monospace" fill="#333">limite=0</text>
+
+    <rect x="236" y="214" width="216" height="96" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="344" y="250" font-size="28" font-weight="bold" fill="#c0392b">422</text>
+    <text x="344" y="284" font-size="18" font-family="monospace" fill="#333">annee=1850</text>
+
+    <rect x="472" y="214" width="216" height="96" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="580" y="250" font-size="28" font-weight="bold" fill="#c0392b">400</text>
+    <text x="580" y="284" font-size="18" font-family="monospace" fill="#333">debut &gt; fin</text>
+
+    <rect x="708" y="214" width="216" height="96" rx="10" fill="#fdecea" stroke="#c0392b" stroke-width="2"/>
+    <text x="816" y="250" font-size="28" font-weight="bold" fill="#c0392b">404</text>
+    <text x="816" y="284" font-size="18" font-family="monospace" fill="#333">Titanic</text>
+
+    <rect x="944" y="214" width="216" height="96" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="2"/>
+    <text x="1052" y="250" font-size="28" font-weight="bold" fill="#00684a">200</text>
+    <text x="1052" y="276" font-size="18" fill="#333">même vide</text>
+    <text x="1052" y="300" font-size="18" fill="#333">201, 204 : la route</text>
+  </g>
+
+  <!-- gabarit -->
+  <text x="0" y="346" font-size="19" fill="#5c6c75">Sans que vous les écriviez, le gabarit répond aussi :</text>
+  <g font-size="19" text-anchor="middle">
+    <rect x="0" y="360" width="283" height="48" rx="8" fill="#f0f4f8" stroke="#5c6c75" stroke-width="1.5"/>
+    <text x="141" y="391" fill="#333"><tspan font-weight="bold">404</tspan> : route non déclarée</text>
+    <rect x="292" y="360" width="283" height="48" rx="8" fill="#f0f4f8" stroke="#5c6c75" stroke-width="1.5"/>
+    <text x="433" y="391" fill="#333"><tspan font-weight="bold">501</tspan> : service pas écrit</text>
+    <rect x="584" y="360" width="283" height="48" rx="8" fill="#f0f4f8" stroke="#5c6c75" stroke-width="1.5"/>
+    <text x="725" y="391" fill="#333"><tspan font-weight="bold">500</tspan> : exception imprévue</text>
+    <rect x="876" y="360" width="284" height="48" rx="8" fill="#f0f4f8" stroke="#5c6c75" stroke-width="1.5"/>
+    <text x="1018" y="391" fill="#333"><tspan font-weight="bold">503</tspan> : MongoDB refuse</text>
+  </g>
+</svg>

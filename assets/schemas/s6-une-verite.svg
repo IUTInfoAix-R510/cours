@@ -1,0 +1,66 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1160 372" font-family="sans-serif" role="img" aria-labelledby="t">
+  <title id="t">Un calcul, quatre fenêtres, sur la petite API du ciné-club. MongoDB fait le calcul dans un pipeline. Le service Java note(titre) l'exécute : il reçoit du texte, rend un Document, ou lève une ErreurMetier. Le service est appelé par deux portes : 1, la route GET /api/films/{titre}/note, fournie, qui fait seulement ctx.json(note(…)) ; 2, l'outil MCP note_film, qui fait seulement Enveloppe.resultat(note(…), …). Entre les deux, le même Json.MAPPER donne le même JSON. La route sert 3, la vue (la fiche du film dans le navigateur) ; l'outil sert l'agent IA (Copilot en mode agent). 4, le test d'acceptation appelle la route et l'outil : la route doit donner l'attendu, l'outil la même chose que la route (parité).</title>
+  <defs>
+    <marker id="fl" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#555"/></marker>
+    <marker id="fl-gris" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="11" markerHeight="11" markerUnits="userSpaceOnUse" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#5c6c75"/></marker>
+  </defs>
+
+  <!-- MongoDB -->
+  <rect x="6" y="126" width="176" height="120" rx="10" fill="#eaf2fb" stroke="#4a90d9" stroke-width="2.5"/>
+  <text x="94" y="164" font-size="21" font-weight="bold" fill="#333" text-anchor="middle">MongoDB</text>
+  <text x="94" y="194" font-size="19" fill="#444" text-anchor="middle">le pipeline</text>
+  <text x="94" y="220" font-size="19" fill="#444" text-anchor="middle">fait le calcul</text>
+
+  <line x1="182" y1="186" x2="226" y2="186" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+
+  <!-- service -->
+  <rect x="230" y="104" width="240" height="164" rx="10" fill="#e3f4ee" stroke="#00684a" stroke-width="3"/>
+  <text x="350" y="138" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">le service</text>
+  <text x="350" y="168" font-size="19" font-family="monospace" fill="#333" text-anchor="middle">note(titre)</text>
+  <text x="350" y="198" font-size="19" fill="#444" text-anchor="middle">du texte en entrée,</text>
+  <text x="350" y="224" font-size="19" fill="#444" text-anchor="middle">un Document en sortie,</text>
+  <text x="350" y="250" font-size="19" fill="#c0392b" text-anchor="middle">ou une ErreurMetier</text>
+
+  <line x1="470" y1="140" x2="514" y2="78" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="470" y1="232" x2="514" y2="294" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+
+  <!-- route -->
+  <rect x="518" y="8" width="364" height="104" rx="10" fill="#fff8e1" stroke="#e8a838" stroke-width="2.5"/>
+  <text x="700" y="38" font-size="20" font-weight="bold" fill="#9a6400" text-anchor="middle">① la route (fournie)</text>
+  <text x="700" y="68" font-size="18" font-family="monospace" fill="#333" text-anchor="middle">GET /api/films/{titre}/note</text>
+  <text x="700" y="96" font-size="18" font-family="monospace" fill="#333" text-anchor="middle">ctx.json(note(…))</text>
+
+  <!-- même JSON -->
+  <rect x="518" y="134" width="364" height="104" rx="10" fill="#ffffff" stroke="#13aa52" stroke-width="2.5" stroke-dasharray="8 5"/>
+  <text x="700" y="166" font-size="20" font-weight="bold" fill="#00684a" text-anchor="middle">le même Json.MAPPER</text>
+  <text x="700" y="194" font-size="19" fill="#333" text-anchor="middle">donne le même JSON</text>
+  <text x="700" y="221" font-size="19" fill="#333" text-anchor="middle">dans ① et dans ②</text>
+
+  <!-- outil -->
+  <rect x="518" y="260" width="364" height="104" rx="10" fill="#ede5f7" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="700" y="290" font-size="20" font-weight="bold" fill="#8e44ad" text-anchor="middle">② l'outil MCP note_film</text>
+  <text x="700" y="320" font-size="18" font-family="monospace" fill="#333" text-anchor="middle">Enveloppe.resultat(</text>
+  <text x="700" y="346" font-size="18" font-family="monospace" fill="#333" text-anchor="middle">    note(…), …)</text>
+
+  <!-- consommateurs -->
+  <line x1="882" y1="60" x2="932" y2="60" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="882" y1="312" x2="932" y2="312" stroke="#555" stroke-width="2.5" marker-end="url(#fl)"/>
+  <line x1="882" y1="96" x2="932" y2="150" stroke="#5c6c75" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl-gris)"/>
+  <line x1="882" y1="276" x2="932" y2="222" stroke="#5c6c75" stroke-width="2.5" stroke-dasharray="7 5" marker-end="url(#fl-gris)"/>
+
+  <rect x="936" y="8" width="218" height="104" rx="10" fill="#eaf2fb" stroke="#2f6db0" stroke-width="2.5"/>
+  <text x="1045" y="40" font-size="20" font-weight="bold" fill="#2f6db0" text-anchor="middle">③ la vue</text>
+  <text x="1045" y="70" font-size="19" fill="#444" text-anchor="middle">la fiche du film,</text>
+  <text x="1045" y="96" font-size="19" fill="#444" text-anchor="middle">dans le navigateur</text>
+
+  <rect x="936" y="128" width="218" height="116" rx="10" fill="#f0f4f8" stroke="#5c6c75" stroke-width="2.5"/>
+  <text x="1045" y="158" font-size="20" font-weight="bold" fill="#2c3e50" text-anchor="middle">④ le test</text>
+  <text x="1045" y="186" font-size="19" fill="#444" text-anchor="middle">① = l'attendu</text>
+  <text x="1045" y="212" font-size="19" fill="#444" text-anchor="middle">② = ①</text>
+  <text x="1045" y="236" font-size="18" fill="#5c6c75" text-anchor="middle">(la parité)</text>
+
+  <rect x="936" y="260" width="218" height="104" rx="10" fill="#f3e8f8" stroke="#8e44ad" stroke-width="2.5"/>
+  <text x="1045" y="292" font-size="20" font-weight="bold" fill="#333" text-anchor="middle">l'agent IA</text>
+  <text x="1045" y="322" font-size="19" fill="#444" text-anchor="middle">Copilot,</text>
+  <text x="1045" y="348" font-size="19" fill="#444" text-anchor="middle">en mode agent</text>
+</svg>
