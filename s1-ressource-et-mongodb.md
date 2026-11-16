@@ -55,9 +55,9 @@ Avant de commencer : demander qui n'a pas reçu ou pas accepté l'invitation à 
 
 > Choisir le modèle de données adapté aux requêtes, puis l'intégrer dans une application.
 
-<img src="assets/schemas/s1-seances.svg" alt="Frise des huit séances : semaine du 23/11, S1 et S2 (TP1, documents et CRUD, puis documents imbriqués, tableaux, agrégation) ; semaine du 30/11, S3 (TP2, requêtes avancées, agrégation, index) et S4 (TP3, modélisation, patterns de conception) ; semaine du 7/12, S5 (TP4, Neo4j et Cypher) et S6 (projet : lancement, modèle, chargement des données) ; semaine du 14/12, S7 (projet : agrégations, API REST, index) et S8 (projet : finalisation, questions individuelles)" style="display: block; margin: 0.3rem auto 0; height: 392px;">
+<img src="assets/schemas/s1-seances.svg" alt="Frise des huit séances : semaine du 23/11, S1 et S2 (TP1, documents et CRUD, puis documents imbriqués, tableaux, agrégation) ; semaine du 30/11, S3 (TP2, requêtes avancées, agrégation, index) et S4 (TP3, modélisation, patterns de conception) ; semaine du 7/12, S5 (TP4, Neo4j et Cypher) et S6 (projet : lancement, missions P1 à P3) ; semaine du 14/12, S7 (projet : missions P4 à P7, agent IA) et S8 (projet : finalisation, questions individuelles)" style="display: block; margin: 0.3rem auto 0; height: 392px;">
 
-<p class="note" style="margin-top: 0.5rem;">Chaque séance commence par un point cours. Jours et horaires : consultez ADE, ils changent d'une semaine et d'un groupe à l'autre. Dernière séance au plus tard le jeudi 17/12.</p>
+<p class="note" style="margin-top: 0.5rem;">Chaque séance de TP commence par un point cours, la séance 6 par un lancement du projet. Jours et horaires : consultez ADE, ils changent d'une semaine et d'un groupe à l'autre. Dernière séance au plus tard le jeudi 17/12.</p>
 
 <!--
 (1 min)

@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 400" font-family="sans-serif" role="img" aria-labelledby="t">
-  <title id="t">Frise des huit séances : semaine du 23/11, S1 et S2 (TP1, documents et CRUD, puis documents imbriqués, tableaux, agrégation) ; semaine du 30/11, S3 (TP2, requêtes avancées, agrégation, index) et S4 (TP3, modélisation, patterns de conception) ; semaine du 7/12, S5 (TP4, Neo4j et Cypher) et S6 (projet : lancement, modèle, chargement des données) ; semaine du 14/12, S7 (projet : agrégations, API REST, index) et S8 (projet : finalisation, questions individuelles)</title>
+  <title id="t">Frise des huit séances : semaine du 23/11, S1 et S2 (TP1, documents et CRUD, puis documents imbriqués, tableaux, agrégation) ; semaine du 30/11, S3 (TP2, requêtes avancées, agrégation, index) et S4 (TP3, modélisation, patterns de conception) ; semaine du 7/12, S5 (TP4, Neo4j et Cypher) et S6 (projet : lancement, missions P1 à P3) ; semaine du 14/12, S7 (projet : missions P4 à P7, agent IA) et S8 (projet : finalisation, questions individuelles)</title>
   <rect x="12" y="122" width="130" height="226" rx="12" fill="#e6f4ee" stroke="#13aa52" stroke-width="3"/>
   <rect x="12" y="6" width="268" height="44" rx="10" fill="#f0f4f8"/>
   <text x="146" y="36" font-size="21" font-weight="bold" fill="#00684a" text-anchor="middle">Semaine du 23/11</text>
@@ -50,14 +50,13 @@
   <circle cx="767.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
   <text x="767.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S6</text>
   <text x="767.0" y="226" font-size="19" fill="#333" text-anchor="middle">Lancement,</text>
-  <text x="767.0" y="252" font-size="19" fill="#333" text-anchor="middle">modèle,</text>
-  <text x="767.0" y="278" font-size="19" fill="#333" text-anchor="middle">chargement</text>
-  <text x="767.0" y="304" font-size="19" fill="#333" text-anchor="middle">des données</text>
+  <text x="767.0" y="252" font-size="19" fill="#333" text-anchor="middle">missions</text>
+  <text x="767.0" y="278" font-size="19" fill="#333" text-anchor="middle">P1 à P3</text>
   <circle cx="905.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
   <text x="905.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S7</text>
-  <text x="905.0" y="226" font-size="19" fill="#333" text-anchor="middle">Agrégations,</text>
-  <text x="905.0" y="252" font-size="19" fill="#333" text-anchor="middle">API REST,</text>
-  <text x="905.0" y="278" font-size="19" fill="#333" text-anchor="middle">index</text>
+  <text x="905.0" y="226" font-size="19" fill="#333" text-anchor="middle">Missions</text>
+  <text x="905.0" y="252" font-size="19" fill="#333" text-anchor="middle">P4 à P7,</text>
+  <text x="905.0" y="278" font-size="19" fill="#333" text-anchor="middle">agent IA</text>
   <circle cx="1043.0" cy="164" r="27" fill="#e8a838" stroke="#fff" stroke-width="4"/>
   <text x="1043.0" y="172" font-size="21" font-weight="bold" fill="#3b2a05" text-anchor="middle">S8</text>
   <text x="1043.0" y="226" font-size="19" fill="#333" text-anchor="middle">Finalisation,</text>
