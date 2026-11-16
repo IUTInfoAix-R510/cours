@@ -25,8 +25,8 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 | S4 | 30/11 | Modéliser à partir des requêtes, patterns de conception | TP3 | [diapositives](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.pdf) |
 | S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | [diapositives](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.pdf) |
 | S6 | 7/12 | Lancement du projet : architecture, contrats d'API, pilote en lecture, tests d'acceptation (missions P1 à P3) | Projet | [diapositives](https://iutinfoaix-r510.github.io/cours/s6-lancement-projet.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s6-lancement-projet.pdf) |
-| S7 | 14/12 | Point d'étape (5 à 10 min) ; missions P4 à P7 ; écritures, MCP, index et statistiques dans les guides du projet | Projet | — |
-| S8 | 14/12 | Consignes des questions individuelles (5 min) | Projet | — |
+| S7 | 14/12 | Point d'étape (5 à 10 min) ; missions P4 à P7 ; écritures, MCP, index et statistiques dans les guides du projet | Projet | [diapositives](https://iutinfoaix-r510.github.io/cours/s7-point-etape-projet.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s7-point-etape-projet.pdf) |
+| S8 | 14/12 | Consignes des questions individuelles (5 min) | Projet | [diapositives](https://iutinfoaix-r510.github.io/cours/s8-questions-individuelles.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s8-questions-individuelles.pdf) |
 
 Les jours et horaires de chaque groupe sont dans ADE.
 
@@ -69,6 +69,8 @@ cours/
 ├── s4-modelisation-patterns.md               # S4 : point cours du TP3
 ├── s5-graphe-neo4j-cypher.md                 # S5 : point cours du TP4 (Neo4j)
 ├── s6-lancement-projet.md                    # S6 : lancement du projet (15 min)
+├── s7-point-etape-projet.md                  # S7 : point d'étape du projet (une diapo)
+├── s8-questions-individuelles.md             # S8 : consignes des questions individuelles (une diapo)
 ├── themes/
 │   └── r510.css                           # thème Marp commun (« theme: r510 »)
 ├── assets/
