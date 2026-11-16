@@ -13,7 +13,7 @@
 
 ## Points cours
 
-Il n'y a pas de cours magistral séparé. Chacune des 8 séances de 4 h commence par un **point cours** : il présente les notions à connaître avant d'attaquer le TP. Ce n'est pas un corrigé. Les exemples portent sur d'autres données que les exercices (films, recettes, capteurs...) et l'énoncé du TP reste la référence.
+Il n'y a pas de cours magistral séparé. Chacune des 5 séances de TP commence par un **point cours** : il présente les notions à connaître avant d'attaquer le TP. Les 3 séances de projet commencent plus brièvement : un point cours de lancement (S6, 15 à 20 min), un point d'étape (S7, 5 à 10 min), les consignes des questions individuelles (S8, 5 min) ; le reste est dans les guides du projet. Ce n'est pas un corrigé. Les exemples portent sur d'autres données que les exercices (films, recettes, capteurs...) et l'énoncé du TP reste la référence.
 
 Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 
@@ -24,9 +24,9 @@ Les supports sont publiés sur https://iutinfoaix-r510.github.io/cours/.
 | S3 | 30/11 | Requêtes avancées, pipeline d'agrégation, index | TP2 | [diapositives](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s3-requetes-avancees-agregation-index.pdf) |
 | S4 | 30/11 | Modéliser à partir des requêtes, patterns de conception | TP3 | [diapositives](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s4-modelisation-patterns.pdf) |
 | S5 | 7/12 | Du relationnel au graphe : Neo4j et Cypher | TP4 (Neo4j) | [diapositives](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.html) · [PDF](https://iutinfoaix-r510.github.io/cours/s5-graphe-neo4j-cypher.pdf) |
-| S6 | 7/12 | Lancement du projet, modèle de données, chargement | Projet | À venir |
-| S7 | 14/12 | Agrégations, API REST, index ; module graphe en bonus | Projet | À venir |
-| S8 | 14/12 | Finalisation et questions individuelles | Projet | À venir |
+| S6 | 7/12 | Lancement du projet : architecture, API REST, écritures en Java, tests d'acceptation | Projet | À venir |
+| S7 | 14/12 | Point d'étape (5 à 10 min) ; MCP, index et statistiques dans les guides du projet | Projet | — |
+| S8 | 14/12 | Consignes des questions individuelles (5 min) | Projet | — |
 
 Les jours et horaires de chaque groupe sont dans ADE.
 
